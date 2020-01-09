@@ -1,26 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AcquirableInteractable : Interactable
 {
     public Vector3 zoomScale;
     public Transform zoomedInTransform;
     public RuntimeAnimatorController controller;
+    public Text itemName;
+    public Text itemDesc;
+    public string nameString;
+    public string descString;
+    public GameObject textCanvas;
+    
 
     private GameObject _duplicate;
-    private Animator _animator;
+    private IEnumerator _removeCoroutine;
+    private bool _clickable;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _removeCoroutine = RemoveAcquirable(2.0f);
+        _clickable = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (_clickable == true)
+            {
+                textCanvas.SetActive(false);
+                Destroy(gameObject);
+                Destroy(_duplicate);
+            }
+        }
+
     }
 
     public override void Interact()
@@ -31,11 +49,29 @@ public class AcquirableInteractable : Interactable
         _duplicate.transform.localScale = zoomScale;
         _duplicate.GetComponent<Interactable>().enabled = false;
 
+        // play rotating animation
         _animator = _duplicate.AddComponent<Animator>();
         _animator.runtimeAnimatorController = controller;
 
+        textCanvas.SetActive(true);
+        ChangeText(nameString, descString);
+
         // setting duplicate object to the zoomed-in object's layer
         _duplicate.layer = 8;
+        // after a 2 second delay allow the player to click away
+        StartCoroutine(_removeCoroutine);
+    }
+
+    private void ChangeText(string name, string desc)
+    {
+        itemName.text = name;
+        itemDesc.text = desc;
+    }
+
+    private IEnumerator RemoveAcquirable(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        _clickable = true;
     }
 
 }

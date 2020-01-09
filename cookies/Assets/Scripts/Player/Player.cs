@@ -25,6 +25,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void DisableMovement()
+    {
+        PlayerMovement.movementEnabled = false;
+    }
+
     void Interact()
     {
         Ray _ray = mainCamera.ScreenPointToRay(Input.mousePosition);
