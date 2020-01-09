@@ -26,6 +26,17 @@ public class Movement : MonoBehaviour
 
         transform.Translate(_strafe, 0, _translation);
 
+        if (_translation > 0)
+            _animator.SetInteger("direction", 1);
+        else if (_translation < 0)
+            _animator.SetInteger("direction", 2);
+        else if (_strafe > 0)
+            _animator.SetInteger("direction", 3);
+        else if (_strafe < 0)
+            _animator.SetInteger("direction", 4);
+        else
+            _animator.SetInteger("direction", 0);
+
 
     }
 

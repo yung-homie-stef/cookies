@@ -19,5 +19,5 @@ public abstract class Interactable : MonoBehaviour
     }
 
     // for when the player clicks upon them
-    public abstract void ReactToPlayerInteraction();
+    public abstract void Interact();
 }

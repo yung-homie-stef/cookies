@@ -42,7 +42,7 @@ public class OpenableInteractable : Interactable
         }
     }
 
-    public override void ReactToPlayerInteraction()
+    public override void Interact()
     {
         isOpened = !isOpened;
         EnactOpening();

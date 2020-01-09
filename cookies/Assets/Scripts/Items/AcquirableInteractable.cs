@@ -18,13 +18,14 @@ public class AcquirableInteractable : Interactable
     // Update is called once per frame
     void Update()
     {
-        _duplicate = Instantiate(gameObject, zoomedInTransform.position, zoomedInTransform.rotation);
+       
     }
 
-    public override void ReactToPlayerInteraction()
+    public override void Interact()
     {
-        _duplicate = Instantiate(gameObject, zoomedInTransform.position, zoomedInTransform.rotation);
+        _duplicate = Instantiate(this.gameObject, zoomedInTransform.position, zoomedInTransform.rotation);
         _duplicate.transform.localScale = zoomScale;
+        _duplicate.GetComponent<Interactable>().enabled = false;
         // setting duplicate object to the zoomed-in object's layer
         _duplicate.layer = 8;
     }
