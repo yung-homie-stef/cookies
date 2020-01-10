@@ -11,6 +11,7 @@ public class OpenableInteractable : Interactable
     void Start()
     {
         isOpened = false;
+        _animator = GetComponent<Animator>();
     }
 
     public void EnactOpening()
@@ -18,7 +19,7 @@ public class OpenableInteractable : Interactable
         if (isOpened == true)
         {
             // play the opening animation
-            _animator.Play("open");
+            _animator.SetBool("is_opened", true);
 
             // set all objects that were hid in said container (if it's a cabinet or box etc.)
             // to active only after it is opened, this is to stop players from picking up objects
@@ -32,7 +33,7 @@ public class OpenableInteractable : Interactable
 
         else if (isOpened == false)
         {
-            _animator.Play("close");
+            _animator.SetBool("is_opened", false); ;
 
             for (int i = 0; i < housedContents.Length; i++)
             {
@@ -45,6 +46,7 @@ public class OpenableInteractable : Interactable
     public override void Interact()
     {
         isOpened = !isOpened;
+        Debug.Log(isOpened);
         EnactOpening();
     }
 }

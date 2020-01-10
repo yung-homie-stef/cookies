@@ -25,6 +25,7 @@ public class AcquirableInteractable : Interactable
     private Movement _movement;
     private CameraController _camControlller;
     private Collider _collider;
+    private Inventory _inventory;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,7 @@ public class AcquirableInteractable : Interactable
         _movement = player.GetComponent<Movement>();
         _camControlller = VHS_Camera.GetComponent<CameraController>();
         _collider = gameObject.GetComponent<BoxCollider>();
+        _inventory = player.GetComponent<Inventory>();
     }
 
     // Update is called once per frame
@@ -44,10 +46,12 @@ public class AcquirableInteractable : Interactable
             if (_clickable == true)
             {
                 textCanvas.SetActive(false);
+
                 Destroy(gameObject);
                 Destroy(_duplicate);
+
                 _movement.enabled = true;
-                _camControlller.enabled = true;
+                _camControlller.enabled = true;            
             }
         }
 
