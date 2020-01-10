@@ -8,22 +8,32 @@ public class AcquirableInteractable : Interactable
     public Vector3 zoomScale;
     public Transform zoomedInTransform;
     public RuntimeAnimatorController controller;
+
     public Text itemName;
     public Text itemDesc;
+
     public string nameString;
     public string descString;
+
     public GameObject textCanvas;
-    
+    public GameObject player;
+    public GameObject VHS_Camera;
 
     private GameObject _duplicate;
     private IEnumerator _removeCoroutine;
     private bool _clickable;
+    private Movement _movement;
+    private CameraController _camControlller;
+    private Collider _collider;
 
     // Start is called before the first frame update
     void Start()
     {
         _removeCoroutine = RemoveAcquirable(2.0f);
         _clickable = false;
+        _movement = player.GetComponent<Movement>();
+        _camControlller = VHS_Camera.GetComponent<CameraController>();
+        _collider = gameObject.GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -36,6 +46,8 @@ public class AcquirableInteractable : Interactable
                 textCanvas.SetActive(false);
                 Destroy(gameObject);
                 Destroy(_duplicate);
+                _movement.enabled = true;
+                _camControlller.enabled = true;
             }
         }
 
@@ -49,9 +61,15 @@ public class AcquirableInteractable : Interactable
         _duplicate.transform.localScale = zoomScale;
         _duplicate.GetComponent<Interactable>().enabled = false;
 
+        _collider.enabled = false;
+
         // play rotating animation
         _animator = _duplicate.AddComponent<Animator>();
         _animator.runtimeAnimatorController = controller;
+
+        // stop the player from moving
+        _movement.enabled = false;
+        _camControlller.enabled = false;
 
         textCanvas.SetActive(true);
         ChangeText(nameString, descString);
