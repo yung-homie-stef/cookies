@@ -34,7 +34,7 @@ public class AcquirableInteractable : Interactable
         _clickable = false;
         _movement = player.GetComponent<Movement>();
         _camControlller = VHS_Camera.GetComponent<CameraController>();
-        _collider = gameObject.GetComponent<BoxCollider>();
+        _collider = gameObject.GetComponent<Collider>();
         _inventory = player.GetComponent<Inventory>();
     }
 
