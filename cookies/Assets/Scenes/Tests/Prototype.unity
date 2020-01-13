@@ -265,7 +265,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -488,16 +488,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: fridge
       objectReference: {fileID: 0}
-    - target: {fileID: 6438903444159369609, guid: 49e8a53d0eda1524d81cdfda7bcd874e,
-        type: 3}
-      propertyPath: m_TagString
-      value: Interactable
-      objectReference: {fileID: 0}
-    - target: {fileID: 8134177895725990161, guid: 49e8a53d0eda1524d81cdfda7bcd874e,
-        type: 3}
-      propertyPath: m_TagString
-      value: Interactable
-      objectReference: {fileID: 0}
     - target: {fileID: -8574271788868170472, guid: 49e8a53d0eda1524d81cdfda7bcd874e,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -592,6 +582,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.2474
+      objectReference: {fileID: 0}
+    - target: {fileID: 6438903444159369609, guid: 49e8a53d0eda1524d81cdfda7bcd874e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
+    - target: {fileID: 8134177895725990161, guid: 49e8a53d0eda1524d81cdfda7bcd874e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49e8a53d0eda1524d81cdfda7bcd874e, type: 3}
@@ -1170,8 +1170,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: -427}
-  m_SizeDelta: {x: 600, y: 87.7}
+  m_AnchoredPosition: {x: 43.3, y: -443.6}
+  m_SizeDelta: {x: 1313.2, y: 120.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &670598798
 MonoBehaviour:
@@ -1208,10 +1208,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 221777781d9994e4dacab8952790773e, type: 3}
-    m_FontSize: 25
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 4
     m_MaxSize: 64
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1588,7 +1588,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1320043156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.01, y: 2.82, z: -6.96}
+  m_LocalPosition: {x: 4.01, y: 2.8147, z: -6.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1137047372}
@@ -1923,8 +1923,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: 405}
-  m_SizeDelta: {x: 600, y: 55}
+  m_AnchoredPosition: {x: 4, y: 440.7}
+  m_SizeDelta: {x: 600, y: 93.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1669913317
 MonoBehaviour:
@@ -1961,11 +1961,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 221777781d9994e4dacab8952790773e, type: 3}
-    m_FontSize: 45
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 64
+    m_MinSize: 6
+    m_MaxSize: 80
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
