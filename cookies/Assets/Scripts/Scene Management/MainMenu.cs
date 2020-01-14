@@ -9,17 +9,8 @@ public class MainMenu : MonoBehaviour
     public GameObject startMenu;
     public GameObject threadMenu;
     public GameObject settingsMenu;
+    public GameObject firstButton;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            // make game title disappear and open up the start menu
-            gameTitle.SetActive(false);
-            startMenu.SetActive(true);
-        }
-    }
 
     public void StartGame()
     {
@@ -37,8 +28,8 @@ public class MainMenu : MonoBehaviour
     {
         // go back to start menu
         threadMenu.SetActive(false);
-        settingsMenu.SetActive(false);
         startMenu.SetActive(true);
+        settingsMenu.SetActive(false);
     }
 
     public void CheckThreads()

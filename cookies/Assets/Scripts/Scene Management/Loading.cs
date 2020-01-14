@@ -15,7 +15,7 @@ public class Loading : MonoBehaviour
    private IEnumerator LoadAsyncOperation()
    {
         // create an async operation
-        AsyncOperation gameLevel = SceneManager.LoadSceneAsync(2);
+        AsyncOperation gameLevel = SceneManager.LoadSceneAsync(1);
 
         yield return new WaitForEndOfFrame();
    }
