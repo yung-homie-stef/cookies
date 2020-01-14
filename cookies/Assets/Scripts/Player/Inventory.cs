@@ -4,19 +4,9 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public const int inventorySize = 6;
-    public AcquirableInteractable[] items = new AcquirableInteractable[inventorySize];
+    public bool[] isFull;
+    public GameObject[] slots;
 
-    public void AddInventoryItem(AcquirableInteractable itemToAdd)
-    {
-        for (int i = 0; i< items.Length; i++)
-        {
-            if (items[i] == null)
-            {
-                items[i] = itemToAdd;
-                return;
-            }
-        }
-    }
+   
 
 }
