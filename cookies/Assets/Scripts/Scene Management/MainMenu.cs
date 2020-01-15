@@ -9,8 +9,15 @@ public class MainMenu : MonoBehaviour
     public GameObject startMenu;
     public GameObject threadMenu;
     public GameObject settingsMenu;
-    public GameObject firstButton;
+    public GameObject startButton;
 
+
+    public void RemoveTitle()
+    {
+        gameTitle.SetActive(false);
+        startMenu.SetActive(true);
+        startButton.SetActive(false);
+    }
 
     public void StartGame()
     {
