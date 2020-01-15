@@ -9,14 +9,15 @@ public class Loading : MonoBehaviour
     void Start()
     {
         // start async operation
-        StartCoroutine(LoadAsyncOperation());
+        StartCoroutine(LoadAsyncOperation(3.0f));
     }
 
-   private IEnumerator LoadAsyncOperation()
+   private IEnumerator LoadAsyncOperation(float waitTime)
    {
+        yield return new WaitForSeconds(waitTime);
         // create an async operation
-        AsyncOperation gameLevel = SceneManager.LoadSceneAsync(1);
+        AsyncOperation gameLevel = SceneManager.LoadSceneAsync(2);
 
-        yield return new WaitForEndOfFrame();
+        
    }
 }

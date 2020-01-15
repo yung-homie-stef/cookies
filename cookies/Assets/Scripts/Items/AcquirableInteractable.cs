@@ -54,7 +54,8 @@ public class AcquirableInteractable : Interactable
                 Destroy(_duplicate);
 
                 _movement.enabled = true;
-                _camControlller.enabled = true;            
+                _camControlller.enabled = true;
+                _clickable = false;
             }
         }
 

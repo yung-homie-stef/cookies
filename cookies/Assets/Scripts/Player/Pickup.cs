@@ -24,7 +24,7 @@ public class Pickup : MonoBehaviour
             {
                 // item can be added
                 _inventory.isFull[i] = true;
-                gameObject.layer = 9;
+                gameObject.layer = 9 + i;
                 gameObject.transform.position = renderTransform.position;
                 gameObject.transform.localScale = renderScale;
                 break;
