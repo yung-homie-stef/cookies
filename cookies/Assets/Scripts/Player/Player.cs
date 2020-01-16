@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Movement PlayerMovement;
+    public Movement playerMovement;
     public Camera mainCamera;
     public RaycastHit hit;
-    //public Inventory PlayerInventory; todo
+
+    private Inventory _inventory;
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerMovement = GetComponent<Movement>();
+        playerMovement = GetComponent<Movement>();
+        _inventory = GetComponent<Inventory>();
     }
 
     // Update is called once per frame
@@ -23,11 +25,22 @@ public class Player : MonoBehaviour
         {
             Interact();
         }
+
+        if (Input.GetButtonDown("Use"))
+        {
+            Use();
+        }
+
+        if (Input.GetButtonDown("Drop"))
+        {
+            Drop();
+        }
+
     }
 
     public void DisableMovement()
     {
-        PlayerMovement.movementEnabled = false;
+        playerMovement.movementEnabled = false;
     }
 
     void Interact()
@@ -43,6 +56,22 @@ public class Player : MonoBehaviour
                     hit.transform.GetComponent<Interactable>().Interact();
                 }
             }
+        }
+    }
+
+    void Use()
+    {
+        if (_inventory.slots[Inventory.currentSlot].GetComponent<Action>())
+        {
+            _inventory.slots[Inventory.currentSlot].GetComponent<Action>().Use();
+        }
+    }
+
+    void Drop()
+    {
+        if (_inventory.slots[Inventory.currentSlot].GetComponent<AcquirableInteractable>())
+        {
+            _inventory.slots[Inventory.currentSlot].GetComponent<AcquirableInteractable>().Drop();
         }
     }
 }

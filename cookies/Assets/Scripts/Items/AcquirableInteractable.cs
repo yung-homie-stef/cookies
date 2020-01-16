@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class AcquirableInteractable : Interactable
 {
+    public Vector3 originalScale;
     public Vector3 zoomScale;
     public Transform zoomedInTransform;
     public RuntimeAnimatorController controller;
@@ -33,6 +34,8 @@ public class AcquirableInteractable : Interactable
     {
         _removeCoroutine = RemoveAcquirable(2.0f);
         _clickable = false;
+        originalScale = gameObject.transform.localScale;
+
         _movement = player.GetComponent<Movement>();
         _camControlller = VHS_Camera.GetComponent<CameraController>();
         _collider = gameObject.GetComponent<Collider>();
@@ -86,6 +89,14 @@ public class AcquirableInteractable : Interactable
         _duplicate.layer = 8;
         // after a 2 second delay allow the player to click away
         StartCoroutine(_removeCoroutine);
+    }
+
+    public void Drop()
+    {
+        gameObject.layer = 0;
+        gameObject.transform.position = player.transform.position;
+        gameObject.transform.localScale = originalScale;
+        _inventory.isFull[Inventory.currentSlot] = false;
     }
 
     private void ChangeText(string name, string desc)
