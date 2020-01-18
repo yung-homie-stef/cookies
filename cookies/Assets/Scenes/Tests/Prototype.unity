@@ -602,6 +602,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: fridge
       objectReference: {fileID: 0}
+    - target: {fileID: 6438903444159369609, guid: 49e8a53d0eda1524d81cdfda7bcd874e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
+    - target: {fileID: 8134177895725990161, guid: 49e8a53d0eda1524d81cdfda7bcd874e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     - target: {fileID: -8574271788868170472, guid: 49e8a53d0eda1524d81cdfda7bcd874e,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -696,16 +706,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.2474
-      objectReference: {fileID: 0}
-    - target: {fileID: 6438903444159369609, guid: 49e8a53d0eda1524d81cdfda7bcd874e,
-        type: 3}
-      propertyPath: m_TagString
-      value: Interactable
-      objectReference: {fileID: 0}
-    - target: {fileID: 8134177895725990161, guid: 49e8a53d0eda1524d81cdfda7bcd874e,
-        type: 3}
-      propertyPath: m_TagString
-      value: Interactable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49e8a53d0eda1524d81cdfda7bcd874e, type: 3}
@@ -821,6 +821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6100317664026a74fb1559780c8437a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalScale: {x: 0, y: 0, z: 0}
   zoomScale: {x: 0.75, y: 0.75, z: 0.75}
   zoomedInTransform: {fileID: 1320043157}
   controller: {fileID: 9100000, guid: 8e401ea3fae86e94ba032d060b145f27, type: 2}
@@ -2080,6 +2081,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: stove
       objectReference: {fileID: 0}
+    - target: {fileID: -3073897052980978963, guid: 3bf9cf9307bdd85438c5f52f6c2085bf,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     - target: {fileID: -6468091045319952704, guid: 3bf9cf9307bdd85438c5f52f6c2085bf,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -2174,11 +2180,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.2363299
-      objectReference: {fileID: 0}
-    - target: {fileID: -3073897052980978963, guid: 3bf9cf9307bdd85438c5f52f6c2085bf,
-        type: 3}
-      propertyPath: m_TagString
-      value: Interactable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bf9cf9307bdd85438c5f52f6c2085bf, type: 3}
@@ -3037,12 +3038,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryIndicator: {fileID: 1033539655}
-  slots:
+  UISlots:
   - {fileID: 1985358824}
   - {fileID: 678862861}
   - {fileID: 817781715}
   - {fileID: 2029564140}
   - {fileID: 1513795006}
+  inventoryItems:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   isFull: 0000000000
 --- !u!1 &1868237845
 GameObject:
@@ -3212,6 +3219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6100317664026a74fb1559780c8437a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalScale: {x: 0, y: 0, z: 0}
   zoomScale: {x: 8, y: 8, z: 8}
   zoomedInTransform: {fileID: 1320043157}
   controller: {fileID: 9100000, guid: 8e401ea3fae86e94ba032d060b145f27, type: 2}
@@ -3233,8 +3241,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.03829338, y: 0.035602428, z: 0.16337532}
-  m_Center: {x: 0.000000059604645, y: -0.0000000055879346, z: 7.940934e-23}
+  m_Size: {x: 0.07313822, y: 0.10377437, z: 0.19640824}
+  m_Center: {x: 0.0018531164, y: 0.0014092404, z: 0.016516468}
 --- !u!114 &1989221439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3613,7 +3621,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 4e-45}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0

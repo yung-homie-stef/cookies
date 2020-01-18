@@ -18,7 +18,7 @@ public class Pickup : MonoBehaviour
 
     public void AddItem()
     {
-        for (int i = 0; i < _inventory.slots.Length; i++)
+        for (int i = 0; i < _inventory.UISlots.Length; i++)
         {
             if (_inventory.isFull[i] == false)
             {
@@ -27,6 +27,7 @@ public class Pickup : MonoBehaviour
                 gameObject.layer = 9 + i;
                 gameObject.transform.position = renderTransform.position;
                 gameObject.transform.localScale = renderScale;
+                _inventory.inventoryItems[i] = gameObject;
                 break;
             }
         }

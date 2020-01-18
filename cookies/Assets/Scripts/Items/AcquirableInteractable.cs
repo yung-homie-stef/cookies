@@ -23,6 +23,7 @@ public class AcquirableInteractable : Interactable
     private GameObject _duplicate;
     private IEnumerator _removeCoroutine;
     private bool _clickable;
+    private bool _hasHadDuplicate;
     private Movement _movement;
     private CameraController _camControlller;
     private Collider _collider;
@@ -32,8 +33,9 @@ public class AcquirableInteractable : Interactable
     // Start is called before the first frame update
     void Start()
     {
-        _removeCoroutine = RemoveAcquirable(2.0f);
+        _removeCoroutine = RemoveAcquirable(1.0f);
         _clickable = false;
+        _hasHadDuplicate = false;
         originalScale = gameObject.transform.localScale;
 
         _movement = player.GetComponent<Movement>();
@@ -50,8 +52,6 @@ public class AcquirableInteractable : Interactable
         {
             if (_clickable == true)
             {
-                _pickup.AddItem();
-
                 textCanvas.SetActive(false);
 
                 Destroy(_duplicate);
@@ -61,42 +61,53 @@ public class AcquirableInteractable : Interactable
                 _clickable = false;
             }
         }
-
     }
 
     public override void Interact()
     {
-        // create a duplicate of the acquirable interactable object that appears on the screen zoomed in 
-        // to show the player they've picked it up
-        _duplicate = Instantiate(gameObject, zoomedInTransform.position, zoomedInTransform.rotation);
-        _duplicate.transform.localScale = zoomScale;
-        _duplicate.GetComponent<Interactable>().enabled = false;
+        _pickup.AddItem();
 
-        _collider.enabled = false;
+        if (_hasHadDuplicate == false)
+        {
+            // create a duplicate of the acquirable interactable object that appears on the screen zoomed in 
+            // to show the player they've picked it up
+            _duplicate = Instantiate(gameObject, zoomedInTransform.position, zoomedInTransform.rotation);
+            _duplicate.transform.localScale = zoomScale;
+            _duplicate.GetComponent<Interactable>().enabled = false;
 
-        // play rotating animation
-        _animator = _duplicate.AddComponent<Animator>();
-        _animator.runtimeAnimatorController = controller;
+            _collider.enabled = false;
 
-        // stop the player from moving
-        _movement.enabled = false;
-        _camControlller.enabled = false;
+            // play rotating animation
+            _animator = _duplicate.AddComponent<Animator>();
+            _animator.runtimeAnimatorController = controller;
 
-        textCanvas.SetActive(true);
-        ChangeText(nameString, descString);
+            // stop the player from moving
+            _movement.enabled = false;
+            _camControlller.enabled = false;
+            textCanvas.SetActive(true);
+            ChangeText(nameString, descString);
 
-        // setting duplicate object to the zoomed-in object's layer
-        _duplicate.layer = 8;
-        // after a 2 second delay allow the player to click away
-        StartCoroutine(_removeCoroutine);
+            // setting duplicate object to the zoomed-in object's layer
+            _duplicate.layer = 8;
+            // after a 2 second delay allow the player to click away
+            StartCoroutine(_removeCoroutine);
+
+            _hasHadDuplicate = true;
+        }
     }
 
     public void Drop()
     {
-        gameObject.layer = 0;
-        gameObject.transform.position = player.transform.position;
         gameObject.transform.localScale = originalScale;
+
+        Vector3 dropPosition = new Vector3(player.transform.position.x, player.transform.position.y + GetComponent<Renderer>().bounds.size.y, player.transform.position.z);
+
+        gameObject.layer = 0;
+        gameObject.transform.position = dropPosition;
+        _collider.enabled = true;
         _inventory.isFull[Inventory.currentSlot] = false;
+        _inventory.inventoryItems[Inventory.currentSlot] = null;
+        _clickable = true;
     }
 
     private void ChangeText(string name, string desc)

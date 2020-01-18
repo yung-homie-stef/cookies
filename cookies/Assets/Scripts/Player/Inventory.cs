@@ -7,9 +7,11 @@ using System.Linq;
 public class Inventory : MonoBehaviour
 {
     public GameObject inventoryIndicator;
-    public GameObject[] slots;
+    public GameObject[] UISlots;
+    public GameObject[] inventoryItems;
     public bool[] isFull;
 
+    [SerializeField]
     public static int currentSlot;
 
     private void Start()
@@ -56,7 +58,7 @@ public class Inventory : MonoBehaviour
                 inventoryIndicator.SetActive(true);
             }
 
-            Vector3 newPosition = new Vector3(inventoryIndicator.transform.position.x, slots[currentSlot].transform.position.y, 0);
+            Vector3 newPosition = new Vector3(inventoryIndicator.transform.position.x, UISlots[currentSlot].transform.position.y, 0);
             inventoryIndicator.transform.position = newPosition;
         }
     }

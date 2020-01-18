@@ -61,17 +61,17 @@ public class Player : MonoBehaviour
 
     void Use()
     {
-        if (_inventory.slots[Inventory.currentSlot].GetComponent<Action>())
+        if (_inventory.UISlots[Inventory.currentSlot].GetComponent<Action>())
         {
-            _inventory.slots[Inventory.currentSlot].GetComponent<Action>().Use();
+            _inventory.UISlots[Inventory.currentSlot].GetComponent<Action>().Use();
         }
     }
 
     void Drop()
     {
-        if (_inventory.slots[Inventory.currentSlot].GetComponent<AcquirableInteractable>())
+        if (_inventory.inventoryItems[Inventory.currentSlot].GetComponent<AcquirableInteractable>() && _inventory.inventoryItems[Inventory.currentSlot])
         {
-            _inventory.slots[Inventory.currentSlot].GetComponent<AcquirableInteractable>().Drop();
+            _inventory.inventoryItems[Inventory.currentSlot].GetComponent<AcquirableInteractable>().Drop();
         }
     }
 }
