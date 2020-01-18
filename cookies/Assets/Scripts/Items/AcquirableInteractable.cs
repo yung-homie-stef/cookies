@@ -75,7 +75,6 @@ public class AcquirableInteractable : Interactable
             _duplicate.transform.localScale = zoomScale;
             _duplicate.GetComponent<Interactable>().enabled = false;
 
-            _collider.enabled = false;
 
             // play rotating animation
             _animator = _duplicate.AddComponent<Animator>();
@@ -104,7 +103,6 @@ public class AcquirableInteractable : Interactable
 
         gameObject.layer = 0;
         gameObject.transform.position = dropPosition;
-        _collider.enabled = true;
         _inventory.isFull[Inventory.currentSlot] = false;
         _inventory.inventoryItems[Inventory.currentSlot] = null;
         _clickable = true;

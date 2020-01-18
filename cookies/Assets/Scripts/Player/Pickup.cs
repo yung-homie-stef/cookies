@@ -30,6 +30,9 @@ public class Pickup : MonoBehaviour
                 _inventory.inventoryItems[i] = gameObject;
                 break;
             }
+          
+            
         }
+         
     }
 }
