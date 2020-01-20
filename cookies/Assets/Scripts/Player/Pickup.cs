@@ -7,6 +7,7 @@ public class Pickup : MonoBehaviour
     public GameObject player;
     public Transform renderTransform;
     public Vector3 renderScale;
+    public Vector3 renderRotation;
 
     private Inventory _inventory;
 
@@ -27,6 +28,7 @@ public class Pickup : MonoBehaviour
                 gameObject.layer = 9 + i;
                 gameObject.transform.position = renderTransform.position;
                 gameObject.transform.localScale = renderScale;
+                gameObject.transform.eulerAngles = renderRotation;
                 _inventory.inventoryItems[i] = gameObject;
                 break;
             }
