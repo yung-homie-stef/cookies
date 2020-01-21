@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class AcquirableInteractable : Interactable
 {
     public Vector3 originalScale;
+    public Vector3 originalRotation;
     public Vector3 zoomScale;
     public Transform zoomedInTransform;
     public RuntimeAnimatorController controller;
@@ -37,6 +38,7 @@ public class AcquirableInteractable : Interactable
         _clickable = false;
         _hasHadDuplicate = false;
         originalScale = gameObject.transform.localScale;
+        originalRotation = new Vector3(gameObject.transform.eulerAngles.x, gameObject.transform.eulerAngles.y, gameObject.transform.eulerAngles.z);
 
         _movement = player.GetComponent<Movement>();
         _camControlller = VHS_Camera.GetComponent<CameraController>();
@@ -103,6 +105,7 @@ public class AcquirableInteractable : Interactable
 
         gameObject.layer = 0;
         gameObject.transform.position = dropPosition;
+        gameObject.transform.eulerAngles = originalRotation;
         _inventory.isFull[Inventory.currentSlot] = false;
         _inventory.inventoryItems[Inventory.currentSlot] = null;
         _clickable = true;
