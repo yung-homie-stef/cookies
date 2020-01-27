@@ -8,6 +8,7 @@ public class Pickup : MonoBehaviour
     public Transform renderTransform;
     public Vector3 renderScale;
     public Vector3 renderRotation;
+    public float extraX;
 
     private Inventory _inventory;
 
@@ -23,10 +24,11 @@ public class Pickup : MonoBehaviour
         {
             if (_inventory.isFull[i] == false)
             {
+
                 // item can be added
                 _inventory.isFull[i] = true;
                 gameObject.layer = 9 + i;
-                gameObject.transform.position = renderTransform.position;
+                gameObject.transform.position = new Vector3(renderTransform.position.x + extraX, renderTransform.position.y, renderTransform.position.z);
                 gameObject.transform.localScale = renderScale;
                 gameObject.transform.eulerAngles = renderRotation;
                 _inventory.inventoryItems[i] = gameObject;
