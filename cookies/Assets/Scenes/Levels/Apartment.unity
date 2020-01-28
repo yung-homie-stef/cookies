@@ -554,7 +554,7 @@ MonoBehaviour:
   player: {fileID: 953810215}
   renderTransform: {fileID: 979157235}
   renderScale: {x: 0.2, y: 0.2, z: 0.2}
-  renderRotation: {x: 0, y: 180, z: 0}
+  renderRotation: {x: 180, y: 180, z: 0}
   extraX: -0.5
 --- !u!114 &136714983
 MonoBehaviour:
@@ -2568,6 +2568,66 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1733805351}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &738784390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 782023234881082834, guid: 3f07954df6e30104a8d8065f8af7bb90,
+    type: 3}
+  m_PrefabInstance: {fileID: 826120852}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &738784394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738784390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6100317664026a74fb1559780c8437a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalScale: {x: 0, y: 0, z: 0}
+  originalRotation: {x: 0, y: 0, z: 0}
+  zoomScale: {x: 15, y: 15, z: 10}
+  zoomedInTransform: {fileID: 1040422527}
+  controller: {fileID: 9100000, guid: 8e401ea3fae86e94ba032d060b145f27, type: 2}
+  itemName: {fileID: 1758118710}
+  itemDesc: {fileID: 1629325734}
+  nameString: OVERCOOKED TOAST
+  descString: 
+  textCanvas: {fileID: 868250719}
+  player: {fileID: 953810215}
+  VHS_Camera: {fileID: 394692742}
+--- !u!65 &738784395
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738784390}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.04792614, y: 0.06049638, z: 0.012923625}
+  m_Center: {x: 0.001028804, y: 0.006862666, z: 0.0064618117}
+--- !u!114 &738784396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738784390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff70479a91be0f4394ac7a42f395ac6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 953810215}
+  renderTransform: {fileID: 979157235}
+  renderScale: {x: 20, y: 15, z: 10}
+  renderRotation: {x: 0, y: 0, z: 0}
+  extraX: 0
 --- !u!1001 &743718485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2919,6 +2979,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.82355094
+      objectReference: {fileID: 0}
+    - target: {fileID: 782023234881082834, guid: 3f07954df6e30104a8d8065f8af7bb90,
+        type: 3}
+      propertyPath: m_Name
+      value: toast
+      objectReference: {fileID: 0}
+    - target: {fileID: 782023234881082834, guid: 3f07954df6e30104a8d8065f8af7bb90,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f07954df6e30104a8d8065f8af7bb90, type: 3}
@@ -4518,6 +4588,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Interactable
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 13883c960d7733945910604cfdf56ec5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 13883c960d7733945910604cfdf56ec5,
         type: 3}
