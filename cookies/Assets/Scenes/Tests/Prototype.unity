@@ -508,6 +508,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: salvador
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e132da2cbe316304b850eb6aefd022ee,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     - target: {fileID: -6057140222963153312, guid: e132da2cbe316304b850eb6aefd022ee,
         type: 3}
       propertyPath: m_Controller
@@ -551,7 +556,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: e132da2cbe316304b850eb6aefd022ee,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e132da2cbe316304b850eb6aefd022ee,
         type: 3}
@@ -636,7 +641,7 @@ Transform:
   m_LocalScale: {x: 0.50778, y: 0.50778, z: 0.50778}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &339660079
 PrefabInstance:
@@ -950,7 +955,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: dc023cd27bd58de4a9ec721b72a8c94f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: dc023cd27bd58de4a9ec721b72a8c94f,
         type: 3}
@@ -2253,100 +2258,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922638586}
   m_CullTransparentMesh: 0
---- !u!1001 &979460268
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 13883c960d7733945910604cfdf56ec5,
-        type: 3}
-      propertyPath: m_Name
-      value: dead_rat
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 13883c960d7733945910604cfdf56ec5,
-        type: 3}
-      propertyPath: m_TagString
-      value: Interactable
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 13883c960d7733945910604cfdf56ec5,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 13883c960d7733945910604cfdf56ec5,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.133
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 13883c960d7733945910604cfdf56ec5,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.015
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 13883c960d7733945910604cfdf56ec5,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4.97
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 13883c960d7733945910604cfdf56ec5,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.08662906
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 13883c960d7733945910604cfdf56ec5,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.9962407
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 13883c960d7733945910604cfdf56ec5,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.000000020258822
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 13883c960d7733945910604cfdf56ec5,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.00000001931261
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 13883c960d7733945910604cfdf56ec5,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 13883c960d7733945910604cfdf56ec5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -180
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 13883c960d7733945910604cfdf56ec5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -0.000015258789
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 13883c960d7733945910604cfdf56ec5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 170.061
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 13883c960d7733945910604cfdf56ec5,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.073221944
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 13883c960d7733945910604cfdf56ec5,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.073221944
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 13883c960d7733945910604cfdf56ec5,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.1317995
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 13883c960d7733945910604cfdf56ec5, type: 3}
 --- !u!1 &1017526783
 GameObject:
   m_ObjectHideFlags: 0
@@ -4292,58 +4203,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!1 &1884921085 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 13883c960d7733945910604cfdf56ec5,
-    type: 3}
-  m_PrefabInstance: {fileID: 979460268}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1884921086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1884921085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5812c205e2f3ab4a89fbe4b59a4d709, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueManager: {fileID: 1474339461}
-  sentences:
-  - Greetings! It is I, Salvador, King of the Rats.
-  - Many a hardship has fallen unto my kingdom, and we are in dire need of your aid.
-  - If you were to be so kind, my kin require nourishment. Please, do feed us.
-  - Godpseed you fabled two-legger!
-  - Yes, yes... very good sire! Though we are still in need of further provisions!
-  - The children have begun to grow hungry. Go swiftly!
---- !u!65 &1884921087
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1884921085}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6.3202133, y: 4.7950635, z: 3.2348185}
-  m_Center: {x: -2.2344904, y: 0.2631231, z: 0.42106998}
---- !u!65 &1884921091
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1884921085}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 11.14492, y: 6.9581065, z: 4.7817316}
-  m_Center: {x: -0.17785981, y: 1.3446429, z: 0.30110207}
 --- !u!1001 &1947233476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4508,6 +4367,45 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e537132732058f8448039eab9b962f03, type: 3}
+--- !u!1 &1972962790 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: e132da2cbe316304b850eb6aefd022ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 298426121}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1972962793
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972962790}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.32603106, y: 0.5550696, z: 0.6136868}
+  m_Center: {x: 0.010912642, y: 0.32538018, z: 0.062046506}
+--- !u!114 &1972962794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972962790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5812c205e2f3ab4a89fbe4b59a4d709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 1474339461}
+  sentences:
+  - Greetings! It is I, Salvador, King of the Rats.
+  - Many a hardship has fallen unto my kingdom, and we are in dire need of your aid.
+  - If you were to be so kind, my kin require nourishment. Please, do feed us.
+  - Godpseed you fabled two-legger!
+  - Yes, yes... very good sire! Though we are still in need of further provisions!
+  - The children have begun to grow hungry. Go swiftly!
 --- !u!1001 &1978238665
 PrefabInstance:
   m_ObjectHideFlags: 0
