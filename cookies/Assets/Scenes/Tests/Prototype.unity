@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -163,16 +164,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1018357969}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 98e85b6ca52fe55419678679c4c7ad26,
-        type: 3}
-      propertyPath: m_Name
-      value: beer_bottle
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 98e85b6ca52fe55419678679c4c7ad26,
-        type: 3}
-      propertyPath: m_TagString
-      value: Interactable
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 98e85b6ca52fe55419678679c4c7ad26,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -238,6 +229,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.85167974
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 98e85b6ca52fe55419678679c4c7ad26,
+        type: 3}
+      propertyPath: m_Name
+      value: beer_bottle
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 98e85b6ca52fe55419678679c4c7ad26,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98e85b6ca52fe55419678679c4c7ad26, type: 3}
 --- !u!4 &175330661 stripped
@@ -253,16 +254,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1018357969}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: d43227e2bd0b1e1408bf00da1a9b8696,
-        type: 3}
-      propertyPath: m_Name
-      value: lean
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: d43227e2bd0b1e1408bf00da1a9b8696,
-        type: 3}
-      propertyPath: m_TagString
-      value: Interactable
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d43227e2bd0b1e1408bf00da1a9b8696,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -333,6 +324,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1.5175203
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d43227e2bd0b1e1408bf00da1a9b8696,
+        type: 3}
+      propertyPath: m_Name
+      value: lean
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d43227e2bd0b1e1408bf00da1a9b8696,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d43227e2bd0b1e1408bf00da1a9b8696, type: 3}
 --- !u!1001 &286773917
@@ -342,16 +343,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1018357969}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: ec5b8e8648e6b45409a51b6613b5f607,
-        type: 3}
-      propertyPath: m_Name
-      value: breakfast
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: ec5b8e8648e6b45409a51b6613b5f607,
-        type: 3}
-      propertyPath: m_TagString
-      value: Interactable
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ec5b8e8648e6b45409a51b6613b5f607,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -421,6 +412,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.1594316
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ec5b8e8648e6b45409a51b6613b5f607,
+        type: 3}
+      propertyPath: m_Name
+      value: breakfast
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ec5b8e8648e6b45409a51b6613b5f607,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec5b8e8648e6b45409a51b6613b5f607, type: 3}
@@ -503,16 +504,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: e132da2cbe316304b850eb6aefd022ee,
-        type: 3}
-      propertyPath: m_Name
-      value: salvador
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: e132da2cbe316304b850eb6aefd022ee,
-        type: 3}
-      propertyPath: m_TagString
-      value: Interactable
-      objectReference: {fileID: 0}
     - target: {fileID: -6057140222963153312, guid: e132da2cbe316304b850eb6aefd022ee,
         type: 3}
       propertyPath: m_Controller
@@ -588,6 +579,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.66368395
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e132da2cbe316304b850eb6aefd022ee,
+        type: 3}
+      propertyPath: m_Name
+      value: salvador
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e132da2cbe316304b850eb6aefd022ee,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e132da2cbe316304b850eb6aefd022ee, type: 3}
 --- !u!1 &319692765
@@ -650,11 +651,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 5b3f1cea35a922544bb6f6ca72d9ca87,
-        type: 3}
-      propertyPath: m_Name
-      value: player
-      objectReference: {fileID: 0}
     - target: {fileID: -6057140222963153312, guid: 5b3f1cea35a922544bb6f6ca72d9ca87,
         type: 3}
       propertyPath: m_Controller
@@ -714,6 +710,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 5b3f1cea35a922544bb6f6ca72d9ca87,
+        type: 3}
+      propertyPath: m_Name
+      value: player
       objectReference: {fileID: 0}
     - target: {fileID: 7796965159598972112, guid: 5b3f1cea35a922544bb6f6ca72d9ca87,
         type: 3}
@@ -907,11 +908,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: dc023cd27bd58de4a9ec721b72a8c94f,
-        type: 3}
-      propertyPath: m_Name
-      value: rat
-      objectReference: {fileID: 0}
     - target: {fileID: -6057140222963153312, guid: dc023cd27bd58de4a9ec721b72a8c94f,
         type: 3}
       propertyPath: m_Controller
@@ -986,6 +982,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.30824408
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: dc023cd27bd58de4a9ec721b72a8c94f,
+        type: 3}
+      propertyPath: m_Name
+      value: rat
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc023cd27bd58de4a9ec721b72a8c94f, type: 3}
@@ -1068,11 +1069,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1018357969}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 49e8a53d0eda1524d81cdfda7bcd874e,
-        type: 3}
-      propertyPath: m_Name
-      value: fridge
-      objectReference: {fileID: 0}
     - target: {fileID: -8574271788868170472, guid: 49e8a53d0eda1524d81cdfda7bcd874e,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -1168,6 +1164,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.2474
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 49e8a53d0eda1524d81cdfda7bcd874e,
+        type: 3}
+      propertyPath: m_Name
+      value: fridge
+      objectReference: {fileID: 0}
     - target: {fileID: 6438903444159369609, guid: 49e8a53d0eda1524d81cdfda7bcd874e,
         type: 3}
       propertyPath: m_TagString
@@ -1193,11 +1194,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1018357969}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 5e6d5837755ca0247ab17255f0e06d4e,
-        type: 3}
-      propertyPath: m_Name
-      value: trash_bag
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 5e6d5837755ca0247ab17255f0e06d4e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1268,6 +1264,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.59497863
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 5e6d5837755ca0247ab17255f0e06d4e,
+        type: 3}
+      propertyPath: m_Name
+      value: trash_bag
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e6d5837755ca0247ab17255f0e06d4e, type: 3}
 --- !u!1001 &524852043
@@ -1277,11 +1278,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1018357969}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: f02565cb61974b14a96149b25fc55e5f,
-        type: 3}
-      propertyPath: m_Name
-      value: trashcan
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f02565cb61974b14a96149b25fc55e5f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1351,6 +1347,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.8289302
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: f02565cb61974b14a96149b25fc55e5f,
+        type: 3}
+      propertyPath: m_Name
+      value: trashcan
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f02565cb61974b14a96149b25fc55e5f, type: 3}
@@ -1528,11 +1529,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1018357969}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 5e6d5837755ca0247ab17255f0e06d4e,
-        type: 3}
-      propertyPath: m_Name
-      value: trash_bag (1)
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 5e6d5837755ca0247ab17255f0e06d4e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1602,6 +1598,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.7391393
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 5e6d5837755ca0247ab17255f0e06d4e,
+        type: 3}
+      propertyPath: m_Name
+      value: trash_bag (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e6d5837755ca0247ab17255f0e06d4e, type: 3}
@@ -1864,11 +1865,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1018357969}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 7f427fbdaf25fca40968714ab15bee94,
-        type: 3}
-      propertyPath: m_Name
-      value: lawn_chair
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7f427fbdaf25fca40968714ab15bee94,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1939,6 +1935,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.67058825
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7f427fbdaf25fca40968714ab15bee94,
+        type: 3}
+      propertyPath: m_Name
+      value: lawn_chair
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f427fbdaf25fca40968714ab15bee94, type: 3}
 --- !u!1001 &792389405
@@ -1948,11 +1949,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1018357969}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: e537132732058f8448039eab9b962f03,
-        type: 3}
-      propertyPath: m_Name
-      value: beer_bottle_2 (4)
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e537132732058f8448039eab9b962f03,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2017,6 +2013,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.85167974
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e537132732058f8448039eab9b962f03,
+        type: 3}
+      propertyPath: m_Name
+      value: beer_bottle_2 (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e537132732058f8448039eab9b962f03, type: 3}
@@ -2413,11 +2414,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1018357969}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 3f07954df6e30104a8d8065f8af7bb90,
-        type: 3}
-      propertyPath: m_Name
-      value: toaster
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3f07954df6e30104a8d8065f8af7bb90,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2478,6 +2474,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.82355094
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 3f07954df6e30104a8d8065f8af7bb90,
+        type: 3}
+      propertyPath: m_Name
+      value: toaster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f07954df6e30104a8d8065f8af7bb90, type: 3}
 --- !u!1001 &1072993531
@@ -2487,11 +2488,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1018357969}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: e537132732058f8448039eab9b962f03,
-        type: 3}
-      propertyPath: m_Name
-      value: beer_bottle_2 (1)
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e537132732058f8448039eab9b962f03,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2556,6 +2552,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.85167974
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e537132732058f8448039eab9b962f03,
+        type: 3}
+      propertyPath: m_Name
+      value: beer_bottle_2 (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e537132732058f8448039eab9b962f03, type: 3}
@@ -2640,11 +2641,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1018357969}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: e537132732058f8448039eab9b962f03,
-        type: 3}
-      propertyPath: m_Name
-      value: beer_bottle_2 (2)
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e537132732058f8448039eab9b962f03,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2709,6 +2705,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.85167974
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e537132732058f8448039eab9b962f03,
+        type: 3}
+      propertyPath: m_Name
+      value: beer_bottle_2 (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e537132732058f8448039eab9b962f03, type: 3}
@@ -3070,11 +3071,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1018357969}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 3bf9cf9307bdd85438c5f52f6c2085bf,
-        type: 3}
-      propertyPath: m_Name
-      value: stove
-      objectReference: {fileID: 0}
     - target: {fileID: -6468091045319952704, guid: 3bf9cf9307bdd85438c5f52f6c2085bf,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -3174,6 +3170,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Interactable
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 3bf9cf9307bdd85438c5f52f6c2085bf,
+        type: 3}
+      propertyPath: m_Name
+      value: stove
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bf9cf9307bdd85438c5f52f6c2085bf, type: 3}
@@ -3856,11 +3857,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1018357969}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 6bc895fc054da364bb1b4868939270bc,
-        type: 3}
-      propertyPath: m_Name
-      value: trashbag_2
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6bc895fc054da364bb1b4868939270bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3925,6 +3921,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.6610368
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 6bc895fc054da364bb1b4868939270bc,
+        type: 3}
+      propertyPath: m_Name
+      value: trashbag_2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bc895fc054da364bb1b4868939270bc, type: 3}
@@ -4210,11 +4211,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1018357969}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: e537132732058f8448039eab9b962f03,
-        type: 3}
-      propertyPath: m_Name
-      value: beer_bottle_2 (5)
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e537132732058f8448039eab9b962f03,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4280,6 +4276,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.85167974
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e537132732058f8448039eab9b962f03,
+        type: 3}
+      propertyPath: m_Name
+      value: beer_bottle_2 (5)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e537132732058f8448039eab9b962f03, type: 3}
 --- !u!4 &1957619265 stripped
@@ -4295,11 +4296,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1018357969}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: e537132732058f8448039eab9b962f03,
-        type: 3}
-      propertyPath: m_Name
-      value: beer_bottle_2 (3)
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e537132732058f8448039eab9b962f03,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4365,6 +4361,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.85167974
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e537132732058f8448039eab9b962f03,
+        type: 3}
+      propertyPath: m_Name
+      value: beer_bottle_2 (3)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e537132732058f8448039eab9b962f03, type: 3}
 --- !u!1 &1972962790 stripped
@@ -4413,11 +4414,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1018357969}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 812fd1c4e22050940be2ef1f9cc9a76c,
-        type: 3}
-      propertyPath: m_Name
-      value: kitchen_countertop_1
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 812fd1c4e22050940be2ef1f9cc9a76c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4487,6 +4483,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.2265
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 812fd1c4e22050940be2ef1f9cc9a76c,
+        type: 3}
+      propertyPath: m_Name
+      value: kitchen_countertop_1
       objectReference: {fileID: 0}
     - target: {fileID: 8665274347153091597, guid: 812fd1c4e22050940be2ef1f9cc9a76c,
         type: 3}
@@ -4946,8 +4947,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2054375017}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 1
+  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
@@ -5099,11 +5101,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1018357969}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 2ac55a1badf57204f9190683dfba7a79,
-        type: 3}
-      propertyPath: m_Name
-      value: kitchen_countertop_2
-      objectReference: {fileID: 0}
     - target: {fileID: -6876937415874896851, guid: 2ac55a1badf57204f9190683dfba7a79,
         type: 3}
       propertyPath: m_TagString
@@ -5179,6 +5176,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.22
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 2ac55a1badf57204f9190683dfba7a79,
+        type: 3}
+      propertyPath: m_Name
+      value: kitchen_countertop_2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ac55a1badf57204f9190683dfba7a79, type: 3}
 --- !u!1001 &2106480324
@@ -5188,11 +5190,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1018357969}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: e537132732058f8448039eab9b962f03,
-        type: 3}
-      propertyPath: m_Name
-      value: beer_bottle_2
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e537132732058f8448039eab9b962f03,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5257,6 +5254,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.85167974
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e537132732058f8448039eab9b962f03,
+        type: 3}
+      propertyPath: m_Name
+      value: beer_bottle_2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e537132732058f8448039eab9b962f03, type: 3}
