@@ -1,26 +1,16 @@
 fileFormatVersion: 2
 guid: 0be81d43dd75d6b4fa4fcb88304d92d4
 ModelImporter:
-  serializedVersion: 26
+  serializedVersion: 19300
   internalIDToNameTable: []
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Bathroom Tile
-    second: {fileID: 2100000, guid: 417f652506070c24ea54afae5cd35e7d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Carpet
-    second: {fileID: 2100000, guid: 841d332b7a2dd0d43a5a736b9168a99c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Metal Trim
-    second: {fileID: 2100000, guid: e9ebb530b785ee0499cfcc1388353079, type: 2}
+      name: Walls1
+    second: {fileID: 2100000, guid: 6665808c45cb07e44948a89d2e7ac227, type: 2}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -84,7 +74,6 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
     serializedVersion: 3
     human: []
@@ -102,8 +91,10 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
