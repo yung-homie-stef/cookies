@@ -7,15 +7,16 @@ public class Salvador : Interactable
     public GameObject dialogueManager;
     public string[] sentences;
 
-    private string[] currentSentences;
+    [SerializeField]
     private int _dialogueValue;
+    private string[] currentSentences;
     private Dialogue _dialogue;
 
     // Start is called before the first frame update
     void Start()
     {
         _dialogue = dialogueManager.GetComponent<Dialogue>();
-        _dialogueValue = 0;
+        _dialogueValue = 1;
     }
 
     // Update is called once per frame
@@ -49,7 +50,12 @@ public class Salvador : Interactable
                 break;
 
             case 1:
-                //
+                currentSentences = new string[2];
+                for (int i = 0; i < currentSentences.Length; i++)
+                {
+                    currentSentences[i] = sentences[i+4];
+                }
+                UpdateDialogue(currentSentences);
                 break;
         }
         
