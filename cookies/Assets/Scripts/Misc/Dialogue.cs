@@ -9,8 +9,8 @@ public class Dialogue : MonoBehaviour
     public string[] sentences;
     public float typingSpeed;
 
-    private int index;
-    private bool _canAdvance;
+    public int index;
+    public bool _canAdvance;
 
     private void Start()
     {

@@ -16,7 +16,7 @@ public class Salvador : Interactable
     void Start()
     {
         _dialogue = dialogueManager.GetComponent<Dialogue>();
-        _dialogueValue = 1;
+        _dialogueValue = 0;
     }
 
     // Update is called once per frame
@@ -28,9 +28,11 @@ public class Salvador : Interactable
     private void OnTriggerEnter(Collider other)
     {
         // everytime you feed salvador delete the food item and increase the dialogue value so he can speak after being fed several times
-        if (other.name == "breakfast" || other.name == "burnt_toast")
+        if (other.tag == "Interactable")
         {
-            Destroy(other);
+            Destroy(other.gameObject);
+            _dialogue.index = 0;
+            _dialogue._canAdvance = true;
             _dialogueValue++;
         }
     }
@@ -50,7 +52,7 @@ public class Salvador : Interactable
                 break;
 
             case 1:
-                currentSentences = new string[2];
+                currentSentences = new string[3];
                 for (int i = 0; i < currentSentences.Length; i++)
                 {
                     currentSentences[i] = sentences[i+4];
