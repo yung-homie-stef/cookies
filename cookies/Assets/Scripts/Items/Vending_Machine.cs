@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Vending_Machine : Interactable
 {
+    public GameObject candyBar;
+
     private Animator _animator;
     private bool _hasVended;
 
@@ -19,6 +21,7 @@ public class Vending_Machine : Interactable
         if (_hasVended == false)
         {
             _animator.SetBool("vending", true);
+            candyBar.GetComponent<BoxCollider>().enabled = true;
             _hasVended = true;
         }
     }
