@@ -59,6 +59,24 @@ public class Salvador : Interactable
                 }
                 UpdateDialogue(currentSentences);
                 break;
+
+            case 2:
+                currentSentences = new string[5];
+                for (int i = 0; i < currentSentences.Length; i++)
+                {
+                    currentSentences[i] = sentences[i + 7];
+                }
+                UpdateDialogue(currentSentences);
+                break;
+
+            //case 5:
+            //    currentSentences = new string[5];
+            //    for (int i = 0; i < currentSentences.Length; i++)
+            //    {
+            //        currentSentences[i] = sentences[i + 7];
+            //    }
+            //    UpdateDialogue(currentSentences);
+            //    break;
         }
         
     }

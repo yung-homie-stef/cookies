@@ -1773,6 +1773,95 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3871414, y: 0.35218614, z: 0.025236567}
   m_Center: {x: -0.000000074505806, y: 0.1760931, z: 0.012618273}
+--- !u!1001 &737483337
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1018357969}
+    m_Modifications:
+    - target: {fileID: -4216859302048453862, guid: ec5b8e8648e6b45409a51b6613b5f607,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.677
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: ec5b8e8648e6b45409a51b6613b5f607,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5045
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: ec5b8e8648e6b45409a51b6613b5f607,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.119
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: ec5b8e8648e6b45409a51b6613b5f607,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.27222174
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: ec5b8e8648e6b45409a51b6613b5f607,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6526066
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: ec5b8e8648e6b45409a51b6613b5f607,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.6526066
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: ec5b8e8648e6b45409a51b6613b5f607,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.27222174
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: ec5b8e8648e6b45409a51b6613b5f607,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: ec5b8e8648e6b45409a51b6613b5f607,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: ec5b8e8648e6b45409a51b6613b5f607,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: ec5b8e8648e6b45409a51b6613b5f607,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 134.71501
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: ec5b8e8648e6b45409a51b6613b5f607,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1594323
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: ec5b8e8648e6b45409a51b6613b5f607,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1594319
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: ec5b8e8648e6b45409a51b6613b5f607,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1594316
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ec5b8e8648e6b45409a51b6613b5f607,
+        type: 3}
+      propertyPath: m_Name
+      value: breakfast (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ec5b8e8648e6b45409a51b6613b5f607,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ec5b8e8648e6b45409a51b6613b5f607, type: 3}
 --- !u!1001 &769820668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2317,6 +2406,7 @@ Transform:
   - {fileID: 1353293645}
   - {fileID: 378798849}
   - {fileID: 1304782192}
+  - {fileID: 1572421139}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3626,6 +3716,72 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &1572421138 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: ec5b8e8648e6b45409a51b6613b5f607,
+    type: 3}
+  m_PrefabInstance: {fileID: 737483337}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1572421139 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: ec5b8e8648e6b45409a51b6613b5f607,
+    type: 3}
+  m_PrefabInstance: {fileID: 737483337}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1572421140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572421138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff70479a91be0f4394ac7a42f395ac6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1767094266}
+  renderTransform: {fileID: 134602726}
+  renderScale: {x: 10, y: 10, z: 10}
+  renderRotation: {x: -180, y: 0, z: 135}
+  extraX: 0
+--- !u!114 &1572421141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572421138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6100317664026a74fb1559780c8437a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalScale: {x: 0, y: 0, z: 0}
+  originalRotation: {x: 0, y: 0, z: 0}
+  zoomScale: {x: 7.5, y: 7.5, z: 7.5}
+  zoomedInTransform: {fileID: 1320043157}
+  controller: {fileID: 9100000, guid: 8e401ea3fae86e94ba032d060b145f27, type: 2}
+  itemName: {fileID: 1669913318}
+  itemDesc: {fileID: 670598799}
+  nameString: BREAKFAST
+  descString: Baked-on grease for added flavour.
+  textCanvas: {fileID: 1156453806}
+  player: {fileID: 1767094266}
+  VHS_Camera: {fileID: 357757687}
+--- !u!65 &1572421142
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572421138}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.12024234, y: 0.12532838, z: 0.07777137}
+  m_Center: {x: -0.0014064139, y: -0.0051019327, z: 0.039048944}
 --- !u!1 &1573553621
 GameObject:
   m_ObjectHideFlags: 0
@@ -4334,11 +4490,19 @@ MonoBehaviour:
   sentences:
   - Greetings! It is I, Salvador, King of the Rats.
   - Many a hardship has fallen unto my kingdom, and we are in dire need of your aid.
-  - If you were to be so kind, my kin require nourishment. Please, do feed us.
+  - If you were to be so charitable, my kin require nourishment. Please, do feed
+    us.
   - Godpseed you fabled two-legger!
   - 
   - Yes, yes... very good sire! Though we are still in need of further provisions!
   - The children have begun to grow hungry. Go swiftly!
+  - 
+  - Oh my, how scrumptious indeed! I can feel my paws beginning to gout!
+  - Er, the younglings have been laid to rest on full stomachs too of course... ho
+    ho!
+  - Our mischief is near fully nourished dear peon. If you msy, three more gifts
+    from thy bountiful hands hands should do the trick.
+  - A most joyous banquet we shall have upon your return. Fly my steed!
   _dialogueValue: 0
 --- !u!1001 &1978238665
 PrefabInstance:
