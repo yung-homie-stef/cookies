@@ -61,10 +61,10 @@ public class Player : MonoBehaviour
 
     void Use()
     {
-        //if (_inventory.UISlots[Inventory.currentSlot].GetComponent<Action>())
-        //{
-        //    _inventory.UISlots[Inventory.currentSlot].GetComponent<Action>().Use();
-        //}
+        if (_inventory.inventoryItems[Inventory.currentSlot].GetComponent<Action>())
+        {
+            _inventory.inventoryItems[Inventory.currentSlot].GetComponent<Action>().Use();
+        }
     }
 
     void Drop()

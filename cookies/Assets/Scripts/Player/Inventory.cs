@@ -10,41 +10,45 @@ public class Inventory : MonoBehaviour
     public GameObject[] UISlots;
     public GameObject[] inventoryItems;
     public bool[] isFull;
+    public bool canSelect; // variable that dictates whether player can cycle through inventory items
 
     [SerializeField]
     public static int currentSlot;
 
     private void Start()
     {
-
+        canSelect = true;
     }
 
     private void Update()
     {
-        if (Input.GetButton("FirstSlot"))
+        if (canSelect == true) // when an object that takes up the player's hand is used, prohibit them from being able to select and use other items
         {
-            currentSlot = 0;
-            SelectItemInInventory(currentSlot);
-        }
-        else if (Input.GetButton("SecondSlot"))
-        {
-            currentSlot = 1;
-            SelectItemInInventory(currentSlot);
-        }
-        else if (Input.GetButton("ThirdSlot"))
-        {
-            currentSlot = 2;
-            SelectItemInInventory(currentSlot);
-        }
-        else if (Input.GetButton("FourthSlot"))
-        {
-            currentSlot = 3;
-            SelectItemInInventory(currentSlot);
-        }
-        else if (Input.GetButton("FifthSlot"))
-        {
-            currentSlot = 4;
-            SelectItemInInventory(currentSlot);
+            if (Input.GetButton("FirstSlot"))
+            {
+                currentSlot = 0;
+                SelectItemInInventory(currentSlot);
+            }
+            else if (Input.GetButton("SecondSlot"))
+            {
+                currentSlot = 1;
+                SelectItemInInventory(currentSlot);
+            }
+            else if (Input.GetButton("ThirdSlot"))
+            {
+                currentSlot = 2;
+                SelectItemInInventory(currentSlot);
+            }
+            else if (Input.GetButton("FourthSlot"))
+            {
+                currentSlot = 3;
+                SelectItemInInventory(currentSlot);
+            }
+            else if (Input.GetButton("FifthSlot"))
+            {
+                currentSlot = 4;
+                SelectItemInInventory(currentSlot);
+            }
         }
     }
 
