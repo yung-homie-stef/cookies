@@ -49,11 +49,14 @@ public class Player : MonoBehaviour
 
         if (Physics.Raycast(_ray, out hit, 1))
         {
-            if (hit.transform.tag.Equals("Interactable"))
+            if (_inventory.weaponEquipped == false)
             {
-                if (hit.transform.GetComponent<Interactable>())
+                if (hit.transform.tag.Equals("Interactable"))
                 {
-                    hit.transform.GetComponent<Interactable>().Interact();
+                    if (hit.transform.GetComponent<Interactable>())
+                    {
+                        hit.transform.GetComponent<Interactable>().Interact();
+                    }
                 }
             }
         }
@@ -69,7 +72,7 @@ public class Player : MonoBehaviour
 
     void Drop()
     {
-        if (_inventory.canSelect == true)
+        if (_inventory.weaponEquipped == true)
         {
             if (_inventory.inventoryItems[Inventory.currentSlot].GetComponent<AcquirableInteractable>() && _inventory.inventoryItems[Inventory.currentSlot])
             {

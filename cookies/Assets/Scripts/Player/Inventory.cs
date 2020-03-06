@@ -10,19 +10,19 @@ public class Inventory : MonoBehaviour
     public GameObject[] UISlots;
     public GameObject[] inventoryItems;
     public bool[] isFull;
-    public bool canSelect; // variable that dictates whether player can cycle through inventory items
+    public bool weaponEquipped; // variable that dictates whether player can cycle through inventory items
 
     [SerializeField]
     public static int currentSlot;
 
     private void Start()
     {
-        canSelect = true;
+        weaponEquipped = false;
     }
 
     private void Update()
     {
-        if (canSelect == true) // when an object that takes up the player's hand is used, prohibit them from being able to select and use other items
+        if (weaponEquipped == false) // when an object that takes up the player's hand is used, prohibit them from being able to select and use other items
         {
             if (Input.GetButton("FirstSlot"))
             {
