@@ -69,9 +69,12 @@ public class Player : MonoBehaviour
 
     void Drop()
     {
-        if (_inventory.inventoryItems[Inventory.currentSlot].GetComponent<AcquirableInteractable>() && _inventory.inventoryItems[Inventory.currentSlot])
+        if (_inventory.canSelect == true)
         {
-            _inventory.inventoryItems[Inventory.currentSlot].GetComponent<AcquirableInteractable>().Drop();
+            if (_inventory.inventoryItems[Inventory.currentSlot].GetComponent<AcquirableInteractable>() && _inventory.inventoryItems[Inventory.currentSlot])
+            {
+                _inventory.inventoryItems[Inventory.currentSlot].GetComponent<AcquirableInteractable>().Drop();
+            }
         }
     }
 }

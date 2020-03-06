@@ -39,6 +39,7 @@ public class Pistol : Action
         {
             _inventory.canSelect = false;
             _duplicate = Instantiate(gameObject, playerPalm.transform.position, player.transform.rotation);
+            _duplicate.transform.Rotate(0,90,90);
             _duplicate.transform.localScale = _localScale;
             _duplicate.layer = 0;
             _duplicate.transform.parent = playerPalm.transform; // make the gun a child of the palm
