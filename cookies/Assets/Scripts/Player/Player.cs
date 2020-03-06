@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
 
     void Drop()
     {
-        if (_inventory.weaponEquipped == true)
+        if (_inventory.weaponEquipped == false)
         {
             if (_inventory.inventoryItems[Inventory.currentSlot].GetComponent<AcquirableInteractable>() && _inventory.inventoryItems[Inventory.currentSlot])
             {
