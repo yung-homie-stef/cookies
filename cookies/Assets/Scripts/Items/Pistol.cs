@@ -62,12 +62,16 @@ public class Pistol : Action
 
     private void Shoot()
     {
-        //muzzleFlash.Play();
+        muzzleFlash.Play();
 
         RaycastHit _hit;
         if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out _hit, range))
         {
-            Debug.Log(_hit.transform.name);
+            if (_hit.transform.GetComponent<Victim>())
+            {
+                Victim _victim = _hit.transform.GetComponent<Victim>();
+                _victim.Die(); // if it bleeds... we can kill it
+            }
         }
 
         _reloaded = false;
