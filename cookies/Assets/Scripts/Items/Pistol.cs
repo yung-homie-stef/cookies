@@ -15,6 +15,7 @@ public class Pistol : Action
     private Vector3 _localScale;
     private Inventory _inventory;
     private GameObject _duplicate;
+    private Animator _animator;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class Pistol : Action
         _cocked = false; // whether the gun is out or not
         _reloaded = true;
         _inventory = player.GetComponent<Inventory>();
+        _animator = player.GetComponent<Animator>();
         _localScale = gameObject.transform.localScale;
     }
 
@@ -32,6 +34,7 @@ public class Pistol : Action
         {
             if (_cocked)
             {
+                _animator.Play("shooting");
                 if (_reloaded) // to prevent spamming
                 Shoot();
             }
@@ -63,7 +66,7 @@ public class Pistol : Action
     private void Shoot()
     {
         muzzleFlash.Play();
-
+       
         RaycastHit _hit;
         if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out _hit, range))
         {
@@ -73,6 +76,7 @@ public class Pistol : Action
                 _victim.Die(); // if it bleeds... we can kill it
             }
         }
+
 
         _reloaded = false;
         StartCoroutine(Reload(1.0f));
