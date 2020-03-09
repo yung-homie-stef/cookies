@@ -8,7 +8,6 @@ public class Pistol : Action
     public GameObject playerPalm;
     public float range;
     public Camera fpsCamera;
-    public ParticleSystem muzzleFlash;
 
     private bool _cocked;
     private bool _reloaded;
@@ -34,11 +33,13 @@ public class Pistol : Action
         {
             if (_cocked)
             {
-                _animator.Play("shooting");
+                
                 if (_reloaded) // to prevent spamming
                 Shoot();
             }
         }
+
+       
     }
 
     public override void Use()
@@ -65,9 +66,10 @@ public class Pistol : Action
 
     private void Shoot()
     {
-        muzzleFlash.Play();
-       
-        RaycastHit _hit;
+        _animator.Play("shooting");
+        StartCoroutine(MuzzleFlash(0.7f)); // delay muzzle flash particle effect
+
+            RaycastHit _hit;
         if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out _hit, range))
         {
             if (_hit.transform.GetComponent<Victim>())
@@ -76,7 +78,6 @@ public class Pistol : Action
                 _victim.Die(); // if it bleeds... we can kill it
             }
         }
-
 
         _reloaded = false;
         StartCoroutine(Reload(1.0f));
@@ -87,5 +88,12 @@ public class Pistol : Action
     {
         yield return new WaitForSeconds(waitTime);
         _reloaded = true;
+    }
+
+    private IEnumerator MuzzleFlash(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        ParticleSystem muzzleFlash = _duplicate.GetComponentInChildren<ParticleSystem>();
+        muzzleFlash.Play();
     }
 }
