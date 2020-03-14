@@ -15,6 +15,7 @@ public class Pistol : Action
     private Inventory _inventory;
     private GameObject _duplicate;
     private Animator _animator;
+    private RaycastHit _killedPerson;
 
     // Start is called before the first frame update
     void Start()
@@ -69,13 +70,13 @@ public class Pistol : Action
         _animator.Play("shooting");
         StartCoroutine(MuzzleFlash(0.7f)); // delay muzzle flash particle effect
 
-            RaycastHit _hit;
+        RaycastHit _hit;
         if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out _hit, range))
         {
             if (_hit.transform.GetComponent<Victim>())
             {
-                Victim _victim = _hit.transform.GetComponent<Victim>();
-                _victim.Die(); // if it bleeds... we can kill it
+                _killedPerson = _hit;
+                StartCoroutine(Kill(0.7f));
             }
         }
 
@@ -95,5 +96,12 @@ public class Pistol : Action
         yield return new WaitForSeconds(waitTime);
         ParticleSystem muzzleFlash = _duplicate.GetComponentInChildren<ParticleSystem>();
         muzzleFlash.Play();
+    }
+
+    private IEnumerator Kill(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Victim _victim = _killedPerson.transform.GetComponent<Victim>();
+        _victim.Die(); // if it bleeds... we can kill it
     }
 }

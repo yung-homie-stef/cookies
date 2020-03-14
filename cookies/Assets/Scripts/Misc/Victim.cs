@@ -6,20 +6,27 @@ public class Victim : MonoBehaviour
 {
     private Animator _animator;
     private Rigidbody _rigidbody;
-    private BoxCollider _boxCollider;
+    private CapsuleCollider _capsuleCollider;
 
+    protected Collider[] childrenCollider;
+    protected Rigidbody[] childrenBody;
     private void Start()
     {
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
-        _boxCollider = GetComponent<BoxCollider>();
+        _capsuleCollider = GetComponent<CapsuleCollider>();
+
+        childrenCollider = GetComponentsInChildren<Collider>();
+        childrenBody = GetComponentsInChildren<Rigidbody>();
     }
 
     public void Die()
     {
-        _animator.enabled = false;
-        _rigidbody.detectCollisions = false;
-        _rigidbody.isKinematic = true;
+        foreach ( var body in childrenBody)
+        {
+            body.isKinematic = false;
+            body.AddForce((transform.forward * -1) * 150);
+        }
 
     }
 }
