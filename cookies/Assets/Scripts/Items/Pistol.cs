@@ -12,6 +12,8 @@ public class Pistol : Action
     private bool _cocked;
     private bool _reloaded;
     private Vector3 _localScale;
+    private Vector3 _bulletPoint;
+    private Vector3 _bulletDirection;
     private Inventory _inventory;
     private GameObject _duplicate;
     private Animator _animator;
@@ -76,6 +78,8 @@ public class Pistol : Action
             if (_hit.transform.GetComponent<Victim>())
             {
                 _killedPerson = _hit;
+                _bulletPoint = _hit.point;
+                Debug.Log(_hit.point);
                 StartCoroutine(Kill(0.7f));
             }
         }
@@ -102,6 +106,6 @@ public class Pistol : Action
     {
         yield return new WaitForSeconds(waitTime);
         Victim _victim = _killedPerson.transform.GetComponent<Victim>();
-        _victim.Die(); // if it bleeds... we can kill it
+        _victim.Die(_bulletPoint); // if it bleeds... we can kill it
     }
 }

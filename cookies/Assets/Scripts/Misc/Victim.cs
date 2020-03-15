@@ -20,12 +20,11 @@ public class Victim : MonoBehaviour
         childrenBody = GetComponentsInChildren<Rigidbody>();
     }
 
-    public void Die()
+    public void Die(Vector3 impulse)
     {
         foreach ( var body in childrenBody)
         {
             body.isKinematic = false;
-            body.AddForce((transform.forward * -1) * 150);
         }
 
     }
