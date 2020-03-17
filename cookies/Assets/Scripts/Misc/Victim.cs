@@ -27,5 +27,6 @@ public class Victim : MonoBehaviour
             body.isKinematic = false;
         }
 
+        _animator.enabled = false;
     }
 }
