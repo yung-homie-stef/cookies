@@ -20,11 +20,6 @@ public class Salvador : Interactable
         _dialogueValue = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -44,9 +39,7 @@ public class Salvador : Interactable
                     _dialogueValue++;
                     break;
                 }
-            }
-
-            
+            }    
         }
     }
 

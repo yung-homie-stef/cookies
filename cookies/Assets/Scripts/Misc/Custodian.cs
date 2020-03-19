@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Custodian : MonoBehaviour
+public class Custodian : Interactable
 {
     public float startWaitTime;
+    public string[] sentences;
     public Transform[] moveSpots;
     public GameObject mop;
+    public GameObject dialogueManager;
 
     private int _randomSpot;
     private float _waitTime;
     private NavMeshAgent _agent;
     private Animator _animator;
+    private Dialogue _dialogue;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +24,7 @@ public class Custodian : MonoBehaviour
         _randomSpot = Random.Range(0, moveSpots.Length);
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
+        _dialogue = dialogueManager.GetComponent<Dialogue>();
     }
 
     // Update is called once per frame
@@ -46,6 +50,28 @@ public class Custodian : MonoBehaviour
                 _animator.SetBool("isSweeping", true);
                 _waitTime -= Time.deltaTime;
             }
+         }
+
+        if (_animator.enabled == false)
+        {
+            mop.transform.parent = null;
+            mop.GetComponent<Rigidbody>().isKinematic = false;
+        }
     }
+
+    public override void Interact()
+    {
+        dialogueManager.SetActive(true);
+        UpdateDialogue(sentences);
+    }
+
+    private void UpdateDialogue(string[] lines)
+    {
+        _dialogue.sentences = new string[lines.Length];
+
+        for (int i = 0; i < lines.Length; i++)
+        {
+            _dialogue.sentences[i] = lines[i];
+        }
     }
 }
