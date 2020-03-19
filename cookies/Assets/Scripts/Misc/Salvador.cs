@@ -5,6 +5,9 @@ using UnityEngine;
 public class Salvador : Interactable
 {
     public GameObject dialogueManager;
+    public GameObject gun;
+    public GameObject ratPrimacy;
+    public Light livingRoomLight;
     public string[] sentences;
 
     [SerializeField]
@@ -36,7 +39,11 @@ public class Salvador : Interactable
                     Destroy(other.gameObject);
                     _dialogue.index = 0;
                     _dialogue._canAdvance = true;
-                    _dialogueValue++;
+
+                    if (_dialogueValue < 5) // so that they cant access the ritual by feeding him MORE food
+                    {
+                        _dialogueValue++;
+                    }
                     break;
                 }
             }    
@@ -48,7 +55,7 @@ public class Salvador : Interactable
         dialogueManager.SetActive(true);
         switch (_dialogueValue)
         {
-            case 0:
+            case 0: // initial convo
                 currentSentences = new string[4];
                 for (int i =0; i < currentSentences.Length; i++)
                 {
@@ -57,7 +64,7 @@ public class Salvador : Interactable
                 UpdateDialogue(currentSentences);
                 break;
 
-            case 1:
+            case 1: // after feeding first item
                 currentSentences = new string[3];
                 for (int i = 0; i < currentSentences.Length; i++)
                 {
@@ -66,13 +73,27 @@ public class Salvador : Interactable
                 UpdateDialogue(currentSentences);
                 break;
 
-            case 2:
+            case 2: // after feeding three items
                 currentSentences = new string[5];
                 for (int i = 0; i < currentSentences.Length; i++)
                 {
                     currentSentences[i] = sentences[i + 7];
                 }
                 UpdateDialogue(currentSentences);
+                break;
+
+            case 5: // where he gives the glock
+                currentSentences = new string[7];
+                for (int i = 0; i < currentSentences.Length; i++)
+                {
+                    currentSentences[i] = sentences[i + 12];
+                }
+                UpdateDialogue(currentSentences);
+                gun.SetActive(true);
+                break;
+
+            case 6: // after killing janitor
+
                 break;
 
         }
@@ -87,5 +108,12 @@ public class Salvador : Interactable
         {
             _dialogue.sentences[i] = lines[i];
         }
+    }
+
+    public void StartCeremony()
+    {
+        ratPrimacy.SetActive(true);
+        _dialogueValue++;
+        livingRoomLight.color = new Color32(171, 38, 31, 255); // change light to demonic red
     }
 }

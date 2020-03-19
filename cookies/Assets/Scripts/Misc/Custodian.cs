@@ -10,6 +10,7 @@ public class Custodian : Interactable
     public Transform[] moveSpots;
     public GameObject mop;
     public GameObject dialogueManager;
+    public GameObject Salvador;
 
     private int _randomSpot;
     private float _waitTime;
@@ -17,6 +18,7 @@ public class Custodian : Interactable
     private NavMeshAgent _agent;
     private Animator _animator;
     private Dialogue _dialogue;
+    private Salvador _salvadorScript;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,7 @@ public class Custodian : Interactable
         _animator = GetComponent<Animator>();
         _dialogue = dialogueManager.GetComponent<Dialogue>();
         _hasSpoken = false;
+        _salvadorScript = Salvador.GetComponent<Salvador>();
     }
 
     // Update is called once per frame
@@ -58,6 +61,7 @@ public class Custodian : Interactable
         {
             mop.transform.parent = null;
             mop.GetComponent<Rigidbody>().isKinematic = false;
+            _salvadorScript.StartCeremony();
         }
     }
 
