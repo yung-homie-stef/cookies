@@ -8,6 +8,7 @@ public class OpenableInteractable : Interactable
     public GameObject[] housedContents;
     public GameObject player;
     public string requiredKey;
+    public string newText;
     public bool isLocked;
     public Text noticeText;
 
@@ -67,7 +68,8 @@ public class OpenableInteractable : Interactable
                     }
                     else
                     {
-                        _notice.ChangeText("LOCKED, KEY REQUIRED");
+                        if (isLocked)
+                        _notice.ChangeText(newText);
                     }
                 }
             }
