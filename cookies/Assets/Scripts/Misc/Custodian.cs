@@ -13,6 +13,7 @@ public class Custodian : Interactable
 
     private int _randomSpot;
     private float _waitTime;
+    private bool _hasSpoken;
     private NavMeshAgent _agent;
     private Animator _animator;
     private Dialogue _dialogue;
@@ -25,6 +26,7 @@ public class Custodian : Interactable
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _dialogue = dialogueManager.GetComponent<Dialogue>();
+        _hasSpoken = false;
     }
 
     // Update is called once per frame
@@ -61,8 +63,14 @@ public class Custodian : Interactable
 
     public override void Interact()
     {
-        dialogueManager.SetActive(true);
-        UpdateDialogue(sentences);
+        if (_hasSpoken == false)
+        {
+            _dialogue.index = 0;
+            _dialogue._canAdvance = true;
+            dialogueManager.SetActive(true);
+            UpdateDialogue(sentences);
+            _hasSpoken = true;
+        }
     }
 
     private void UpdateDialogue(string[] lines)
