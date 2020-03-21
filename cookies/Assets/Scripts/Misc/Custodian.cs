@@ -32,6 +32,9 @@ public class Custodian : Interactable
     // Update is called once per frame
     void Update()
     {
+        if (!_agent)
+            return;
+
         // move to a random spot
         _agent.destination = moveSpots[_randomSpot].position;
 
@@ -59,6 +62,7 @@ public class Custodian : Interactable
             mop.transform.parent = null;
             mop.GetComponent<Rigidbody>().isKinematic = false;
             _salvadorScript.StartCeremony();
+            _agent = null;
         }
     }
 

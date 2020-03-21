@@ -7,6 +7,8 @@ public class CameraController : MonoBehaviour
     public float mouseSensitivity = 100.0f;
     public float maxHeadRotation;
     public float minHeadRotation;
+    [Range(0,1)]
+    public float slerpValue;
 
     private Vector2 mouseLook;
     private float rotY = 0.0f; // rotation around the up/y axis
@@ -32,9 +34,14 @@ public class CameraController : MonoBehaviour
         rotX = Mathf.Clamp(rotX, minHeadRotation, maxHeadRotation);
 
         Quaternion localRotation = Quaternion.Euler(rotX, rotY, 0.0f);
-        transform.rotation = localRotation;
+        transform.rotation = Quaternion.Slerp(transform.rotation, localRotation, slerpValue);
 
-        character.transform.localRotation = Quaternion.AngleAxis(rotY, character.transform.up);
+        Quaternion butt = Quaternion.AngleAxis(rotY, Vector3.up);
+        Vector3 foofie = butt.eulerAngles;
+        foofie.z = 0;
+        butt = Quaternion.Euler(foofie);
+
+        character.transform.localRotation = butt;
 
     }
 }

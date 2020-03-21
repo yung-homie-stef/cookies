@@ -71,14 +71,16 @@ public class Pistol : Action
     {
         _animator.Play("shooting");
         StartCoroutine(MuzzleFlash(0.7f)); // delay muzzle flash particle effect
+        _bulletDirection = fpsCamera.transform.forward;
 
         RaycastHit _hit;
-        if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out _hit, range))
+        if (Physics.Raycast(fpsCamera.transform.position, _bulletDirection, out _hit, range))
         {
             if (_hit.transform.GetComponent<Victim>())
             {
                 _killedPerson = _hit;
                 _bulletPoint = _hit.point;
+                
                 Debug.Log(_hit.point);
                 StartCoroutine(Kill(0.7f));
             }
@@ -106,6 +108,6 @@ public class Pistol : Action
     {
         yield return new WaitForSeconds(waitTime);
         Victim _victim = _killedPerson.transform.GetComponent<Victim>();
-        _victim.Die(_bulletPoint); // if it bleeds... we can kill it
+        _victim.Die(_bulletPoint, _bulletDirection); // if it bleeds... we can kill it
     }
 }

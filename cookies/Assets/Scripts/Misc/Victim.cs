@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class Victim : MonoBehaviour
 {
+    public static float multiplier = 10;
+
     private Animator _animator;
     private Rigidbody _rigidbody;
     private CapsuleCollider _capsuleCollider;
@@ -21,11 +23,15 @@ public class Victim : MonoBehaviour
         childrenBody = GetComponentsInChildren<Rigidbody>();
     }
 
-    public void Die(Vector3 impulse)
+    public void Die(Vector3 point = default(Vector3), Vector3 direction = default(Vector3))
     {
         foreach ( var body in childrenBody)
         {
+            float bulletDistance = Vector3.Distance(body.position, point);
+            float deathForceMultiplier = Mathf.Max(multiplier - (bulletDistance * 5), 0); // the closer the bullet to the body, the greater the force
+
             body.isKinematic = false;
+            body.AddForceAtPosition((direction * deathForceMultiplier), point, ForceMode.Impulse);
         }
 
         _animator.enabled = false;
