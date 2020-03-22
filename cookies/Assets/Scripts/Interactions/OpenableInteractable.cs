@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class OpenableInteractable : Interactable
 {
-    public GameObject[] housedContents;
     public GameObject player;
     public string requiredKey;
     public string newText;
@@ -32,15 +31,6 @@ public class OpenableInteractable : Interactable
         {
             // play the opening animation
             _animator.SetBool("is_opened", true);
-
-            // set all objects that were hid in said container (if it's a cabinet or box etc.)
-            // to active only after it is opened, this is to stop players from picking up objects
-            // before opening their respective containers
-            for (int i = 0; i < housedContents.Length; i++)
-            {
-                housedContents[i].SetActive(true);
-                housedContents[i].GetComponent<BoxCollider>().enabled = true;
-            }
         }
 
         else if (isOpened == false)

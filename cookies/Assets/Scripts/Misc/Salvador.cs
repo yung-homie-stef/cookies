@@ -46,6 +46,10 @@ public class Salvador : Interactable
                     }
                     break;
                 }
+                else if (_tags.tags[i] == "Poison")
+                {
+                    GetComponent<Victim>().Die(); // kill salvador if he is fed poison
+                }
             }    
         }
     }

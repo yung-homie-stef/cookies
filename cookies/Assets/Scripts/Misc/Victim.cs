@@ -43,4 +43,18 @@ public class Victim : MonoBehaviour
         }
 
     }
+
+    public void Die() // overloaded function for when victim dies without being hit or shot (ex: poison)
+    {
+        foreach (var body in childrenBody)
+        {
+            body.isKinematic = false;
+        }
+
+        // if victim has a navmesh disable it so it doesn't get wacky
+        if (GetComponent<NavMeshAgent>())
+        {
+            GetComponent<NavMeshAgent>().enabled = false;
+        }
+    }
 }
