@@ -5,22 +5,31 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: idle
+    second: player_idle
   - first:
-      74: 967269096283803130
-    second: forward_walk
+      74: 4052061570572371388
+    second: player_walk
   - first:
-      74: -5444065469798306491
-    second: backward_walk
+      74: -2830038830101100827
+    second: player_backward_walk
   - first:
-      74: -6601169472188690084
-    second: right_sidestep
+      74: -8914839902071991058
+    second: player_right_sidestep
   - first:
-      74: -6007083272547665168
-    second: left_sidestep
+      74: -5522620607547646310
+    second: player_left_sidestep
   - first:
-      74: -1841769225762364984
-    second: shoot
+      74: 1491452752316074162
+    second: player_shoot
+  - first:
+      74: 9006986428915464638
+    second: player_melee_swing
+  - first:
+      74: -3623902829067278455
+    second: player_punch
+  - first:
+      74: -998496362607748373
+    second: Take 001
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -50,7 +59,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: idle
+      name: player_idle
       takeName: Take 001
       internalID: 0
       firstFrame: 0
@@ -61,7 +70,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -79,7 +88,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: forward_walk
+      name: player_walk
       takeName: Take 001
       internalID: 0
       firstFrame: 60
@@ -108,7 +117,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: backward_walk
+      name: player_backward_walk
       takeName: Take 001
       internalID: 0
       firstFrame: 120
@@ -137,7 +146,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: right_sidestep
+      name: player_right_sidestep
       takeName: Take 001
       internalID: 0
       firstFrame: 180
@@ -166,7 +175,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: left_sidestep
+      name: player_left_sidestep
       takeName: Take 001
       internalID: 0
       firstFrame: 240
@@ -195,11 +204,40 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: shoot
+      name: player_shoot
       takeName: Take 001
       internalID: 0
       firstFrame: 300
       lastFrame: 335
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: player_punch
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 420
+      lastFrame: 450
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -49,7 +49,7 @@ public class Pistol : Action
     {
         if (_cocked == true)
         {
-            _inventory.weaponEquipped = false;
+            _inventory.weaponEquipped = false; // put gun away
             Destroy(_duplicate);
             _cocked = false;
             

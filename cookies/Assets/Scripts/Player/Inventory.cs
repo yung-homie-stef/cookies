@@ -67,6 +67,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public int GetCurrentSlot()
+    {
+        return currentSlot;
+    }
+
 
 
 }

@@ -97,7 +97,13 @@ public class Salvador : Interactable
                 break;
 
             case 6: // after killing janitor
-
+                currentSentences = new string[6];
+                for (int i = 0; i < currentSentences.Length; i++)
+                {
+                    currentSentences[i] = sentences[i + 19];
+                }
+                UpdateDialogue(currentSentences);
+                gun.SetActive(true);
                 break;
 
         }

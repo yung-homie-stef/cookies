@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Movement playerMovement;
     public Camera mainCamera;
     public RaycastHit hit;
 
+    private Movement playerMovement;
     private Inventory _inventory;
 
     // Start is called before the first frame update

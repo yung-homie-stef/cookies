@@ -31,7 +31,7 @@ public class Brownie_Pan : Interactable
     {
         if (_hasBatter)
         {
-            if (_ovenAnimator.GetBool("is_opened") == false)
+            if (_ovenAnimator.GetBool("is_opened") == false && _hasCBD == false)
             {
                 StartCoroutine(Bake(1.0f, false));
             }
@@ -63,7 +63,7 @@ public class Brownie_Pan : Interactable
                     _hasCBD = true;
                     _inventory.isFull[i] = false;
                     Destroy(_inventory.inventoryItems[i]);
-                    _notice.ChangeText("ADD BROWNIE MIX TO COMPLETE RECIPE");
+                    _notice.ChangeText("CBD ADDED TO RECIPE");
                     break;
                 }
                 else
