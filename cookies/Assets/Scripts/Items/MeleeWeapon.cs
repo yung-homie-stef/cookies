@@ -7,6 +7,8 @@ public class MeleeWeapon : Action
     public GameObject player;
     public GameObject playerPalm;
     public GameObject hitbox;
+    public Vector3 weaponRotation;
+    public Vector3 weaponRepositioning;
 
     private bool _wielding;
     private bool _relaxed;
@@ -18,6 +20,7 @@ public class MeleeWeapon : Action
     // Start is called before the first frame update
     void Start()
     {
+        _relaxed = true;
         _inventory = player.GetComponent<Inventory>();
         _animator = player.GetComponent<Animator>();
         _localScale = gameObject.transform.localScale;
@@ -49,10 +52,11 @@ public class MeleeWeapon : Action
             _inventory.weaponEquipped = true;
             // create a duplicate of the gun that rests in the player's hand
             _duplicate = Instantiate(gameObject, playerPalm.transform.position, player.transform.rotation);
-            //_duplicate.transform.Rotate(0, 90, 90);
+            _duplicate.transform.Rotate(weaponRotation);
             _duplicate.transform.localScale = _localScale;
             _duplicate.layer = 0;
             _duplicate.transform.parent = playerPalm.transform; // make the gun a child of the palm
+            _duplicate.transform.position = new Vector3((playerPalm.transform.position.x + weaponRepositioning.x), (playerPalm.transform.position.y + weaponRepositioning.y), (playerPalm.transform.position.z + weaponRepositioning.z));
             _wielding = true;
         }
     }
