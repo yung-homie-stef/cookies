@@ -7,9 +7,9 @@ public abstract class Interactable : MonoBehaviour
     protected Animator _animator;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
-        
+        //jesse gay
     }
 
     // Update is called once per frame

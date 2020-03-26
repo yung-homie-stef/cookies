@@ -5,9 +5,10 @@ using UnityEngine;
 public class Shopkeeper : MonoBehaviour
 {
     public GameObject[] storefrontColliders;
+    public GameObject[] catalogue;
 
     private Tags _tags;
-    private int _storeCredit;
+    private static int _storeCredit;
 
     // Start is called before the first frame update
     void Start()
@@ -18,13 +19,7 @@ public class Shopkeeper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_storeCredit == 0) // when the player has no money, block off any purchasable items
-        {
-            for (int i = 0; i < storefrontColliders.Length; i++)
-            {
-                storefrontColliders[i].SetActive(true);
-            }
-        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,20 +32,32 @@ public class Shopkeeper : MonoBehaviour
             {
                 if (_tags.tags[i] == "Currency")
                 {
+                    _storeCredit++; // when store credit is above 0 players can buy items 
                     Destroy(other.gameObject);
-                    AllowPurchases();
+                    SetBuyable(false);
                 }
             }
         }
     }
 
-    private void AllowPurchases()
+    private void SetBuyable(bool condition)
     {
-        _storeCredit++; // allows player to purchase items
-
-        for (int i=0; i < storefrontColliders.Length; i++)
+        for (int i = 0; i < storefrontColliders.Length; i++)
         {
-            storefrontColliders[i].SetActive(false); // do this by disabling the boxes that block players from picking up objects
+            storefrontColliders[i].SetActive(condition); // do this by disabling the boxes that block players from picking up objects
+        }
+    }
+
+
+    public void Purchase()
+    {
+        _storeCredit--;
+        Debug.Log(_storeCredit);
+        if (_storeCredit == 0)
+        {
+            SetBuyable(true);
         }
     }
 }
+
+

@@ -21,18 +21,18 @@ public class AcquirableInteractable : Interactable
     public GameObject player;
     public GameObject VHS_Camera;
 
-    private GameObject _duplicate;
-    private IEnumerator _removeCoroutine;
-    private bool _clickable;
-    private bool _hasHadDuplicate;
-    private Movement _movement;
-    private CameraController _camControlller;
-    private Collider _collider;
-    private Inventory _inventory;
-    private Pickup _pickup;
+    protected GameObject _duplicate;
+    protected IEnumerator _removeCoroutine;
+    protected bool _clickable;
+    protected bool _hasHadDuplicate;
+    protected Movement _movement;
+    protected CameraController _camControlller;
+    protected Collider _collider;
+    protected Inventory _inventory;
+    protected Pickup _pickup;
 
     // Start is called before the first frame update
-    void Start()
+    override protected void Start()
     {
         _removeCoroutine = RemoveAcquirable(1.0f);
         _clickable = false;
@@ -48,7 +48,7 @@ public class AcquirableInteractable : Interactable
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
@@ -67,6 +67,7 @@ public class AcquirableInteractable : Interactable
 
     public override void Interact()
     {
+        if (_pickup)
         _pickup.AddItem();
 
         if (_hasHadDuplicate == false)
@@ -82,6 +83,7 @@ public class AcquirableInteractable : Interactable
             _animator = _duplicate.AddComponent<Animator>();
             _animator.runtimeAnimatorController = controller;
 
+            Debug.Log(_movement);
             // stop the player from moving
             _movement.enabled = false;
             _camControlller.enabled = false;
@@ -111,13 +113,13 @@ public class AcquirableInteractable : Interactable
         _clickable = true;
     }
 
-    private void ChangeText(string name, string desc)
+    protected void ChangeText(string name, string desc)
     {
         itemName.text = name;
         itemDesc.text = desc;
     }
 
-    private IEnumerator RemoveAcquirable(float waitTime)
+    protected IEnumerator RemoveAcquirable(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         _clickable = true;
