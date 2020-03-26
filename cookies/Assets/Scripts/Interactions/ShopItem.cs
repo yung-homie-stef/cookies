@@ -6,6 +6,7 @@ public class ShopItem : AcquirableInteractable
 {
     public GameObject shopkeeperCharacter;
 
+    public int _shelfNumber;
     private Shopkeeper _shopKeeper;
 
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class ShopItem : AcquirableInteractable
     public override void Interact()
     {
         base.Interact();
-        _shopKeeper.Purchase();
+        _shopKeeper.Purchase(_shelfNumber);
     }
+
 }

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Shopkeeper : MonoBehaviour
 {
-    public GameObject[] storefrontColliders;
-    public GameObject[] catalogue;
+    public GameObject[] catalogue = new GameObject[4];
+    public GameObject[] storage;
+    public Transform[] storeSlots;
+    List<GameObject> stock = new List<GameObject>(); // for objects not yet on display
 
     private Tags _tags;
     private static int _storeCredit;
@@ -14,6 +16,11 @@ public class Shopkeeper : MonoBehaviour
     void Start()
     {
         _storeCredit = 0;
+
+        for (int i=0; i < storage.Length; i++)
+        {
+            stock.Add(storage[i]); // fill the list up with items that are not yet for sale
+        }
     }
 
     // Update is called once per frame
@@ -34,7 +41,7 @@ public class Shopkeeper : MonoBehaviour
                 {
                     _storeCredit++; // when store credit is above 0 players can buy items 
                     Destroy(other.gameObject);
-                    SetBuyable(false);
+                    SetBuyable(true);
                 }
             }
         }
@@ -42,20 +49,28 @@ public class Shopkeeper : MonoBehaviour
 
     private void SetBuyable(bool condition)
     {
-        for (int i = 0; i < storefrontColliders.Length; i++)
+        for (int i = 0; i < catalogue.Length; i++)
         {
-            storefrontColliders[i].SetActive(condition); // do this by disabling the boxes that block players from picking up objects
+            catalogue[i].GetComponent<BoxCollider>().enabled = condition; // do this by disabling the boxes that block players from picking up objects
         }
     }
 
 
-    public void Purchase()
+    public void Purchase(int shelfNumber)
     {
         _storeCredit--;
+
+        catalogue[shelfNumber] = null; // take this item off the store shelves
+        catalogue[shelfNumber] = stock[0]; // replace it with next item in stock list
+        catalogue[shelfNumber].SetActive(true); // make the item visible
+        catalogue[shelfNumber].transform.position = storeSlots[shelfNumber].transform.position;
+
+        stock.RemoveAt(0); // remove the new item fom storage
+
         Debug.Log(_storeCredit);
         if (_storeCredit == 0)
         {
-            SetBuyable(true);
+            SetBuyable(false);
         }
     }
 }

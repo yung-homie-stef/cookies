@@ -12,6 +12,7 @@ public class Steroids : Action
     private Player _playerScript;
     private Movement _movement;
     private Notice _notice;
+    private Inventory _inventory;
 
 
     // Start is called before the first frame update
@@ -20,6 +21,7 @@ public class Steroids : Action
         _notice = noticeText.GetComponent<Notice>();
         _movement = player.GetComponent<Movement>();
         _playerScript = player.GetComponent<Player>();
+        _inventory = player.GetComponent<Inventory>();
     }
 
     public override void Use()
@@ -27,6 +29,7 @@ public class Steroids : Action
         _playerScript.roided = true; // allow player to punch with this bool
         _movement.speed *= 1.5f;
         _notice.ChangeText(newText);
-        Destroy(this);
+        _inventory.isFull[_inventory.GetCurrentSlot()] = false;
+        Destroy(_inventory.inventoryItems[_inventory.GetCurrentSlot()]);
     }
 }
