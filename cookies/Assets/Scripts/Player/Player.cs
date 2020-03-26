@@ -6,24 +6,34 @@ public class Player : MonoBehaviour
 {
     public Camera mainCamera;
     public RaycastHit hit;
+    public bool roided;
 
     private Movement playerMovement;
     private Inventory _inventory;
+    private Animator _animator;
 
     // Start is called before the first frame update
     void Start()
     {
         playerMovement = GetComponent<Movement>();
         _inventory = GetComponent<Inventory>();
+        _animator = GetComponent<Animator>();
+        roided = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Update controls
+        
         if (Input.GetButtonDown("Fire1"))
         {
             Interact();
+        }
+
+        if (Input.GetButton("Fire2"))
+        {
+            if (roided)
+                Punch();
         }
 
         if (Input.GetButtonDown("Use"))
@@ -79,5 +89,10 @@ public class Player : MonoBehaviour
                 _inventory.inventoryItems[Inventory.currentSlot].GetComponent<AcquirableInteractable>().Drop();
             }
         }
+    }
+
+    void Punch()
+    {
+        _animator.Play("punch");
     }
 }
