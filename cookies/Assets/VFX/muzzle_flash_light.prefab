@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1967854442531583028
+--- !u!1 &5773455425576906450
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7381539339937815672}
-  - component: {fileID: 5689372765892546269}
+  - component: {fileID: 4425227441156895024}
+  - component: {fileID: 6573926966775551156}
   m_Layer: 0
   m_Name: muzzle_flash_light
   m_TagString: Untagged
@@ -17,34 +17,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7381539339937815672
+--- !u!4 &4425227441156895024
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1967854442531583028}
+  m_GameObject: {fileID: 5773455425576906450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.139, y: 0.488, z: -8.781}
+  m_LocalPosition: {x: -7.964, y: -2.566, z: -3.728}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!108 &5689372765892546269
+--- !u!108 &6573926966775551156
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1967854442531583028}
+  m_GameObject: {fileID: 5773455425576906450}
   m_Enabled: 1
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.8962264, g: 0.54747766, b: 0.109914556, a: 1}
-  m_Intensity: 3.77
-  m_Range: 1.65
+  m_Color: {r: 0.8679245, g: 0.6299338, b: 0.35617658, a: 1}
+  m_Intensity: 3.99
+  m_Range: 1.75
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
