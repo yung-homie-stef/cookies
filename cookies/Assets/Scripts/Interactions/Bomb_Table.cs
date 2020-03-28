@@ -21,24 +21,48 @@ public class Bomb_Table : Interactable
 
     public override void Interact()
     {
+        if (CheckIfArrayEmpty(_inventory.inventoryItems))
+        { 
+            _notice.ChangeText("LEAD PIPE REQUIRED");
+            return;
+        }
 
         for (int i = 0; i < _inventory.UISlots.Length; i++)
         {
+
             _tags = _inventory.inventoryItems[i].GetComponent<Tags>();
 
+            if (!_tags)
+            {
+                Debug.Log("failed to get tag");
+                return;
+            }
+
+            bool hasLeadPipe = false;
             for (int j = 0; j < _tags.tags.Length; j++)
             {
                 if (_tags.tags[j] == "Pipe")
                 {
+                    hasLeadPipe = true;
                     // create pipe bomb
                     break;
                 }
-                else
-                {
-                    _notice.ChangeText("LEAD PIPE REQUIRED");
-                }
+              
             }
+            if (!hasLeadPipe)
+                _notice.ChangeText("LEAD PIPE REQUIRED");
 
         }
+    }
+
+    public bool CheckIfArrayEmpty<T>(T[] array)
+    {
+        for (int i = 0; i < array.Length; i++)
+        {
+            if (array[i] != null)
+                return false;
+        }
+
+        return true;
     }
 }
