@@ -16503,7 +16503,6 @@ GameObject:
   m_Component:
   - component: {fileID: 363995635}
   - component: {fileID: 363995634}
-  - component: {fileID: 363995633}
   m_Layer: 0
   m_Name: livestream_render_camera
   m_TagString: Untagged
@@ -16511,14 +16510,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &363995633
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363995632}
-  m_Enabled: 1
 --- !u!20 &363995634
 Camera:
   m_ObjectHideFlags: 0
@@ -31952,6 +31943,72 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 350831906}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &716559678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 76256a42bfdd0e8419c9fb7968f82967,
+    type: 3}
+  m_PrefabInstance: {fileID: 1830643179}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &716559679 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 76256a42bfdd0e8419c9fb7968f82967,
+    type: 3}
+  m_PrefabInstance: {fileID: 1830643179}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &716559680
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716559678}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4746633, y: 1.5124005, z: 1.3605521}
+  m_Center: {x: -0.35286984, y: -0.00000008536379, z: -0.25412273}
+--- !u!114 &716559681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716559678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff70479a91be0f4394ac7a42f395ac6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 953810215}
+  renderTransform: {fileID: 979157235}
+  renderScale: {x: 1, y: 1, z: 1}
+  renderRotation: {x: 0, y: 135, z: 0}
+  extraX: 0
+--- !u!114 &716559682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716559678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6100317664026a74fb1559780c8437a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalScale: {x: 0, y: 0, z: 0}
+  originalRotation: {x: 0, y: 0, z: 0}
+  zoomScale: {x: 0.75, y: 0.75, z: 0.75}
+  zoomedInTransform: {fileID: 1040422527}
+  controller: {fileID: 9100000, guid: 8e401ea3fae86e94ba032d060b145f27, type: 2}
+  itemName: {fileID: 1758118710}
+  itemDesc: {fileID: 1629325734}
+  nameString: CULT PAMPHLET
+  descString: '"Children of the Shine: Achieve your attunement in Room ___"'
+  textCanvas: {fileID: 868250719}
+  player: {fileID: 953810215}
+  VHS_Camera: {fileID: 394692742}
 --- !u!4 &717694779 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 9628a40be3b0397499fa124f77de15eb,
@@ -50779,7 +50836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 953810215}
   renderTransform: {fileID: 979157235}
-  renderScale: {x: 1, y: 1, z: 1}
+  renderScale: {x: 1.5, y: 1.5, z: 1.5}
   renderRotation: {x: 0, y: 270, z: 0}
   extraX: 0
 --- !u!114 &1116188108
@@ -64351,6 +64408,7 @@ Transform:
   - {fileID: 1997842227}
   - {fileID: 1116188104}
   - {fileID: 1240699614}
+  - {fileID: 716559679}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -81740,6 +81798,85 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 322255670}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1830643179
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1469122425}
+    m_Modifications:
+    - target: {fileID: -4216859302048453862, guid: 76256a42bfdd0e8419c9fb7968f82967,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.265
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 76256a42bfdd0e8419c9fb7968f82967,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.933
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 76256a42bfdd0e8419c9fb7968f82967,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.697
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 76256a42bfdd0e8419c9fb7968f82967,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5677755
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 76256a42bfdd0e8419c9fb7968f82967,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.058250565
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 76256a42bfdd0e8419c9fb7968f82967,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.42146283
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 76256a42bfdd0e8419c9fb7968f82967,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70470345
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 76256a42bfdd0e8419c9fb7968f82967,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 76256a42bfdd0e8419c9fb7968f82967,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 48.688004
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 76256a42bfdd0e8419c9fb7968f82967,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -58.139004
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 76256a42bfdd0e8419c9fb7968f82967,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 76256a42bfdd0e8419c9fb7968f82967,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.17651701
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 76256a42bfdd0e8419c9fb7968f82967,
+        type: 3}
+      propertyPath: m_Name
+      value: cult_pamphlet
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 76256a42bfdd0e8419c9fb7968f82967,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 76256a42bfdd0e8419c9fb7968f82967, type: 3}
 --- !u!1 &1831032241 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: d49bd73212af4a149b3482b989151870,
