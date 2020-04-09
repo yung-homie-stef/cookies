@@ -7,15 +7,31 @@ ModelImporter:
       74: 1827226128182048838
     second: praise
   - first:
-      74: -5232016527000025463
+      74: 1827226128182048838
+    second: praise
+  - first:
+      74: 1827226128182048838
     second: praise_2
+  - first:
+      74: 140049810655062132
+    second: praise
   - first:
       74: -7592723725226777619
     second: preacher_pray
   - first:
-      74: -3721431840173175360
-    second: preacher_talk
-  externalObjects: {}
+      74: 6515220787970451715
+    second: preacher_speak
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Face
+    second: {fileID: 2100000, guid: 2282ee0d277d66d4591508be94da9d55, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Garb
+    second: {fileID: 2100000, guid: 743aa947d3ba01546b60d23a9fd9b104, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -44,11 +60,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: praise
+      name: praise_2
       takeName: Take 001
       internalID: 0
-      firstFrame: 0
-      lastFrame: 30
+      firstFrame: 60
+      lastFrame: 90
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -73,11 +89,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: praise_2
+      name: praise
       takeName: Take 001
       internalID: 0
-      firstFrame: 60
-      lastFrame: 90
+      firstFrame: 0
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -131,7 +147,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: preacher_talk
+      name: preacher_speak
       takeName: Take 001
       internalID: 0
       firstFrame: 180
