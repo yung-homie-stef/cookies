@@ -45,23 +45,25 @@ public class OpenableInteractable : Interactable
         {
             for (int i = 0; i < _inventory.UISlots.Length; i++)
             {
-                _tags = _inventory.inventoryItems[i].GetComponent<Tags>();
-
-                for (int j = 0; j < _tags.tags.Length; j++)
+                if (_inventory.inventoryItems[i] != null)
                 {
-                    if (_tags.tags[j] == requiredKey) // if they do, destroy the key and unlock the door
+                    _tags = _inventory.inventoryItems[i].GetComponent<Tags>();
+
+                    for (int j = 0; j < _tags.tags.Length; j++)
                     {
-                        isLocked = false;
-                        _inventory.isFull[i] = false;
-                        Destroy(_inventory.inventoryItems[i]);
-                        break;
-                    }
-                    else
-                    {
-                        if (isLocked)
-                        _notice.ChangeText(newText);
+                        if (_tags.tags[j] == requiredKey) // if they do, destroy the key and unlock the door
+                        {
+                            isLocked = false;
+                            _inventory.isFull[i] = false;
+                            Destroy(_inventory.inventoryItems[i]);
+                            break;
+                        }
                     }
                 }
+            }
+            if (isLocked != false)
+            {
+                _notice.ChangeText(newText);
             }
         }
         else // otherwise open it normally

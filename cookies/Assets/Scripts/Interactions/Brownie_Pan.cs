@@ -46,31 +46,34 @@ public class Brownie_Pan : Interactable
     {
         for (int i = 0; i < _inventory.UISlots.Length; i++)
         {
+            if (_inventory.inventoryItems[i] != null)
+            {
             _tags = _inventory.inventoryItems[i].GetComponent<Tags>();
 
-            for (int j = 0; j < _tags.tags.Length; j++)
-            {
-                if (_tags.tags[j] == "Batter") // adding brownie mix
+                for (int j = 0; j < _tags.tags.Length; j++)
                 {
-                    _hasBatter = true;
-                    _inventory.isFull[i] = false;
-                    Destroy(_inventory.inventoryItems[i]);
-                    _notice.ChangeText("CLOSE OVEN TO BAKE");
-                    break;
+                    if (_tags.tags[j] == "Batter") // adding brownie mix
+                    {
+                        _hasBatter = true;
+                        _inventory.isFull[i] = false;
+                        Destroy(_inventory.inventoryItems[i]);
+                        _notice.ChangeText("CLOSE OVEN TO BAKE");
+                        break;
+                    }
+                    else if (_tags.tags[j] == "CBD") // adding cannabinoids 
+                    {
+                        _hasCBD = true;
+                        _inventory.isFull[i] = false;
+                        Destroy(_inventory.inventoryItems[i]);
+                        _notice.ChangeText("CBD ADDED TO RECIPE");
+                        break;
+                    }
                 }
-                else if (_tags.tags[j] == "CBD") // adding cannabinoids 
-                {
-                    _hasCBD = true;
-                    _inventory.isFull[i] = false;
-                    Destroy(_inventory.inventoryItems[i]);
-                    _notice.ChangeText("CBD ADDED TO RECIPE");
-                    break;
-                }
-                else
-                {
-                    _notice.ChangeText("BROWNIE MIX REQUIRED");
-                }
-            }
+            }    
+        }
+        if (_hasBatter == false && _hasCBD == false)
+        {
+            _notice.ChangeText("BROWNIE MIX REQUIRED");
         }
     }
 

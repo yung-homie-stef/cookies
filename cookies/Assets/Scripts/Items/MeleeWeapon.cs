@@ -37,6 +37,7 @@ public class MeleeWeapon : Action
                 Swing();
             }
         }
+
     }
 
     public override void Use()
