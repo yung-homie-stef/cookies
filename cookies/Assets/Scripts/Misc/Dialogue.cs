@@ -9,11 +9,16 @@ public class Dialogue : MonoBehaviour
     public string[] sentences;
     public float typingSpeed;
 
-    public int index;
+    public int index = 0;
     public bool _canAdvance;
 
     private void Start()
     {
+    }
+
+    public void BeginDialogue()
+    {
+        index = 0;
         StartCoroutine(Type());
         _canAdvance = false;
     }
@@ -55,6 +60,8 @@ public class Dialogue : MonoBehaviour
         {
             textDisplay.text = "";
             _canAdvance = false;
+            index = 0;
         }
     }
+
 }

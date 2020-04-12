@@ -56,7 +56,11 @@ public class Salvador : Interactable
 
     public override void Interact()
     {
+        // look to scriptable objects to avoid looking up harcoded
+        _dialogue.BeginDialogue();
+
         dialogueManager.SetActive(true);
+
         switch (_dialogueValue)
         {
             case 0: // initial convo
@@ -122,8 +126,11 @@ public class Salvador : Interactable
 
     public void StartCeremony()
     {
-        ratPrimacy.SetActive(true);
-        _dialogueValue++;
-        livingRoomLight.color = new Color32(171, 38, 31, 255); // change light to demonic red
+        if (_dialogueValue == 5)
+        {
+            ratPrimacy.SetActive(true);
+            _dialogueValue++;
+            livingRoomLight.color = new Color32(171, 38, 31, 255); // change light to demonic red
+        }
     }
 }

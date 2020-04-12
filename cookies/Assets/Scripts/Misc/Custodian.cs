@@ -5,12 +5,16 @@ using UnityEngine.AI;
 
 public class Custodian : Interactable
 {
+    public GameObject dialogueManager;
     public float startWaitTime;
     public Transform[] moveSpots;
     public GameObject mop;
     public GameObject Salvador;
     public GameObject keyring;
+    public string[] sentences;
 
+    private string[] currentSentences;
+    private Dialogue _dialogue;
     private int _randomSpot;
     private float _waitTime;
     private bool _hasSpoken;
@@ -27,6 +31,7 @@ public class Custodian : Interactable
         _animator = GetComponent<Animator>();
         _hasSpoken = false;
         _salvadorScript = Salvador.GetComponent<Salvador>();
+        _dialogue = dialogueManager.GetComponent<Dialogue>();
     }
 
     // Update is called once per frame
@@ -69,14 +74,31 @@ public class Custodian : Interactable
 
     public override void Interact()
     {
-        keyring.GetComponent<AcquirableInteractable>().Interact();
-        keyring.transform.parent = null;
+        dialogueManager.SetActive(true);
+        currentSentences = new string[2];
+        for (int i = 0; i < currentSentences.Length; i++)
+        {
+            currentSentences[i] = sentences[i];
+        }
+        UpdateDialogue(currentSentences);
+
+        _dialogue.BeginDialogue();
     }
 
     private IEnumerator GivePlayerKeys(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+        keyring.transform.parent = null;
         keyring.GetComponent<Interactable>().Interact(); // give players the key if custodian is killed
     }
 
+    private void UpdateDialogue(string[] lines)
+    {
+        _dialogue.sentences = new string[lines.Length];
+
+        for (int i = 0; i < lines.Length; i++)
+        {
+            _dialogue.sentences[i] = lines[i];
+        }
+    }
 }
