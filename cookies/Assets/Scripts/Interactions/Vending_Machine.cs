@@ -30,25 +30,28 @@ public class Vending_Machine : Interactable
         {
             for (int i = 0; i < _inventory.UISlots.Length; i++)
             {
-                _tags = _inventory.inventoryItems[i].GetComponent<Tags>();
-
-                for (int j = 0; j < _tags.tags.Length; j++)
+                if (_inventory.inventoryItems[i] != null)
                 {
-                    if (_tags.tags[j] == "Currency")
+                    _tags = _inventory.inventoryItems[i].GetComponent<Tags>();
+
+                    for (int j = 0; j < _tags.tags.Length; j++)
                     {
-                        _animator.SetBool("vending", true);
-                        candyBar.GetComponent<BoxCollider>().enabled = true;
-                        _hasVended = true;
-                        _inventory.isFull[i] = false;
-                        Destroy(_inventory.inventoryItems[i]);
-                        break;
-                    }
-                    else
-                    {
-                        _notice.ChangeText("CURRENCY REQUIRED");
+                        if (_tags.tags[j] == "Currency")
+                        {
+                            _animator.SetBool("vending", true);
+                            candyBar.GetComponent<BoxCollider>().enabled = true;
+                            _hasVended = true;
+                            _inventory.isFull[i] = false;
+                            Destroy(_inventory.inventoryItems[i]);
+                            break;
+                        }
                     }
                 }
             }
+        }
+        if (_hasVended == false)
+        {
+            _notice.ChangeText("CURRENCY REQUIRED");
         }
     }
 }

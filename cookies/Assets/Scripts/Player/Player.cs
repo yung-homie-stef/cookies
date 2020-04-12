@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public Camera mainCamera;
     public RaycastHit hit;
     public bool roided;
+    public GameObject fistHitbox;
 
     private Movement playerMovement;
     private Inventory _inventory;
@@ -94,5 +95,19 @@ public class Player : MonoBehaviour
     void Punch()
     {
         _animator.Play("punch");
+    }
+
+    public void ActivateFistHitbox(int condition)
+    {
+        if (condition == 1)
+        {
+            fistHitbox.SetActive(true); // yo why the fuck cant animation events take in bools fuck is this garbage...
+        }
+
+        if (condition == 2)
+        {
+            fistHitbox.SetActive(false);
+        }
+
     }
 }

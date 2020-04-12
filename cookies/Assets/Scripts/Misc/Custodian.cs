@@ -63,6 +63,7 @@ public class Custodian : Interactable
             mop.GetComponent<Rigidbody>().isKinematic = false;
             _salvadorScript.StartCeremony();
             _agent = null;
+            StartCoroutine(GivePlayerKeys(1.5f));
         }
     }
 
@@ -70,6 +71,12 @@ public class Custodian : Interactable
     {
         keyring.GetComponent<AcquirableInteractable>().Interact();
         keyring.transform.parent = null;
+    }
+
+    private IEnumerator GivePlayerKeys(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        keyring.GetComponent<Interactable>().Interact(); // give players the key if custodian is killed
     }
 
 }

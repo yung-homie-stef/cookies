@@ -2,19 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shopkeeper : MonoBehaviour
+public class Shopkeeper : Interactable
 {
+    public GameObject player;
     public GameObject[] catalogue = new GameObject[4];
     public GameObject[] storage;
     public Transform[] storeSlots;
     List<GameObject> stock = new List<GameObject>(); // for objects not yet on display
 
     private Tags _tags;
+    private Inventory _inventory;
     private static int _storeCredit;
 
     // Start is called before the first frame update
     void Start()
-    {
+    { 
+        _inventory = player.GetComponent<Inventory>();
+
         _storeCredit = 0;
 
         for (int i=0; i < storage.Length; i++)
@@ -23,11 +27,6 @@ public class Shopkeeper : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -52,6 +51,26 @@ public class Shopkeeper : MonoBehaviour
         for (int i = 0; i < catalogue.Length; i++)
         {
             catalogue[i].GetComponent<BoxCollider>().enabled = condition; // do this by disabling the boxes that block players from picking up objects
+        }
+    }
+
+    public override void Interact()
+    {
+        for (int i = 0; i < _inventory.UISlots.Length; i++)
+        {
+            if (_inventory.inventoryItems[i] != null)
+            {
+                _tags = _inventory.inventoryItems[i].GetComponent<Tags>();
+
+                for (int j = 0; j < _tags.tags.Length; j++)
+                {
+                    if (_tags.tags[j] == "Credit_Card")
+                    {
+                        _inventory.inventoryItems[i].GetComponent<Credit_Card>().Transaction();
+                        SetBuyable(true);
+                    }
+                }
+            }
         }
     }
 
