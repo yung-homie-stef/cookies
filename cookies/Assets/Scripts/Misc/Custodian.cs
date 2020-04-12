@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Custodian : Interactable
+public class Custodian : Interactable // TODO: make update dialogue method virtual, just dont override for items/doors etc.
 {
     public GameObject dialogueManager;
     public float startWaitTime;
@@ -80,9 +80,8 @@ public class Custodian : Interactable
         {
             currentSentences[i] = sentences[i];
         }
-        UpdateDialogue(currentSentences);
 
-        _dialogue.BeginDialogue();
+        _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject);
     }
 
     private IEnumerator GivePlayerKeys(float waitTime)
@@ -92,13 +91,14 @@ public class Custodian : Interactable
         keyring.GetComponent<Interactable>().Interact(); // give players the key if custodian is killed
     }
 
-    private void UpdateDialogue(string[] lines)
+    private string[] UpdateDialogue(string[] lines)
     {
-        _dialogue.sentences = new string[lines.Length];
+        string[] sentences = new string[lines.Length];
 
         for (int i = 0; i < lines.Length; i++)
         {
-            _dialogue.sentences[i] = lines[i];
+            sentences[i] = lines[i];
         }
+        return sentences;
     }
 }

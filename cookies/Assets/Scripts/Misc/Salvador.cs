@@ -56,10 +56,7 @@ public class Salvador : Interactable
 
     public override void Interact()
     {
-        // look to scriptable objects to avoid looking up harcoded
-        _dialogue.BeginDialogue();
-
-        dialogueManager.SetActive(true);
+        //TODO: look to scriptable objects to avoid looking up harcoded
 
         switch (_dialogueValue)
         {
@@ -69,7 +66,7 @@ public class Salvador : Interactable
                 {
                     currentSentences[i] = sentences[i];
                 }
-                UpdateDialogue(currentSentences);
+                _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject);
                 break;
 
             case 1: // after feeding first item
@@ -78,7 +75,7 @@ public class Salvador : Interactable
                 {
                     currentSentences[i] = sentences[i+4];
                 }
-                UpdateDialogue(currentSentences);
+                _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject);
                 break;
 
             case 2: // after feeding three items
@@ -87,7 +84,7 @@ public class Salvador : Interactable
                 {
                     currentSentences[i] = sentences[i + 7];
                 }
-                UpdateDialogue(currentSentences);
+                _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject);
                 break;
 
             case 5: // where he gives the glock
@@ -96,7 +93,7 @@ public class Salvador : Interactable
                 {
                     currentSentences[i] = sentences[i + 12];
                 }
-                UpdateDialogue(currentSentences);
+                _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject);
                 gun.SetActive(true);
                 break;
 
@@ -106,22 +103,25 @@ public class Salvador : Interactable
                 {
                     currentSentences[i] = sentences[i + 19];
                 }
-                UpdateDialogue(currentSentences);
-                gun.SetActive(true);
+                _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject);
+                break;
+
+            default:
                 break;
 
         }
         
     }
 
-    private void UpdateDialogue(string[] lines)
+    private string[] UpdateDialogue(string[] lines)
     {
-        _dialogue.sentences = new string[lines.Length];
+        string[] sentences = new string[lines.Length];
 
         for (int i = 0; i < lines.Length; i++)
         {
-            _dialogue.sentences[i] = lines[i];
+           sentences[i] = lines[i];
         }
+        return sentences;
     }
 
     public void StartCeremony()

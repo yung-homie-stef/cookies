@@ -6,33 +6,53 @@ using UnityEngine.UI;
 public class Dialogue : MonoBehaviour
 {
     public Text textDisplay;
-    public string[] sentences;
+    public string[] sentences = null;
     public float typingSpeed;
-
     public int index = 0;
     public bool _canAdvance;
+    public float speakingDistance = 2.0f;
+
+    private bool hasSentence = false;
+    private GameObject _speaker;
 
     private void Start()
     {
     }
 
-    public void BeginDialogue()
+    public void BeginDialogue(string[] phrases, GameObject speaker)
     {
-        index = 0;
-        StartCoroutine(Type());
-        _canAdvance = false;
+        if (!hasSentence)
+        {
+            sentences = phrases;
+            _speaker = speaker;
+
+            index = 0;
+            StartCoroutine(Type());
+            _canAdvance = false;
+            hasSentence = true;
+        }
+
     }
 
     private void Update()
     {
-        if(textDisplay.text == sentences[index])
+        if (hasSentence)
         {
-            _canAdvance = true;
+            if (textDisplay.text == sentences[index])
+            {
+                _canAdvance = true;
+            }
+
+            if (Input.GetButtonDown("Fire1") && _canAdvance == true)
+            {
+                NextSentence();
+            }
         }
 
-        if (Input.GetButtonDown("Fire1") && _canAdvance == true)
+        if (Vector3.Distance(transform.position, _speaker.transform.position) > speakingDistance)
         {
-            NextSentence();
+            EndConversation(); // if player moves too far end conversation as if speaker has said all their lines
+                                // returning to said speaker will restart said conversation
         }
 
     }
@@ -58,10 +78,18 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
-            textDisplay.text = "";
-            _canAdvance = false;
-            index = 0;
+            EndConversation();
         }
+    }
+
+    public void EndConversation()
+    {
+        textDisplay.text = "";
+        _canAdvance = false;
+        index = 0;
+
+        hasSentence = false;
+        sentences = null; // empty array
     }
 
 }
