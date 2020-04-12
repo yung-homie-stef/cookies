@@ -5,12 +5,10 @@ using UnityEngine.UI;
 
 public class Energy_Drink : Action
 {
-    public GameObject player;
     public Text noticeText;
     public string newText;
 
     private Movement _movement;
-    private Inventory _inventory;
     private Notice _notice;
 
     // Start is called before the first frame update
@@ -24,9 +22,8 @@ public class Energy_Drink : Action
     public override void Use()
     {
         _movement.speed *= 2; // become faster
-        _inventory.isFull[_inventory.GetCurrentSlot()] = false;
         _notice.ChangeText(newText);
-        Destroy(_inventory.inventoryItems[_inventory.GetCurrentSlot()]);
+        base.Use();
     }
 
 }

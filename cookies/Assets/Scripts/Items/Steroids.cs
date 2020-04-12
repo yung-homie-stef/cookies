@@ -5,13 +5,11 @@ using UnityEngine.UI;
 
 public class Steroids : Action
 {
-    public GameObject player;
     public Text noticeText;
     public string newText;
 
     private Player _playerScript;
     private Notice _notice;
-    private Inventory _inventory;
 
 
     // Start is called before the first frame update
@@ -26,7 +24,6 @@ public class Steroids : Action
     {
         _playerScript.roided = true; // allow player to punch with this bool
         _notice.ChangeText(newText);
-        _inventory.isFull[_inventory.GetCurrentSlot()] = false;
-        Destroy(_inventory.inventoryItems[_inventory.GetCurrentSlot()]);
+        base.Use();
     }
 }

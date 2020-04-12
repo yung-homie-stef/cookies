@@ -8,13 +8,24 @@ public class Salvador : Interactable
     public GameObject gun;
     public GameObject ratPrimacy;
     public Light livingRoomLight;
-    public string[] sentences;
+    public Set_of_Sentences[] sentenceSets;
 
     [SerializeField]
     private int _dialogueValue;
     private string[] currentSentences;
     private Dialogue _dialogue;
     private Tags _tags;
+    private Fullness _salvadorsBelly = 0;
+
+    private enum Fullness
+    {
+        empty = 0,
+        fed_once = 1,
+        fed_twice = 2,
+        fed_thrice = 3,
+        fed_fourfold = 4,
+        full = 5
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +33,6 @@ public class Salvador : Interactable
         _dialogue = dialogueManager.GetComponent<Dialogue>();
         _dialogueValue = 0;
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -40,10 +50,20 @@ public class Salvador : Interactable
                     _dialogue.index = 0;
                     _dialogue._canAdvance = true;
 
-                    if (_dialogueValue < 5) // so that they cant access the ritual by feeding him MORE food
+                    if ((int)_salvadorsBelly < 5) // so that they cant access the ritual by feeding him MORE food
                     {
-                        _dialogueValue++;
+                        _salvadorsBelly++;
+                        Debug.Log(_salvadorsBelly);
                     }
+                    _dialogueValue = (int)_salvadorsBelly;
+                    Interact();
+
+                    if ((int)_salvadorsBelly == 5)
+                    {
+                        gun.SetActive(true); // give player gun when he is full
+                    }
+
+
                     break;
                 }
                 else if (_tags.tags[i] == "Poison")
@@ -56,61 +76,13 @@ public class Salvador : Interactable
 
     public override void Interact()
     {
-        //TODO: look to scriptable objects to avoid looking up harcoded
+        HandleDialogue(_dialogueValue);
+    }
 
-        switch (_dialogueValue)
-        {
-            case 0: // initial convo
-                currentSentences = new string[4];
-                for (int i =0; i < currentSentences.Length; i++)
-                {
-                    currentSentences[i] = sentences[i];
-                }
-                _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject);
-                break;
-
-            case 1: // after feeding first item
-                currentSentences = new string[3];
-                for (int i = 0; i < currentSentences.Length; i++)
-                {
-                    currentSentences[i] = sentences[i+4];
-                }
-                _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject);
-                break;
-
-            case 2: // after feeding three items
-                currentSentences = new string[5];
-                for (int i = 0; i < currentSentences.Length; i++)
-                {
-                    currentSentences[i] = sentences[i + 7];
-                }
-                _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject);
-                break;
-
-            case 5: // where he gives the glock
-                currentSentences = new string[7];
-                for (int i = 0; i < currentSentences.Length; i++)
-                {
-                    currentSentences[i] = sentences[i + 12];
-                }
-                _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject);
-                gun.SetActive(true);
-                break;
-
-            case 6: // after killing janitor
-                currentSentences = new string[6];
-                for (int i = 0; i < currentSentences.Length; i++)
-                {
-                    currentSentences[i] = sentences[i + 19];
-                }
-                _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject);
-                break;
-
-            default:
-                break;
-
-        }
-        
+    private void HandleDialogue(int setIndex)
+    {
+        currentSentences = sentenceSets[setIndex].sentences;
+        _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject);
     }
 
     private string[] UpdateDialogue(string[] lines)
@@ -133,4 +105,6 @@ public class Salvador : Interactable
             livingRoomLight.color = new Color32(171, 38, 31, 255); // change light to demonic red
         }
     }
+
+
 }
