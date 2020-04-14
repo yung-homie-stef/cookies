@@ -7,6 +7,7 @@ public class Altar_Drugs : Action
     public GameObject galaxyGroup;
     public GameObject blackout;
     public Transform galaxyTransform;
+    public GameObject teleportParticle;
 
     private Animator _animator;
     [SerializeField]
@@ -37,6 +38,7 @@ public class Altar_Drugs : Action
 
         // teleport player to galaxy 
         player.transform.position = galaxyTransform.position;
+        player.transform.rotation = Quaternion.Euler(0, -180, 0);
 
         // stops player from teleporting to space if they are alreasy in space
         hasTeleported = true;
@@ -48,6 +50,8 @@ public class Altar_Drugs : Action
         {
             tf.gameObject.layer = 0;
         }
+
+        teleportParticle.SetActive(true);
 
     }
 
@@ -62,5 +66,7 @@ public class Altar_Drugs : Action
         {
             tf.gameObject.layer = 15;
         }
+
+        teleportParticle.SetActive(false);
     }
 }
