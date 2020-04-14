@@ -33,12 +33,6 @@ public class Father_Huxley : Interactable
         _animator.SetInteger("praise_animation", animationInt);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public override void Interact()
     {
         //if (!_hasPaid)
