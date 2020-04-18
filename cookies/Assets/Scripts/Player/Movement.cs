@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float speed;
-    public bool movementEnabled = true;
+    public float playerSpeed;
+    public bool playerMovementEnabled = true;
   
     private float _translation;
     private float _strafe;
@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
+        
         _animator = this.GetComponent<Animator>();
 
         if (_playerRB = GetComponent<Rigidbody>())
@@ -31,7 +32,7 @@ public class Movement : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
 
-        if (movementEnabled)
+        if (playerMovementEnabled)
         {
             Vector3 forwardDirection = transform.forward;
             Vector3 strafeDirection = transform.right;
@@ -43,7 +44,7 @@ public class Movement : MonoBehaviour
             _translation *= Time.deltaTime;
             _strafe *= Time.deltaTime;
 
-            movementDirection = ((forwardDirection * _translation) + (strafeDirection * _strafe)).normalized * speed; 
+            movementDirection = ((forwardDirection * _translation) + (strafeDirection * _strafe)).normalized * playerSpeed; 
 
             //transform.Translate(_strafe, 0, _translation);
             _playerRB.AddForce(movementDirection, ForceMode.VelocityChange);
@@ -51,7 +52,7 @@ public class Movement : MonoBehaviour
             RaycastHit _hit;
             if (Physics.Raycast(transform.position + (Vector3.up * 0.05f), Vector3.down, out _hit, 0.2f))
             {
-                Debug.Log(_hit.collider.gameObject.name);
+               // Debug.Log(_hit.collider.gameObject.name);
 
                 Vector3 newPosition = transform.position;
                 newPosition.y = _hit.point.y;
@@ -66,7 +67,7 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         // TODO: fix with blend tree
-        if (movementEnabled)
+        if (playerMovementEnabled)
         {
             if (_translation > 0)
                 _animator.SetInteger("direction", 1);

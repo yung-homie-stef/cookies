@@ -6,48 +6,48 @@ using System.Linq;
 
 public class Inventory : MonoBehaviour
 {
-    public GameObject inventoryIndicator;
-    public GameObject[] UISlots;
-    public GameObject[] inventoryItems;
-    public bool[] isFull;
-    public bool weaponEquipped; // variable that dictates whether player can cycle through inventory items
+    public GameObject playerInventoryIndicator;
+    public GameObject[] inventoryUISlots;
+    public GameObject[] playerInventoryItems;
+    public bool[] isSlotFull;
+    public bool isWeaponEquipped; // variable that dictates whether player can cycle through inventory items
 
-    [SerializeField]
-    public static int currentSlot;
+    //[SerializeField]
+    public static int currentSelectedSlot;
 
     private void Start()
     {
-        weaponEquipped = false;
+        isWeaponEquipped = false;
     }
 
     private void Update()
     {
-        if (weaponEquipped == false) // when an object that takes up the player's hand is used, prohibit them from being able to select and use other items
+        if (isWeaponEquipped == false) // when an object that takes up the player's hand is used, prohibit them from being able to select and use other items
         {
             if (Input.GetButton("FirstSlot"))
             {
-                currentSlot = 0;
-                SelectItemInInventory(currentSlot);
+                currentSelectedSlot = 0;
+                SelectItemInInventory(currentSelectedSlot);
             }
             else if (Input.GetButton("SecondSlot"))
             {
-                currentSlot = 1;
-                SelectItemInInventory(currentSlot);
+                currentSelectedSlot = 1;
+                SelectItemInInventory(currentSelectedSlot);
             }
             else if (Input.GetButton("ThirdSlot"))
             {
-                currentSlot = 2;
-                SelectItemInInventory(currentSlot);
+                currentSelectedSlot = 2;
+                SelectItemInInventory(currentSelectedSlot);
             }
             else if (Input.GetButton("FourthSlot"))
             {
-                currentSlot = 3;
-                SelectItemInInventory(currentSlot);
+                currentSelectedSlot = 3;
+                SelectItemInInventory(currentSelectedSlot);
             }
             else if (Input.GetButton("FifthSlot"))
             {
-                currentSlot = 4;
-                SelectItemInInventory(currentSlot);
+                currentSelectedSlot = 4;
+                SelectItemInInventory(currentSelectedSlot);
             }
         }
     }
@@ -55,21 +55,21 @@ public class Inventory : MonoBehaviour
     private void SelectItemInInventory(int currentSlot)
     {
         // only allow a slot to be selectable if its full
-        if (isFull[currentSlot])
+        if (isSlotFull[currentSlot])
         {
-            if (inventoryIndicator.activeSelf == false)
+            if (playerInventoryIndicator.activeSelf == false)
             {
-                inventoryIndicator.SetActive(true);
+                playerInventoryIndicator.SetActive(true);
             }
 
-            Vector3 newPosition = new Vector3(inventoryIndicator.transform.position.x, UISlots[currentSlot].transform.position.y, 0);
-            inventoryIndicator.transform.position = newPosition;
+            Vector3 newPosition = new Vector3(playerInventoryIndicator.transform.position.x, inventoryUISlots[currentSlot].transform.position.y, 0);
+            playerInventoryIndicator.transform.position = newPosition;
         }
     }
 
     public int GetCurrentSlot()
     {
-        return currentSlot;
+        return currentSelectedSlot;
     }
 
 

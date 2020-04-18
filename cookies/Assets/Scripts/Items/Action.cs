@@ -22,7 +22,7 @@ public abstract class Action : MonoBehaviour
 
     public virtual void Use()
     {
-        _inventory.isFull[_inventory.GetCurrentSlot()] = false;
-        Destroy(_inventory.inventoryItems[_inventory.GetCurrentSlot()]);
+        _inventory.isSlotFull[_inventory.GetCurrentSlot()] = false;
+        Destroy(_inventory.playerInventoryItems[_inventory.GetCurrentSlot()]);
     }
 }

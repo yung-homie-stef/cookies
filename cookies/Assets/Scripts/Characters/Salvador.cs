@@ -47,7 +47,7 @@ public class Salvador : Interactable
                 if (_tags.tags[i] == "Edible")
                 {
                     Destroy(other.gameObject);
-                    _dialogue.index = 0;
+                    _dialogue.dialogueIndex = 0;
                     _dialogue._canAdvance = true;
 
                     if ((int)_salvadorsBelly < 5) // so that they cant access the ritual by feeding him MORE food

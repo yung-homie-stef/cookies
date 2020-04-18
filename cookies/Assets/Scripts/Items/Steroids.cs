@@ -22,7 +22,7 @@ public class Steroids : Action
 
     public override void Use()
     {
-        _playerScript.roided = true; // allow player to punch with this bool
+        _playerScript.isRoided = true; // allow player to punch with this bool
         _notice.ChangeText(newText);
         base.Use();
     }

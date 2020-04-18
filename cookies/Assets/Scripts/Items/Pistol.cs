@@ -49,14 +49,14 @@ public class Pistol : Action
     {
         if (_cocked == true)
         {
-            _inventory.weaponEquipped = false; // put gun away
+            _inventory.isWeaponEquipped = false; // put gun away
             Destroy(_duplicate);
             _cocked = false;
             
         }
         else if (_cocked == false)
         {
-            _inventory.weaponEquipped = true;
+            _inventory.isWeaponEquipped = true;
             // create a duplicate of the gun that rests in the player's hand
             _duplicate = Instantiate(gameObject, playerPalm.transform.position, player.transform.rotation);
             _duplicate.transform.Rotate(0,90,90); 

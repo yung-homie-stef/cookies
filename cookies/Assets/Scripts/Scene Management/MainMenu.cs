@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class MainMenu : MonoBehaviour
     public GameObject settingsMenu;
     public GameObject startButton;
 
+    public Text[] threadTitleTexts = new Text[12];
 
     public void RemoveTitle()
     {

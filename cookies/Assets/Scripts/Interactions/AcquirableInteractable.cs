@@ -108,8 +108,8 @@ public class AcquirableInteractable : Interactable
         gameObject.layer = 0;
         gameObject.transform.position = dropPosition;
         gameObject.transform.eulerAngles = originalRotation;
-        _inventory.isFull[Inventory.currentSlot] = false;
-        _inventory.inventoryItems[Inventory.currentSlot] = null;
+        _inventory.isSlotFull[Inventory.currentSelectedSlot] = false;
+        _inventory.playerInventoryItems[Inventory.currentSelectedSlot] = null;
         _clickable = true;
     }
 

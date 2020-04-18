@@ -8,6 +8,8 @@ public class Altar_Drugs : Action
     public GameObject blackout;
     public Transform galaxyTransform;
     public GameObject teleportParticle;
+    public GameObject goat;
+    public GameObject UFO;
 
     private Animator _animator;
     [SerializeField]
@@ -52,6 +54,8 @@ public class Altar_Drugs : Action
         }
 
         teleportParticle.SetActive(true);
+        goat.SetActive(true);
+        UFO.SetActive(true);
 
     }
 
@@ -68,5 +72,7 @@ public class Altar_Drugs : Action
         }
 
         teleportParticle.SetActive(false);
+        goat.SetActive(false);
+        UFO.SetActive(false);
     }
 }

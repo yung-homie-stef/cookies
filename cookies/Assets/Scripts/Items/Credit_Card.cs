@@ -40,17 +40,17 @@ public class Credit_Card : MonoBehaviour
         Destroy(gameObject);
         _notice.ChangeText("CREDIT CARD OVERDAFTED");
 
-        for (int i = 0; i < _inventory.UISlots.Length; i++)
+        for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
         {
-            if (_inventory.inventoryItems[i] != null)
+            if (_inventory.playerInventoryItems[i] != null)
             {
-                _tags = _inventory.inventoryItems[i].GetComponent<Tags>();
+                _tags = _inventory.playerInventoryItems[i].GetComponent<Tags>();
 
                 for (int j = 0; j < _tags.tags.Length; j++)
                 {
                     if (_tags.tags[j] == "Credit_Card")
                     {
-                        _inventory.isFull[i] = false; // empty slot that credit card was in
+                        _inventory.isSlotFull[i] = false; // empty slot that credit card was in
                     }
                 }
             }

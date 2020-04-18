@@ -28,11 +28,11 @@ public class Vending_Machine : Interactable
     {
         if (_hasVended == false)
         {
-            for (int i = 0; i < _inventory.UISlots.Length; i++)
+            for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
             {
-                if (_inventory.inventoryItems[i] != null)
+                if (_inventory.playerInventoryItems[i] != null)
                 {
-                    _tags = _inventory.inventoryItems[i].GetComponent<Tags>();
+                    _tags = _inventory.playerInventoryItems[i].GetComponent<Tags>();
 
                     for (int j = 0; j < _tags.tags.Length; j++)
                     {
@@ -41,8 +41,8 @@ public class Vending_Machine : Interactable
                             _animator.SetBool("vending", true);
                             candyBar.GetComponent<BoxCollider>().enabled = true;
                             _hasVended = true;
-                            _inventory.isFull[i] = false;
-                            Destroy(_inventory.inventoryItems[i]);
+                            _inventory.isSlotFull[i] = false;
+                            Destroy(_inventory.playerInventoryItems[i]);
                             break;
                         }
                     }

@@ -20,18 +20,18 @@ public class Pickup : MonoBehaviour
 
     public void AddItem()
     {
-        for (int i = 0; i < _inventory.UISlots.Length; i++)
+        for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
         {
-            if (_inventory.isFull[i] == false)
+            if (_inventory.isSlotFull[i] == false)
             {
 
                 // item can be added
-                _inventory.isFull[i] = true;
+                _inventory.isSlotFull[i] = true;
                 gameObject.layer = 9 + i;
                 gameObject.transform.position = new Vector3(renderTransform.position.x + extraX, renderTransform.position.y, renderTransform.position.z);
                 gameObject.transform.localScale = renderScale;
                 gameObject.transform.eulerAngles = renderRotation;
-                _inventory.inventoryItems[i] = gameObject;
+                _inventory.playerInventoryItems[i] = gameObject;
                 break;
             }
           

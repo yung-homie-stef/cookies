@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Camera mainCamera;
-    public RaycastHit hit;
-    public bool roided;
+    public Camera playerCamera;
+    public RaycastHit playerRaycastHit;
+    public bool isRoided;
     public GameObject fistHitbox;
 
     private Movement playerMovement;
@@ -19,7 +19,8 @@ public class Player : MonoBehaviour
         playerMovement = GetComponent<Movement>();
         _inventory = GetComponent<Inventory>();
         _animator = GetComponent<Animator>();
-        roided = false;
+        isRoided = false;
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -33,7 +34,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetButton("Fire2"))
         {
-            if (roided)
+            if (isRoided)
                 Punch();
         }
 
@@ -51,22 +52,22 @@ public class Player : MonoBehaviour
 
     public void DisableMovement()
     {
-        playerMovement.movementEnabled = false;
+        playerMovement.playerMovementEnabled = false;
     }
 
     void Interact()
     {
-        Ray _ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        Ray _ray = playerCamera.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(_ray, out hit, 1))
+        if (Physics.Raycast(_ray, out playerRaycastHit, 1))
         {
-            if (_inventory.weaponEquipped == false)
+            if (_inventory.isWeaponEquipped == false)
             {
-                if (hit.transform.tag.Equals("Interactable"))
+                if (playerRaycastHit.transform.tag.Equals("Interactable"))
                 {
-                    if (hit.transform.GetComponent<Interactable>())
+                    if (playerRaycastHit.transform.GetComponent<Interactable>())
                     {
-                        hit.transform.GetComponent<Interactable>().Interact();
+                        playerRaycastHit.transform.GetComponent<Interactable>().Interact();
                     }
                 }
             }
@@ -75,19 +76,19 @@ public class Player : MonoBehaviour
 
     void Use()
     {
-        if (_inventory.inventoryItems[Inventory.currentSlot].GetComponent<Action>())
+        if (_inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<Action>())
         {
-            _inventory.inventoryItems[Inventory.currentSlot].GetComponent<Action>().Use();
+            _inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<Action>().Use();
         }
     }
 
     void Drop()
     {
-        if (_inventory.weaponEquipped == false)
+        if (_inventory.isWeaponEquipped == false)
         {
-            if (_inventory.inventoryItems[Inventory.currentSlot].GetComponent<AcquirableInteractable>() && _inventory.inventoryItems[Inventory.currentSlot])
+            if (_inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<AcquirableInteractable>() && _inventory.playerInventoryItems[Inventory.currentSelectedSlot])
             {
-                _inventory.inventoryItems[Inventory.currentSlot].GetComponent<AcquirableInteractable>().Drop();
+                _inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<AcquirableInteractable>().Drop();
             }
         }
     }

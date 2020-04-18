@@ -74,18 +74,18 @@ public class Father_Huxley : Interactable
     private bool CheckForTithes()
     {
 
-        for (int i = 0; i < _inventory.UISlots.Length; i++)
+        for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
         {
-            if (_inventory.inventoryItems[i] != null)
+            if (_inventory.playerInventoryItems[i] != null)
             {
-                _tags = _inventory.inventoryItems[i].GetComponent<Tags>();
+                _tags = _inventory.playerInventoryItems[i].GetComponent<Tags>();
 
                 for (int j = 0; j < _tags.tags.Length; j++)
                 {
                     if (_tags.tags[j] == "Currency")
                     {
-                        _inventory.isFull[i] = false;
-                        Destroy(_inventory.inventoryItems[i]);
+                        _inventory.isSlotFull[i] = false;
+                        Destroy(_inventory.playerInventoryItems[i]);
                         return true;
                     }
                 }

@@ -32,15 +32,16 @@ public class Shopkeeper : Interactable
     {
         if (other.tag == "Interactable") // when the player drops an object to the shopkeeper, have him check if its currency, if so
         {
-            _tags = other.GetComponent<Tags>();
-
-            for (int i = 0; i < _tags.tags.Length; i++)
+            if (_tags = other.GetComponent<Tags>())
             {
-                if (_tags.tags[i] == "Currency")
+                for (int i = 0; i < _tags.tags.Length; i++)
                 {
-                    _storeCredit++; // when store credit is above 0 players can buy items 
-                    Destroy(other.gameObject);
-                    SetBuyable(true);
+                    if (_tags.tags[i] == "Currency")
+                    {
+                        _storeCredit++; // when store credit is above 0 players can buy items 
+                        Destroy(other.gameObject);
+                        SetBuyable(true);
+                    }
                 }
             }
         }
@@ -56,17 +57,17 @@ public class Shopkeeper : Interactable
 
     public override void Interact()
     {
-        for (int i = 0; i < _inventory.UISlots.Length; i++)
+        for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
         {
-            if (_inventory.inventoryItems[i] != null)
+            if (_inventory.playerInventoryItems[i] != null)
             {
-                _tags = _inventory.inventoryItems[i].GetComponent<Tags>();
+                _tags = _inventory.playerInventoryItems[i].GetComponent<Tags>();
 
                 for (int j = 0; j < _tags.tags.Length; j++)
                 {
                     if (_tags.tags[j] == "Credit_Card")
                     {
-                        _inventory.inventoryItems[i].GetComponent<Credit_Card>().Transaction();
+                        _inventory.playerInventoryItems[i].GetComponent<Credit_Card>().Transaction();
                         SetBuyable(true);
                     }
                 }

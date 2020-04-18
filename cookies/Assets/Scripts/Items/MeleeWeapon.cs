@@ -44,13 +44,13 @@ public class MeleeWeapon : Action
     {
         if (_wielding == true)
         {
-            _inventory.weaponEquipped = false; // put weapon away
+            _inventory.isWeaponEquipped = false; // put weapon away
             Destroy(_duplicate);
             _wielding = false;
         }
         else if (_wielding == false)
         {
-            _inventory.weaponEquipped = true;
+            _inventory.isWeaponEquipped = true;
             // create a duplicate of the gun that rests in the player's hand
             _duplicate = Instantiate(gameObject, playerPalm.transform.position, player.transform.rotation);
             _duplicate.transform.Rotate(weaponRotation);

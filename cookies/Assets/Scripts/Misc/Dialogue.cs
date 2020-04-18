@@ -8,7 +8,7 @@ public class Dialogue : MonoBehaviour
     public Text textDisplay;
     public string[] sentences = null;
     public float typingSpeed;
-    public int index = 0;
+    public int dialogueIndex = 0;
     public bool _canAdvance;
     public float speakingDistance = 2.0f;
 
@@ -26,7 +26,7 @@ public class Dialogue : MonoBehaviour
             sentences = phrases;
             _speaker = speaker;
 
-            index = 0;
+            dialogueIndex = 0;
             StartCoroutine(Type());
             _canAdvance = false;
             hasSentence = true;
@@ -38,7 +38,7 @@ public class Dialogue : MonoBehaviour
     {
         if (hasSentence)
         {
-            if (textDisplay.text == sentences[index])
+            if (textDisplay.text == sentences[dialogueIndex])
             {
                 _canAdvance = true;
             }
@@ -49,17 +49,20 @@ public class Dialogue : MonoBehaviour
             }
         }
 
-        if (Vector3.Distance(transform.position, _speaker.transform.position) > speakingDistance)
+        if (_speaker)
         {
-            EndConversation(); // if player moves too far end conversation as if speaker has said all their lines
-                                // returning to said speaker will restart said conversation
+            if (Vector3.Distance(transform.position, _speaker.transform.position) > speakingDistance)
+            {
+                EndConversation(); // if player moves too far end conversation as if speaker has said all their lines
+                                   // returning to said speaker will restart said conversation
+            }
         }
 
     }
 
     private IEnumerator Type()
     {
-        foreach(char letter in sentences[index].ToCharArray())
+        foreach(char letter in sentences[dialogueIndex].ToCharArray())
         {
             textDisplay.text += letter;
             yield return new WaitForSeconds(typingSpeed);
@@ -70,9 +73,9 @@ public class Dialogue : MonoBehaviour
     {
         _canAdvance = false;
 
-        if (index < sentences.Length - 1)
+        if (dialogueIndex < sentences.Length - 1)
         {
-            index++;
+            dialogueIndex++;
             textDisplay.text = "";
             StartCoroutine(Type());
         }
@@ -86,7 +89,7 @@ public class Dialogue : MonoBehaviour
     {
         textDisplay.text = "";
         _canAdvance = false;
-        index = 0;
+        dialogueIndex = 0;
 
         hasSentence = false;
         sentences = null; // empty array
