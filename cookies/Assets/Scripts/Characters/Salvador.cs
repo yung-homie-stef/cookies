@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Salvador : Interactable
 {
@@ -9,6 +10,7 @@ public class Salvador : Interactable
     public GameObject ratPrimacy;
     public Light livingRoomLight;
     public Set_of_Sentences[] sentenceSets;
+    public End_Condition son_of_sal_Thread;
 
     [SerializeField]
     private int _dialogueValue;
@@ -32,6 +34,14 @@ public class Salvador : Interactable
     {
         _dialogue = dialogueManager.GetComponent<Dialogue>();
         _dialogueValue = 0;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Game_Manager.globalGameManager.EndGame(son_of_sal_Thread);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -103,6 +113,7 @@ public class Salvador : Interactable
             ratPrimacy.SetActive(true);
             _dialogueValue++;
             livingRoomLight.color = new Color32(171, 38, 31, 255); // change light to demonic red
+            Game_Manager.globalGameManager.EndGame(son_of_sal_Thread);
         }
     }
 

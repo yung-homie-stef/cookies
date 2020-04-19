@@ -9,11 +9,18 @@ public class ProgressInformation
 {
     public bool[] completedPaths;
     public int totalCompletedPaths;
-    public string newlyCompletedPath;
+    public string[] pathNames;
     
     public ProgressInformation()
     {
         completedPaths = new bool[12];
+        pathNames = new string[12];
+
+        for (int i = 0; i < pathNames.Length; i++)
+        {
+            pathNames[i] = "--:--"; 
+        }
+
 
         for (int i = 0; i < completedPaths.Length; i++)
         {
@@ -28,6 +35,7 @@ public class Game_Manager : MonoBehaviour
     private ProgressInformation playerProgress = null;
     private MainMenu mainMenuScript;
     public GameObject mainMenu;
+    public GameObject endScreenInfo;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +43,8 @@ public class Game_Manager : MonoBehaviour
         playerProgress = new ProgressInformation();
         playerProgress = Save_Load_Test.LoadProgress();
         mainMenuScript = mainMenu.GetComponent<MainMenu>();
+        endScreenInfo.SetActive(false);
+        UpdateThreadTitles();
     }
 
     private void Awake()
@@ -63,10 +73,27 @@ public class Game_Manager : MonoBehaviour
         {
             playerProgress = Save_Load_Test.LoadProgress();
         }
-
-
     }
 
+    void UpdateThreadTitles()
+    {
+        for (int i = 0; i < playerProgress.completedPaths.Length; i++)
+        {
+            //if (playerProgress.completedPaths[i])
+            {
+                mainMenuScript.threadTitleTexts[i].text = playerProgress.pathNames[i];
+            }
+        }
+    }
+
+    public void EndGame(End_Condition condition)
+    {
+        SceneManager.LoadScene(3);
+        endScreenInfo.SetActive(true);
+        End_Menu.globalEndMenu.SetStatusOfThreadCompletion(condition);
+        CompletePath(condition.threadID, condition.threadName);
+       
+    }
 
     void CompletePath(int pathID, string pathName)
     {
@@ -75,7 +102,7 @@ public class Game_Manager : MonoBehaviour
             Debug.Log("path " + pathID + " has been completed");
             playerProgress.totalCompletedPaths++;
             playerProgress.completedPaths[pathID] = true; // this path is now complete
-            mainMenuScript.threadTitleTexts[pathID].text = pathName;
+            playerProgress.pathNames[pathID] = pathName;
             Save_Load_Test.SaveProgress(playerProgress);
             
         }
