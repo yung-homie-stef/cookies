@@ -18,6 +18,7 @@ public class Salvador : Interactable
     private Dialogue _dialogue;
     private Tags _tags;
     private Fullness _salvadorsBelly = 0;
+    private bool eventHappensWhenTalkingIsDone;
 
     private enum Fullness
     {
@@ -30,10 +31,11 @@ public class Salvador : Interactable
     }
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
         _dialogue = dialogueManager.GetComponent<Dialogue>();
         _dialogueValue = 0;
+        eventHappensWhenTalkingIsDone = false;
     }
 
     private void Update()
@@ -92,7 +94,7 @@ public class Salvador : Interactable
     private void HandleDialogue(int setIndex)
     {
         currentSentences = sentenceSets[setIndex].sentences;
-        _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject);
+        _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject, eventHappensWhenTalkingIsDone);
     }
 
     private string[] UpdateDialogue(string[] lines)
@@ -113,8 +115,19 @@ public class Salvador : Interactable
             ratPrimacy.SetActive(true);
             _dialogueValue++;
             livingRoomLight.color = new Color32(171, 38, 31, 255); // change light to demonic red
-            Game_Manager.globalGameManager.EndGame(son_of_sal_Thread);
+            eventHappensWhenTalkingIsDone = true;
         }
+    }
+
+    public override void ConversationEndEvent()
+    {
+        StartCoroutine(CompleteSalvadorsThread(5.0f));
+    }
+
+    private IEnumerator CompleteSalvadorsThread(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Game_Manager.globalGameManager.EndGame(son_of_sal_Thread);
     }
 
 }

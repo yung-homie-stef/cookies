@@ -16,13 +16,13 @@ public class Father_Huxley : Interactable
     private string[] currentSentences;
     private Dialogue _dialogue;
     private Tags _tags;
-    private Animator _animator;
     private Inventory _inventory;
     private bool _hasPaid;
     private Notice _notice;
+    private bool eventHappensWhenTalkingIsDone;
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
         _hasPaid = false;
         _dialogue = dialogueManager.GetComponent<Dialogue>();
@@ -31,6 +31,7 @@ public class Father_Huxley : Interactable
         _inventory = player.GetComponent<Inventory>();
         _notice = noticeText.GetComponent<Notice>();
         _animator.SetInteger("praise_animation", animationInt);
+        eventHappensWhenTalkingIsDone = false;
     }
 
     public override void Interact()
@@ -57,7 +58,7 @@ public class Father_Huxley : Interactable
     private void HandleDialogue(int setIndex)
     {
         currentSentences = sentenceSets[setIndex].sentences;
-        _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject);
+        _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject, eventHappensWhenTalkingIsDone);
     }
 
     private string[] UpdateDialogue(string[] lines)

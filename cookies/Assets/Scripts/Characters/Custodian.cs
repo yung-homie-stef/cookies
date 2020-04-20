@@ -19,11 +19,11 @@ public class Custodian : Interactable // TODO: make update dialogue method virtu
     private float _waitTime;
     private bool _hasSpoken;
     private NavMeshAgent _agent;
-    private Animator _animator;
     private Salvador _salvadorScript;
+    private bool eventHappensWhenTalkingIsDone;
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
         _waitTime = startWaitTime;
         _randomSpot = Random.Range(0, moveSpots.Length);
@@ -32,6 +32,7 @@ public class Custodian : Interactable // TODO: make update dialogue method virtu
         _hasSpoken = false;
         _salvadorScript = Salvador.GetComponent<Salvador>();
         _dialogue = dialogueManager.GetComponent<Dialogue>();
+        eventHappensWhenTalkingIsDone = false;
     }
 
     // Update is called once per frame
@@ -80,7 +81,7 @@ public class Custodian : Interactable // TODO: make update dialogue method virtu
             currentSentences[i] = sentences[i];
         }
 
-        _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject);
+        _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject, eventHappensWhenTalkingIsDone);
     }
 
     private IEnumerator GivePlayerKeys(float waitTime)

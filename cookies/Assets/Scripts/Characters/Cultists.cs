@@ -10,16 +10,17 @@ public class Cultists : Interactable
     public string[] sentences;
     public GameObject dialogueManager;
 
-    private Animator _animator;
     private string[] currentSentences;
     private Dialogue _dialogue;
+    private bool eventHappensWhenTalkingIsDone;
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
         _animator = GetComponent<Animator>();
         _animator.SetInteger("praise_animation", animationInt);
         _dialogue = dialogueManager.GetComponent<Dialogue>();
+        eventHappensWhenTalkingIsDone = false;
     }
 
     // Update is called once per frame
@@ -37,7 +38,7 @@ public class Cultists : Interactable
             {
                 currentSentences[i] = sentences[i];
             }
-            _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject);
+            _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject, eventHappensWhenTalkingIsDone);
         }
         else
         {
@@ -48,7 +49,7 @@ public class Cultists : Interactable
     private void HandleDialogue(int setIndex)
     {
         currentSentences = sentenceSets[setIndex].sentences;
-        _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject);
+        _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject, eventHappensWhenTalkingIsDone);
     }
 
     private string[] UpdateDialogue(string[] lines)

@@ -13,13 +13,14 @@ public class Dialogue : MonoBehaviour
     public float speakingDistance = 2.0f;
 
     private bool hasSentence = false;
+    private bool hasEvent = false;
     private GameObject _speaker;
 
     private void Start()
     {
     }
 
-    public void BeginDialogue(string[] phrases, GameObject speaker)
+    public void BeginDialogue(string[] phrases, GameObject speaker, bool eventExists)
     {
         if (!hasSentence)
         {
@@ -30,6 +31,7 @@ public class Dialogue : MonoBehaviour
             StartCoroutine(Type());
             _canAdvance = false;
             hasSentence = true;
+            hasEvent = eventExists;
         }
 
     }
@@ -93,6 +95,11 @@ public class Dialogue : MonoBehaviour
 
         hasSentence = false;
         sentences = null; // empty array
+        
+        if (hasEvent)
+        {
+            _speaker.GetComponent<Interactable>().ConversationEndEvent();
+        }
     }
 
 }

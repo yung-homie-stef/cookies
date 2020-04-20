@@ -9,14 +9,13 @@ public class Vending_Machine : Interactable
     public GameObject player;
     public Text noticeText;
 
-    private Animator _animator;
     private Inventory _inventory;
     private Tags _tags;
     private Notice _notice;
     private bool _hasVended;
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
         _hasVended = false;
         _animator = gameObject.GetComponent<Animator>();

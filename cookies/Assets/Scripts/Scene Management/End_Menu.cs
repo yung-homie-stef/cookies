@@ -12,10 +12,12 @@ public class End_Menu : MonoBehaviour
     public GameObject threadTitle;
     public GameObject threadEffect;
     public GameObject threadHint;
+    public Transform threadModelTransform;
 
     private TextMeshProUGUI threadTitleTMPro;
     private TextMeshProUGUI threadEffectTMPro;
     private TextMeshProUGUI threadHintTMPro;
+    private GameObject rotatingModelOnScreen;
 
     private void Start()
     {
@@ -42,6 +44,7 @@ public class End_Menu : MonoBehaviour
         threadTitleTMPro.text = cond.threadName;
         threadEffectTMPro.text = cond.threadEffect;
         threadHintTMPro.text = cond.nextThreadHint;
+        rotatingModelOnScreen = Instantiate(cond.rotatingModel, threadModelTransform.position, threadModelTransform.rotation);
     }
 
     public void ReturnToMainMenu()

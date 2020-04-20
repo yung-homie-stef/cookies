@@ -9,7 +9,12 @@ public abstract class Interactable : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        //jesse gay
+        
+    }
+
+    public virtual void ConversationEndEvent()
+    {
+
     }
 
     // Update is called once per frame

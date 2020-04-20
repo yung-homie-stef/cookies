@@ -10,6 +10,6 @@ public class End_Condition : ScriptableObject
     public string threadEffect;
     public string nextThreadHint;
     public int threadID;
-    //public GameObject rotatingModel;
+    public GameObject rotatingModel;
 
 }
