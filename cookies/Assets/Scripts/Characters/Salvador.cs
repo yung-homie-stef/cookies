@@ -81,6 +81,8 @@ public class Salvador : Interactable
                 else if (_tags.tags[i] == "Poison")
                 {
                     GetComponent<Victim>().Die(); // kill salvador if he is fed poison
+                    //_dialogueValue = 8;
+                    //Interact();
                 }
             }    
         }
