@@ -55,8 +55,10 @@ public class Dialogue : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, _speaker.transform.position) > speakingDistance)
             {
-                EndConversation(); // if player moves too far end conversation as if speaker has said all their lines
+                //EndConversation(); // if player moves too far end conversation as if speaker has said all their lines
                                    // returning to said speaker will restart said conversation
+
+                // MAKE NEW METHOD THAT JUST CUTS THEM OFF
             }
         }
 
