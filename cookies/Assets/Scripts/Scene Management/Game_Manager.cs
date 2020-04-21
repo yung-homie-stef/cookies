@@ -79,7 +79,7 @@ public class Game_Manager : MonoBehaviour
     {
         for (int i = 0; i < playerProgress.completedPaths.Length; i++)
         {
-            //if (playerProgress.completedPaths[i])
+            
             {
                 mainMenuScript.threadTitleTexts[i].text = playerProgress.pathNames[i];
             }

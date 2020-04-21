@@ -55,10 +55,7 @@ public class Dialogue : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, _speaker.transform.position) > speakingDistance)
             {
-                //EndConversation(); // if player moves too far end conversation as if speaker has said all their lines
-                                   // returning to said speaker will restart said conversation
-
-                // MAKE NEW METHOD THAT JUST CUTS THEM OFF
+                CutSpeakerOff();
             }
         }
 
@@ -102,6 +99,16 @@ public class Dialogue : MonoBehaviour
         {
             _speaker.GetComponent<Interactable>().ConversationEndEvent();
         }
+    }
+
+    private void CutSpeakerOff()
+    {
+        textDisplay.text = "";
+        _canAdvance = false;
+        dialogueIndex = 0;
+
+        hasSentence = false;
+        sentences = null; // empty array
     }
 
 }

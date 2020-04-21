@@ -7,6 +7,7 @@ public class Father_Huxley : Interactable
 {
     public int animationInt;
     public GameObject dialogueManager;
+    public GameObject confessionDoor;
     public Set_of_Sentences[] sentenceSets;
     public GameObject player;
     public Text noticeText;
@@ -17,34 +18,50 @@ public class Father_Huxley : Interactable
     private Dialogue _dialogue;
     private Tags _tags;
     private Inventory _inventory;
-    private bool _hasPaid;
+    private bool _requiresPayment;
     private Notice _notice;
     private bool eventHappensWhenTalkingIsDone;
 
     // Start is called before the first frame update
     new void Start()
     {
-        _hasPaid = false;
+        _requiresPayment = false;
         _dialogue = dialogueManager.GetComponent<Dialogue>();
         _dialogueValue = 0;
         _animator = GetComponent<Animator>();
         _inventory = player.GetComponent<Inventory>();
         _notice = noticeText.GetComponent<Notice>();
         _animator.SetInteger("praise_animation", animationInt);
-        eventHappensWhenTalkingIsDone = false;
+        eventHappensWhenTalkingIsDone = true;
     }
 
     public override void Interact()
     {
-        //if (!_hasPaid)
-        //{
-        //    if (CheckForTithes() == true)
-        //    {
-        //        HandleDialogue(_dialogueValue); // if player has money for tithes, pay father huxley and THEN advance dialogue
-        //        _hasPaid = true;
-        //    }
-        //}
-        //else
+        if (_requiresPayment) // when huxley asks for tithes
+        {
+            if (CheckForItem("Currency") == false) // check for tithes
+            {
+                _notice.ChangeText("TITHES REQUIRED"); // if you don't have money remind the player they need money
+            }
+            else
+            {
+                ConfirmTaskCompleted(); // otherwise pay him and progress the story
+                _requiresPayment = false;
+            }
+        }
+
+        if (_dialogueValue == 2)
+        {
+            if (CheckForItem("Pipe_Bomb") == false) // check for tithes
+            {
+                _notice.ChangeText("PIPE BOMB REQUIRED"); // if you don't have money remind the player they need money
+            }
+            else
+            {
+                ConfirmTaskCompleted(); // otherwise pay him and progress the story
+            }
+        }
+
         {
             HandleDialogue(_dialogueValue);
         }
@@ -72,7 +89,7 @@ public class Father_Huxley : Interactable
         return sentences;
     }
 
-    private bool CheckForTithes()
+    private bool CheckForItem(string tag)
     {
 
         for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
@@ -83,7 +100,7 @@ public class Father_Huxley : Interactable
 
                 for (int j = 0; j < _tags.tags.Length; j++)
                 {
-                    if (_tags.tags[j] == "Currency")
+                    if (_tags.tags[j] == tag)
                     {
                         _inventory.isSlotFull[i] = false;
                         Destroy(_inventory.playerInventoryItems[i]);
@@ -94,5 +111,17 @@ public class Father_Huxley : Interactable
         }
 
         return false;
+    }
+
+    public override void ConversationEndEvent()
+    {
+        if (_dialogueValue == 0)
+        {
+            _requiresPayment = true;
+        }
+        else if (_dialogueValue == 1)
+        {
+            confessionDoor.tag = "Interactable";
+        }
     }
 }

@@ -21,6 +21,8 @@ public class End_Menu : MonoBehaviour
 
     private void Start()
     {
+
+
         if ((threadTitleTMPro = threadTitle.GetComponent<TextMeshProUGUI>())
            && (threadEffectTMPro = threadEffect.GetComponent<TextMeshProUGUI>()) // null check
            && (threadHintTMPro = threadHint.GetComponent<TextMeshProUGUI>()))
@@ -41,14 +43,16 @@ public class End_Menu : MonoBehaviour
 
     public void SetStatusOfThreadCompletion(End_Condition cond)
     {
+        Cursor.lockState = CursorLockMode.None;
         threadTitleTMPro.text = cond.threadName;
         threadEffectTMPro.text = cond.threadEffect;
         threadHintTMPro.text = cond.nextThreadHint;
-        rotatingModelOnScreen = Instantiate(cond.rotatingModel, threadModelTransform.position, threadModelTransform.rotation);
+        //rotatingModelOnScreen = Instantiate(cond.rotatingModel, threadModelTransform.position, threadModelTransform.rotation);
     }
 
     public void ReturnToMainMenu()
     {
+        Game_Manager.globalGameManager.endScreenInfo.SetActive(false);
         SceneManager.LoadScene(0); // go back to start
     }
 }

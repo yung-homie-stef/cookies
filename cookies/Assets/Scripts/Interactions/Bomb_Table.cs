@@ -37,6 +37,8 @@ public class Bomb_Table : Interactable
                     {
                         if (_tags.tags[j] == "Pipe")
                         {
+                            pipeBomb.SetActive(true);
+                            hasCrafted = true;
                             _inventory.isSlotFull[i] = false;
                             Destroy(_inventory.playerInventoryItems[i]);
                             break;
