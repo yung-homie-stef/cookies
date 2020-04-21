@@ -6,7 +6,7 @@ public class Samet : Interactable
 {
     public Set_of_Sentences[] sentenceSets;
     public GameObject dialogueManager;
-    public bool hasTranslator;
+    public bool hasTranslated;
 
     [SerializeField]
     private int _dialogueValue;
@@ -21,12 +21,15 @@ public class Samet : Interactable
         _dialogue = dialogueManager.GetComponent<Dialogue>();
         eventHappensWhenTalkingIsDone = false;
         _dialogueValue = 0;
-        hasTranslator = false;
+        hasTranslated = false;
     }
 
 
     public override void Interact()
     {
+        if (hasTranslated)
+            _dialogueValue = 1;
+
         HandleDialogue(_dialogueValue);
     }
 

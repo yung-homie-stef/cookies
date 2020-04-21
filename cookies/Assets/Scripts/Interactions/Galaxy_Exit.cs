@@ -7,13 +7,13 @@ public class Galaxy_Exit : Interactable
     public GameObject altarDrugItem;
     public GameObject blackout;
 
-    private Altar_Drugs _altarDrugScript;
+    private Krool_Aid _kroolAidScript;
     private Animator _blackoutAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
-        _altarDrugScript = altarDrugItem.GetComponent<Altar_Drugs>();
+        _kroolAidScript = altarDrugItem.GetComponent<Krool_Aid>();
         _blackoutAnimator = blackout.GetComponent<Animator>();
     }
 
@@ -27,7 +27,7 @@ public class Galaxy_Exit : Interactable
     { 
         yield return new WaitForSeconds(waitTime);
 
-        _altarDrugScript.ReturnPlayerToEarth();
+        _kroolAidScript.ReturnPlayerToEarth();
 
     }
 }
