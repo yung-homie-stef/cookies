@@ -7,19 +7,21 @@ public class Samet : Interactable
     public Set_of_Sentences[] sentenceSets;
     public GameObject dialogueManager;
     public bool hasTranslated;
+    public GameObject Huxley;
 
     [SerializeField]
     private int _dialogueValue;
     private string[] currentSentences;
     private Dialogue _dialogue;
     private bool eventHappensWhenTalkingIsDone;
+    private Father_Huxley _huxleyScript;
 
     // Start is called before the first frame update
     new void Start()
     {
         _animator = GetComponent<Animator>();
         _dialogue = dialogueManager.GetComponent<Dialogue>();
-        eventHappensWhenTalkingIsDone = false;
+        eventHappensWhenTalkingIsDone = true;
         _dialogueValue = 0;
         hasTranslated = false;
     }
@@ -27,8 +29,8 @@ public class Samet : Interactable
 
     public override void Interact()
     {
-        if (hasTranslated)
-            _dialogueValue = 1;
+        if (hasTranslated && _dialogueValue < 1)
+            _dialogueValue++;
 
         HandleDialogue(_dialogueValue);
     }
@@ -48,5 +50,18 @@ public class Samet : Interactable
             sentences[i] = lines[i];
         }
         return sentences;
+    }
+
+    public override void ConversationEndEvent()
+    {
+        if (_dialogueValue == 0)
+        {
+
+        }
+
+        if (_dialogueValue == 1)
+        {
+
+        }
     }
 }

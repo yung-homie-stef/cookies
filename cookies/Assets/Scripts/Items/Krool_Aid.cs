@@ -41,10 +41,9 @@ public class Krool_Aid : Action
                     {
                         if (_tags.tags[j] == "Rat_Posion")
                         {
-                            if (_sametScript.hasTranslated == false)
-                            {
-                                _sametScript.hasTranslated = true;
-                            }
+
+                            _sametScript.hasTranslated = true;
+                            
 
                             _inventory.isSlotFull[i] = false;
                             Destroy(_inventory.playerInventoryItems[i]);
