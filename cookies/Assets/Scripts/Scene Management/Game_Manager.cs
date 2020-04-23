@@ -36,6 +36,8 @@ public class Game_Manager : MonoBehaviour
     private MainMenu mainMenuScript;
     public GameObject mainMenu;
     public GameObject endScreenInfo;
+    public GameObject[] _endGameModels;
+    private int _lastCompletedPath = -1;
 
     // Start is called before the first frame update
     void Start()
@@ -89,10 +91,15 @@ public class Game_Manager : MonoBehaviour
     public void EndGame(End_Condition condition)
     {
         SceneManager.LoadScene(3);
-        endScreenInfo.SetActive(true);
+        
         End_Menu.globalEndMenu.SetStatusOfThreadCompletion(condition);
         CompletePath(condition.threadID, condition.threadName);
-       
+    }
+
+    public void OnEndScreenReached()
+    {
+        endScreenInfo.SetActive(true);
+        Instantiate(_endGameModels[_lastCompletedPath]);
     }
 
     void CompletePath(int pathID, string pathName)
@@ -106,5 +113,7 @@ public class Game_Manager : MonoBehaviour
             Save_Load_Test.SaveProgress(playerProgress);
             
         }
+
+        _lastCompletedPath = pathID;
     }
 }
