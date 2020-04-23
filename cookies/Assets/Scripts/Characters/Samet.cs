@@ -8,6 +8,7 @@ public class Samet : Interactable
     public GameObject dialogueManager;
     public bool hasTranslated;
     public GameObject Huxley;
+    public GameObject huxleyThreadTrigger;
 
     [SerializeField]
     private int _dialogueValue;
@@ -54,14 +55,14 @@ public class Samet : Interactable
 
     public override void ConversationEndEvent()
     {
-        if (_dialogueValue == 0)
+        if (_dialogueValue == 0 && _huxleyScript.dialogueValue == 3)
         {
-
+            _huxleyScript.ConfirmTaskCompleted();
         }
 
         if (_dialogueValue == 1)
         {
-
+            huxleyThreadTrigger.SetActive(true);
         }
     }
 }

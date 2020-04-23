@@ -10,10 +10,12 @@ public class Father_Huxley : Interactable
     public GameObject confessionDoor;
     public Set_of_Sentences[] sentenceSets;
     public GameObject player;
+    public GameObject confessionalWindow;
+    public GameObject koolAid;
     public Text noticeText;
 
     [SerializeField]
-    private int _dialogueValue;
+    public int dialogueValue;
     private string[] currentSentences;
     private Dialogue _dialogue;
     private Tags _tags;
@@ -21,13 +23,14 @@ public class Father_Huxley : Interactable
     private bool _requiresPayment;
     private Notice _notice;
     private bool eventHappensWhenTalkingIsDone;
+    private bool needsBomb = false;
 
     // Start is called before the first frame update
     new void Start()
     {
         _requiresPayment = false;
         _dialogue = dialogueManager.GetComponent<Dialogue>();
-        _dialogueValue = 0;
+        dialogueValue = 0;
         _animator = GetComponent<Animator>();
         _inventory = player.GetComponent<Inventory>();
         _notice = noticeText.GetComponent<Notice>();
@@ -50,26 +53,27 @@ public class Father_Huxley : Interactable
             }
         }
 
-        if (_dialogueValue == 2)
+        if (dialogueValue == 2 && needsBomb)
         {
-            if (CheckForItem("Pipe_Bomb") == false) // check for tithes
+            if (CheckForItem("Pipe_Bomb") == false ) // check for tithes
             {
                 _notice.ChangeText("PIPE BOMB REQUIRED"); // if you don't have money remind the player they need money
             }
             else
             {
                 ConfirmTaskCompleted(); // otherwise pay him and progress the story
+                needsBomb = false;
             }
         }
 
         {
-            HandleDialogue(_dialogueValue);
+            HandleDialogue(dialogueValue);
         }
     }
 
     public void ConfirmTaskCompleted()
     {
-        _dialogueValue++;
+        dialogueValue++;
     }
 
     private void HandleDialogue(int setIndex)
@@ -115,13 +119,26 @@ public class Father_Huxley : Interactable
 
     public override void ConversationEndEvent()
     {
-        if (_dialogueValue == 0)
+        if (dialogueValue == 0)
         {
             _requiresPayment = true;
         }
-        else if (_dialogueValue == 1)
+
+        if (dialogueValue == 1)
         {
             confessionDoor.tag = "Interactable";
+            confessionalWindow.SetActive(true);
+        }
+
+        if (dialogueValue == 2)
+        {
+            needsBomb = true;
+        }
+
+
+        if (dialogueValue == 3)
+        {
+            koolAid.SetActive(true);
         }
     }
 }
