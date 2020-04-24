@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+﻿// Upgrade NOTE: commented out 'sampler2D unity_Lightmap', a built-in variable
+
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
 Shader "psx/vertexlit" {
 	Properties{
@@ -28,6 +30,8 @@ Shader "psx/vertexlit" {
 					float4 _MainTex_ST;
 					uniform half4 unity_FogStart;
 					uniform half4 unity_FogEnd;
+
+					
 
 					v2f vert(appdata_full v)
 					{
@@ -85,5 +89,6 @@ Shader "psx/vertexlit" {
 					}
 				ENDCG
 			}
+			//FallBack "Diffuse"
 	}
 }
