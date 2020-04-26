@@ -7,7 +7,7 @@ using UnityEngine.Audio;
 public class Sound
 {
     public string name;
-    public AudioClip clip;
+    public AudioClip intangibleAudioSources;
 
     [HideInInspector]
     public AudioSource source;

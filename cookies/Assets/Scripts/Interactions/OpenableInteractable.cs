@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class OpenableInteractable : Interactable
 {
     public GameObject player;
@@ -31,6 +33,7 @@ public class OpenableInteractable : Interactable
         {
             // play the opening animation
             _animator.SetBool("is_opened", true);
+            
         }
 
         else if (isOpened == false)
@@ -71,5 +74,10 @@ public class OpenableInteractable : Interactable
             isOpened = !isOpened;
             EnactOpening();
         }
+    }
+
+    public void PlayDoorSound(int clip)
+    {
+        GetComponent<AudioSource>().PlayOneShot(Door_Sound_Effects.globalDoorSounds.doorSFX[clip]);
     }
 }

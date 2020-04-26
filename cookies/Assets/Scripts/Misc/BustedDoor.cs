@@ -22,6 +22,8 @@ public class BustedDoor : MonoBehaviour
         if (other.tag == "Hitbox")
         {
             GetComponent<Animator>().SetBool("is_opened", true);
+            GetComponent<OpenableInteractable>().isLocked = false;
+            GetComponent<OpenableInteractable>().PlayDoorSound(5);
         }
     }
 }

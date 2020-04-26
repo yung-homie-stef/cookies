@@ -8,6 +8,7 @@ public class Vending_Machine : Interactable
     public GameObject candyBar;
     public GameObject player;
     public Text noticeText;
+    public AudioClip vendingMachineSound;
 
     private Inventory _inventory;
     private Tags _tags;
@@ -42,6 +43,7 @@ public class Vending_Machine : Interactable
                             _hasVended = true;
                             _inventory.isSlotFull[i] = false;
                             Destroy(_inventory.playerInventoryItems[i]);
+                            GetComponent<AudioSource>().PlayOneShot(vendingMachineSound);
                             break;
                         }
                     }
