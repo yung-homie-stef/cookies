@@ -12,6 +12,7 @@ public class Custodian : Interactable // TODO: make update dialogue method virtu
     public GameObject Salvador;
     public GameObject keyring;
     public string[] sentences;
+    public AudioClip[] sweepSFX;
 
     private string[] currentSentences;
     private Dialogue _dialogue;
@@ -89,6 +90,12 @@ public class Custodian : Interactable // TODO: make update dialogue method virtu
         yield return new WaitForSeconds(waitTime);
         keyring.transform.parent = null;
         keyring.GetComponent<Interactable>().Interact(); // give players the key if custodian is killed
+    }
+
+    public void Sweep()
+    {
+        int randomSweepSound = Random.Range(0, sweepSFX.Length);
+        GetComponent<AudioSource>().PlayOneShot(sweepSFX[randomSweepSound]);
     }
 
     private string[] UpdateDialogue(string[] lines)

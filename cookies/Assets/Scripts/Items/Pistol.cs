@@ -8,13 +8,13 @@ public class Pistol : Action
     public GameObject playerPalm;
     public float range;
     public Camera fpsCamera;
+    public AudioClip[] gunshotSFX;
 
     private bool _cocked;
     private bool _reloaded;
     private Vector3 _localScale;
     private Vector3 _bulletPoint;
     private Vector3 _bulletDirection;
-    private Inventory _inventory;
     private GameObject _duplicate;
     private Animator _animator;
     private RaycastHit _killedPerson;
@@ -35,14 +35,11 @@ public class Pistol : Action
         if (Input.GetButtonDown("Fire1"))
         {
             if (_cocked)
-            {
-                
+            {  
                 if (_reloaded) // to prevent spamming
                 Shoot();
             }
-        }
-
-       
+        }  
     }
 
     public override void Use()
@@ -59,6 +56,7 @@ public class Pistol : Action
             _inventory.isWeaponEquipped = true;
             // create a duplicate of the gun that rests in the player's hand
             _duplicate = Instantiate(gameObject, playerPalm.transform.position, player.transform.rotation);
+            _duplicate.AddComponent<AudioSource>();
             _duplicate.transform.Rotate(0,90,90); 
             _duplicate.transform.localScale = _localScale;
             _duplicate.layer = 0;
@@ -99,9 +97,16 @@ public class Pistol : Action
 
     private IEnumerator MuzzleFlash(float waitTime)
     {
+        int randomGunSound = Random.Range(0, gunshotSFX.Length);
+        PlayGunshotNoise(randomGunSound);
         yield return new WaitForSeconds(waitTime);
         ParticleSystem muzzleFlash = _duplicate.GetComponentInChildren<ParticleSystem>();
         muzzleFlash.Play();
+    }
+
+    void PlayGunshotNoise(int SFX)
+    {
+        _duplicate.GetComponent<AudioSource>().PlayOneShot(gunshotSFX[SFX]);
     }
 
     private IEnumerator Kill(float waitTime)

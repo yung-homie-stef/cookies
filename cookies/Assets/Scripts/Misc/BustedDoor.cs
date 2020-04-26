@@ -23,7 +23,7 @@ public class BustedDoor : MonoBehaviour
         {
             GetComponent<Animator>().SetBool("is_opened", true);
             GetComponent<OpenableInteractable>().isLocked = false;
-            GetComponent<OpenableInteractable>().PlayDoorSound(5);
+            GetComponent<OpenableInteractable>().PlayDoorSound(4);
         }
     }
 }

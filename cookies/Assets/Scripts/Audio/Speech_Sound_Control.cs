@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class Speech_Sound_Control : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public AudioClip[] speechSounds;
+
+    public void Speak()
     {
-        
+        int randomSpeechSound = Random.Range(0, speechSounds.Length);
+        PlaySpeechSound(randomSpeechSound);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void PlaySpeechSound(int speechNum)
     {
-        
+        GetComponent<AudioSource>().PlayOneShot(speechSounds[speechNum]);
     }
 }

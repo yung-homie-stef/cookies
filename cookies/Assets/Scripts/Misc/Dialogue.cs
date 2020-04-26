@@ -15,6 +15,7 @@ public class Dialogue : MonoBehaviour
     private bool hasSentence = false;
     private bool hasEvent = false;
     private GameObject _speaker;
+    private Speech_Sound_Control _speakersSpeechControl;
 
     private void Start()
     {
@@ -32,6 +33,7 @@ public class Dialogue : MonoBehaviour
             _canAdvance = false;
             hasSentence = true;
             hasEvent = eventExists;
+            _speakersSpeechControl = _speaker.GetComponent<Speech_Sound_Control>();
         }
 
     }
@@ -47,6 +49,7 @@ public class Dialogue : MonoBehaviour
 
             if (Input.GetButtonDown("Fire1") && _canAdvance == true)
             {
+                _speakersSpeechControl.Speak();
                 NextSentence();
             }
         }

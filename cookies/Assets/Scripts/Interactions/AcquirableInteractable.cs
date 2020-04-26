@@ -95,6 +95,8 @@ public class AcquirableInteractable : Interactable
             // after a 2 second delay allow the player to click away
             StartCoroutine(_removeCoroutine);
 
+            Audio_Manager.globalAudioManager.PlaySound("pickup");
+
             _hasHadDuplicate = true;
         }
     }

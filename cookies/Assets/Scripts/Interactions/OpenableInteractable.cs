@@ -33,12 +33,14 @@ public class OpenableInteractable : Interactable
         {
             // play the opening animation
             _animator.SetBool("is_opened", true);
-            
+            PlayDoorSound(0);
+
         }
 
         else if (isOpened == false)
         {
-            _animator.SetBool("is_opened", false); ;
+            _animator.SetBool("is_opened", false);
+            PlayDoorSound(1);
         }
     }
 
@@ -67,12 +69,14 @@ public class OpenableInteractable : Interactable
             if (isLocked != false)
             {
                 _notice.ChangeText(newText);
+                PlayDoorSound(2);
             }
         }
         else // otherwise open it normally
         {
             isOpened = !isOpened;
             EnactOpening();
+            
         }
     }
 
