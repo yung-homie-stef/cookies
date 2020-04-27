@@ -9,15 +9,25 @@ public class Shopkeeper : Interactable
     public GameObject[] storage;
     public Transform[] storeSlots;
     List<GameObject> stock = new List<GameObject>(); // for objects not yet on display
+    public string[] sentences;
+    public GameObject dialogueManager;
+    public Set_of_Sentences[] sentenceSets;
 
     private Tags _tags;
     private Inventory _inventory;
     private static int _storeCredit;
+    private string[] currentSentences;
+    private Dialogue _dialogue;
+    private bool eventHappensWhenTalkingIsDone;
+    private bool _hasSpoken;
 
     // Start is called before the first frame update
     void Start()
     { 
         _inventory = player.GetComponent<Inventory>();
+        eventHappensWhenTalkingIsDone = true;
+        _dialogue = dialogueManager.GetComponent<Dialogue>();
+        _hasSpoken = false;
 
         _storeCredit = 0;
 
@@ -57,22 +67,13 @@ public class Shopkeeper : Interactable
 
     public override void Interact()
     {
-        for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
+        if (!_hasSpoken)
         {
-            if (_inventory.playerInventoryItems[i] != null)
-            {
-                _tags = _inventory.playerInventoryItems[i].GetComponent<Tags>();
-
-                for (int j = 0; j < _tags.tags.Length; j++)
-                {
-                    if (_tags.tags[j] == "Credit_Card")
-                    {
-                        _inventory.playerInventoryItems[i].GetComponent<Credit_Card>().Transaction();
-                        SetBuyable(true);
-                    }
-                }
-            }
+            HandleDialogue(0);
         }
+        else
+            CheckForCreditCard();
+
     }
 
 
@@ -92,6 +93,48 @@ public class Shopkeeper : Interactable
         {
             SetBuyable(false);
         }
+    }
+
+    private void CheckForCreditCard()
+    {
+        for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
+        {
+            if (_inventory.playerInventoryItems[i] != null)
+            {
+                _tags = _inventory.playerInventoryItems[i].GetComponent<Tags>();
+
+                for (int j = 0; j < _tags.tags.Length; j++)
+                {
+                    if (_tags.tags[j] == "Credit_Card")
+                    {
+                        _inventory.playerInventoryItems[i].GetComponent<Credit_Card>().Transaction();
+                        SetBuyable(true);
+                    }
+                }
+            }
+        }
+    }
+
+    private void HandleDialogue(int setIndex)
+    {
+        currentSentences = sentenceSets[setIndex].sentences;
+        _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject, eventHappensWhenTalkingIsDone);
+    }
+
+    private string[] UpdateDialogue(string[] lines)
+    {
+        string[] sentences = new string[lines.Length];
+
+        for (int i = 0; i < lines.Length; i++)
+        {
+            sentences[i] = lines[i];
+        }
+        return sentences;
+    }
+
+    public override void ConversationEndEvent()
+    {
+        eventHappensWhenTalkingIsDone = false;
     }
 }
 
