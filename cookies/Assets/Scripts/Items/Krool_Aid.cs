@@ -10,10 +10,11 @@ public class Krool_Aid : Action
     public GameObject teleportParticle;
     public GameObject Samet;
     public GameObject UFO;
+    [HideInInspector]
+    public Vector3 preTeleportPosition;
 
     private Animator _animator;
     [SerializeField]
-    private Vector3 preTeleportPosition;
     private Tags _tags;
     private bool hasTeleported;
     private Samet _sametScript;

@@ -9,6 +9,7 @@ public class Samet : Interactable
     public bool hasTranslated;
     public GameObject Huxley;
     public GameObject huxleyThreadTrigger;
+    public GameObject galaxyExit;
 
     [SerializeField]
     private int _dialogueValue;
@@ -16,10 +17,12 @@ public class Samet : Interactable
     private Dialogue _dialogue;
     private bool eventHappensWhenTalkingIsDone;
     private Father_Huxley _huxleyScript;
+    Galaxy_Exit _galaxyExitScript;
 
     // Start is called before the first frame update
     new void Start()
     {
+        _galaxyExitScript = _galaxyExitScript.GetComponent<Galaxy_Exit>();
         _animator = GetComponent<Animator>();
         _dialogue = dialogueManager.GetComponent<Dialogue>();
         eventHappensWhenTalkingIsDone = true;
@@ -63,6 +66,8 @@ public class Samet : Interactable
         if (_dialogueValue == 1)
         {
             huxleyThreadTrigger.SetActive(true);
+            _galaxyExitScript.huxleyThreadComplete = true;
+            
         }
     }
 }

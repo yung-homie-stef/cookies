@@ -22,7 +22,7 @@ public class Shopkeeper : Interactable
     private bool _hasSpoken;
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     { 
         _inventory = player.GetComponent<Inventory>();
         eventHappensWhenTalkingIsDone = true;
@@ -40,17 +40,20 @@ public class Shopkeeper : Interactable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Interactable") // when the player drops an object to the shopkeeper, have him check if its currency, if so
+        if (_hasSpoken)
         {
-            if (_tags = other.GetComponent<Tags>())
+            if (other.tag == "Interactable") // when the player drops an object to the shopkeeper, have him check if its currency, if so
             {
-                for (int i = 0; i < _tags.tags.Length; i++)
+                if (_tags = other.GetComponent<Tags>())
                 {
-                    if (_tags.tags[i] == "Currency")
+                    for (int i = 0; i < _tags.tags.Length; i++)
                     {
-                        _storeCredit++; // when store credit is above 0 players can buy items 
-                        Destroy(other.gameObject);
-                        SetBuyable(true);
+                        if (_tags.tags[i] == "Currency")
+                        {
+                            _storeCredit++; // when store credit is above 0 players can buy items 
+                            Destroy(other.gameObject);
+                            SetBuyable(true);
+                        }
                     }
                 }
             }
