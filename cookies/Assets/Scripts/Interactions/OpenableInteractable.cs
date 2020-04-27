@@ -12,8 +12,8 @@ public class OpenableInteractable : Interactable
     public string newText;
     public bool isLocked;
     public Text noticeText;
+    public bool isOpened;
 
-    private bool isOpened;
     private Inventory _inventory;
     private Tags _tags;
     private Notice _notice;
@@ -39,6 +39,7 @@ public class OpenableInteractable : Interactable
 
         else if (isOpened == false)
         {
+            _animator.SetFloat("animSpeed", 1);
             _animator.SetBool("is_opened", false);
             PlayDoorSound(1);
         }
