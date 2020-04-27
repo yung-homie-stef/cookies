@@ -97,9 +97,9 @@ public class Pistol : Action
 
     private IEnumerator MuzzleFlash(float waitTime)
     {
+        yield return new WaitForSeconds(waitTime);
         int randomGunSound = Random.Range(0, gunshotSFX.Length);
         PlayGunshotNoise(randomGunSound);
-        yield return new WaitForSeconds(waitTime);
         ParticleSystem muzzleFlash = _duplicate.GetComponentInChildren<ParticleSystem>();
         muzzleFlash.Play();
     }
