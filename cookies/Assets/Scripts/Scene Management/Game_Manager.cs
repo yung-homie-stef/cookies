@@ -36,6 +36,7 @@ public class Game_Manager : MonoBehaviour
     private MainMenu mainMenuScript;
     public GameObject mainMenu;
     public GameObject endScreenInfo;
+    public GameObject settingsScreen;
     public GameObject[] _endGameModels;
     private int _lastCompletedPath = -1;
 
@@ -46,6 +47,7 @@ public class Game_Manager : MonoBehaviour
         playerProgress = Save_Load_Test.LoadProgress();
         mainMenuScript = mainMenu.GetComponent<MainMenu>();
         endScreenInfo.SetActive(false);
+        settingsScreen.SetActive(false);
         UpdateThreadTitles();
     }
 

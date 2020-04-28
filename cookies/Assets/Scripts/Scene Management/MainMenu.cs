@@ -37,8 +37,9 @@ public class MainMenu : MonoBehaviour
     {
         // go back to start menu
         threadMenu.SetActive(false);
+        Game_Manager.globalGameManager.settingsScreen.SetActive(false);
         startMenu.SetActive(true);
-        settingsMenu.SetActive(false);
+        
     }
 
     public void CheckThreads()
@@ -46,5 +47,11 @@ public class MainMenu : MonoBehaviour
         // go to threads menu
         startMenu.SetActive(false);
         threadMenu.SetActive(true);
+    }
+
+    public void OpenSettings()
+    {
+        Game_Manager.globalGameManager.settingsScreen.SetActive(true);
+        startMenu.SetActive(false);
     }
 }

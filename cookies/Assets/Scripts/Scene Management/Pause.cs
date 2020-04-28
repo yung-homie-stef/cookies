@@ -61,6 +61,11 @@ public class Pause : MonoBehaviour
         Cursor.visible = true;
     }
 
+    public void OpenSettings()
+    {
+        Game_Manager.globalGameManager.settingsScreen.SetActive(true);
+    }
+
     public void DontQuit()
     {
         quitOptions.SetActive(false);
