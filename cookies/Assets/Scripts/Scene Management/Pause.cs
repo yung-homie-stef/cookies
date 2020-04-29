@@ -63,7 +63,9 @@ public class Pause : MonoBehaviour
 
     public void OpenSettings()
     {
+        Game_Manager.globalGameManager.settingsScreen.GetComponent<Settings>().OpenSettings(pauseCanvas);
         Game_Manager.globalGameManager.settingsScreen.SetActive(true);
+        pauseCanvas.SetActive(false);
     }
 
     public void DontQuit()

@@ -49,7 +49,7 @@ public class Dialogue : MonoBehaviour
 
             if (Input.GetButtonDown("Fire1") && _canAdvance == true)
             {
-                _speakersSpeechControl.Speak();
+                
                 NextSentence();
             }
         }
@@ -75,6 +75,7 @@ public class Dialogue : MonoBehaviour
 
     public void NextSentence()
     {
+        _speakersSpeechControl.Speak();
         _canAdvance = false;
 
         if (dialogueIndex < sentences.Length - 1)

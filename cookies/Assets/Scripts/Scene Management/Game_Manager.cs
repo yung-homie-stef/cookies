@@ -34,6 +34,7 @@ public class Game_Manager : MonoBehaviour
     public static Game_Manager globalGameManager = null;
     private ProgressInformation playerProgress = null;
     private MainMenu mainMenuScript;
+    public bool VHSEffectOn = true;
     public GameObject mainMenu;
     public GameObject endScreenInfo;
     public GameObject settingsScreen;

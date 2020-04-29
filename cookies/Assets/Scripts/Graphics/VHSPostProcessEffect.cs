@@ -28,6 +28,10 @@ public class VHSPostProcessEffect : MonoBehaviour
 
 	void OnRenderImage(RenderTexture source, RenderTexture destination)
 	{
+        if (!Game_Manager.globalGameManager.VHSEffectOn)
+            return;
+
+
 		_material.SetTexture("_VHSTex", _player.texture);
 
 		_yScanline += Time.deltaTime * 0.01f;
@@ -43,7 +47,9 @@ public class VHSPostProcessEffect : MonoBehaviour
 		}
 		_material.SetFloat("_yScanline", _yScanline);
 		_material.SetFloat("_xScanline", _xScanline);
-		Graphics.Blit(source, destination, _material);
+
+        Graphics.Blit(source, destination, _material);
+        
 	}
 
 	protected void OnDisable()

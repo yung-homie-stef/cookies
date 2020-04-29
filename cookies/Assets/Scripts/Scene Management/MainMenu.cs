@@ -51,7 +51,9 @@ public class MainMenu : MonoBehaviour
 
     public void OpenSettings()
     {
+        Game_Manager.globalGameManager.settingsScreen.GetComponent<Settings>().OpenSettings(startMenu);
         Game_Manager.globalGameManager.settingsScreen.SetActive(true);
         startMenu.SetActive(false);
+
     }
 }
