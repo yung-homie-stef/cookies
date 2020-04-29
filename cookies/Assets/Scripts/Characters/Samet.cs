@@ -22,7 +22,8 @@ public class Samet : Interactable
     // Start is called before the first frame update
     new void Start()
     {
-        _galaxyExitScript = _galaxyExitScript.GetComponent<Galaxy_Exit>();
+        _galaxyExitScript = galaxyExit.GetComponent<Galaxy_Exit>();
+        _huxleyScript = Huxley.GetComponent<Father_Huxley>();
         _animator = GetComponent<Animator>();
         _dialogue = dialogueManager.GetComponent<Dialogue>();
         eventHappensWhenTalkingIsDone = true;

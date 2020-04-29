@@ -28,8 +28,8 @@ public class VHSPostProcessEffect : MonoBehaviour
 
 	void OnRenderImage(RenderTexture source, RenderTexture destination)
 	{
-        if (!Game_Manager.globalGameManager.VHSEffectOn)
-            return;
+        //if (!Game_Manager.globalGameManager.VHSEffectOn)
+            //return;
 
 
 		_material.SetTexture("_VHSTex", _player.texture);

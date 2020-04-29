@@ -7,25 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class Settings : MonoBehaviour
 {
-    public GameObject vhsCamera;
     public AudioMixer mixer;
     public Text vhsEnabled;
     public Text fullscreenEnabled;
 
     private VHSPostProcessEffect _vhsCameraEffect;
     private GameObject _lastMenu;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        _vhsCameraEffect = vhsCamera.GetComponent<VHSPostProcessEffect>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void OpenSettings(GameObject lastMenu)
     {
@@ -44,9 +31,14 @@ public class Settings : MonoBehaviour
             vhsEnabled.text = "DISABLED";
     }
 
-    public void DisableOrEnableFullscreen()
+    public void DisableOrEnableFullscreen(bool isFull)
     {
+        Screen.fullScreen = isFull;
 
+        if (isFull)
+            fullscreenEnabled.text = "ENABLED";
+        else
+            fullscreenEnabled.text = "DISABLED";
     }
 
     public void SetVolume(float vol)

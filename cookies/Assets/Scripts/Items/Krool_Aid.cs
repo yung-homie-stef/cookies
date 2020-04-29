@@ -14,7 +14,6 @@ public class Krool_Aid : Action
     public Vector3 preTeleportPosition;
 
     private Animator _animator;
-    [SerializeField]
     private Tags _tags;
     private bool hasTeleported;
     private Samet _sametScript;
