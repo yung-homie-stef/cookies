@@ -138,6 +138,7 @@ public class Shopkeeper : Interactable
     public override void ConversationEndEvent()
     {
         eventHappensWhenTalkingIsDone = false;
+        _hasSpoken = true;
     }
 }
 
