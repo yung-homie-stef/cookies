@@ -21,7 +21,6 @@ public class ProgressInformation
             pathNames[i] = "--:--"; 
         }
 
-
         for (int i = 0; i < completedPaths.Length; i++)
         {
             completedPaths[i] = false; // by default player has not completed any paths
@@ -89,6 +88,11 @@ public class Game_Manager : MonoBehaviour
                 mainMenuScript.threadTitleTexts[i].text = playerProgress.pathNames[i];
             }
         }
+    }
+
+    public ProgressInformation GetProgressInformation()
+    {
+        return playerProgress; 
     }
 
     public void EndGame(End_Condition condition)

@@ -20,7 +20,7 @@ public class Rotgut : Action
         if (!_isDrunk)
         {
             _drunkScript.enabled = true;
-            StartCoroutine(SoberUp(15.0f));
+            StartCoroutine(SoberUp(20.0f));
             _isDrunk = true;
         }
     }
