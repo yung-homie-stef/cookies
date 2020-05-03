@@ -19,7 +19,7 @@ public class OpenableInteractable : Interactable
     private Notice _notice;
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
         isOpened = false;
         _animator = GetComponent<Animator>();

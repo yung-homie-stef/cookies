@@ -23,6 +23,8 @@ public class Audio_Manager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        PlaySound("ambiance");
   
     }
 

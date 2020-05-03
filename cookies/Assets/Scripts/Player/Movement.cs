@@ -46,21 +46,21 @@ public class Movement : MonoBehaviour
 
             movementDirection = ((forwardDirection * _translation) + (strafeDirection * _strafe)).normalized * playerSpeed; 
 
-            //transform.Translate(_strafe, 0, _translation);
-            _playerRB.AddForce(movementDirection, ForceMode.VelocityChange);
-
             RaycastHit _hit;
             if (Physics.Raycast(transform.position + (Vector3.up * 0.05f), Vector3.down, out _hit, 0.2f))
             {
-               // Debug.Log(_hit.collider.gameObject.name);
+                // Debug.Log(_hit.collider.gameObject.name);
 
+                movementDirection = Vector3.ProjectOnPlane(movementDirection, _hit.normal);
                 Vector3 newPosition = transform.position;
                 newPosition.y = _hit.point.y;
-                transform.position = newPosition;
+                //transform.position = newPosition;
 
                 Debug.DrawRay(transform.position, Vector3.down, Color.green);
                 
             }
+
+            _playerRB.AddForce(movementDirection, ForceMode.VelocityChange);
         }
     }
 

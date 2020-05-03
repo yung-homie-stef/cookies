@@ -11,6 +11,7 @@ public class Salvador : Interactable
     public Light livingRoomLight;
     public Set_of_Sentences[] sentenceSets;
     public End_Condition son_of_sal_Thread;
+    public AudioClip eatSound;
 
     [SerializeField]
     private int _dialogueValue;
@@ -65,6 +66,7 @@ public class Salvador : Interactable
                     if ((int)_salvadorsBelly < 5) // so that they cant access the ritual by feeding him MORE food
                     {
                         _salvadorsBelly++;
+                        GetComponent<AudioSource>().PlayOneShot(eatSound);
                         Debug.Log(_salvadorsBelly);
                     }
                     _dialogueValue = (int)_salvadorsBelly;

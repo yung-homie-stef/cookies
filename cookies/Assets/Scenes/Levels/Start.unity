@@ -2022,7 +2022,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 1e-45, z: 5.892e-42, w: 1.04e-43}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -3831,6 +3831,86 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1296081671}
   m_CullTransparentMesh: 0
+--- !u!1 &1316062913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1316062916}
+  - component: {fileID: 1316062915}
+  - component: {fileID: 1316062914}
+  m_Layer: 0
+  m_Name: audio_manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1316062914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316062913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa481de8898b874a9a0c375e005703a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorSFX:
+  - {fileID: 8300000, guid: b793911f2b5338644bebc7eded74f9bd, type: 3}
+  - {fileID: 8300000, guid: 1c8992fc1bc6e5e40976ab00b398141d, type: 3}
+  - {fileID: 8300000, guid: 7018b72c115d8a8429223fca1b0381a4, type: 3}
+  - {fileID: 8300000, guid: bdfcafe59ba299c44bb2562c91e67a6e, type: 3}
+  - {fileID: 8300000, guid: f852ec4672436e044940347b584814e4, type: 3}
+--- !u!114 &1316062915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316062913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43bdbbac533f11428dde89b2994ba3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundArray:
+  - name: pickup
+    intangibleAudioSources: {fileID: 8300000, guid: 8565f55db5dbde24dadcb90bb6352000,
+      type: 3}
+    source: {fileID: 0}
+  - name: ambiance
+    intangibleAudioSources: {fileID: 8300000, guid: 3aae9f3d4a81eb047ab8192975a19add,
+      type: 3}
+    source: {fileID: 0}
+  - name: 
+    intangibleAudioSources: {fileID: 0}
+    source: {fileID: 0}
+  - name: 
+    intangibleAudioSources: {fileID: 0}
+    source: {fileID: 0}
+  - name: 
+    intangibleAudioSources: {fileID: 0}
+    source: {fileID: 0}
+--- !u!4 &1316062916
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316062913}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1317506376
 GameObject:
   m_ObjectHideFlags: 0

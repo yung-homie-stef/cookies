@@ -7,6 +7,7 @@ public class Energy_Drink : Action
 {
     public Text noticeText;
     public string newText;
+    public AudioClip drinkSound;
 
     private Movement _movement;
     private Notice _notice;
@@ -21,6 +22,7 @@ public class Energy_Drink : Action
 
     public override void Use()
     {
+        GetComponent<AudioSource>().PlayOneShot(drinkSound);
         _movement.playerSpeed *= 2; // become faster
         _notice.ChangeText(newText);
         base.Use();

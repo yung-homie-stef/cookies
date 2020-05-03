@@ -5,6 +5,7 @@ using UnityEngine;
 public class Rotgut : Action
 {
     public Camera VHSCamera;
+    public AudioClip drinkSound;
 
     private bool _isDrunk = false;
     private Drunk _drunkScript;
@@ -19,6 +20,7 @@ public class Rotgut : Action
     {
         if (!_isDrunk)
         {
+            GetComponent<AudioSource>().PlayOneShot(drinkSound);
             _drunkScript.enabled = true;
             StartCoroutine(SoberUp(20.0f));
             _isDrunk = true;
