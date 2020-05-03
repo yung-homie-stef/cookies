@@ -2417,7 +2417,6 @@ MonoBehaviour:
   gameTitle: {fileID: 1646952330}
   startMenu: {fileID: 1514032124}
   threadMenu: {fileID: 64628468}
-  settingsMenu: {fileID: 0}
   startButton: {fileID: 1687314655}
   threadTitleTexts:
   - {fileID: 1363519952}
@@ -3884,19 +3883,31 @@ MonoBehaviour:
     intangibleAudioSources: {fileID: 8300000, guid: 8565f55db5dbde24dadcb90bb6352000,
       type: 3}
     source: {fileID: 0}
+    volume: 0.7
+    loop: 0
   - name: ambiance
-    intangibleAudioSources: {fileID: 8300000, guid: 3aae9f3d4a81eb047ab8192975a19add,
+    intangibleAudioSources: {fileID: 8300000, guid: abd2382393924a4469eae3b36837b050,
       type: 3}
     source: {fileID: 0}
+    volume: 0.42
+    loop: 1
+  - name: tape
+    intangibleAudioSources: {fileID: 8300000, guid: 58754d035213b044a8c4e5b2d4369da4,
+      type: 3}
+    source: {fileID: 0}
+    volume: 1
+    loop: 0
+  - name: intro
+    intangibleAudioSources: {fileID: 8300000, guid: cd89e7da4eb6dd340aab82358478ed41,
+      type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    loop: 1
   - name: 
     intangibleAudioSources: {fileID: 0}
     source: {fileID: 0}
-  - name: 
-    intangibleAudioSources: {fileID: 0}
-    source: {fileID: 0}
-  - name: 
-    intangibleAudioSources: {fileID: 0}
-    source: {fileID: 0}
+    volume: 0
+    loop: 0
 --- !u!4 &1316062916
 Transform:
   m_ObjectHideFlags: 0
@@ -5762,7 +5773,6 @@ MonoBehaviour:
   gameTitle: {fileID: 0}
   startMenu: {fileID: 0}
   threadMenu: {fileID: 0}
-  settingsMenu: {fileID: 0}
   startButton: {fileID: 0}
   threadTitleTexts: []
 --- !u!1 &1753227037

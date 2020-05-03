@@ -60,7 +60,7 @@ public class Save_Load_Test : MonoBehaviour
         }
         else
         {
-            Debug.Log("save file not found");
+            
             return new ProgressInformation();
         }
     }

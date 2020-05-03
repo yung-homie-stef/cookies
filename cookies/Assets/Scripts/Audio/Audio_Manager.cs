@@ -10,7 +10,7 @@ public class Audio_Manager : MonoBehaviour
 
     public Sound[] soundArray;
 
-    void Start()
+    void Awake()
     {
 
         if (!globalAudioManager)
@@ -24,7 +24,7 @@ public class Audio_Manager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        PlaySound("ambiance");
+       
   
     }
 
@@ -34,7 +34,12 @@ public class Audio_Manager : MonoBehaviour
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.intangibleAudioSources;
+
+            s.source.volume = s.volume;
+            s.source.loop = s.loop;
         }
+
+        PlaySound("intro");
     }
 
     public void PlaySound(string name)
@@ -43,4 +48,5 @@ public class Audio_Manager : MonoBehaviour
         s.source.Play();
         
     }
+
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,7 +10,6 @@ public class MainMenu : MonoBehaviour
     public GameObject gameTitle;
     public GameObject startMenu;
     public GameObject threadMenu;
-    public GameObject settingsMenu;
     public GameObject startButton;
 
     public Text[] threadTitleTexts = new Text[12];
@@ -25,7 +25,10 @@ public class MainMenu : MonoBehaviour
     {
         // load the next scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Audio_Manager.globalAudioManager.soundArray[3].source.Stop();
+        Audio_Manager.globalAudioManager.PlaySound("tape");
     }
+
 
     public void ExitGame()
     {
@@ -39,7 +42,6 @@ public class MainMenu : MonoBehaviour
         threadMenu.SetActive(false);
         Game_Manager.globalGameManager.settingsScreen.SetActive(false);
         startMenu.SetActive(true);
-        
     }
 
     public void CheckThreads()
@@ -54,6 +56,5 @@ public class MainMenu : MonoBehaviour
         Game_Manager.globalGameManager.settingsScreen.GetComponent<Settings>().OpenSettings(startMenu);
         Game_Manager.globalGameManager.settingsScreen.SetActive(true);
         startMenu.SetActive(false);
-
     }
 }

@@ -13,7 +13,7 @@ public class Notice : MonoBehaviour
     {
         HUDText.text = notice;
         this.gameObject.SetActive(true);
-        StartCoroutine(MakeTextDisappear(3.0f));
+        StartCoroutine(MakeTextDisappear(6.0f));
     }
 
     private IEnumerator MakeTextDisappear(float waitTime)
