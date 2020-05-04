@@ -2193,7 +2193,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0.8
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -2777,7 +2777,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0.69111115
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -3878,35 +3878,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43bdbbac533f11428dde89b2994ba3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundArray:
+  sfxMixer: {fileID: 24300002, guid: 990c6eba41ef401439198ef7a731c8b5, type: 2}
+  musicMixer: {fileID: 24300002, guid: e9f05e71ff447974091bf3a6d8925468, type: 2}
+  intangibleSoundArray:
   - name: pickup
     intangibleAudioSources: {fileID: 8300000, guid: 8565f55db5dbde24dadcb90bb6352000,
       type: 3}
     source: {fileID: 0}
-    volume: 0.7
+    volume: 0.45
     loop: 0
-  - name: ambiance
-    intangibleAudioSources: {fileID: 8300000, guid: abd2382393924a4469eae3b36837b050,
-      type: 3}
-    source: {fileID: 0}
-    volume: 0.42
-    loop: 1
   - name: tape
     intangibleAudioSources: {fileID: 8300000, guid: 58754d035213b044a8c4e5b2d4369da4,
       type: 3}
     source: {fileID: 0}
-    volume: 1
+    volume: 0.45
+    loop: 0
+  musicSoundArray:
+  - name: ambiance
+    intangibleAudioSources: {fileID: 8300000, guid: abd2382393924a4469eae3b36837b050,
+      type: 3}
+    source: {fileID: 0}
+    volume: 0.53
     loop: 0
   - name: intro
     intangibleAudioSources: {fileID: 8300000, guid: cd89e7da4eb6dd340aab82358478ed41,
       type: 3}
     source: {fileID: 0}
-    volume: 0.5
-    loop: 1
-  - name: 
-    intangibleAudioSources: {fileID: 0}
-    source: {fileID: 0}
-    volume: 0
+    volume: 0.68
     loop: 0
 --- !u!4 &1316062916
 Transform:
@@ -4453,13 +4451,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 1016704451}
   m_HandleRect: {fileID: 1727468049}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -40
+  m_MaxValue: 5
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: -8.9
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1690822802}
+        m_MethodName: SetMusicVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1430726145 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4383226579170909953, guid: 1974e4ce497c63e49901733e7b8761c0,
@@ -5536,7 +5545,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9741d9174927243a4eaa7467879ceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixer: {fileID: 24100000, guid: 990c6eba41ef401439198ef7a731c8b5, type: 2}
+  sfxMixer: {fileID: 24100000, guid: 990c6eba41ef401439198ef7a731c8b5, type: 2}
+  musicMixer: {fileID: 24100000, guid: e9f05e71ff447974091bf3a6d8925468, type: 2}
   vhsEnabled: {fileID: 1020315274}
   fullscreenEnabled: {fileID: 483995004}
 --- !u!114 &1690822803
@@ -6259,13 +6269,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 718523765}
   m_HandleRect: {fileID: 347138492}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -80
+  m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: -8
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1690822802}
+        m_MethodName: SetSFXVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2115754505
 GameObject:
   m_ObjectHideFlags: 0

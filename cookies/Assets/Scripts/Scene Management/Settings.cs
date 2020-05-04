@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class Settings : MonoBehaviour
 {
-    public AudioMixer mixer;
+    public AudioMixer sfxMixer;
+    public AudioMixer musicMixer;
     public Text vhsEnabled;
     public Text fullscreenEnabled;
 
@@ -41,10 +42,15 @@ public class Settings : MonoBehaviour
             fullscreenEnabled.text = "DISABLED";
     }
 
-    public void SetVolume(float vol)
+    public void SetSFXVolume(float vol)
     {
-        mixer.SetFloat("mixerVolume", vol);
+        sfxMixer.SetFloat("mixerVolume", vol);
         Debug.Log(vol);
+    }
+
+    public void SetMusicVolume(float vol)
+    {
+        musicMixer.SetFloat("mixerVolume", vol);
     }
 
     public void CloseSettings()

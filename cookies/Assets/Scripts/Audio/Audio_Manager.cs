@@ -7,8 +7,11 @@ using UnityEngine.Audio;
 public class Audio_Manager : MonoBehaviour
 {
     public static Audio_Manager globalAudioManager = null;
+    public AudioMixerGroup sfxMixer;
+    public AudioMixerGroup musicMixer;
 
-    public Sound[] soundArray;
+    public Sound[] intangibleSoundArray;
+    public Sound[] musicSoundArray;
 
     void Awake()
     {
@@ -30,21 +33,34 @@ public class Audio_Manager : MonoBehaviour
 
     void Init()
     {
-         foreach (Sound s in soundArray) 
+         foreach (Sound s in intangibleSoundArray) 
         {
             s.source = gameObject.AddComponent<AudioSource>();
+            s.source.outputAudioMixerGroup = sfxMixer;
+            
             s.source.clip = s.intangibleAudioSources;
 
             s.source.volume = s.volume;
             s.source.loop = s.loop;
         }
 
-        PlaySound("intro");
+        foreach (Sound s in musicSoundArray)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.outputAudioMixerGroup = musicMixer;
+
+            s.source.clip = s.intangibleAudioSources;
+
+            s.source.volume = s.volume;
+            s.source.loop = s.loop;
+        }
+
+        PlaySound("intro", musicSoundArray);
     }
 
-    public void PlaySound(string name)
+    public void PlaySound(string name, Sound[] array)
     {
-        Sound s = Array.Find(soundArray, sound => sound.name == name);
+        Sound s = Array.Find(array, sound => sound.name == name);
         s.source.Play();
         
     }

@@ -25,8 +25,9 @@ public class MainMenu : MonoBehaviour
     {
         // load the next scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        Audio_Manager.globalAudioManager.soundArray[3].source.Stop();
-        Audio_Manager.globalAudioManager.PlaySound("tape");
+        Audio_Manager.globalAudioManager.musicSoundArray[1].source.Stop();
+        Audio_Manager.globalAudioManager.PlaySound("tape", Audio_Manager.globalAudioManager.intangibleSoundArray);
+        Cursor.visible = false;
     }
 
 
