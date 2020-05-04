@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Galaxy_Exit : Interactable
+public class Galaxy_Exit : MonoBehaviour
 {
     public GameObject altarDrugItem;
     public GameObject blackout;
@@ -19,13 +19,17 @@ public class Galaxy_Exit : Interactable
         _blackoutAnimator = blackout.GetComponent<Animator>();
     }
 
-    public override void Interact()
+    public void OnTriggerEnter(Collider other)
     {
-        if (huxleyThreadComplete)
-            _kroolAidScript.preTeleportPosition = endOfThreadTransform;
+        if (other.gameObject.tag == "Player")
+        {
 
-        StartCoroutine(ActivateExit(5.0f));
-        _blackoutAnimator.SetBool("faded", true);
+            if (huxleyThreadComplete)
+                _kroolAidScript.preTeleportPosition = endOfThreadTransform;
+
+            StartCoroutine(ActivateExit(5.0f));
+            _blackoutAnimator.SetBool("faded", true);
+        }
     }
 
     private IEnumerator ActivateExit(float waitTime)

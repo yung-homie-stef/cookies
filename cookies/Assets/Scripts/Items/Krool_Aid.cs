@@ -86,6 +86,8 @@ public class Krool_Aid : Action
         Samet.SetActive(true);
         UFO.SetActive(true);
 
+        gameObject.GetComponent<AcquirableInteractable>().canDrop = false; // so as to not lose krool aid in space and softlock the questline
+
     }
 
     public void ReturnPlayerToEarth()
@@ -103,5 +105,14 @@ public class Krool_Aid : Action
         teleportParticle.SetActive(false);
         Samet.SetActive(false);
         UFO.SetActive(false);
+
+        StartCoroutine(AllowPlayerToDropKroolAid(6.2f));
+    }
+
+    private IEnumerator AllowPlayerToDropKroolAid(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        gameObject.GetComponent<AcquirableInteractable>().canDrop = true;
+
     }
 }

@@ -54,7 +54,7 @@ public class Movement : MonoBehaviour
                 movementDirection = Vector3.ProjectOnPlane(movementDirection, _hit.normal);
                 Vector3 newPosition = transform.position;
                 newPosition.y = _hit.point.y;
-                //transform.position = newPosition;
+                transform.position = newPosition;
 
                 Debug.DrawRay(transform.position, Vector3.down, Color.green);
                 

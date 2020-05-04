@@ -21,6 +21,7 @@ public class AcquirableInteractable : Interactable
     public GameObject player;
     public GameObject VHS_Camera;
     public bool canNowUse = false;
+    public bool canDrop = true;
 
     protected GameObject _duplicate;
     protected IEnumerator _removeCoroutine;
@@ -105,16 +106,20 @@ public class AcquirableInteractable : Interactable
 
     public void Drop()
     {
-        gameObject.transform.localScale = originalScale;
+        if (canDrop)
+        {
 
-        Vector3 dropPosition = new Vector3(player.transform.position.x, player.transform.position.y + GetComponent<Renderer>().bounds.size.y, player.transform.position.z);
+            gameObject.transform.localScale = originalScale;
 
-        gameObject.layer = 0;
-        gameObject.transform.position = dropPosition;
-        gameObject.transform.eulerAngles = originalRotation;
-        _inventory.isSlotFull[Inventory.currentSelectedSlot] = false;
-        _inventory.playerInventoryItems[Inventory.currentSelectedSlot] = null;
-        _clickable = true;
+            Vector3 dropPosition = new Vector3(player.transform.position.x, player.transform.position.y + GetComponent<Renderer>().bounds.size.y, player.transform.position.z);
+
+            gameObject.layer = 0;
+            gameObject.transform.position = dropPosition;
+            gameObject.transform.eulerAngles = originalRotation;
+            _inventory.isSlotFull[Inventory.currentSelectedSlot] = false;
+            _inventory.playerInventoryItems[Inventory.currentSelectedSlot] = null;
+            _clickable = true;
+        }
     }
 
     protected void ChangeText(string name, string desc)
