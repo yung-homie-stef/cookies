@@ -44,24 +44,27 @@ public class Pistol : Action
 
     public override void Use()
     {
-        if (_cocked == true)
+        if (GetComponent<AcquirableInteractable>().canNowUse)
         {
-            _inventory.isWeaponEquipped = false; // put gun away
-            Destroy(_duplicate);
-            _cocked = false;
-            
-        }
-        else if (_cocked == false)
-        {
-            _inventory.isWeaponEquipped = true;
-            // create a duplicate of the gun that rests in the player's hand
-            _duplicate = Instantiate(gameObject, playerPalm.transform.position, player.transform.rotation);
-            _duplicate.AddComponent<AudioSource>();
-            _duplicate.transform.Rotate(0,90,90); 
-            _duplicate.transform.localScale = _localScale;
-            _duplicate.layer = 0;
-            _duplicate.transform.parent = playerPalm.transform; // make the gun a child of the palm
-            _cocked = true;
+            if (_cocked == true)
+            {
+                _inventory.isWeaponEquipped = false; // put gun away
+                Destroy(_duplicate);
+                _cocked = false;
+
+            }
+            else if (_cocked == false)
+            {
+                _inventory.isWeaponEquipped = true;
+                // create a duplicate of the gun that rests in the player's hand
+                _duplicate = Instantiate(gameObject, playerPalm.transform.position, player.transform.rotation);
+                _duplicate.AddComponent<AudioSource>();
+                _duplicate.transform.Rotate(0, 90, 90);
+                _duplicate.transform.localScale = _localScale;
+                _duplicate.layer = 0;
+                _duplicate.transform.parent = playerPalm.transform; // make the gun a child of the palm
+                _cocked = true;
+            }
         }
     }
 

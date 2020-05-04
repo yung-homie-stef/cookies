@@ -29,32 +29,35 @@ public class Krool_Aid : Action
 
     public override void Use()
     {
-        if (!hasTeleported)
+        if (GetComponent<AcquirableInteractable>().canNowUse)
         {
-            for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
+            if (!hasTeleported)
             {
-                if (_inventory.playerInventoryItems[i] != null)
+                for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
                 {
-                    _tags = _inventory.playerInventoryItems[i].GetComponent<Tags>();
-
-                    for (int j = 0; j < _tags.tags.Length; j++)
+                    if (_inventory.playerInventoryItems[i] != null)
                     {
-                        if (_tags.tags[j] == "Rat_Posion")
+                        _tags = _inventory.playerInventoryItems[i].GetComponent<Tags>();
+
+                        for (int j = 0; j < _tags.tags.Length; j++)
                         {
+                            if (_tags.tags[j] == "Rat_Posion")
+                            {
 
-                            _sametScript.hasTranslated = true;
-                            
+                                _sametScript.hasTranslated = true;
 
-                            _inventory.isSlotFull[i] = false;
-                            Destroy(_inventory.playerInventoryItems[i]);
-                            break;
+
+                                _inventory.isSlotFull[i] = false;
+                                Destroy(_inventory.playerInventoryItems[i]);
+                                break;
+                            }
                         }
                     }
                 }
-            }
 
-            StartCoroutine(DrugsKickIn(5.0f));
-            _animator.SetBool("faded", true);
+                StartCoroutine(DrugsKickIn(5.0f));
+                _animator.SetBool("faded", true);
+            }
         }
 
         preTeleportPosition = player.transform.position;

@@ -20,6 +20,7 @@ public class AcquirableInteractable : Interactable
     public GameObject textCanvas;
     public GameObject player;
     public GameObject VHS_Camera;
+    public bool canNowUse = false;
 
     protected GameObject _duplicate;
     protected IEnumerator _removeCoroutine;
@@ -61,6 +62,7 @@ public class AcquirableInteractable : Interactable
                 _movement.enabled = true;
                 _camControlller.enabled = true;
                 _clickable = false;
+                canNowUse = true;
             }
         }
     }

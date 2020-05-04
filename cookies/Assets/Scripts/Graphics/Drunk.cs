@@ -9,4 +9,18 @@ public class Drunk : MonoBehaviour
     {
         Graphics.Blit(source, destination, material);
     }
+
+    void BeginSoberCountdown()
+    {
+        StartCoroutine(SoberUp(20.0f));
+    }
+
+    private IEnumerator SoberUp(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        this.enabled = false;
+       
+    }
+   
 }

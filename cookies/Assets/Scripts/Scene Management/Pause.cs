@@ -29,7 +29,7 @@ public class Pause : MonoBehaviour
             if (isPaused)
             {
                 ResumeGame();
-               
+                Game_Manager.globalGameManager.settingsScreen.SetActive(false);
             }
             else
             {

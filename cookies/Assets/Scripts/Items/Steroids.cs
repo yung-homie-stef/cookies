@@ -22,8 +22,11 @@ public class Steroids : Action
 
     public override void Use()
     {
-        _playerScript.isRoided = true; // allow player to punch with this bool
-        _notice.ChangeText(newText);
-        base.Use();
+        if (GetComponent<AcquirableInteractable>().canNowUse)
+        {
+            _playerScript.isRoided = true; // allow player to punch with this bool
+            _notice.ChangeText(newText);
+            base.Use();
+        }
     }
 }

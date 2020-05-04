@@ -10,6 +10,8 @@ public class Samet : Interactable
     public GameObject Huxley;
     public GameObject huxleyThreadTrigger;
     public GameObject galaxyExit;
+    public GameObject congregation;
+    public GameObject massSuicide;
 
     [SerializeField]
     private int _dialogueValue;
@@ -68,6 +70,8 @@ public class Samet : Interactable
         {
             huxleyThreadTrigger.SetActive(true);
             _galaxyExitScript.huxleyThreadComplete = true;
+            congregation.SetActive(false);
+            massSuicide.SetActive(true);
             
         }
     }

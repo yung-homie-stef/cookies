@@ -16,10 +16,13 @@ public class Shrooms : Action
 
     public override void Use()
     {
-        shroomSmoke.Play(); // create a puff of smoke for salvador to appear in
-        
-        salvador.SetActive(true);
-        base.Use();
+        if (GetComponent<AcquirableInteractable>().canNowUse)
+        {
+            shroomSmoke.Play(); // create a puff of smoke for salvador to appear in
+
+            salvador.SetActive(true);
+            base.Use();
+        }
     }
 
 }

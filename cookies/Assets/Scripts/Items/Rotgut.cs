@@ -18,21 +18,17 @@ public class Rotgut : Action
 
     public override void Use()
     {
-        if (!_isDrunk)
+        if (GetComponent<AcquirableInteractable>().canNowUse)
         {
-            GetComponent<AudioSource>().PlayOneShot(drinkSound);
-            _drunkScript.enabled = true;
-            StartCoroutine(SoberUp(20.0f));
-            _isDrunk = true;
-        }
-    }
+            if (!_isDrunk)
+            {
+                GetComponent<AudioSource>().PlayOneShot(drinkSound);
+                _drunkScript.enabled = true;
 
-    private IEnumerator SoberUp(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        _drunkScript.enabled = false;
-        base.Use();
-        Destroy(gameObject);
+                _isDrunk = true;
+                base.Use();
+            }
+        }
     }
 
 }

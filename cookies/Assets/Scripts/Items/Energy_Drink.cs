@@ -22,10 +22,13 @@ public class Energy_Drink : Action
 
     public override void Use()
     {
-        GetComponent<AudioSource>().PlayOneShot(drinkSound);
-        _movement.playerSpeed *= 2; // become faster
-        _notice.ChangeText(newText);
-        base.Use();
+        if (GetComponent<AcquirableInteractable>().canNowUse)
+        {
+            GetComponent<AudioSource>().PlayOneShot(drinkSound);
+            _movement.playerSpeed *= 2; // become faster
+            _notice.ChangeText(newText);
+            base.Use();
+        }
     }
 
 }

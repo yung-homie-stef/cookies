@@ -6,7 +6,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class Save_Load_Test : MonoBehaviour
 {
-    public static string filePath = "grgrggrgrgrrrg";
     public static string fileName = "cookies";
     public static string fileExtension = "save";
     public static string data2Save;
