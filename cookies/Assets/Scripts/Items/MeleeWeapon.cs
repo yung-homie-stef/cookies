@@ -6,7 +6,6 @@ public class MeleeWeapon : Action
 {
     public GameObject player;
     public GameObject playerPalm;
-    public GameObject hitbox;
     public Vector3 weaponRotation;
     public Vector3 weaponRepositioning;
 
@@ -54,7 +53,10 @@ public class MeleeWeapon : Action
             {
                 _inventory.isWeaponEquipped = true;
                 // create a duplicate of the gun that rests in the player's hand
+                
                 _duplicate = Instantiate(gameObject, playerPalm.transform.position, player.transform.rotation);
+                _duplicate.GetComponent<BoxCollider>().enabled = false;
+                _duplicate.gameObject.tag = "Hitbox";
                 _duplicate.transform.Rotate(weaponRotation);
                 _duplicate.transform.localScale = _localScale;
                 _duplicate.layer = 0;
@@ -78,13 +80,13 @@ public class MeleeWeapon : Action
         _relaxed = true;
     }
 
-    public void EnableMeleeHitbox()
+    public void EnableMeleeHitbox(int condition)
     {
-        hitbox.SetActive(true);
+        if (condition == 1)
+            _duplicate.GetComponent<BoxCollider>().enabled = true;
+
+        else if (condition == 0)
+            _duplicate.GetComponent<BoxCollider>().enabled = false;
     }
 
-    public void DisableMeleeHitbox()
-    {
-        hitbox.SetActive(false);
-    }
 }

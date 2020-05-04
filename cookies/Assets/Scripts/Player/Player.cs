@@ -110,4 +110,12 @@ public class Player : MonoBehaviour
         }
 
     }
+
+    public void ActivateMeleeHitbox(int condition)
+    {
+        if (_inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<MeleeWeapon>())
+        {
+            _inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<MeleeWeapon>().EnableMeleeHitbox(condition);
+        }
+    }
 }
