@@ -12,6 +12,7 @@ public class Father_Huxley : Interactable
     public GameObject player;
     public GameObject confessionalWindow;
     public GameObject koolAid;
+    public GameObject heartKey;
     public Text noticeText;
 
     [SerializeField]
@@ -37,6 +38,17 @@ public class Father_Huxley : Interactable
         _animator.SetInteger("praise_animation", animationInt);
         eventHappensWhenTalkingIsDone = true;
     }
+
+    private void Update()
+    {
+        if (_animator.enabled == false)
+        {
+            heartKey.SetActive(true);
+            heartKey.GetComponent<Interactable>().Interact();
+            enabled = false;
+        }
+    }
+
 
     public override void Interact()
     {
@@ -126,7 +138,7 @@ public class Father_Huxley : Interactable
 
         if (dialogueValue == 1)
         {
-            confessionDoor.tag = "Interactable";
+            confessionDoor.GetComponent<OpenableInteractable>().isLocked = false;
             confessionalWindow.SetActive(true);
         }
 
