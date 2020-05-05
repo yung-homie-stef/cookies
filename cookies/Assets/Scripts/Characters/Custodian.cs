@@ -94,7 +94,7 @@ public class Custodian : Interactable // TODO: make update dialogue method virtu
 
     public void Sweep()
     {
-        GetComponent<AudioSource>().PlayOneShot(sweepSFX);
+        //GetComponent<AudioSource>().PlayOneShot(sweepSFX);
     }
 
     private string[] UpdateDialogue(string[] lines)

@@ -49,6 +49,7 @@ public class Game_Manager : MonoBehaviour
         endScreenInfo.SetActive(false);
         settingsScreen.SetActive(false);
         UpdateThreadTitles();
+        Debug.Log(Application.persistentDataPath);
     }
 
     private void Awake()
