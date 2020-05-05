@@ -27,11 +27,11 @@ public class Save_Load_Test : MonoBehaviour
 
         Debug.Log("loading");
 
-        if (System.IO.File.Exists(Application.dataPath + "\\" + fileName + "." + fileExtension))
+        if (System.IO.File.Exists(Application.persistentDataPath + "\\" + fileName + "." + fileExtension))
         {
             string finalOutput = "";
             StreamReader loadReader = null;
-            loadReader = new StreamReader(Application.dataPath + "\\" + fileName + "." + fileExtension);
+            loadReader = new StreamReader(Application.persistentDataPath + "\\" + fileName + "." + fileExtension);
 
             while (!loadReader.EndOfStream)
             {
@@ -50,9 +50,9 @@ public class Save_Load_Test : MonoBehaviour
     public static ProgressInformation LoadProgress()
     {
         Debug.Log("loading");
-        if (System.IO.File.Exists(Application.dataPath + "\\" + fileName + "." + fileExtension))
+        if (System.IO.File.Exists(Application.persistentDataPath + "\\" + fileName + "." + fileExtension))
         {
-            byte[] bytes = File.ReadAllBytes(Application.dataPath + "\\" + fileName + "." + fileExtension);
+            byte[] bytes = File.ReadAllBytes(Application.persistentDataPath + "\\" + fileName + "." + fileExtension);
 
             ProgressInformation info = BytesToInfo(bytes);
             return info;
@@ -82,7 +82,7 @@ public class Save_Load_Test : MonoBehaviour
         Debug.Log("saving");
         byte[] benis = System.Text.Encoding.UTF8.GetBytes(data2Save);
         System.IO.FileStream saveStream = null;
-        saveStream = new System.IO.FileStream(Application.dataPath + "\\" + fileName + "." + fileExtension, System.IO.FileMode.Create);
+        saveStream = new System.IO.FileStream(Application.persistentDataPath + "\\" + fileName + "." + fileExtension, System.IO.FileMode.Create);
         saveStream.Write(benis, 0, benis.Length);
         saveStream.Close();
     }
@@ -100,7 +100,7 @@ public class Save_Load_Test : MonoBehaviour
 
         Debug.Log("saving");
         System.IO.FileStream saveStream = null;
-        saveStream = new System.IO.FileStream(Application.dataPath + "\\" + fileName + "." + fileExtension, System.IO.FileMode.Create);
+        saveStream = new System.IO.FileStream(Application.persistentDataPath + "\\" + fileName + "." + fileExtension, System.IO.FileMode.Create);
         saveStream.Write(bytes, 0, bytes.Length);
         saveStream.Close();
     }
@@ -108,7 +108,7 @@ public class Save_Load_Test : MonoBehaviour
     public static void Delete()
     {
         Debug.Log("deleting");
-        File.Delete(Application.dataPath + "\\" + fileName + "." + fileExtension);
+        File.Delete(Application.persistentDataPath + "\\" + fileName + "." + fileExtension);
     }
 
 }

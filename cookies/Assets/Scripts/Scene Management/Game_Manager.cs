@@ -35,7 +35,7 @@ public class Game_Manager : MonoBehaviour
     private MainMenu mainMenuScript;
     public bool VHSEffectOn = true;
     public GameObject mainMenu;
-    public GameObject endScreenInfo;
+    public GameObject endScreen;
     public GameObject settingsScreen;
     public GameObject controlsScreen;
     public GameObject[] _endGameModels;
@@ -44,20 +44,31 @@ public class Game_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (globalGameManager)
+        {
+            Debug.Log("beans");
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject); // when it spawns, once get deleted upon changing scenes
+        globalGameManager = this;
+
+        End_Menu em;
+        if (em = endScreen.GetComponent<End_Menu>())
+        {
+            em.Init();
+        }
+
+
         playerProgress = new ProgressInformation();
         playerProgress = Save_Load_Test.LoadProgress();
         mainMenuScript = mainMenu.GetComponent<MainMenu>();
-        endScreenInfo.SetActive(false);
+        endScreen.SetActive(false);
         settingsScreen.SetActive(false);
         controlsScreen.SetActive(false);
         UpdateThreadTitles();
         Debug.Log(Application.persistentDataPath);
-    }
-
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject); // when it spawns, once get deleted upon changing scenes
-        globalGameManager = this;
     }
 
     private void Update()
@@ -100,15 +111,18 @@ public class Game_Manager : MonoBehaviour
 
     public void EndGame(End_Condition condition)
     {
-        SceneManager.LoadScene(3);
-        
+        Cursor.visible = true;
+
         End_Menu.globalEndMenu.SetStatusOfThreadCompletion(condition);
         CompletePath(condition.threadID, condition.threadName);
+
+        SceneManager.LoadScene(3);
+             
     }
 
     public void OnEndScreenReached()
     {
-        endScreenInfo.SetActive(true);
+        endScreen.SetActive(true);
         Instantiate(_endGameModels[_lastCompletedPath]);
     }
 

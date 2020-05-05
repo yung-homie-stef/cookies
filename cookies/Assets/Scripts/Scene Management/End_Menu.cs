@@ -18,15 +18,22 @@ public class End_Menu : MonoBehaviour
     private TextMeshProUGUI threadHintTMPro;
     private GameObject rotatingModelOnScreen;
 
-    private void Start()
+    public void Init()
     {
-        Cursor.visible = true;
+        if (globalEndMenu)
+        {
+            Debug.Log("beans");
+            Destroy(gameObject);
+            return;
+        }
+        globalEndMenu = this;
+
 
         if ((threadTitleTMPro = threadTitle.GetComponent<TextMeshProUGUI>())
            && (threadEffectTMPro = threadEffect.GetComponent<TextMeshProUGUI>()) // null check
            && (threadHintTMPro = threadHint.GetComponent<TextMeshProUGUI>()))
         {
-
+            Debug.Log("i think i got it");
         }
         else
         {
@@ -37,11 +44,13 @@ public class End_Menu : MonoBehaviour
 
     private void Awake()
     {
-        globalEndMenu = this;
+
     }
 
     public void SetStatusOfThreadCompletion(End_Condition cond)
     {
+        Debug.Log(cond.threadName);
+        Debug.Log(threadTitleTMPro.name);
         Cursor.lockState = CursorLockMode.None;
         threadTitleTMPro.text = cond.threadName;
         threadEffectTMPro.text = cond.threadEffect;
@@ -50,7 +59,7 @@ public class End_Menu : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
-        Game_Manager.globalGameManager.endScreenInfo.SetActive(false);
+        Game_Manager.globalGameManager.endScreen.SetActive(false);
         SceneManager.LoadScene(0); // go back to start
     }
 }

@@ -3623,7 +3623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VHSEffectOn: 1
   mainMenu: {fileID: 850677923}
-  endScreenInfo: {fileID: 1380357132}
+  endScreen: {fileID: 1380357132}
   settingsScreen: {fileID: 1690822800}
   controlsScreen: {fileID: 1250090172}
   _endGameModels:
@@ -5727,6 +5727,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1727335894412565971, guid: 80e042d162b0bd348a21115832efae49,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1727335894412565971, guid: 80e042d162b0bd348a21115832efae49,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1727335894412565971, guid: 80e042d162b0bd348a21115832efae49,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1727335894412565971, guid: 80e042d162b0bd348a21115832efae49,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1727335894412565971, guid: 80e042d162b0bd348a21115832efae49,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1727335894412565971, guid: 80e042d162b0bd348a21115832efae49,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1727335895887276627, guid: 80e042d162b0bd348a21115832efae49,
         type: 3}
