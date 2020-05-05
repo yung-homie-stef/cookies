@@ -24,6 +24,7 @@ public class Rotgut : Action
             {
                 GetComponent<AudioSource>().PlayOneShot(drinkSound);
                 _drunkScript.enabled = true;
+                _drunkScript.BeginSoberCountdown();
 
                 _isDrunk = true;
                 base.Use();

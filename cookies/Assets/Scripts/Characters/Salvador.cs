@@ -7,6 +7,7 @@ public class Salvador : Interactable
 {
     public GameObject dialogueManager;
     public GameObject gun;
+    public GameObject blackOut;
     public GameObject ratPrimacy;
     public Light livingRoomLight;
     public Set_of_Sentences[] sentenceSets;
@@ -126,6 +127,7 @@ public class Salvador : Interactable
     public override void ConversationEndEvent()
     {
         StartCoroutine(CompleteSalvadorsThread(5.0f));
+        blackOut.GetComponent<Animator>().SetBool("faded", true);
     }
 
     private IEnumerator CompleteSalvadorsThread(float waitTime)

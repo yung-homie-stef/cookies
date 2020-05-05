@@ -15,7 +15,6 @@ public class Confessional : Interactable
     private Dialogue _dialogue;
     private Tags _tags;
     private Inventory _inventory;
-    private bool _hasStrippedPlayer = false;
     private Father_Huxley _huxleyScript;
 
     // Start is called before the first frame update
@@ -28,7 +27,6 @@ public class Confessional : Interactable
 
     public override void Interact()
     {
-        if (!_hasStrippedPlayer)
         HandleDialogue(0);
     }
 
@@ -51,23 +49,7 @@ public class Confessional : Interactable
 
     public override void ConversationEndEvent()
     {
-        if (!_hasStrippedPlayer)
-        {
-            StripPlayer();
             _huxleyScript.ConfirmTaskCompleted();
-            _hasStrippedPlayer = true;
-        }
     }
 
-    void StripPlayer() // empty players inventory
-    {
-        for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
-        {
-            if (_inventory.playerInventoryItems[i] != null)
-            {
-                _inventory.isSlotFull[i] = false;
-                Destroy(_inventory.playerInventoryItems[i]);
-            }
-        }
-    }
 }

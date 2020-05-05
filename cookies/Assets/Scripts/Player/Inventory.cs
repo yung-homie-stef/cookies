@@ -13,7 +13,7 @@ public class Inventory : MonoBehaviour
     public bool isWeaponEquipped; // variable that dictates whether player can cycle through inventory items
 
     //[SerializeField]
-    public static int currentSelectedSlot;
+    public static int currentSelectedSlot = 0;
 
     private void Start()
     {

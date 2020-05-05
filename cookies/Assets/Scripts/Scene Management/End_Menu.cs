@@ -20,7 +20,7 @@ public class End_Menu : MonoBehaviour
 
     private void Start()
     {
-
+        Cursor.visible = true;
 
         if ((threadTitleTMPro = threadTitle.GetComponent<TextMeshProUGUI>())
            && (threadEffectTMPro = threadEffect.GetComponent<TextMeshProUGUI>()) // null check

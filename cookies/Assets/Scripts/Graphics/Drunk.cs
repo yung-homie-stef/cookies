@@ -10,7 +10,7 @@ public class Drunk : MonoBehaviour
         Graphics.Blit(source, destination, material);
     }
 
-    void BeginSoberCountdown()
+    public void BeginSoberCountdown()
     {
         StartCoroutine(SoberUp(20.0f));
     }

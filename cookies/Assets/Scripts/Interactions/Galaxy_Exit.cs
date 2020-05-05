@@ -7,7 +7,7 @@ public class Galaxy_Exit : MonoBehaviour
     public GameObject altarDrugItem;
     public GameObject blackout;
     public bool huxleyThreadComplete = false;
-    public Vector3 endOfThreadTransform;
+    public Transform endOfThreadTransform;
 
     private Krool_Aid _kroolAidScript;
     private Animator _blackoutAnimator;
@@ -25,7 +25,7 @@ public class Galaxy_Exit : MonoBehaviour
         {
 
             if (huxleyThreadComplete)
-                _kroolAidScript.preTeleportPosition = endOfThreadTransform;
+                _kroolAidScript.preTeleportPosition = endOfThreadTransform.position;
 
             StartCoroutine(ActivateExit(5.0f));
             _blackoutAnimator.SetBool("faded", true);
