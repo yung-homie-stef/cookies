@@ -37,6 +37,7 @@ public class Game_Manager : MonoBehaviour
     public GameObject mainMenu;
     public GameObject endScreenInfo;
     public GameObject settingsScreen;
+    public GameObject controlsScreen;
     public GameObject[] _endGameModels;
     private int _lastCompletedPath = -1;
 
@@ -48,6 +49,7 @@ public class Game_Manager : MonoBehaviour
         mainMenuScript = mainMenu.GetComponent<MainMenu>();
         endScreenInfo.SetActive(false);
         settingsScreen.SetActive(false);
+        controlsScreen.SetActive(false);
         UpdateThreadTitles();
         Debug.Log(Application.persistentDataPath);
     }
@@ -124,4 +126,5 @@ public class Game_Manager : MonoBehaviour
 
         _lastCompletedPath = pathID;
     }
+
 }

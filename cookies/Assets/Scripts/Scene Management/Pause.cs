@@ -30,6 +30,7 @@ public class Pause : MonoBehaviour
             {
                 ResumeGame();
                 Game_Manager.globalGameManager.settingsScreen.SetActive(false);
+                Game_Manager.globalGameManager.controlsScreen.SetActive(false);
             }
             else
             {
@@ -65,6 +66,13 @@ public class Pause : MonoBehaviour
     {
         Game_Manager.globalGameManager.settingsScreen.GetComponent<Settings>().OpenSettings(pauseCanvas);
         Game_Manager.globalGameManager.settingsScreen.SetActive(true);
+        pauseCanvas.SetActive(false);
+    }
+
+    public void OpenControls()
+    {
+        Game_Manager.globalGameManager.controlsScreen.GetComponent<Controls_Screen>().OpenControls(pauseCanvas);
+        Game_Manager.globalGameManager.controlsScreen.SetActive(true);
         pauseCanvas.SetActive(false);
     }
 
