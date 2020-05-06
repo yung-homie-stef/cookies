@@ -68,6 +68,7 @@ public class Salvador : Interactable
                     {
                         _salvadorsBelly++;
                         GetComponent<AudioSource>().PlayOneShot(eatSound);
+                        Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
                         Debug.Log(_salvadorsBelly);
                     }
                     _dialogueValue = (int)_salvadorsBelly;

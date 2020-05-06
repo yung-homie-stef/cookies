@@ -13,6 +13,8 @@ public class OpenableInteractable : Interactable
     public bool isLocked;
     public Text noticeText;
     public bool isOpened;
+    public bool openToggle = true;
+    public bool closeToggle = false;
 
     private Inventory _inventory;
     private Tags _tags;
@@ -31,17 +33,23 @@ public class OpenableInteractable : Interactable
     {
         if (isOpened == true)
         {
-            // play the opening animation
-            _animator.SetBool("is_opened", true);
-            PlayDoorSound(0);
+            if (openToggle)
+            {
+                // play the opening animation
+                _animator.SetBool("is_opened", true);
+                PlayDoorSound(0);
+            }
 
         }
 
         else if (isOpened == false)
         {
-            _animator.SetFloat("animSpeed", 1);
-            _animator.SetBool("is_opened", false);
-            PlayDoorSound(1);
+            if (closeToggle)
+            {
+                _animator.SetFloat("animSpeed", 1);
+                _animator.SetBool("is_opened", false);
+                PlayDoorSound(1);
+            }
         }
     }
 
@@ -74,9 +82,9 @@ public class OpenableInteractable : Interactable
             }
         }
         else // otherwise open it normally
-        {
-            isOpened = !isOpened;
-            EnactOpening();
+        {          
+                isOpened = !isOpened; // only enact opening if animation isnt playing
+                EnactOpening();
             
         }
     }
@@ -85,4 +93,23 @@ public class OpenableInteractable : Interactable
     {
         GetComponent<AudioSource>().PlayOneShot(Door_Sound_Effects.globalDoorSounds.doorSFX[clip]);
     }
+
+    public void SetOpenToggle(int cond)
+    {
+        if (cond == 0)
+            openToggle = false;
+
+        else if (cond == 1)
+            openToggle = true;
+    }
+
+    public void SetCloseToggle(int cond)
+    {
+        if (cond == 0)
+            closeToggle = false;
+
+        else if (cond == 1)
+            closeToggle = true;
+    }
+
 }

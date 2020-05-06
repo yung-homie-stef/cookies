@@ -60,6 +60,7 @@ public class Father_Huxley : Interactable
             }
             else
             {
+                Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
                 ConfirmTaskCompleted(); // otherwise pay him and progress the story
                 _requiresPayment = false;
             }
@@ -73,6 +74,7 @@ public class Father_Huxley : Interactable
             }
             else
             {
+                Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
                 ConfirmTaskCompleted(); // otherwise pay him and progress the story
                 needsBomb = false;
             }

@@ -43,7 +43,7 @@ public class Krool_Aid : Action
                         {
                             if (_tags.tags[j] == "Rat_Posion")
                             {
-
+                                Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
                                 _sametScript.hasTranslated = true;
 
 

@@ -51,6 +51,7 @@ public class Pistol : Action
                 _inventory.isWeaponEquipped = false; // put gun away
                 Destroy(_duplicate);
                 _cocked = false;
+                Audio_Manager.globalAudioManager.PlaySound("unequip", Audio_Manager.globalAudioManager.intangibleSoundArray);
 
             }
             else if (_cocked == false)
@@ -64,6 +65,7 @@ public class Pistol : Action
                 _duplicate.layer = 0;
                 _duplicate.transform.parent = playerPalm.transform; // make the gun a child of the palm
                 _cocked = true;
+                Audio_Manager.globalAudioManager.PlaySound("equip", Audio_Manager.globalAudioManager.intangibleSoundArray);
             }
         }
     }

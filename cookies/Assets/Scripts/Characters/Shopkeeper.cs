@@ -53,6 +53,7 @@ public class Shopkeeper : Interactable
                             _storeCredit++; // when store credit is above 0 players can buy items 
                             Destroy(other.gameObject);
                             SetBuyable(true);
+                            Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
                         }
                     }
                 }

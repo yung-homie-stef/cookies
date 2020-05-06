@@ -48,6 +48,7 @@ public class MeleeWeapon : Action
                 _inventory.isWeaponEquipped = false; // put weapon away
                 Destroy(_duplicate);
                 _wielding = false;
+                Audio_Manager.globalAudioManager.PlaySound("unequip", Audio_Manager.globalAudioManager.intangibleSoundArray);
             }
             else if (_wielding == false)
             {
@@ -63,6 +64,7 @@ public class MeleeWeapon : Action
                 _duplicate.transform.parent = playerPalm.transform; // make the gun a child of the palm
                 _duplicate.transform.position = new Vector3((playerPalm.transform.position.x + weaponRepositioning.x), (playerPalm.transform.position.y + weaponRepositioning.y), (playerPalm.transform.position.z + weaponRepositioning.z));
                 _wielding = true;
+                Audio_Manager.globalAudioManager.PlaySound("equip", Audio_Manager.globalAudioManager.intangibleSoundArray);
             }
         }
     }

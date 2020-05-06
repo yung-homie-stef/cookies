@@ -41,6 +41,7 @@ public class Bomb_Table : Interactable
                             hasCrafted = true;
                             _inventory.isSlotFull[i] = false;
                             Destroy(_inventory.playerInventoryItems[i]);
+                            Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
                             break;
                         }
                     }

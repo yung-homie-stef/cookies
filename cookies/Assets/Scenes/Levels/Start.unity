@@ -3636,7 +3636,7 @@ MonoBehaviour:
   - {fileID: 3614516941617284751, guid: d3b4bd2daba0f764986e1b65cdd6d336, type: 3}
   - {fileID: 3614516941617284751, guid: d3b4bd2daba0f764986e1b65cdd6d336, type: 3}
   - {fileID: 3165275512187975031, guid: 53f1c02f5d78ec34aa713aeae0a7144c, type: 3}
-  - {fileID: 3614516941617284751, guid: d3b4bd2daba0f764986e1b65cdd6d336, type: 3}
+  - {fileID: 3165275512187975031, guid: 53f1c02f5d78ec34aa713aeae0a7144c, type: 3}
   - {fileID: 3614516941617284751, guid: d3b4bd2daba0f764986e1b65cdd6d336, type: 3}
   - {fileID: 3614516941617284751, guid: d3b4bd2daba0f764986e1b65cdd6d336, type: 3}
 --- !u!1 &1107141345
@@ -4469,6 +4469,24 @@ MonoBehaviour:
     loop: 0
   - name: tape
     intangibleAudioSources: {fileID: 8300000, guid: 58754d035213b044a8c4e5b2d4369da4,
+      type: 3}
+    source: {fileID: 0}
+    volume: 0.45
+    loop: 0
+  - name: equip
+    intangibleAudioSources: {fileID: 8300000, guid: c2e5fc2071a1e544cae7093fea3103b6,
+      type: 3}
+    source: {fileID: 0}
+    volume: 0.45
+    loop: 0
+  - name: unequip
+    intangibleAudioSources: {fileID: 8300000, guid: 420127fad3e6e874cbe26ee3db3a7e3a,
+      type: 3}
+    source: {fileID: 0}
+    volume: 0.45
+    loop: 0
+  - name: ping
+    intangibleAudioSources: {fileID: 8300000, guid: c3ed415d34e31db4cbb38c7b50ae3b33,
       type: 3}
     source: {fileID: 0}
     volume: 0.45
