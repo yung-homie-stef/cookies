@@ -6,10 +6,12 @@
 
 	SubShader {
 		Pass {
+		
 			ZTest Always Cull Off ZWrite Off
 			Fog { Mode off }
 					
 			CGPROGRAM
+		
 			#pragma vertex vert_img
 			#pragma fragment frag
 			#pragma fragmentoption ARB_precision_hint_fastest 
@@ -25,6 +27,7 @@
 			}
  
 			fixed4 frag (v2f_img i) : COLOR{
+
 				fixed4 vhs = tex2D (_VHSTex, i.uv);
 				
 				float dx = 1-abs(distance(i.uv.y, _xScanline));
@@ -61,7 +64,8 @@
 				
 				c -= rand(float3(x, y, _xScanline)) * _xScanline / 5;
 				return c + vhs;
-			}
+				}
+			
 			ENDCG
 		}
 	}

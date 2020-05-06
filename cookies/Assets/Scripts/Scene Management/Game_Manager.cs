@@ -93,7 +93,7 @@ public class Game_Manager : MonoBehaviour
         }
     }
 
-    void UpdateThreadTitles()
+    public void UpdateThreadTitles()
     {
         for (int i = 0; i < playerProgress.completedPaths.Length; i++)
         {
