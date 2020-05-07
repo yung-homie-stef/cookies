@@ -42,10 +42,7 @@ public class Salvador : Interactable
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Game_Manager.globalGameManager.EndGame(son_of_sal_Thread);
-        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
