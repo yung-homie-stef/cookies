@@ -9,6 +9,7 @@ public class VHSPostProcessEffect : MonoBehaviour
 {
 	public Shader shader;
 	public VideoClip VHSClip;
+    public float bleed = 0.1f;
 
 	private float _yScanline;
 	private float _xScanline;
@@ -28,6 +29,11 @@ public class VHSPostProcessEffect : MonoBehaviour
 
     void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
+        if (shader != null)
+        {
+            _material.SetFloat("bleed", bleed);
+        }
+
         if (!Game_Manager.globalGameManager.VHSEffectOn)
         {
             Graphics.Blit(source, destination);

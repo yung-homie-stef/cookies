@@ -40,25 +40,29 @@ public class Shopkeeper : Interactable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_hasSpoken)
-        {
+        
             if (other.tag == "Interactable") // when the player drops an object to the shopkeeper, have him check if its currency, if so
             {
+            bool droppedMoney = false;
                 if (_tags = other.GetComponent<Tags>())
                 {
                     for (int i = 0; i < _tags.tags.Length; i++)
                     {
-                        if (_tags.tags[i] == "Currency")
-                        {
-                            _storeCredit++; // when store credit is above 0 players can buy items 
-                            Destroy(other.gameObject);
-                            SetBuyable(true);
-                            Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
-                        }
+                    if (_tags.tags[i] == "Currency")
+                    {
+                        _storeCredit++; // when store credit is above 0 players can buy items 
+                        Destroy(other.gameObject);
+                        SetBuyable(true);
+                        Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
+                        droppedMoney = true;
                     }
+
                 }
+                if (!droppedMoney)
+                    other.GetComponent<AcquirableInteractable>().Interact();
             }
         }
+        
     }
 
     private void SetBuyable(bool condition)

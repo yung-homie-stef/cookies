@@ -19,6 +19,8 @@
 
 			uniform sampler2D _MainTex;
 			uniform sampler2D _VHSTex;
+			uniform float white;
+			uniform float bleed;
 			
 			float _yScanline;
 			float _xScanline;
@@ -30,7 +32,7 @@
 
 				fixed4 vhs = tex2D (_VHSTex, i.uv);
 				
-				float dx = 1-abs(distance(i.uv.y, _xScanline));
+				float dx = 1-abs(distance(i.uv.y, _xScanline)); // this gives off the scanline effect that distorts the appearance of any onscreen objects
 				float dy = 1-abs(distance(i.uv.y, _yScanline));
 				
 				//float x = ((int)(i.uv.x*320))/320.0;
@@ -38,7 +40,7 @@
 				dy = dy;
 				i.uv.x += dy * 0.025 + rand(float3(dy,dy,dy)).r/500;//0.025;
 				
-				float white = (vhs.r+vhs.g+vhs.b)/3;
+			    white = (vhs.r+vhs.g+vhs.b)/3;
 				
 				if(dx > 0.99)
 					i.uv.y = _xScanline;
@@ -49,15 +51,15 @@
 				
 				fixed4 c = tex2D (_MainTex, i.uv);
 				
-				float bleed = tex2D(_MainTex, i.uv + float2(0.01, 0)).r;
-				bleed += tex2D(_MainTex, i.uv + float2(0.02, 0)).r;
-				bleed += tex2D(_MainTex, i.uv + float2(0.01, 0.01)).r;
-				bleed += tex2D(_MainTex, i.uv + float2(0.02, 0.02)).r;
-				bleed /= 6;
-				
-				if(bleed > 0.1){
-					vhs += fixed4(bleed * _xScanline, 0, 0, 0);
-				}
+			bleed = tex2D(_MainTex, i.uv + float2(0.01, 0)).r; // this is what gives off the red outline around certain effects
+			bleed += tex2D(_MainTex, i.uv + float2(0.02, 0)).r;
+			bleed += tex2D(_MainTex, i.uv + float2(0.01, 0.01)).r;
+			bleed += tex2D(_MainTex, i.uv + float2(0.02, 0.02)).r;
+			bleed /= 6;
+			
+			if(bleed > 0.1){
+				vhs += fixed4(bleed * _xScanline, 0, 0, 0);
+			}
 				
 				float x = ((int)(i.uv.x*320))/320.0;
 				float y = ((int)(i.uv.y*240))/240.0;
