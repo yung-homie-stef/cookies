@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Player : MonoBehaviour
 {
@@ -8,6 +10,9 @@ public class Player : MonoBehaviour
     public RaycastHit playerRaycastHit;
     public bool isRoided;
     public GameObject fistHitbox;
+    public Image cursorImage;
+    public Sprite interactSprite;
+    public Sprite originalHUDDot;
 
     private Movement playerMovement;
     private Inventory _inventory;
@@ -26,6 +31,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetButtonDown("Fire1"))
         {
             Interact();
@@ -47,6 +53,20 @@ public class Player : MonoBehaviour
             Drop();
         }
 
+    }
+
+    private void FixedUpdate()
+    {
+        Ray _ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(_ray, out playerRaycastHit, 1))
+        {
+            if (playerRaycastHit.transform.tag.Equals("Interactable"))
+            {
+                cursorImage.sprite = interactSprite;
+            }
+        }
+        else
+            cursorImage.sprite = originalHUDDot;
     }
 
     public void DisableMovement()

@@ -34,11 +34,11 @@ public class VHSPostProcessEffect : MonoBehaviour
             _material.SetFloat("bleed", bleed);
         }
 
-        if (!Game_Manager.globalGameManager.VHSEffectOn)
-        {
-            Graphics.Blit(source, destination);
-            return;
-        }
+        //if (!Game_Manager.globalGameManager.VHSEffectOn)
+        //{
+           // Graphics.Blit(source, destination);
+            
+        //}
         
         
 
@@ -59,8 +59,8 @@ public class VHSPostProcessEffect : MonoBehaviour
 		_material.SetFloat("_xScanline", _xScanline);
 
         Graphics.Blit(source, destination, _material);
-        
-	}
+        return;
+    }
 
 	protected void OnDisable()
 	{

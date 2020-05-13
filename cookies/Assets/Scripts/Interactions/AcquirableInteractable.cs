@@ -10,6 +10,7 @@ public class AcquirableInteractable : Interactable
     public Vector3 zoomScale;
     public Transform zoomedInTransform;
     public RuntimeAnimatorController controller;
+    public Image cursorImage;
 
     public Text itemName;
     public Text itemDesc;
@@ -62,6 +63,7 @@ public class AcquirableInteractable : Interactable
 
                 _movement.enabled = true;
                 _camControlller.enabled = true;
+                cursorImage.enabled = true;
                 _clickable = false;
                 canNowUse = true;
             }
@@ -75,6 +77,8 @@ public class AcquirableInteractable : Interactable
 
         if (_hasHadDuplicate == false)
         {
+            cursorImage.enabled = false;
+
             // create a duplicate of the acquirable interactable object that appears on the screen zoomed in 
             // to show the player they've picked it up
             _duplicate = Instantiate(gameObject, zoomedInTransform.position, zoomedInTransform.rotation);
