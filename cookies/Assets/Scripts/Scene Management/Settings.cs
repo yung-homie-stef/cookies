@@ -12,8 +12,14 @@ public class Settings : MonoBehaviour
     public Text vhsEnabled;
     public Text fullscreenEnabled;
 
+    public float grain;
+    public float bleed; // settings for video
+    public float gamma;
+    public float phosphor;
+
     private VHSPostProcessEffect _vhsCameraEffect;
     private GameObject _lastMenu;
+    private postVHSPro _postVHSScript;
 
     public void OpenSettings(GameObject lastMenu)
     {
@@ -52,6 +58,22 @@ public class Settings : MonoBehaviour
     {
         musicMixer.SetFloat("mixerVolume", vol);
     }
+
+    public void SetGrain(float grain)
+    {
+        postVHSPro.globalVHSFX.filmGrainAmount = grain;
+    }
+
+    public void SetBleed(float bleed)
+    {
+        postVHSPro.globalVHSFX.bleedAmount = bleed;
+    }
+
+    public void SetGamma(float gamma)
+    {
+        postVHSPro.globalVHSFX.gammaCorection = gamma;
+    }
+
 
     public void CloseSettings()
     {

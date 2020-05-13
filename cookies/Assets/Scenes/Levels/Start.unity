@@ -1725,7 +1725,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Hidden/postVHSPro_Tape
   m_Shader: {fileID: 4800000, guid: caea6b3daf52a4416949b7b9c0146d77, type: 3}
-  m_ShaderKeywords: VHS_FILMGRAIN_ON VHS_LINENOISE_ON VHS_TAPENOISE_ON
+  m_ShaderKeywords: VHS_FILMGRAIN_ON VHS_TAPENOISE_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -1868,7 +1868,7 @@ RectTransform:
   m_GameObject: {fileID: 547474302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.71586, y: 0.71586, z: 0.71586}
   m_Children:
   - {fileID: 483995002}
   m_Father: {fileID: 1690822801}
@@ -1876,7 +1876,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 291, y: -106}
+  m_AnchoredPosition: {x: 182, y: -294}
   m_SizeDelta: {x: 303.3, y: 58.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &547474304
@@ -3443,8 +3443,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Hidden/postVHSPro_First
   m_Shader: {fileID: 4800000, guid: e5b137a48bf2c4c668927fd89b6ccbcd, type: 3}
-  m_ShaderKeywords: VHS_FILMGRAIN_ON VHS_FISHEYE_ON VHS_JITTER_H_ON VHS_LINENOISE_ON
-    VHS_STRETCH_ON VHS_TAPENOISE_ON VHS_YIQNOISE_ON
+  m_ShaderKeywords: VHS_FILMGRAIN_ON VHS_FISHEYE_ON VHS_JITTER_H_ON VHS_STRETCH_ON
+    VHS_TAPENOISE_ON VHS_YIQNOISE_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -4025,7 +4025,7 @@ RectTransform:
   m_GameObject: {fileID: 1200648721}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.71586, y: 0.71586, z: 0.71586}
   m_Children:
   - {fileID: 1020315277}
   m_Father: {fileID: 1690822801}
@@ -4033,7 +4033,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 291, y: -10}
+  m_AnchoredPosition: {x: 180, y: -229}
   m_SizeDelta: {x: 303.3, y: 58.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1200648723
@@ -4239,14 +4239,14 @@ RectTransform:
   m_GameObject: {fileID: 1255295042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0701, y: 1.0701, z: 1.0701}
+  m_LocalScale: {x: 0.9819665, y: 0.9819665, z: 0.9819665}
   m_Children: []
   m_Father: {fileID: 1753227038}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -179, y: -17}
+  m_AnchoredPosition: {x: -236.62784, y: -324}
   m_SizeDelta: {x: 358, y: 56.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1255295044
@@ -4755,14 +4755,14 @@ RectTransform:
   m_GameObject: {fileID: 1346345824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0701, y: 1.0701, z: 1.0701}
+  m_LocalScale: {x: 0.9819665, y: 0.9819665, z: 0.9819665}
   m_Children: []
   m_Father: {fileID: 1753227038}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -179, y: -111}
+  m_AnchoredPosition: {x: -236.62787, y: -418.00006}
   m_SizeDelta: {x: 358, y: 56.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1346345826
@@ -5056,7 +5056,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Hidden/postVHSPro_Second
   m_Shader: {fileID: 4800000, guid: e2075d3cd3deb45c78fdc81aab250ef7, type: 3}
-  m_ShaderKeywords: VHS_BLEED_ON VHS_FISHEYE_ON VHS_OLD_THREE_PHASE
+  m_ShaderKeywords: VHS_BLEED_ON VHS_FISHEYE_ON VHS_OLD_THREE_PHASE VHS_SIGNAL_TWEAK_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -5102,7 +5102,7 @@ RectTransform:
   m_GameObject: {fileID: 1416383636}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.6281025, y: 3.6281025, z: 3.6281025}
+  m_LocalScale: {x: 2.5972135, y: 2.5972135, z: 2.5972135}
   m_Children:
   - {fileID: 1361395376}
   - {fileID: 1086524589}
@@ -5112,7 +5112,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 231, y: 141}
+  m_AnchoredPosition: {x: 231, y: 204}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1416383638
@@ -5247,7 +5247,7 @@ MonoBehaviour:
   mat_clear: {fileID: 1421453782}
   mat_tape: {fileID: 539508847}
   g_showCRT: 0
-  g_showNoise: 1
+  g_showNoise: 0
   g_showJitter: 1
   g_showSignal: 0
   g_showFeedback: 1
@@ -5346,20 +5346,20 @@ MonoBehaviour:
   vignetteAmount: 1
   vignetteSpeed: 1
   noiseLinesMode: 1
-  noiseLinesNum: 240
+  noiseLinesNum: 1024
   noiseQuantizeX: 1
   filmgrainOn: 1
   filmGrainAmount: 0.029
   signalNoiseOn: 1
-  signalNoiseAmount: 0.15
+  signalNoiseAmount: 0.104
   signalNoisePower: 0.83
   tapeNoiseOn: 1
   tapeNoiseTH: 0.63
   tapeNoiseAmount: 1
   tapeNoiseSpeed: 1
-  lineNoiseOn: 1
-  lineNoiseAmount: 1
-  lineNoiseSpeed: 5
+  lineNoiseOn: 0
+  lineNoiseAmount: 0
+  lineNoiseSpeed: 0
   scanLinesOn: 0
   scanLineWidth: 10
   linesFloatOn: 0
@@ -5374,7 +5374,7 @@ MonoBehaviour:
   jitterVOn: 0
   jitterVAmount: 1
   jitterVSpeed: 1
-  signalTweakOn: 0
+  signalTweakOn: 1
   signalAdjustY: 0
   signalAdjustI: 0
   signalAdjustQ: 0
@@ -5384,10 +5384,10 @@ MonoBehaviour:
   gammaCorection: 1
   feedbackOn: 0
   feedbackMode: 0
-  feedbackThresh: 0.1
+  feedbackThresh: 0.52
   feedbackAmount: 2
-  feedbackFade: 0.82
-  feedbackColor: {r: 1, g: 0.5, b: 0, a: 1}
+  feedbackFade: 1
+  feedbackColor: {r: 1, g: 0, b: 0.06575394, a: 1}
   feedbackDebugOn: 0
   independentTimeOn: 0
   bypassTex: {fileID: 0}
@@ -6482,6 +6482,10 @@ MonoBehaviour:
   musicMixer: {fileID: 24100000, guid: e9f05e71ff447974091bf3a6d8925468, type: 2}
   vhsEnabled: {fileID: 1020315274}
   fullscreenEnabled: {fileID: 483995004}
+  grain: 0
+  bleed: 0
+  gamma: 0
+  phosphor: 0
 --- !u!114 &1690822803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6758,7 +6762,7 @@ RectTransform:
   m_GameObject: {fileID: 1753227037}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.71586, y: 0.71586, z: 0.71586}
   m_Children:
   - {fileID: 2115754506}
   - {fileID: 1935258287}
@@ -7118,7 +7122,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -335.8, y: 141}
+  m_AnchoredPosition: {x: -335.8, y: 275.39996}
   m_SizeDelta: {x: 357.95, y: 44.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1935258288
@@ -7308,7 +7312,7 @@ RectTransform:
   m_GameObject: {fileID: 2097431722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.6281025, y: 3.6281025, z: 3.6281025}
+  m_LocalScale: {x: 2.5972135, y: 2.5972135, z: 2.5972135}
   m_Children:
   - {fileID: 1995772456}
   - {fileID: 329488515}
@@ -7318,7 +7322,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 231, y: 239}
+  m_AnchoredPosition: {x: 231, y: 275}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2097431724
@@ -7417,7 +7421,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -335.8, y: 238.6}
+  m_AnchoredPosition: {x: -335.8, y: 373}
   m_SizeDelta: {x: 357.95, y: 44.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2115754507
@@ -7635,7 +7639,7 @@ PrefabInstance:
     - target: {fileID: 4383226579170909955, guid: 1974e4ce497c63e49901733e7b8761c0,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4383226579170909964, guid: 1974e4ce497c63e49901733e7b8761c0,
         type: 3}
@@ -7704,4 +7708,5 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4383226579170909954, guid: 1974e4ce497c63e49901733e7b8761c0, type: 3}
+    - {fileID: 4383226579170909955, guid: 1974e4ce497c63e49901733e7b8761c0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1974e4ce497c63e49901733e7b8761c0, type: 3}

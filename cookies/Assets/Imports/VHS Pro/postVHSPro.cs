@@ -9,8 +9,10 @@ using System.Collections;
 // public class postVHSPro : PostEffectsBase {
 public class postVHSPro : MonoBehaviour {
 
-	//main props
-	float time_ = 0.0f;
+    public static postVHSPro globalVHSFX = null;
+
+    //main props
+    float time_ = 0.0f;
 
 	//properties will be assigned automatically 
 	public Shader shader1 = null; //1st pass  
@@ -218,8 +220,11 @@ public class postVHSPro : MonoBehaviour {
 
 	}
 
-	void Awake(){		
-		if(crtMode==3) buildCurves(); 
+	void Awake(){
+        globalVHSFX = this;
+
+        if (crtMode==3) buildCurves(); 
+
 	}
 
 

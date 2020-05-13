@@ -616,7 +616,7 @@ Material:
   m_Name: Hidden/postVHSPro_First
   m_Shader: {fileID: 4800000, guid: e5b137a48bf2c4c668927fd89b6ccbcd, type: 3}
   m_ShaderKeywords: VHS_FILMGRAIN_ON VHS_FISHEYE_ON VHS_JITTER_H_ON VHS_LINENOISE_ON
-    VHS_STRETCH_ON VHS_TAPENOISE_ON VHS_YIQNOISE_ON
+    VHS_STRETCH_ON VHS_TAPENOISE_ON VHS_TWITCH_H_ON VHS_TWITCH_V_ON VHS_YIQNOISE_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -764,9 +764,9 @@ MonoBehaviour:
   mat_tape: {fileID: 966615290}
   g_showCRT: 0
   g_showNoise: 0
-  g_showJitter: 0
+  g_showJitter: 1
   g_showSignal: 0
-  g_showFeedback: 1
+  g_showFeedback: 0
   g_showExtra: 0
   g_showBypass: 0
   bleedOn: 1
@@ -881,14 +881,14 @@ MonoBehaviour:
   linesFloatOn: 0
   linesFloatSpeed: 1
   stretchOn: 1
-  twitchHOn: 0
-  twitchHFreq: 1
-  twitchVOn: 0
-  twitchVFreq: 1
+  twitchHOn: 1
+  twitchHFreq: 2.6
+  twitchVOn: 1
+  twitchVFreq: 3.45
   jitterHOn: 1
   jitterHAmount: 0.5
   jitterVOn: 0
-  jitterVAmount: 1
+  jitterVAmount: 3.3
   jitterVSpeed: 1
   signalTweakOn: 0
   signalAdjustY: 0
