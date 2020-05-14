@@ -18,25 +18,32 @@ public class Pickup : MonoBehaviour
         _inventory = player.GetComponent<Inventory>();
     }
 
-    public void AddItem()
+    public void AddItem(Item item)
     {
-        for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
-        {
-            if (_inventory.isSlotFull[i] == false)
-            {
+        bool wasPickedup = Inventory.instance.AddItem(item);
 
-                // item can be added
-                _inventory.isSlotFull[i] = true;
-                gameObject.layer = 9 + i;
-                gameObject.transform.position = new Vector3(renderTransform.position.x + extraX, renderTransform.position.y, renderTransform.position.z);
-                gameObject.transform.localScale = renderScale;
-                gameObject.transform.eulerAngles = renderRotation;
-                _inventory.playerInventoryItems[i] = gameObject;
-                break;
-            }
-          
-            
-        }
-         
+        if (wasPickedup)
+            Destroy(gameObject);
+
+        #region OLD CODE
+        //for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
+        //{
+        //    if (_inventory.isSlotFull[i] == false)
+        //    {
+
+        //        // item can be added
+        //        _inventory.isSlotFull[i] = true;
+        //        gameObject.layer = 9 + i;
+        //        gameObject.transform.position = new Vector3(renderTransform.position.x + extraX, renderTransform.position.y, renderTransform.position.z);
+        //        gameObject.transform.localScale = renderScale;
+        //        gameObject.transform.eulerAngles = renderRotation;
+        //        _inventory.playerInventoryItems[i] = gameObject;
+        //        break;
+        //    }
+
+
+        //}
+        #endregion
+
     }
 }

@@ -9,7 +9,6 @@ using System.Collections;
 // public class postVHSPro : PostEffectsBase {
 public class postVHSPro : MonoBehaviour {
 
-    public static postVHSPro globalVHSFX = null;
 
     //main props
     float time_ = 0.0f;
@@ -221,7 +220,6 @@ public class postVHSPro : MonoBehaviour {
 	}
 
 	void Awake(){
-        globalVHSFX = this;
 
         if (crtMode==3) buildCurves(); 
 

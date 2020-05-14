@@ -11,12 +11,10 @@ public class AcquirableInteractable : Interactable
     public Transform zoomedInTransform;
     public RuntimeAnimatorController controller;
     public Image cursorImage;
+    public Item itemScriptableObj;
 
     public Text itemName;
     public Text itemDesc;
-
-    public string nameString;
-    public string descString;
 
     public GameObject textCanvas;
     public GameObject player;
@@ -66,14 +64,20 @@ public class AcquirableInteractable : Interactable
                 cursorImage.enabled = true;
                 _clickable = false;
                 canNowUse = true;
+
+                itemScriptableObj.duplicate = Instantiate(gameObject);
+
+                if (_pickup)
+                    _pickup.AddItem(itemScriptableObj);
+
+               
             }
         }
     }
 
     public override void Interact()
     {
-        if (_pickup)
-        _pickup.AddItem();
+        
 
         if (_hasHadDuplicate == false)
         {
@@ -95,16 +99,16 @@ public class AcquirableInteractable : Interactable
             _movement.enabled = false;
             _camControlller.enabled = false;
             textCanvas.SetActive(true);
-            ChangeText(nameString, descString);
+            ChangeText(itemScriptableObj.itemName, itemScriptableObj.itemDesc);
 
             // setting duplicate object to the zoomed-in object's layer
             _duplicate.layer = 8;
             // after a 2 second delay allow the player to click away
             StartCoroutine(_removeCoroutine);
 
-            Audio_Manager.globalAudioManager.PlaySound("pickup", Audio_Manager.globalAudioManager.intangibleSoundArray);
-
             _hasHadDuplicate = true;
+
+            Audio_Manager.globalAudioManager.PlaySound("pickup", Audio_Manager.globalAudioManager.intangibleSoundArray);
         }
     }
 
