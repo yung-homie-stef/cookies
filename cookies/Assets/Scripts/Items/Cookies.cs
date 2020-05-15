@@ -18,7 +18,7 @@ public class Cookies : Action
         
     }
 
-    public override void Use()
+    public override void Use(int itemIndex)
     {
         
     }

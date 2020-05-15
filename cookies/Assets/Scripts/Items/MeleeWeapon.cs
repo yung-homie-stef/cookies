@@ -39,7 +39,7 @@ public class MeleeWeapon : Action
 
     }
 
-    public override void Use()
+    public override void Use(int itemIndex)
     {
         if (GetComponent<AcquirableInteractable>().canNowUse)
         {

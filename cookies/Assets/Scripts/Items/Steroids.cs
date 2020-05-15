@@ -20,13 +20,12 @@ public class Steroids : Action
         _inventory = player.GetComponent<Inventory>();
     }
 
-    public override void Use()
+    public override void Use(int itemIndex)
     {
         if (GetComponent<AcquirableInteractable>().canNowUse)
         {
             _playerScript.isRoided = true; // allow player to punch with this bool
             _notice.ChangeText(newText);
-            base.Use();
         }
     }
 }

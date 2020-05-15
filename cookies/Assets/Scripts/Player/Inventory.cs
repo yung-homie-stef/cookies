@@ -9,13 +9,14 @@ public class Inventory : MonoBehaviour
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangeCallback;
 
-    public int space = 20;
+    public int space = 10;
     public static Inventory instance;
     public List<Item> items = new List<Item>();
+    public List<GameObject> playerInventoryItems = new List<GameObject>();
 
     public GameObject playerInventoryIndicator;
     public GameObject[] inventoryUISlots;
-    public GameObject[] playerInventoryItems;
+    
     public bool[] isSlotFull;
     public bool isWeaponEquipped; // variable that dictates whether player can cycle through inventory items
 
@@ -106,20 +107,26 @@ public class Inventory : MonoBehaviour
         if (onItemChangeCallback != null)
         onItemChangeCallback.Invoke();
 
-
-       
         return true;
     }
 
     public void RemoveItem(Item item)
     {
+        int i = items.IndexOf(item);
+        gameObject.GetComponent<Player>().Drop(i);
+
+        for (int index = i; index < items.Count; index++)
+        {
+            playerInventoryItems[index].layer--;
+        }
+
+        playerInventoryItems.RemoveAt(i);
         items.Remove(item);
 
         if (onItemChangeCallback != null)
             onItemChangeCallback.Invoke();
        
     }
-
 
 
 }

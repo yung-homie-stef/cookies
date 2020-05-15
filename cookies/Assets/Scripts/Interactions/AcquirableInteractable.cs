@@ -65,19 +65,16 @@ public class AcquirableInteractable : Interactable
                 _clickable = false;
                 canNowUse = true;
 
-                itemScriptableObj.duplicate = Instantiate(gameObject);
+                Debug.Log("just give up");
 
                 if (_pickup)
-                    _pickup.AddItem(itemScriptableObj);
-
-               
+                    _pickup.AddItem(itemScriptableObj);  
             }
         }
     }
 
     public override void Interact()
     {
-        
 
         if (_hasHadDuplicate == false)
         {
@@ -116,7 +113,6 @@ public class AcquirableInteractable : Interactable
     {
         if (canDrop)
         {
-
             gameObject.transform.localScale = originalScale;
 
             Vector3 dropPosition = new Vector3(player.transform.position.x, player.transform.position.y + GetComponent<Renderer>().bounds.size.y, player.transform.position.z);
@@ -124,8 +120,6 @@ public class AcquirableInteractable : Interactable
             gameObject.layer = 0;
             gameObject.transform.position = dropPosition;
             gameObject.transform.eulerAngles = originalRotation;
-            _inventory.isSlotFull[Inventory.currentSelectedSlot] = false;
-            _inventory.playerInventoryItems[Inventory.currentSelectedSlot] = null;
             _clickable = true;
         }
     }

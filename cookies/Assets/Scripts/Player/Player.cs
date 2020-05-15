@@ -48,10 +48,6 @@ public class Player : MonoBehaviour
             Use();
         }
 
-        if (Input.GetButtonDown("Drop"))
-        {
-            Drop();
-        }
 
     }
 
@@ -100,20 +96,18 @@ public class Player : MonoBehaviour
 
     void Use()
     {
-        if (_inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<Action>())
-        {
-            _inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<Action>().Use();
-        }
+        //if (_inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<Action>())
+        //{
+        //    _inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<Action>().Use();
+        //}
     }
 
-    void Drop()
+    public void Drop(int i)
     {
         if (_inventory.isWeaponEquipped == false)
         {
-            if (_inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<AcquirableInteractable>() && _inventory.playerInventoryItems[Inventory.currentSelectedSlot])
-            {
-                _inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<AcquirableInteractable>().Drop();
-            }
+                _inventory.playerInventoryItems[i].GetComponent<AcquirableInteractable>().Drop();
+            
         }
     }
 

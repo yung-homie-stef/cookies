@@ -16,7 +16,7 @@ public class Rotgut : Action
         _drunkScript = VHSCamera.gameObject.GetComponent<Drunk>();
     }
 
-    public override void Use()
+    public override void Use(int itemIndex)
     {
         if (GetComponent<AcquirableInteractable>().canNowUse)
         {
@@ -27,7 +27,10 @@ public class Rotgut : Action
                 _drunkScript.BeginSoberCountdown();
 
                 _isDrunk = true;
-                base.Use();
+
+                Inventory.instance.playerInventoryItems.RemoveAt(itemIndex);
+                Inventory.instance.items.RemoveAt(itemIndex);
+
             }
         }
     }

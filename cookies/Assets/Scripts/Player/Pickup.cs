@@ -20,10 +20,23 @@ public class Pickup : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        bool wasPickedup = Inventory.instance.AddItem(item);
+        bool wasPickedUp = Inventory.instance.AddItem(item);
 
-        if (wasPickedup)
-            Destroy(gameObject);
+        if (wasPickedUp)
+        {
+            gameObject.layer = Inventory.instance.items.Count + 8;
+            gameObject.transform.position = new Vector3(renderTransform.position.x + extraX, renderTransform.position.y, renderTransform.position.z);
+            gameObject.transform.localScale = renderScale;
+            gameObject.transform.eulerAngles = renderRotation;
+
+            if (Inventory.instance.items.Count < 10)
+            {
+                _inventory.playerInventoryItems.Add(gameObject);
+            }
+        }
+
+        //if (wasPickedup)
+        //    Destroy(gameObject);
 
         #region OLD CODE
         //for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
@@ -33,11 +46,11 @@ public class Pickup : MonoBehaviour
 
         //        // item can be added
         //        _inventory.isSlotFull[i] = true;
-        //        gameObject.layer = 9 + i;
+        //        
         //        gameObject.transform.position = new Vector3(renderTransform.position.x + extraX, renderTransform.position.y, renderTransform.position.z);
         //        gameObject.transform.localScale = renderScale;
         //        gameObject.transform.eulerAngles = renderRotation;
-        //        _inventory.playerInventoryItems[i] = gameObject;
+        //        
         //        break;
         //    }
 

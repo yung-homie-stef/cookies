@@ -20,14 +20,13 @@ public class Energy_Drink : Action
         _notice = noticeText.GetComponent<Notice>();
     }
 
-    public override void Use()
+    public override void Use(int itemIndex)
     {
         if (GetComponent<AcquirableInteractable>().canNowUse)
         {
             GetComponent<AudioSource>().PlayOneShot(drinkSound);
             _movement.playerSpeed *= 2; // become faster
             _notice.ChangeText(newText);
-            base.Use();
         }
     }
 

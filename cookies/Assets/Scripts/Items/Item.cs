@@ -9,10 +9,20 @@ public class Item : ScriptableObject
     public string itemName = "NAME";
     public string itemDesc = "DESC";
     public Sprite icon = null;
-    public GameObject duplicate = null;
+    public GameObject OG = null;
+    public bool usable;
 
     public virtual void Use()
     {
-        Debug.Log("using + " + itemName);
+        if (usable)
+        {
+            //int i = Inventory.instance.items.IndexOf[GameObject];
+
+            //if (Inventory.instance.playerInventoryItems[i].GetComponent<Action>())
+            //{
+            //    Inventory.instance.playerInventoryItems[i].GetComponent<Action>().Use();
+            //}
+        }
+        
     }
 }

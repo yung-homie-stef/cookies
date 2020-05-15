@@ -14,7 +14,7 @@ public class Shrooms : Action
         
     }
 
-    public override void Use()
+    public override void Use(int itemIndex)
     {
         if (GetComponent<AcquirableInteractable>().canNowUse)
         {
@@ -22,7 +22,6 @@ public class Shrooms : Action
             shroomSmoke.Play(); // create a puff of smoke for salvador to appear in
           
             salvador.SetActive(true);
-            base.Use();
         }
     }
 

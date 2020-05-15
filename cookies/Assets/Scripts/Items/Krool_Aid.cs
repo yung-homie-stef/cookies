@@ -27,7 +27,7 @@ public class Krool_Aid : Action
         _inventory = player.GetComponent<Inventory>();
     }
 
-    public override void Use()
+    public override void Use(int itemIndex)
     {
         if (GetComponent<AcquirableInteractable>().canNowUse)
         {
