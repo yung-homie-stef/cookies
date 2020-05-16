@@ -62,13 +62,12 @@ public class AcquirableInteractable : Interactable
                 _movement.enabled = true;
                 _camControlller.enabled = true;
                 cursorImage.enabled = true;
-                _clickable = false;
                 canNowUse = true;
 
-                Debug.Log("just give up");
-
                 if (_pickup)
-                    _pickup.AddItem(itemScriptableObj);  
+                    _pickup.AddItem(itemScriptableObj);
+
+                _clickable = false;
             }
         }
     }
@@ -120,7 +119,6 @@ public class AcquirableInteractable : Interactable
             gameObject.layer = 0;
             gameObject.transform.position = dropPosition;
             gameObject.transform.eulerAngles = originalRotation;
-            _clickable = true;
         }
     }
 

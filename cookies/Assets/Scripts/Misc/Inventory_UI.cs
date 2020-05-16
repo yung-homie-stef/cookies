@@ -35,21 +35,11 @@ public class Inventory_UI : MonoBehaviour
         {
             if (visible == false)
             {
-                inventoryUI.SetActive(true);
-                visible = true;
-                _playerScript.DisableMovement();
-                _camControlller.enabled = false;
-                cursorImage.enabled = false;
-                
+                EnableUI();
             }
             else
             {
-                inventoryUI.SetActive(false);
-                visible = false;
-                _playerScript.EnableMovement();
-                _camControlller.enabled = true;
-                cursorImage.enabled = true;
-                
+                DisableUI();
             }
         }
     }
@@ -65,5 +55,23 @@ public class Inventory_UI : MonoBehaviour
             else
                 slots[i].ClearSlot();
         }
+    }
+
+    public void EnableUI()
+    {
+        inventoryUI.SetActive(true);
+        visible = true;
+        _playerScript.DisableMovement();
+        _camControlller.enabled = false;
+        cursorImage.enabled = false;
+    }
+
+    public void DisableUI()
+    {
+        inventoryUI.SetActive(false);
+        visible = false;
+        _playerScript.EnableMovement();
+        _camControlller.enabled = true;
+        cursorImage.enabled = true;
     }
 }

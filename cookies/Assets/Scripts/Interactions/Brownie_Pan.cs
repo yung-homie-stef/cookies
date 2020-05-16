@@ -57,6 +57,7 @@ public class Brownie_Pan : Interactable
                         _hasBatter = true;
                         _inventory.isSlotFull[i] = false;
                         Destroy(_inventory.playerInventoryItems[i]);
+                        Inventory.instance.RemoveItem(Inventory.instance.items[i]);
                         _notice.ChangeText("CLOSE OVEN TO BAKE");
                         break;
                     }
@@ -65,6 +66,7 @@ public class Brownie_Pan : Interactable
                         _hasCBD = true;
                         _inventory.isSlotFull[i] = false;
                         Destroy(_inventory.playerInventoryItems[i]);
+                        Inventory.instance.RemoveItem(Inventory.instance.items[i]);
                         _notice.ChangeText("CBD ADDED TO RECIPE");
                         break;
                     }

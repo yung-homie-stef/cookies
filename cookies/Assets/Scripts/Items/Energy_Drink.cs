@@ -8,6 +8,7 @@ public class Energy_Drink : Action
     public Text noticeText;
     public string newText;
     public AudioClip drinkSound;
+    public GameObject inventoryUI;
 
     private Movement _movement;
     private Notice _notice;
@@ -27,6 +28,11 @@ public class Energy_Drink : Action
             GetComponent<AudioSource>().PlayOneShot(drinkSound);
             _movement.playerSpeed *= 2; // become faster
             _notice.ChangeText(newText);
+
+            Destroy(_inventory.playerInventoryItems[itemIndex]);
+            Inventory.instance.RemoveItem(Inventory.instance.items[itemIndex]);
+
+            inventoryUI.GetComponent<Inventory_UI>().DisableUI();
         }
     }
 

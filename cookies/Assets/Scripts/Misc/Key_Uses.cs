@@ -23,6 +23,7 @@ public class Key_Uses : MonoBehaviour
         {
             _inventory.isSlotFull[currentItemSlot] = false;
             Destroy(_inventory.playerInventoryItems[currentItemSlot]);
+            Inventory.instance.items.RemoveAt(currentItemSlot);
         }
     }
 

@@ -35,6 +35,7 @@ public class Computer : Interactable
                         exitMask.SetActive(true);
                         _inventory.isSlotFull[i] = false;
                         Destroy(_inventory.playerInventoryItems[i]);
+                        Inventory.instance.RemoveItem(Inventory.instance.items[i]);
                         _notice.ChangeText("NEAT");
                         break;
                     }

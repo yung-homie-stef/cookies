@@ -7,10 +7,10 @@ public class Steroids : Action
 {
     public Text noticeText;
     public string newText;
+    public GameObject inventoryUI;
 
     private Player _playerScript;
     private Notice _notice;
-
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +26,11 @@ public class Steroids : Action
         {
             _playerScript.isRoided = true; // allow player to punch with this bool
             _notice.ChangeText(newText);
+
+            Destroy(_inventory.playerInventoryItems[itemIndex]);
+            Inventory.instance.RemoveItem(Inventory.instance.items[itemIndex]);
+
+            inventoryUI.GetComponent<Inventory_UI>().DisableUI();
         }
     }
 }

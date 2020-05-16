@@ -67,6 +67,7 @@ public class OpenableInteractable : Interactable
                     {
                         if (_tags.tags[j] == requiredKey) // if they do, destroy the key and unlock the door
                         {
+                            _notice.ChangeText("USED " + Inventory.instance.items[i].itemName);
                             isLocked = false;
                             _inventory.playerInventoryItems[i].GetComponent<Key_Uses>().UseKey(i);
                             PlayDoorSound(3);

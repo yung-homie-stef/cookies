@@ -39,11 +39,15 @@ public class Vending_Machine : Interactable
                         if (_tags.tags[j] == "Currency")
                         {
                             StartCoroutine(Vend(4.0f));
+                            _notice.ChangeText("USED " + Inventory.instance.items[i].itemName);
                             candyBar.GetComponent<BoxCollider>().enabled = true;
                             _hasVended = true;
+
                             _inventory.isSlotFull[i] = false;
                             Destroy(_inventory.playerInventoryItems[i]);
+                            Inventory.instance.RemoveItem(Inventory.instance.items[i]);
                             GetComponent<AudioSource>().PlayOneShot(vendingMachineSound);
+                            
                             break;
                         }
                     }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Shrooms : Action
 {
     public GameObject salvador;
+    public GameObject inventoryUI;
     public ParticleSystem shroomSmoke;
     public AudioClip smokeSFX;
 
@@ -22,6 +23,11 @@ public class Shrooms : Action
             shroomSmoke.Play(); // create a puff of smoke for salvador to appear in
           
             salvador.SetActive(true);
+
+            Destroy(_inventory.playerInventoryItems[itemIndex]);
+            Inventory.instance.RemoveItem(Inventory.instance.items[itemIndex]);
+
+            inventoryUI.GetComponent<Inventory_UI>().DisableUI();
         }
     }
 

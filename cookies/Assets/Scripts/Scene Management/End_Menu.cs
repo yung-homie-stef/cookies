@@ -22,7 +22,6 @@ public class End_Menu : MonoBehaviour
     {
         if (globalEndMenu)
         {
-            Debug.Log("beans");
             Destroy(gameObject);
             return;
         }

@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour
 {
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangeCallback;
+    public GameObject noticeText;
 
     public int space = 10;
     public static Inventory instance;
@@ -23,6 +24,8 @@ public class Inventory : MonoBehaviour
     //[SerializeField]
     public static int currentSelectedSlot = 0;
 
+    private Notice _notice;
+
     #region SINGLETON
     private void Awake()
     {
@@ -37,6 +40,7 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
         isWeaponEquipped = false;
+        _notice = noticeText.GetComponent<Notice>();
     }
 
     private void Update()
@@ -99,6 +103,7 @@ public class Inventory : MonoBehaviour
     {
         if (items.Count >= space)
         {
+            _notice.ChangeText("INVENTORY FULL");
             return false;
         }
 

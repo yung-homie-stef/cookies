@@ -6,6 +6,7 @@ public class Rotgut : Action
 {
     public Camera VHSCamera;
     public AudioClip drinkSound;
+    public GameObject inventoryUI;
 
     private bool _isDrunk = false;
     private Drunk _drunkScript;
@@ -28,8 +29,10 @@ public class Rotgut : Action
 
                 _isDrunk = true;
 
-                Inventory.instance.playerInventoryItems.RemoveAt(itemIndex);
-                Inventory.instance.items.RemoveAt(itemIndex);
+                Destroy(_inventory.playerInventoryItems[itemIndex]);
+                Inventory.instance.RemoveItem(Inventory.instance.items[itemIndex]);
+
+                inventoryUI.GetComponent<Inventory_UI>().DisableUI();
 
             }
         }
