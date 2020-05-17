@@ -63,17 +63,17 @@ public class Settings : MonoBehaviour
 
     public void SetGrain(float grain)
     {
-       // postVHSPro.globalVHSFX.filmGrainAmount = grain;
+       postVHSPro.globalVHSFX.filmGrainAmount = grain;
     }
 
     public void SetBleed(float bleed)
     {
-       // postVHSPro.globalVHSFX.bleedAmount = bleed;
+        postVHSPro.globalVHSFX.bleedAmount = bleed;
     }
 
     public void SetGamma(float gamma)
     {
-       // postVHSPro.globalVHSFX.gammaCorection = gamma;
+       postVHSPro.globalVHSFX.gammaCorection = gamma;
     }
 
     public void SetVerticalResolution()
@@ -82,14 +82,14 @@ public class Settings : MonoBehaviour
 
         if (tracking)
         {
-           // postVHSPro.globalVHSFX.noiseLinesMode = 1;
-           // postVHSPro.globalVHSFX.noiseLinesNum = 1024;
-           // trackingEnabled.text = "ENABLED";
+            postVHSPro.globalVHSFX.noiseLinesMode = 1;
+            postVHSPro.globalVHSFX.noiseLinesNum = 1024;
+            trackingEnabled.text = "ENABLED";
         }
         else
         {
-           // postVHSPro.globalVHSFX.noiseLinesMode = 0;
-           // trackingEnabled.text = "DISABLED";
+           postVHSPro.globalVHSFX.noiseLinesMode = 0;
+           trackingEnabled.text = "DISABLED";
         }
     }
 

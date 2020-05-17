@@ -9,6 +9,7 @@ using System.Collections;
 // public class postVHSPro : PostEffectsBase {
 public class postVHSPro : MonoBehaviour {
 
+    public static postVHSPro globalVHSFX;
 
     //main props
     float time_ = 0.0f;
@@ -91,7 +92,7 @@ public class postVHSPro : MonoBehaviour {
 	public float noiseQuantizeX = 0.0f; 
 
 	public bool filmgrainOn = false;
-	public float filmGrainAmount = 0.016f; 
+	public float filmGrainAmount = 0.018f; 
 	// public float filmGrainPower = 1.0f; //not using atm
 
 	public bool signalNoiseOn = true; 
@@ -220,6 +221,8 @@ public class postVHSPro : MonoBehaviour {
 	}
 
 	void Awake(){
+
+        globalVHSFX = this;
 
         if (crtMode==3) buildCurves(); 
 
