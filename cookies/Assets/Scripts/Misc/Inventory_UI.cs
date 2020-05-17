@@ -33,6 +33,8 @@ public class Inventory_UI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
+            inventory.interactionTarget = null;
+
             if (visible == false)
             {
                 EnableUI();
@@ -68,6 +70,7 @@ public class Inventory_UI : MonoBehaviour
 
     public void DisableUI()
     {
+        inventory.interactionTarget = null;
         inventoryUI.SetActive(false);
         visible = false;
         _playerScript.EnableMovement();

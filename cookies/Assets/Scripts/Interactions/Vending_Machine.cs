@@ -24,40 +24,38 @@ public class Vending_Machine : Interactable
         _notice = noticeText.GetComponent<Notice>();
     }
 
-    public override void Interact()
+    public override void Interact(Player player, string[] tags)
     {
         if (_hasVended == false)
         {
-            for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
+            for (int j = 0; j < tags.Length; j++)
             {
-                if (_inventory.playerInventoryItems[i] != null)
+                if (tags[j] == "Currency") // adding brownie mix
                 {
-                    _tags = _inventory.playerInventoryItems[i].GetComponent<Tags>();
-
-                    for (int j = 0; j < _tags.tags.Length; j++)
-                    {
-                        if (_tags.tags[j] == "Currency")
-                        {
-                            StartCoroutine(Vend(4.0f));
-                            _notice.ChangeText("USED " + Inventory.instance.items[i].itemName);
-                            candyBar.GetComponent<BoxCollider>().enabled = true;
-                            _hasVended = true;
-
-                            _inventory.isSlotFull[i] = false;
-                            Destroy(_inventory.playerInventoryItems[i]);
-                            Inventory.instance.RemoveItem(Inventory.instance.items[i]);
-                            GetComponent<AudioSource>().PlayOneShot(vendingMachineSound);
-                            
-                            break;
-                        }
-                    }
+                    _hasVended = true;
+                    break;
                 }
             }
         }
-        if (_hasVended == false)
+    }
+
+    public override void Interact(Player player)
+    {
+        base.Interact(player);
+
+        if (!_hasVended)
         {
             _notice.ChangeText("CURRENCY REQUIRED");
         }
+    }
+
+    public override void InteractAction()
+    {
+            StartCoroutine(Vend(4.0f));
+            candyBar.GetComponent<BoxCollider>().enabled = true;
+            _hasVended = true;
+            GetComponent<AudioSource>().PlayOneShot(vendingMachineSound);
+        
     }
 
     private IEnumerator Vend(float waitTime)
@@ -66,6 +64,7 @@ public class Vending_Machine : Interactable
         _animator.SetBool("vending", true);
     }
 }
+
                     
     
 

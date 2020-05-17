@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class SingleAnimationInteractable : Interactable
 {
-    private Animator _animator;
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
         _animator = gameObject.GetComponent<Animator>();
     }
-    public override void Interact()
+    public override void InteractAction()
     {
         _animator.SetBool("interacted", true);
     }

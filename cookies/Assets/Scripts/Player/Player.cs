@@ -13,15 +13,19 @@ public class Player : MonoBehaviour
     public Image cursorImage;
     public Sprite interactSprite;
     public Sprite originalHUDDot;
+    public GameObject inventoryUI;
 
     private Movement playerMovement;
+    private Inventory_UI _inventoryUIScript;
     private Inventory _inventory;
     private Animator _animator;
+    private Item lastUsedItem;
 
     // Start is called before the first frame update
     void Start()
     {
         playerMovement = GetComponent<Movement>();
+        _inventoryUIScript = GetComponent<Inventory_UI>();
         _inventory = GetComponent<Inventory>();
         _animator = GetComponent<Animator>();
         isRoided = false;
@@ -87,11 +91,22 @@ public class Player : MonoBehaviour
                 {
                     if (playerRaycastHit.transform.GetComponent<Interactable>())
                     {
-                        playerRaycastHit.transform.GetComponent<Interactable>().Interact();
+                        playerRaycastHit.transform.GetComponent<Interactable>().Interact(this);
                     }
                 }
             }
         }
+    }
+
+    public void OpenInteractInventory(Interactable target)
+    {
+        _inventory.interactionTarget = target;
+        _inventoryUIScript.EnableUI();
+    }
+
+    public void CloseInteractInventory()
+    {
+        _inventoryUIScript.DisableUI();
     }
 
     void Use()
@@ -110,6 +125,13 @@ public class Player : MonoBehaviour
             
         }
     }
+
+    public void RemoveUsedItem()
+    {
+        _inventory.RemoveItem(lastUsedItem);
+    }
+
+
 
     void Punch()
     {

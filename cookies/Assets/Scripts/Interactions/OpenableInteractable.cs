@@ -53,42 +53,12 @@ public class OpenableInteractable : Interactable
         }
     }
 
-    public override void Interact()
+    public override void InteractAction()
     {
-        if (isLocked) // if the door is locked check to see if they have the right key
-        {
-            for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
-            {
-                if (_inventory.playerInventoryItems[i] != null)
-                {
-                    _tags = _inventory.playerInventoryItems[i].GetComponent<Tags>();
-
-                    for (int j = 0; j < _tags.tags.Length; j++)
-                    {
-                        if (_tags.tags[j] == requiredKey) // if they do, destroy the key and unlock the door
-                        {
-                            _notice.ChangeText("USED " + Inventory.instance.items[i].itemName);
-                            isLocked = false;
-                            _inventory.playerInventoryItems[i].GetComponent<Key_Uses>().UseKey(i);
-                            PlayDoorSound(3);
-                            break;
-                        }
-                    }
-                }
-            }
-            if (isLocked != false)
-            {
-                _notice.ChangeText(newText);
-                PlayDoorSound(2);
-            }
-        }
-        else // otherwise open it normally
-        {          
-                isOpened = !isOpened; // only enact opening if animation isnt playing
-                EnactOpening();
-            
-        }
+       isOpened = !isOpened; // only enact opening if animation isnt playing
+       EnactOpening();    
     }
+    
 
     public void PlayDoorSound(int clip)
     {

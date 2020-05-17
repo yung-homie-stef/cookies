@@ -34,7 +34,7 @@ public class Samet : Interactable
     }
 
 
-    public override void Interact()
+    public override void InteractAction()
     {
         if (hasTranslated && _dialogueValue < 1)
             _dialogueValue++;

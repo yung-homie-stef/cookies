@@ -13,7 +13,7 @@ public class Galaxy_Exit : MonoBehaviour
     private Animator _blackoutAnimator;
 
     // Start is called before the first frame update
-    new void Start()
+    void Start()
     {
         _kroolAidScript = altarDrugItem.GetComponent<Krool_Aid>();
         _blackoutAnimator = blackout.GetComponent<Animator>();

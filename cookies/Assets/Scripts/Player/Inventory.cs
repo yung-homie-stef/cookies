@@ -9,6 +9,8 @@ public class Inventory : MonoBehaviour
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangeCallback;
     public GameObject noticeText;
+    public Interactable interactionTarget = null;
+ 
 
     public int space = 10;
     public static Inventory instance;
@@ -23,6 +25,7 @@ public class Inventory : MonoBehaviour
 
     //[SerializeField]
     public static int currentSelectedSlot = 0;
+    private Player player;
 
     private Notice _notice;
 
@@ -41,6 +44,7 @@ public class Inventory : MonoBehaviour
     {
         isWeaponEquipped = false;
         _notice = noticeText.GetComponent<Notice>();
+        player = gameObject.GetComponent<Player>();
     }
 
     private void Update()
@@ -131,6 +135,18 @@ public class Inventory : MonoBehaviour
         if (onItemChangeCallback != null)
             onItemChangeCallback.Invoke();
        
+    }
+
+    public void UseItem(int index)
+    {
+        if (!interactionTarget)
+        {
+            playerInventoryItems[index].GetComponent<Action>().Use(index);
+        }
+        else
+        {
+            interactionTarget.Interact(player, playerInventoryItems[index].GetComponent<Tags>().tags);
+        }
     }
 
 

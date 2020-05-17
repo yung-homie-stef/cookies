@@ -42,38 +42,37 @@ public class Brownie_Pan : Interactable
         }
     }
 
-    public override void Interact()
+    public override void InteractAction()
     {
-        for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
-        {
-            if (_inventory.playerInventoryItems[i] != null)
-            {
-            _tags = _inventory.playerInventoryItems[i].GetComponent<Tags>();
+        _notice.ChangeText("CLOSE OVEN TO GET BAKED");
+    }
 
-                for (int j = 0; j < _tags.tags.Length; j++)
-                {
-                    if (_tags.tags[j] == "Batter") // adding brownie mix
-                    {
-                        _hasBatter = true;
-                        _inventory.isSlotFull[i] = false;
-                        Destroy(_inventory.playerInventoryItems[i]);
-                        Inventory.instance.RemoveItem(Inventory.instance.items[i]);
-                        _notice.ChangeText("CLOSE OVEN TO BAKE");
-                        break;
-                    }
-                    else if (_tags.tags[j] == "CBD") // adding cannabinoids 
-                    {
-                        _hasCBD = true;
-                        _inventory.isSlotFull[i] = false;
-                        Destroy(_inventory.playerInventoryItems[i]);
-                        Inventory.instance.RemoveItem(Inventory.instance.items[i]);
-                        _notice.ChangeText("CBD ADDED TO RECIPE");
-                        break;
-                    }
-                }
-            }    
+    public override void Interact(Player player, string[] tags)
+    {
+        base.Interact(player, tags);
+
+        for (int j = 0; j < tags.Length; j++)
+        {
+            if (tags[j] == "Batter") // adding brownie mix
+            {
+                _hasBatter = true;
+                _notice.ChangeText("CLOSE OVEN TO BAKE");
+                break;
+            }
+            else if (tags[j] == "CBD") // adding cannabinoids 
+            {
+                _hasCBD = true;
+                _notice.ChangeText("CBD ADDED TO RECIPE");
+                break;
+            }
         }
-        if (_hasBatter == false && _hasCBD == false)
+    }
+
+    public override void Interact(Player player)
+    {
+        base.Interact(player);
+
+        if (!_hasBatter)
         {
             _notice.ChangeText("BROWNIE MIX REQUIRED");
         }

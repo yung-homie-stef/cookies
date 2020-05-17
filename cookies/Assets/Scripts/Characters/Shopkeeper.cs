@@ -59,7 +59,7 @@ public class Shopkeeper : Interactable
 
                 }
                 if (!droppedMoney)
-                    other.GetComponent<AcquirableInteractable>().Interact();
+                    other.GetComponent<AcquirableInteractable>().InteractAction();
             }
         }
         
@@ -73,7 +73,7 @@ public class Shopkeeper : Interactable
         }
     }
 
-    public override void Interact()
+    public override void InteractAction()
     {
         if (!_hasSpoken)
         {

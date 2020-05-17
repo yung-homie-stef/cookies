@@ -64,16 +64,15 @@ public class AcquirableInteractable : Interactable
                 cursorImage.enabled = true;
                 canNowUse = true;
 
-                if (_pickup)
-                    _pickup.AddItem(itemScriptableObj);
-
                 _clickable = false;
             }
         }
+       
     }
 
-    public override void Interact()
+    public override void InteractAction()
     {
+        Debug.Log("nuts");
 
         if (_hasHadDuplicate == false)
         {
@@ -104,7 +103,16 @@ public class AcquirableInteractable : Interactable
 
             _hasHadDuplicate = true;
 
+            if (_pickup)
+                _pickup.AddItem(itemScriptableObj);
+
             Audio_Manager.globalAudioManager.PlaySound("pickup", Audio_Manager.globalAudioManager.intangibleSoundArray);
+            
+        }
+        else
+        {
+            if (_pickup)
+                _pickup.AddItem(itemScriptableObj);
         }
     }
 

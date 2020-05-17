@@ -16,9 +16,9 @@ public class ShopItem : AcquirableInteractable
         _shopKeeper = shopkeeperCharacter.GetComponent<Shopkeeper>();
     }
 
-    public override void Interact()
+    public override void InteractAction()
     {
-        base.Interact();
+        base.InteractAction();
         _shopKeeper.Purchase(_shelfNumber);
     }
 

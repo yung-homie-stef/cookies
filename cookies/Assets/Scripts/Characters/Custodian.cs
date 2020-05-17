@@ -74,7 +74,7 @@ public class Custodian : Interactable // TODO: make update dialogue method virtu
         }
     }
 
-    public override void Interact()
+    public override void InteractAction()
     {
         currentSentences = new string[2];
         for (int i = 0; i < currentSentences.Length; i++)
@@ -89,7 +89,7 @@ public class Custodian : Interactable // TODO: make update dialogue method virtu
     {
         yield return new WaitForSeconds(waitTime);
         keyring.transform.parent = null;
-        keyring.GetComponent<Interactable>().Interact(); // give players the key if custodian is killed
+        keyring.GetComponent<Interactable>().InteractAction(); // give players the key if custodian is killed
     }
 
     public void Sweep()

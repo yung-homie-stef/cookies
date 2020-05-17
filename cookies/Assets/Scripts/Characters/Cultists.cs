@@ -29,7 +29,7 @@ public class Cultists : Interactable
         
     }
 
-    public override void Interact()
+    public override void InteractAction()
     {
         if (!isRandom)
         {

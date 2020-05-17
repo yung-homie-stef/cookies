@@ -30,7 +30,7 @@ public class Mr_Lust : Interactable
 
     }
 
-    public override void Interact()
+    public override void InteractAction()
     {
         HandleDialogue(dialogueValue);
     }

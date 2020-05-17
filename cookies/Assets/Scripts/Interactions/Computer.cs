@@ -20,27 +20,10 @@ public class Computer : Interactable
         _notice = noticeText.GetComponent<Notice>();
     }
 
-    public override void Interact()
+    public override void InteractAction()
     {
-        for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
-        {
-            if (_inventory.playerInventoryItems[i] != null)
-            {
-                _tags = _inventory.playerInventoryItems[i].GetComponent<Tags>();
-
-                for (int j = 0; j < _tags.tags.Length; j++)
-                {
-                    if (_tags.tags[j] == "Game")
-                    {
-                        exitMask.SetActive(true);
-                        _inventory.isSlotFull[i] = false;
-                        Destroy(_inventory.playerInventoryItems[i]);
-                        Inventory.instance.RemoveItem(Inventory.instance.items[i]);
-                        _notice.ChangeText("NEAT");
-                        break;
-                    }
-                }
-            }
-        }
+     exitMask.SetActive(true);
+     _notice.ChangeText("NEAT");
     }
+
 }

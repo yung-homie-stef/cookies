@@ -39,7 +39,7 @@ public class Slot : MonoBehaviour
             int index = Inventory.instance.items.IndexOf(item);
             if (Inventory.instance.playerInventoryItems[index].GetComponent<Action>())
             {
-                Inventory.instance.playerInventoryItems[index].GetComponent<Action>().Use(index);
+                Inventory.instance.UseItem(index); 
             }
         }
     }

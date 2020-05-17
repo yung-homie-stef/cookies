@@ -69,7 +69,7 @@ public class Salvador : Interactable
                         Debug.Log(_salvadorsBelly);
                     }
                     _dialogueValue = (int)_salvadorsBelly;
-                    Interact();
+                    InteractAction();
 
                     if ((int)_salvadorsBelly == 5)
                     {
@@ -89,7 +89,7 @@ public class Salvador : Interactable
         }
     }
 
-    public override void Interact()
+    public override void InteractAction()
     {
         HandleDialogue(_dialogueValue);
     }

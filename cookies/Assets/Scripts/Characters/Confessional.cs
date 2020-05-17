@@ -25,7 +25,7 @@ public class Confessional : Interactable
         _huxleyScript = Huxley.GetComponent<Father_Huxley>();
     }
 
-    public override void Interact()
+    public override void InteractAction()
     {
         HandleDialogue(0);
     }

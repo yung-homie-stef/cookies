@@ -23,35 +23,36 @@ public class Bomb_Table : Interactable
         hasCrafted = false;
     }
 
-    public override void Interact()
+    public override void Interact(Player player, string[] tags)
     {
-        if (!hasCrafted)
+        if (hasCrafted == false)
         {
-            for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
+            for (int j = 0; j < tags.Length; j++)
             {
-                if (_inventory.playerInventoryItems[i] != null)
+                if (tags[j] == "Lead_Pipe") 
                 {
-                    _tags = _inventory.playerInventoryItems[i].GetComponent<Tags>();
-
-                    for (int j = 0; j < _tags.tags.Length; j++)
-                    {
-                        if (_tags.tags[j] == "Pipe")
-                        {
-                            pipeBomb.SetActive(true);
-                            hasCrafted = true;
-                            _inventory.isSlotFull[i] = false;
-                            Destroy(_inventory.playerInventoryItems[i]);
-                            Inventory.instance.RemoveItem(Inventory.instance.items[i]);
-                            Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
-                            break;
-                        }
-                    }
+                    hasCrafted = true;
+                    break;
                 }
             }
         }
+    }
+
+    public override void Interact(Player player)
+    {
+        base.Interact(player);
+
         if (!hasCrafted)
         {
             _notice.ChangeText("LEAD PIPE REQUIRED");
         }
     }
+
+    public override void InteractAction()
+    {
+        pipeBomb.SetActive(true);
+        Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
+    }
+
+
 }

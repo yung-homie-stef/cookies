@@ -44,17 +44,17 @@ public class Father_Huxley : Interactable
         if (_animator.enabled == false)
         {
             heartKey.SetActive(true);
-            heartKey.GetComponent<Interactable>().Interact();
+            heartKey.GetComponent<Interactable>().InteractAction();
             enabled = false;
         }
     }
 
 
-    public override void Interact()
+    public override void Interact(Player player, string[] tags)
     {
         if (_requiresPayment) // when huxley asks for tithes
         {
-            if (CheckForItem("Currency") == false) // check for tithes
+            if (CheckForItem("Currency", tags) == false) // check for tithes
             {
                 _notice.ChangeText("TITHES REQUIRED"); // if you don't have money remind the player they need money
             }
@@ -68,7 +68,7 @@ public class Father_Huxley : Interactable
 
         if (dialogueValue == 2 && needsBomb)
         {
-            if (CheckForItem("Pipe_Bomb") == false ) // check for tithes
+            if (CheckForItem("Pipe_Bomb", tags) == false ) // check for tithes
             {
                 _notice.ChangeText("PIPE BOMB REQUIRED"); // if you don't have money remind the player they need money
             }
@@ -83,6 +83,11 @@ public class Father_Huxley : Interactable
         {
             HandleDialogue(dialogueValue);
         }
+    }
+
+    public override void InteractAction()
+    {
+       
     }
 
     public void ConfirmTaskCompleted()
@@ -107,7 +112,7 @@ public class Father_Huxley : Interactable
         return sentences;
     }
 
-    private bool CheckForItem(string tag)
+    private bool CheckForItem(string tag, string[] tags)
     {
 
         for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
