@@ -66,6 +66,8 @@ public class Inventory_UI : MonoBehaviour
         _playerScript.DisableMovement();
         _camControlller.enabled = false;
         cursorImage.enabled = false;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void DisableUI()
@@ -76,5 +78,7 @@ public class Inventory_UI : MonoBehaviour
         _playerScript.EnableMovement();
         _camControlller.enabled = true;
         cursorImage.enabled = true;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

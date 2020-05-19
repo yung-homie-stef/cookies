@@ -22,8 +22,8 @@ public class Computer : Interactable
 
     public override void InteractAction()
     {
-     exitMask.SetActive(true);
-     _notice.ChangeText("NEAT");
+        exitMask.SetActive(true);
+        _notice.ChangeText("NEAT");
     }
 
 }

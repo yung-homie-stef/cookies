@@ -62,7 +62,7 @@ public class OpenableInteractable : Interactable
 
     public void PlayDoorSound(int clip)
     {
-        GetComponent<AudioSource>().PlayOneShot(Door_Sound_Effects.globalDoorSounds.doorSFX[clip]);
+       // GetComponent<AudioSource>().PlayOneShot(Door_Sound_Effects.globalDoorSounds.doorSFX[clip]);
     }
 
     public void SetOpenToggle(int cond)

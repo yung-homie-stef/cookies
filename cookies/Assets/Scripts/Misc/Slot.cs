@@ -34,11 +34,14 @@ public class Slot : MonoBehaviour
 
     public void UseItem()
     {
+       
         if (item != null)
         {
+          
             int index = Inventory.instance.items.IndexOf(item);
-            if (Inventory.instance.playerInventoryItems[index].GetComponent<Action>())
+            if (Inventory.instance.playerInventoryItems[index])
             {
+                Debug.Log("watto did nothing wrong");
                 Inventory.instance.UseItem(index); 
             }
         }

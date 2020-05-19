@@ -54,7 +54,6 @@ public abstract class Interactable : MonoBehaviour
                     player.OpenInteractInventory(this);
                     break;
                 }
-
         }
     }
 
@@ -75,7 +74,6 @@ public abstract class Interactable : MonoBehaviour
             }
         }
 
-
         switch (reqType)
         {
             case RequirementType.Single:
@@ -83,6 +81,7 @@ public abstract class Interactable : MonoBehaviour
                     if (tagIndex != -1)
                     {
                         InteractAction();
+                        reqType = RequirementType.None;
                     }
                     break;
                 }
@@ -93,6 +92,7 @@ public abstract class Interactable : MonoBehaviour
                         if (requiredTags.Length < 2)
                         {
                             InteractAction();
+                            reqType = RequirementType.None;
                         }
                         else
                         {

@@ -25,7 +25,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         playerMovement = GetComponent<Movement>();
-        _inventoryUIScript = GetComponent<Inventory_UI>();
+        _inventoryUIScript = inventoryUI.GetComponent<Inventory_UI>();
+        Debug.Log(_inventoryUIScript);
         _inventory = GetComponent<Inventory>();
         _animator = GetComponent<Animator>();
         isRoided = false;
@@ -100,6 +101,7 @@ public class Player : MonoBehaviour
 
     public void OpenInteractInventory(Interactable target)
     {
+        Debug.Log(target);
         _inventory.interactionTarget = target;
         _inventoryUIScript.EnableUI();
     }

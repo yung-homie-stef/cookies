@@ -13,7 +13,7 @@ public class Vending_Machine : Interactable
     private Inventory _inventory;
     private Tags _tags;
     private Notice _notice;
-    private bool _hasVended;
+    private bool _hasVended = false;
 
     // Start is called before the first frame update
     new void Start()
@@ -24,37 +24,17 @@ public class Vending_Machine : Interactable
         _notice = noticeText.GetComponent<Notice>();
     }
 
-    public override void Interact(Player player, string[] tags)
-    {
-        if (_hasVended == false)
-        {
-            for (int j = 0; j < tags.Length; j++)
-            {
-                if (tags[j] == "Currency") // adding brownie mix
-                {
-                    _hasVended = true;
-                    break;
-                }
-            }
-        }
-    }
-
-    public override void Interact(Player player)
-    {
-        base.Interact(player);
-
-        if (!_hasVended)
-        {
-            _notice.ChangeText("CURRENCY REQUIRED");
-        }
-    }
 
     public override void InteractAction()
     {
+        if (!_hasVended)
+        {
             StartCoroutine(Vend(4.0f));
             candyBar.GetComponent<BoxCollider>().enabled = true;
             _hasVended = true;
             GetComponent<AudioSource>().PlayOneShot(vendingMachineSound);
+            _hasVended = true;
+        }
         
     }
 

@@ -14,7 +14,8 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
+
         _animator = this.GetComponent<Animator>();
 
         if (_playerRB = GetComponent<Rigidbody>())
@@ -30,7 +31,6 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Cursor.lockState = CursorLockMode.Locked;
 
         if (playerMovementEnabled)
         {
