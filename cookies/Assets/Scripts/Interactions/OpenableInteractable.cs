@@ -55,14 +55,22 @@ public class OpenableInteractable : Interactable
 
     public override void InteractAction()
     {
-       isOpened = !isOpened; // only enact opening if animation isnt playing
-       EnactOpening();    
+        if (!isLocked)
+        {
+            isOpened = !isOpened; // only enact opening if animation isnt playing
+            EnactOpening();
+        }
+        else
+        {
+            _notice.ChangeText(newText);
+            PlayDoorSound(3);
+        }
     }
     
 
     public void PlayDoorSound(int clip)
     {
-       // GetComponent<AudioSource>().PlayOneShot(Door_Sound_Effects.globalDoorSounds.doorSFX[clip]);
+       GetComponent<AudioSource>().PlayOneShot(Door_Sound_Effects.globalDoorSounds.doorSFX[clip]);
     }
 
     public void SetOpenToggle(int cond)

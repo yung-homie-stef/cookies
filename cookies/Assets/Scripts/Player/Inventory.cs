@@ -11,7 +11,8 @@ public class Inventory : MonoBehaviour
     public GameObject noticeText;
     public Interactable interactionTarget = null;
     public GameObject inventory_UI = null;
- 
+    public Inventory_UI inventoryUIScript;
+
 
     public int space = 10;
     public static Inventory instance;
@@ -27,7 +28,7 @@ public class Inventory : MonoBehaviour
     //[SerializeField]
     public static int currentSelectedSlot = 0;
     private Player player;
-    private Inventory_UI _inventoryUIScript;
+    
 
     private Notice _notice;
 
@@ -47,7 +48,7 @@ public class Inventory : MonoBehaviour
         isWeaponEquipped = false;
         _notice = noticeText.GetComponent<Notice>();
         player = gameObject.GetComponent<Player>();
-        _inventoryUIScript = inventory_UI.GetComponent<Inventory_UI>();
+        inventoryUIScript = inventory_UI.GetComponent<Inventory_UI>();
     }
 
     private void Update()
@@ -150,7 +151,7 @@ public class Inventory : MonoBehaviour
         else
         {
             interactionTarget.Interact(player, playerInventoryItems[index].GetComponent<Tags>().tags);
-            _inventoryUIScript.DisableUI();
+            inventoryUIScript.DisableUI();
         }
     }
 

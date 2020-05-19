@@ -1,18 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MeleeWeapon : Action
 {
-    public GameObject player;
     public GameObject playerPalm;
     public Vector3 weaponRotation;
     public Vector3 weaponRepositioning;
+    public Text weaponEquipText;
 
     private bool _wielding;
     private bool _relaxed;
     private GameObject _duplicate;
-    private Inventory _inventory;
     private Animator _animator;
     private Vector3 _localScale;
 
@@ -30,10 +30,13 @@ public class MeleeWeapon : Action
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            if (_wielding)
+            if (!Inventory.instance.inventoryUIScript.visible)
             {
-                if (_relaxed)
-                Swing();
+                if (_wielding)
+                {
+                    if (_relaxed)
+                        Swing();
+                }
             }
         }
 
@@ -48,6 +51,9 @@ public class MeleeWeapon : Action
                 _inventory.isWeaponEquipped = false; // put weapon away
                 Destroy(_duplicate);
                 _wielding = false;
+
+                weaponEquipText.text = "";
+                weaponEquipText.enabled = false;
                 Audio_Manager.globalAudioManager.PlaySound("unequip", Audio_Manager.globalAudioManager.intangibleSoundArray);
             }
             else if (_wielding == false)
@@ -64,6 +70,9 @@ public class MeleeWeapon : Action
                 _duplicate.transform.parent = playerPalm.transform; // make the gun a child of the palm
                 _duplicate.transform.position = new Vector3((playerPalm.transform.position.x + weaponRepositioning.x), (playerPalm.transform.position.y + weaponRepositioning.y), (playerPalm.transform.position.z + weaponRepositioning.z));
                 _wielding = true;
+
+                weaponEquipText.text = GetComponent<AcquirableInteractable>().itemScriptableObj.itemName + " EQUIPPED";
+                weaponEquipText.enabled = true;
                 Audio_Manager.globalAudioManager.PlaySound("equip", Audio_Manager.globalAudioManager.intangibleSoundArray);
             }
         }

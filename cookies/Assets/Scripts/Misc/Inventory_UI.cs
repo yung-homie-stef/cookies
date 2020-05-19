@@ -12,7 +12,10 @@ public class Inventory_UI : MonoBehaviour
     public GameObject VHS_Camera;
     public Image cursorImage; 
 
-    private bool visible = false;
+    [HideInInspector]
+    public bool visible = false;
+
+
     Inventory inventory;
     private Player _playerScript;
     protected CameraController _camControlller;

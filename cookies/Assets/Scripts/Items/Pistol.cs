@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class Pistol : Action
 {
-    public GameObject player;
     public GameObject playerPalm;
     public float range;
     public Camera fpsCamera;
     public AudioClip[] gunshotSFX;
     public AudioMixerGroup sfxMixer;
+    public Text weaponEquipText;
     
 
     private bool _cocked;
@@ -37,10 +38,13 @@ public class Pistol : Action
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            if (_cocked)
-            {  
-                if (_reloaded) // to prevent spamming
-                Shoot();
+            if (!Inventory.instance.inventoryUIScript.visible)
+            {
+                if (_cocked)
+                {
+                    if (_reloaded) // to prevent spamming
+                        Shoot();
+                }
             }
         }  
     }
@@ -51,10 +55,14 @@ public class Pistol : Action
         {
             if (_cocked == true)
             {
+                _cocked = false;
                 _inventory.isWeaponEquipped = false; // put gun away
                 Destroy(_duplicate);
-                _cocked = false;
+
+                weaponEquipText.text = "";
+                weaponEquipText.enabled = false;
                 Audio_Manager.globalAudioManager.PlaySound("unequip", Audio_Manager.globalAudioManager.intangibleSoundArray);
+               
 
             }
             else if (_cocked == false)
@@ -71,6 +79,9 @@ public class Pistol : Action
                 _duplicate.layer = 0;
                 _duplicate.transform.parent = playerPalm.transform; // make the gun a child of the palm
                 _cocked = true;
+
+                weaponEquipText.enabled = true;
+                weaponEquipText.text = "THREE PIECE EQUIPPED";
                 Audio_Manager.globalAudioManager.PlaySound("equip", Audio_Manager.globalAudioManager.intangibleSoundArray);
             }
         }

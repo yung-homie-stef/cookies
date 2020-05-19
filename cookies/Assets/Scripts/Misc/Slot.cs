@@ -41,7 +41,6 @@ public class Slot : MonoBehaviour
             int index = Inventory.instance.items.IndexOf(item);
             if (Inventory.instance.playerInventoryItems[index])
             {
-                Debug.Log("watto did nothing wrong");
                 Inventory.instance.UseItem(index); 
             }
         }
