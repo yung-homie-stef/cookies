@@ -29,6 +29,7 @@ public class Vending_Machine : Interactable
     {
         if (!_hasVended)
         {
+            
             StartCoroutine(Vend(4.0f));
             candyBar.GetComponent<BoxCollider>().enabled = true;
             _hasVended = true;
@@ -42,6 +43,11 @@ public class Vending_Machine : Interactable
     {
         yield return new WaitForSeconds(waitTime);
         _animator.SetBool("vending", true);
+    }
+
+    public override void FailMessage()
+    {
+        _notice.ChangeText("CURRENCY REQUIRED");
     }
 }
 

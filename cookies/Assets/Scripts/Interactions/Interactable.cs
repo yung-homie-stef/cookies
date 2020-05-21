@@ -28,6 +28,12 @@ public abstract class Interactable : MonoBehaviour
 
     }
 
+    public virtual void FailMessage()
+    {
+
+    }
+  
+
     // Update is called once per frame
     void Update()
     {
@@ -74,6 +80,12 @@ public abstract class Interactable : MonoBehaviour
             }
         }
 
+        if (tagIndex == -1)
+        {
+            ItemUseFailed(player);
+            return;
+        }
+
         switch (reqType)
         {
             case RequirementType.Single:
@@ -82,6 +94,7 @@ public abstract class Interactable : MonoBehaviour
                     {
                         InteractAction();
                         reqType = RequirementType.None;
+                        ItemUseSucceeded(player);
                     }
                     break;
                 }
@@ -92,7 +105,8 @@ public abstract class Interactable : MonoBehaviour
                         if (requiredTags.Length < 2)
                         {
                             InteractAction();
-                            reqType = RequirementType.None;
+                            reqType = RequirementType.None; // this is when the player gives them the correct item
+                            ItemUseSucceeded(player);
                         }
                         else
                         {
@@ -118,13 +132,18 @@ public abstract class Interactable : MonoBehaviour
     public virtual void ItemUseFailed(Player player)
     {
         // TODO: display failed to use item message
+        Debug.Log("whats wario doing on a bike?");
+        player._inventory.DisplayFailedItemUsageText();
         player.CloseInteractInventory();
+        Inventory.instance.inventoryUIScript.SetHeaderToBlank();
     }
 
     public virtual void ItemUseSucceeded(Player player)
     {
         player.RemoveUsedItem();
         player.CloseInteractInventory();
+        Inventory.instance.inventoryUIScript.SetHeaderToBlank();
+        Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
     }
 
     public abstract void InteractAction();

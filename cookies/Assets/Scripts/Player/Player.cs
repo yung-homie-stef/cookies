@@ -14,12 +14,14 @@ public class Player : MonoBehaviour
     public Sprite interactSprite;
     public Sprite originalHUDDot;
     public GameObject inventoryUI;
+    public Item lastUsedItem;
+    public Inventory _inventory;
 
     private Movement playerMovement;
     private Inventory_UI _inventoryUIScript;
-    private Inventory _inventory;
+    
     private Animator _animator;
-    private Item lastUsedItem;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -113,10 +115,7 @@ public class Player : MonoBehaviour
 
     void Use()
     {
-        //if (_inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<Action>())
-        //{
-        //    _inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<Action>().Use();
-        //}
+    
     }
 
     public void Drop(int i)

@@ -51,7 +51,12 @@ public class Bomb_Table : Interactable
     public override void InteractAction()
     {
         pipeBomb.SetActive(true);
-        Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
+        
+    }
+
+    public override void FailMessage()
+    {
+        _notice.ChangeText("LEAD PIPE REQUIRED");
     }
 
 

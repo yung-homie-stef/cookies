@@ -137,22 +137,33 @@ public class Inventory : MonoBehaviour
         items.Remove(item);
 
         if (onItemChangeCallback != null)
+        {
             onItemChangeCallback.Invoke();
+        }
        
     }
 
     public void UseItem(int index)
     {
+        player.lastUsedItem = playerInventoryItems[index].GetComponent<AcquirableInteractable>().itemScriptableObj;
 
         if (interactionTarget == null)
         {
-            playerInventoryItems[index].GetComponent<Action>().Use(index);
+            if (playerInventoryItems[index].GetComponent<Action>())
+            {
+                playerInventoryItems[index].GetComponent<Action>().Use(index);
+            }
         }
         else
         {
             interactionTarget.Interact(player, playerInventoryItems[index].GetComponent<Tags>().tags);
             inventoryUIScript.DisableUI();
         }
+    }
+
+    public void DisplayFailedItemUsageText()
+    {
+        interactionTarget.FailMessage();
     }
 
 

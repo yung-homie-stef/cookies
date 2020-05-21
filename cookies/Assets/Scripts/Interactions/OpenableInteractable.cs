@@ -91,4 +91,9 @@ public class OpenableInteractable : Interactable
             closeToggle = true;
     }
 
+    public override void FailMessage()
+    {
+        _notice.ChangeText(newText);
+    }
+
 }

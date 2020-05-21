@@ -26,4 +26,9 @@ public class Computer : Interactable
         _notice.ChangeText("NEAT");
     }
 
+    public override void FailMessage()
+    {
+        _notice.ChangeText("CAN'T PUT THAT INTO THE DISC DRIVE...");
+    }
+
 }

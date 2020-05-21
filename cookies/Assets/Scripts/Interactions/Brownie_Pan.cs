@@ -47,26 +47,7 @@ public class Brownie_Pan : Interactable
         _notice.ChangeText("CLOSE OVEN TO GET BAKED");
     }
 
-    public override void Interact(Player player, string[] tags)
-    {
-        base.Interact(player, tags);
 
-        for (int j = 0; j < tags.Length; j++)
-        {
-            if (tags[j] == "Batter") // adding brownie mix
-            {
-                _hasBatter = true;
-                _notice.ChangeText("CLOSE OVEN TO BAKE");
-                break;
-            }
-            else if (tags[j] == "CBD") // adding cannabinoids 
-            {
-                _hasCBD = true;
-                _notice.ChangeText("CBD ADDED TO RECIPE");
-                break;
-            }
-        }
-    }
 
     public override void Interact(Player player)
     {
