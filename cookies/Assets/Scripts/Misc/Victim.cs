@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Victim : MonoBehaviour
 {
     public static float multiplier = 10;
+    public int hitPoints;
 
     private Animator _animator;
     private Rigidbody _rigidbody;
@@ -44,7 +45,15 @@ public class Victim : MonoBehaviour
 
     }
 
-    public void Die() // overloaded function for when victim dies without being hit or shot (ex: poison)
+    public virtual void TakeDamage(Vector3 point = default(Vector3), Vector3 direction = default(Vector3))
+    {
+        hitPoints--;
+
+        if (hitPoints == 0)
+        Die(point, direction);
+    }
+
+    public virtual void Die() // overloaded function for when victim dies without being hit or shot (ex: poison)
     {
         foreach (var body in childrenBody)
         {

@@ -135,6 +135,6 @@ public class Pistol : Action
     {
         yield return new WaitForSeconds(waitTime);
         Victim _victim = _killedPerson.transform.GetComponent<Victim>();
-        _victim.Die(_bulletPoint, _bulletDirection); // if it bleeds... we can kill it
+        _victim.TakeDamage(_bulletPoint, _bulletDirection); // if it bleeds... we can kill it
     }
 }
