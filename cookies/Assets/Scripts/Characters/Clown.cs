@@ -7,8 +7,9 @@ public class Clown : MonoBehaviour
 {
     public float wanderRadius;
     public float wanderTimer;
-    public GameObject player;
     public float maxDistance;
+    public GameObject player;
+    public GameObject hammer;
 
     private Transform _target;
     private NavMeshAgent _agent;
@@ -57,8 +58,9 @@ public class Clown : MonoBehaviour
             _agent.speed = 0.6f;
         }
 
-        if (distance < 0.5f)
+        if (distance < 0.6f)
         {
+            hammer.SetActive(true);
             _agent.isStopped = true;
             _animator.SetBool("swinging", true);
         }
@@ -68,7 +70,14 @@ public class Clown : MonoBehaviour
     {
         _agent.isStopped = false;
         _animator.SetBool("swinging", false);
+        hammer.SetActive(false);
+        hammer.GetComponent<BoxCollider>().enabled = false;
         
+    }
+
+    public void EnableHammerHitbox()
+    {
+        hammer.GetComponent<BoxCollider>().enabled = true;
     }
 
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
