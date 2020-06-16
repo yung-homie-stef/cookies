@@ -99,7 +99,7 @@ public class Krool_Aid : Action
         // hide galaxy
         foreach (Transform tf in galaxyGroup.transform)
         {
-            tf.gameObject.layer = 15;
+            tf.gameObject.layer = 20;
         }
 
         teleportParticle.SetActive(false);
