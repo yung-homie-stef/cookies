@@ -106,7 +106,7 @@ public class AcquirableInteractable : Interactable
             if (_pickup)
                 _pickup.AddItem(itemScriptableObj);
 
-            Audio_Manager.globalAudioManager.PlaySound("pickup", Audio_Manager.globalAudioManager.intangibleSoundArray);
+            //Audio_Manager.globalAudioManager.PlaySound("pickup", Audio_Manager.globalAudioManager.intangibleSoundArray);
             
         }
         else
