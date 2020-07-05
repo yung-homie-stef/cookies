@@ -69,7 +69,7 @@ public class MeleeWeapon : Action
                 _duplicate.transform.localScale = _localScale;
                 _duplicate.layer = 0;
                 _duplicate.transform.parent = playerPalm.transform; // make the weapon a child of the palm
-                _duplicate.transform.position = new Vector3((playerPalm.transform.position.x + weaponRepositioning.x), (playerPalm.transform.position.y + weaponRepositioning.y), (playerPalm.transform.position.z + weaponRepositioning.z));
+                _duplicate.transform.localPosition = new Vector3(weaponRepositioning.x,weaponRepositioning.y,weaponRepositioning.z);
                 _wielding = true;
 
                 weaponEquipText.text = GetComponent<AcquirableInteractable>().itemScriptableObj.itemName + " EQUIPPED";
@@ -94,8 +94,8 @@ public class MeleeWeapon : Action
 
     public void EnableMeleeHitbox(int condition)
     {
-        if (condition == 1)
-            _duplicate.GetComponent<BoxCollider>().enabled = true;
+       if (condition == 1)
+           _duplicate.GetComponent<BoxCollider>().enabled = true;
 
         else if (condition == 0)
             _duplicate.GetComponent<BoxCollider>().enabled = false;
