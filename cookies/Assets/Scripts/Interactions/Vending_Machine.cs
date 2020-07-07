@@ -32,7 +32,6 @@ public class Vending_Machine : Interactable
             
             StartCoroutine(Vend(4.0f));
             candyBar.GetComponent<BoxCollider>().enabled = true;
-            _hasVended = true;
             GetComponent<AudioSource>().PlayOneShot(vendingMachineSound);
             _hasVended = true;
         }

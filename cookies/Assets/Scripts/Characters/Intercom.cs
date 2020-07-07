@@ -14,7 +14,6 @@ public class Intercom : Interactable
     private string[] currentSentences;
     private Dialogue _dialogue;
     private OpenableInteractable _openable;
-    private bool _turnedOn = false;
 
     // Start is called before the first frame update
     new void Start()
@@ -25,12 +24,6 @@ public class Intercom : Interactable
 
     public override void InteractAction()
     {
-        if (!_turnedOn)
-        {
-            intercomCamera.SetActive(true);
-            _turnedOn = true;
-        }
-        else 
         HandleDialogue(0);
     }
 

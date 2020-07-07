@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Shotgun : Interactable
 {
     public GameObject player;
+    public GameObject button;
     public Text noticeText;
 
     private Inventory _inventory;
@@ -22,39 +23,19 @@ public class Shotgun : Interactable
         _hasArmed = false;
     }
 
-    public override void Interact(Player player, string[] tags)
-    {
-        if (_hasArmed == false)
-        {
-            for (int j = 0; j < tags.Length; j++)
-            {
-                if (tags[j] == "Bullets")
-                {
-                    _hasArmed = true;
-                    break;
-                }
-            }
-        }
-    }
-
-    public override void Interact(Player player)
-    {
-        base.Interact(player);
-
-        if (!_hasArmed)
-        {
-            _notice.ChangeText("AMMO REQUIRED");
-        }
-    }
-
     public override void InteractAction()
     {
-       
+        if (!_hasArmed)
+        {
+            button.GetComponent<BoxCollider>().enabled = true;
+            _hasArmed = true;
+        }
+
     }
 
     public override void FailMessage()
     {
-        _notice.ChangeText("LEAD PIPE REQUIRED");
+        _notice.ChangeText("AMMO REQUIRED");
     }
 
 }

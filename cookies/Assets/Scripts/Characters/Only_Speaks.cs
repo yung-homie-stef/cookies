@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnlySpeaks : Interactable
+public class Only_Speaks : Interactable
 {
     public Set_of_Sentences[] sentenceSets;
     public GameObject player;
@@ -15,8 +15,8 @@ public class OnlySpeaks : Interactable
     // Start is called before the first frame update
     public override void InteractAction()
     {
-
-            HandleDialogue(0);
+        _dialogue = dialogueManager.GetComponent<Dialogue>();
+        HandleDialogue(0);
     }
 
     private void HandleDialogue(int setIndex)

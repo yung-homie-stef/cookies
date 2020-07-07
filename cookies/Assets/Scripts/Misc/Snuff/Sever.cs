@@ -7,6 +7,7 @@ public class Sever : MonoBehaviour
     public GameObject delegatedBone;
     public GameObject poorGuy;
     public GameObject intercom;
+    public GameObject intercomCamera;
 
     private static int _limbsCut = 0;
 
@@ -36,6 +37,7 @@ public class Sever : MonoBehaviour
         {
             poorGuy.GetComponent<Animator>().SetBool("severed", false);
             intercom.GetComponent<BoxCollider>().enabled = true;
+            intercomCamera.SetActive(true);
         }
 
     }

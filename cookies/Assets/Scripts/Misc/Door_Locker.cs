@@ -28,34 +28,13 @@ public class Door_Locker : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-
-            switch (reqTypeInt)
-            {
-                case 0:
-                    _openable.reqType = Interactable.RequirementType.None;
-                    break;
-                case 1:
-                    _openable.reqType = Interactable.RequirementType.Single;
-                    break;
-                case 2:
-                    _openable.reqType = Interactable.RequirementType.List;
-                    break;
-            }
-
+            _openable.isLocked = true;
             _openable.newText = updatedText;
             _openable.isOpened = false;
             _openable.SetOpenToggle(0);
             _openable.SetCloseToggle(1);
             _openable.EnactOpening();
-            _openable.isLocked = true;
-            
 
-            if (_openable.reqType == Interactable.RequirementType.Single || _openable.reqType == Interactable.RequirementType.List)
-
-                for (int i = 0; i < reqTags.Length; i++)
-                {
-                    _openable.requiredTags[i] = reqTags[i];
-                }
             
         }
 

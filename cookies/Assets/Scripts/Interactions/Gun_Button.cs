@@ -6,8 +6,13 @@ public class Gun_Button : Interactable
 {
     public GameObject shotgun;
     public GameObject victim;
+    public GameObject intercom;
+    public GameObject blood;
+    public GameObject intercomCamera;
+    public ParticleSystem muzzleFlash;
 
     private Rigidbody[] _childBodies;
+    private bool _hasFired;
 
     // Start is called before the first frame update
     new void Start()
@@ -17,12 +22,19 @@ public class Gun_Button : Interactable
 
     public override void InteractAction()
     {
-        shotgun.GetComponent<Animator>().SetBool("fired", true);
-        //victim.GetComponent<Animator>().SetBool("dead", true);
-
-        foreach (var body in _childBodies)
+        if (!_hasFired)
         {
-            body.isKinematic = false;
+            GetComponent<Animator>().SetBool("pressed", true);
+            shotgun.GetComponent<Animator>().SetBool("fired", true);
+            intercom.GetComponent<BoxCollider>().enabled = true;
+            intercomCamera.SetActive(true);
+            victim.GetComponent<Animator>().SetBool("dead", true);
+            muzzleFlash.Play();
+
+            blood.SetActive(true);
+
+            victim.GetComponent<Victim>().TakeDamage(victim.transform.position, shotgun.transform.forward);
+            _hasFired = true;
         }
 
     }
