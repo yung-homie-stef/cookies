@@ -18,7 +18,7 @@ public class Gun_Button : Interactable
     public override void InteractAction()
     {
         shotgun.GetComponent<Animator>().SetBool("fired", true);
-        victim.GetComponent<Animator>().SetBool("dead", true);
+        //victim.GetComponent<Animator>().SetBool("dead", true);
 
         foreach (var body in _childBodies)
         {
