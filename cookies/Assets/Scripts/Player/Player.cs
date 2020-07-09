@@ -141,14 +141,23 @@ public class Player : MonoBehaviour
 
     public void ActivateFistHitbox(int condition)
     {
-        if (condition == 1)
+        if (_inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<MeleeWeapon>())
         {
-            fistHitbox.SetActive(true); // yo why the fuck cant animation events take in bools fuck is this garbage...
+            if (condition == 1)
+            {
+                fistHitbox.SetActive(true); // yo why the fuck cant animation events take in bools fuck is this garbage...
+            }
+
+            if (condition == 2)
+            {
+                fistHitbox.SetActive(false);
+            }
         }
 
-        if (condition == 2)
+        else if (_inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<Brass_Knuckles>())
         {
-            fistHitbox.SetActive(false);
+
+            _inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<Brass_Knuckles>().EnableMeleeHitbox(condition);
         }
 
     }

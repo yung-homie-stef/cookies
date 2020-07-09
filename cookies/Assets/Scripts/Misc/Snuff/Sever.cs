@@ -36,6 +36,10 @@ public class Sever : MonoBehaviour
         if (_limbsCut < 4)
         {
             poorGuy.GetComponent<Animator>().SetBool("severed", false);
+        }
+
+        else if (_limbsCut == 4)
+        {
             intercom.GetComponent<BoxCollider>().enabled = true;
             intercomCamera.SetActive(true);
         }

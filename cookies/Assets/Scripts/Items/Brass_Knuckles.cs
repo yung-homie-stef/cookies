@@ -97,7 +97,7 @@ public class Brass_Knuckles : Action
         if (condition == 1)
             _duplicate.GetComponent<BoxCollider>().enabled = true;
 
-        else if (condition == 0)
+        else if (condition == 2)
             _duplicate.GetComponent<BoxCollider>().enabled = false;
     }
 }
