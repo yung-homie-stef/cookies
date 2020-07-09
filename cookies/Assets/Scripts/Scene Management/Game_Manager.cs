@@ -116,7 +116,7 @@ public class Game_Manager : MonoBehaviour
         End_Menu.globalEndMenu.SetStatusOfThreadCompletion(condition);
         CompletePath(condition.threadID, condition.threadName);
     
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(5);
              
     }
 

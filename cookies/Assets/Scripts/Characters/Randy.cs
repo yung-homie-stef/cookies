@@ -7,11 +7,14 @@ public class Randy : Interactable
     public Set_of_Sentences[] sentenceSets;
     public GameObject player;
     public GameObject dialogueManager;
+    public GameObject blackOut;
     public bool isScared;
+    public End_Condition a_floridian_film_Thread;
 
     [SerializeField]
     private string[] currentSentences;
     private Dialogue _dialogue;
+    private GameObject _contactPoint;
 
     new void Start()
     {
@@ -49,4 +52,28 @@ public class Randy : Interactable
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Hitbox")
+        {
+            _contactPoint = other.gameObject;
+            GetComponent<Victim>().TakeDamage(_contactPoint.transform.position, _contactPoint.transform.forward * 0.2f);
+
+            if (GetComponent<Victim>().hitPoints == 0)
+            {
+                if (isScared)
+                {
+                    StartCoroutine(CompleteRandysThread(5.0f));
+                    blackOut.GetComponent<Animator>().SetBool("faded", true);
+                    
+                }
+            }
+        }
     }
+
+    private IEnumerator CompleteRandysThread(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Game_Manager.globalGameManager.EndGame(a_floridian_film_Thread);
+    }
+}

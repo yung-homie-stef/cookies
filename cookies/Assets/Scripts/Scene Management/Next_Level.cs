@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Next_Level : MonoBehaviour
 {
     public GameObject blackout;
+    public int sceneIndex;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,6 +17,6 @@ public class Next_Level : MonoBehaviour
     private IEnumerator Transition(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(sceneIndex);
     }
 }
