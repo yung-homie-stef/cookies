@@ -57,12 +57,13 @@ public class Randy : Interactable
         if (other.tag == "Hitbox")
         {
             _contactPoint = other.gameObject;
-            GetComponent<Victim>().TakeDamage(_contactPoint.transform.position, _contactPoint.transform.forward * 0.2f);
+            GetComponent<Victim>().TakeDamage(_contactPoint.transform.position, _contactPoint.transform.forward);
 
             if (GetComponent<Victim>().hitPoints == 0)
             {
                 if (isScared)
                 {
+                    GetComponent<Animator>().enabled = false;
                     StartCoroutine(CompleteRandysThread(5.0f));
                     blackOut.GetComponent<Animator>().SetBool("faded", true);
                     
@@ -74,6 +75,6 @@ public class Randy : Interactable
     private IEnumerator CompleteRandysThread(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        Game_Manager.globalGameManager.EndGame(a_floridian_film_Thread);
+       // Game_Manager.globalGameManager.EndGame(a_floridian_film_Thread);
     }
 }
