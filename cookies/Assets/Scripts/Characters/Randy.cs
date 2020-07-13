@@ -75,6 +75,6 @@ public class Randy : Interactable
     private IEnumerator CompleteRandysThread(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-       // Game_Manager.globalGameManager.EndGame(a_floridian_film_Thread);
+        Game_Manager.globalGameManager.EndGame(a_floridian_film_Thread);
     }
 }
