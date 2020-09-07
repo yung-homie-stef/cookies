@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4383226579170909965}
   - component: {fileID: 4383226579170909964}
   - component: {fileID: 4383226579170909955}
-  - component: {fileID: 4383226579170909954}
   m_Layer: 0
   m_Name: VHS_camera
   m_TagString: Untagged
@@ -142,17 +141,3 @@ VideoPlayer:
   m_Looping: 1
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
---- !u!114 &4383226579170909954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4383226579170909953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d950c58564c3474ea8871c01cde0730, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shader: {fileID: 4800000, guid: 3c9d632acfce82149be5a99a0d90f190, type: 3}
-  VHSClip: {fileID: 32900000, guid: 1d0f4a6aade465845ab065f9e00a4835, type: 3}
