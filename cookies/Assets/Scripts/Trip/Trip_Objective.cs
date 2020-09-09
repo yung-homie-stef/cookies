@@ -8,7 +8,7 @@ public class Trip_Objective : Interactable
     public GameObject player;
     public Transform teleportPoint;
     public GameObject[] disabledParts;
-    public GameObject enabledPart;
+    public GameObject[] enabledParts;
 
     private Inventory _inventory;
     private Tags _tags;
@@ -34,14 +34,18 @@ public class Trip_Objective : Interactable
             disabledParts[i].SetActive(false);
         }
 
-    }
+        for (int i = 0; i < enabledParts.Length; i++)
+        {
+            enabledParts[i].SetActive(true);
+        }
+    
+    }   
 
     private IEnumerator MovePlayer(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
 
         _movement.enabled = true;
-        enabledPart.SetActive(true);
 
     }
 

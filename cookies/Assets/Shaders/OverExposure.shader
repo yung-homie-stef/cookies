@@ -3,7 +3,7 @@
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _HighThreshold ("High Threshold", Range(0,1)) = 1
+        _HighThreshold ("High Threshold", Range(0.075,0.5)) = 0.5
         _LowThreshold ("Low Threshold", Range(0,1)) = 0
     }
     SubShader
@@ -80,7 +80,6 @@
                     col.b = 0;
                 }
                 
-
                 /*
                 float average = (col.r + col.g + col.b) / 3;
                 if (average >= _HighThreshold)
