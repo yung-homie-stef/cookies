@@ -15,7 +15,7 @@ public class Zigzag : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        zigzaggerPos.x = amplitude * Mathf.Cos(time);
+        zigzaggerPos.x = amplitude * Mathf.Cos(4 * time);
         zigzaggerPos.z += speed * Time.deltaTime;
 
         time += Time.deltaTime;
