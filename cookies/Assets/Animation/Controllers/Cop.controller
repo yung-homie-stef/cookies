@@ -9,8 +9,8 @@ AnimatorController:
   m_Name: Cop
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: is_shooting
-    m_Type: 4
+  - m_Name: offset
+    m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -68,12 +68,12 @@ AnimatorState:
   m_Mirror: 0
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
+  m_CycleOffsetParameterActive: 1
   m_TimeParameterActive: 0
   m_Motion: {fileID: 1827226128182048838, guid: 4e109cd3e906e9b48948d1afe531cd84,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
-  m_CycleOffsetParameter: 
+  m_CycleOffsetParameter: offset
   m_TimeParameter: 

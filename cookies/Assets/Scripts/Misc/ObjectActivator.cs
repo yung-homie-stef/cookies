@@ -13,5 +13,7 @@ public class ObjectActivator : MonoBehaviour
         {
             objects[i].SetActive(activeOrNot[i]);
         }
+
+        Destroy(gameObject);
     }
 }

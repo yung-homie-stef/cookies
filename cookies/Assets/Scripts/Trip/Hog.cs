@@ -2,24 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hog : Victim
+public class Hog : MonoBehaviour
 {
     public static int hogsLeft = 12;
     public GameObject cop_ensemble;
-    public Transform teleportPoint;
     public GameObject player;
+    public GameObject computer;
 
-    public override void Die()
+    private Animator _animator;
+    private bool _hasDecremented;
+
+    private void Start()
     {
-        base.Die();
+        _animator = GetComponent<Animator>();
+    }
 
-        if (hogsLeft > 0)
+    private void Update()
+    {
+        transform.LookAt(player.transform.position);
+
+        if (_animator.enabled == false && _hasDecremented == false)
         {
-            //hogsLeft--;
-        }
-        else
-        {
-            //StartCoroutine(RemoveCops(5.0f));
+            hogsLeft--;
+            _hasDecremented = true;
+
+            Debug.Log(hogsLeft);
+
+            if (hogsLeft == 0)
+            {
+                StartCoroutine(RemoveCops(5.0f));
+            }
         }
     }
 
@@ -27,25 +39,11 @@ public class Hog : Victim
     {
         yield return new WaitForSeconds(waitTime);
 
-        player.transform.position = teleportPoint.transform.position;
-        cop_ensemble.SetActive(false);
+        computer.SetActive(true);
+        cop_ensemble.SetActive(false);    
 
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            hogsLeft--;
-            Debug.Log(hogsLeft);
-
-            if (hogsLeft == 0)
-            {
-                player.transform.position = teleportPoint.transform.position;
-                cop_ensemble.SetActive(false);
-            }
-        }
-    }
 
 
 }
