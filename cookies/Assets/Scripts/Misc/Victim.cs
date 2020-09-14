@@ -24,7 +24,7 @@ public class Victim : MonoBehaviour
         childrenBody = GetComponentsInChildren<Rigidbody>();
     }
 
-    public void Die(Vector3 point = default(Vector3), Vector3 direction = default(Vector3))
+    public virtual void Die(Vector3 point = default(Vector3), Vector3 direction = default(Vector3))
     {
         foreach ( var body in childrenBody)
         {

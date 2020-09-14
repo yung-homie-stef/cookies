@@ -24,7 +24,7 @@ public class Trip_Objective : Interactable
 
     public override void InteractAction()
     {
-        _movement.enabled = false;
+       // _movement.enabled = false;
         StartCoroutine(MovePlayer(3.0f));
         player.transform.position = teleportPoint.transform.position;
         
@@ -45,7 +45,7 @@ public class Trip_Objective : Interactable
     {
         yield return new WaitForSeconds(waitTime);
 
-        _movement.enabled = true;
+        //_movement.enabled = true;
 
     }
 
