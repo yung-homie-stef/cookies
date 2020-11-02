@@ -736,7 +736,7 @@ GameObject:
   - component: {fileID: 6711115264533737353}
   - component: {fileID: 6711115264533737357}
   m_Layer: 0
-  m_Name: player 1
+  m_Name: player_prefab
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1879,7 +1879,6 @@ GameObject:
   - component: {fileID: 6711115263814883876}
   - component: {fileID: 6711115263814883880}
   - component: {fileID: 6711115263814883881}
-  - component: {fileID: 6711115263814883883}
   - component: {fileID: 6711115263814883890}
   - component: {fileID: 6711115263814883885}
   - component: {fileID: 6711115263814883891}
@@ -2007,28 +2006,6 @@ MonoBehaviour:
   maxHeadRotation: 77
   minHeadRotation: -80
   slerpValue: 0.2
---- !u!114 &6711115263814883883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6711115263814883877}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab1672dbfffacf44eb01638ec102be85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curShader: {fileID: 4800000, guid: 5299e9b6d052b4e4d9b8c7c43f75551d, type: 3}
-  Distortion: 0
-  Gamma: 1
-  YExtra: 0.5
-  CurvatureSet1: 0.5
-  CurvatureSet2: 1
-  DotWeight: 1
-  scanSize: 512
-  rgb1: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 1}
-  rgb2: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &6711115263814883890
 MonoBehaviour:
   m_ObjectHideFlags: 0
