@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     public GameObject startMenu;
     public GameObject threadMenu;
     public GameObject startButton;
+    public GameObject tapes;
 
     public Text[] threadTitleTexts = new Text[12];
 
@@ -43,6 +44,7 @@ public class MainMenu : MonoBehaviour
         threadMenu.SetActive(false);
         Game_Manager.globalGameManager.settingsScreen.SetActive(false);
         startMenu.SetActive(true);
+        tapes.SetActive(false);
     }
 
     public void CheckThreads()
@@ -50,6 +52,7 @@ public class MainMenu : MonoBehaviour
         // go to threads menu
         startMenu.SetActive(false);
         threadMenu.SetActive(true);
+        tapes.SetActive(true);
     }
 
     public void OpenSettings()
