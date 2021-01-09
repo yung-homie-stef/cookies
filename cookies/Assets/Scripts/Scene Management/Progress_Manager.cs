@@ -8,13 +8,12 @@ public class Progress_Manager : MonoBehaviour
     public GameObject pamphlet; // Son of Sal Thread
     public GameObject altarDoor;
 
-
     private ProgressInformation _playersTotalProgress;
 
     // Start is called before the first frame update
     void Start()
     {
-        _playersTotalProgress = Game_Manager.globalGameManager.GetProgressInformation(); 
+        _playersTotalProgress = Game_Manager.globalGameManager.GetProgressInformation();
 
         if (_playersTotalProgress.completedPaths[3])
         {

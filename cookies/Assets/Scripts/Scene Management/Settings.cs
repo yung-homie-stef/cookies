@@ -12,6 +12,7 @@ public class Settings : MonoBehaviour
     public Text vhsEnabled;
     public Text fullscreenEnabled;
     public Text trackingEnabled;
+    public GameObject logo;
 
     public float grain;
     public float bleed; // settings for video
@@ -98,5 +99,6 @@ public class Settings : MonoBehaviour
     {
         Game_Manager.globalGameManager.settingsScreen.SetActive(false);
         _lastMenu.SetActive(true);
+        logo.SetActive(true);
     }
 }

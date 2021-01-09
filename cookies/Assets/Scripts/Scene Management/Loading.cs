@@ -16,7 +16,7 @@ public class Loading : MonoBehaviour
    {
         yield return new WaitForSeconds(waitTime);
         // create an async operation
-        AsyncOperation gameLevel = SceneManager.LoadSceneAsync(3);
+        AsyncOperation gameLevel = SceneManager.LoadSceneAsync(2);
         Audio_Manager.globalAudioManager.PlaySound("ambiance", Audio_Manager.globalAudioManager.musicSoundArray);
         
    }

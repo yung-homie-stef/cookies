@@ -42,7 +42,10 @@ public class Salvador : Interactable
 
     private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            CompleteSalvadorsThread(1.0f);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -130,8 +133,10 @@ public class Salvador : Interactable
 
     private IEnumerator CompleteSalvadorsThread(float waitTime)
     {
+        Debug.Log("fuck u moron");
         yield return new WaitForSeconds(waitTime);
         Game_Manager.globalGameManager.EndGame(son_of_sal_Thread);
+        
     }
 
 }

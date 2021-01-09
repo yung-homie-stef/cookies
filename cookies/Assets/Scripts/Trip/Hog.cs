@@ -35,6 +35,16 @@ public class Hog : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        GenerateShootingLength();
+    }
+
+    private void GenerateShootingLength()
+    {
+        StartCoroutine(StandOrSitAndShoot(Random.Range(0, 5)));
+    }
+
     private IEnumerator RemoveCops(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
@@ -42,6 +52,18 @@ public class Hog : MonoBehaviour
         computer.SetActive(true);
         cop_ensemble.SetActive(false);    
 
+    }
+
+    private IEnumerator StandOrSitAndShoot(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        _animator.SetInteger("shoot_num", Random.Range(1, 3));
+        GenerateShootingLength();
+    }
+
+    public void SetShootNumberToZero()
+    {
+        _animator.SetInteger("shoot_num", 0);
     }
 
 

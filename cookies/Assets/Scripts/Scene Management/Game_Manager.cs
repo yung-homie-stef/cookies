@@ -66,7 +66,6 @@ public class Game_Manager : MonoBehaviour
         mainMenuScript = mainMenu.GetComponent<MainMenu>();
         endScreen.SetActive(false);
         settingsScreen.SetActive(false);
-        controlsScreen.SetActive(false);
         UpdateThreadTitles();
         Debug.Log(Application.persistentDataPath);
     }

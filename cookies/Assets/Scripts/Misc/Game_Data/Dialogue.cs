@@ -98,6 +98,9 @@ public class Dialogue : MonoBehaviour
 
         hasSentence = false;
         sentences = null; // empty array
+
+        _speaker.tag = "Untagged";
+        StartCoroutine(ReenableSpeaker(0.75f));
         
         if (hasEvent)
         {
@@ -113,6 +116,13 @@ public class Dialogue : MonoBehaviour
 
         hasSentence = false;
         sentences = null; // empty array
+    }
+
+    private IEnumerator ReenableSpeaker(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        _speaker.tag = "Interactable";
     }
 
 }

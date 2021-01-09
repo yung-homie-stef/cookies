@@ -44,9 +44,10 @@ public class Reporter : Interactable
     public override void ConversationEndEvent()
     {
         base.ConversationEndEvent();
+        CompleteBlackOctoberThread(5.0f);
     }
 
-    private IEnumerator CompleteSalvadorsThread(float waitTime)
+    private IEnumerator CompleteBlackOctoberThread(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         Game_Manager.globalGameManager.EndGame(black_october_Thread);
