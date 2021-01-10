@@ -6,6 +6,7 @@ public class ObjectActivator : MonoBehaviour
 {
     public GameObject[] objects;
     public bool[] activeOrNot;
+    public bool isDestroyed;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,6 +15,9 @@ public class ObjectActivator : MonoBehaviour
             objects[i].SetActive(activeOrNot[i]);
         }
 
-        Destroy(gameObject);
+        if (isDestroyed)
+            Destroy(gameObject);
+        else
+            gameObject.SetActive(false);
     }
 }

@@ -9,6 +9,7 @@ public class Trip_Objective : Interactable
     public Transform teleportPoint;
     public GameObject[] disabledParts;
     public GameObject[] enabledParts;
+    public GameObject transitionCanvas;
 
     private Inventory _inventory;
     private Tags _tags;
@@ -24,10 +25,18 @@ public class Trip_Objective : Interactable
 
     public override void InteractAction()
     {
-       // _movement.enabled = false;
-        StartCoroutine(MovePlayer(3.0f));
         player.transform.position = teleportPoint.transform.position;
-        
+        transitionCanvas.SetActive(true);
+        StartCoroutine(MovePlayer(1.0f));
+        _movement.enabled = false;
+    }   
+
+    private IEnumerator MovePlayer(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        transitionCanvas.SetActive(false);
+        _movement.enabled = true;
 
         for (int i = 0; i < disabledParts.Length; i++)
         {
@@ -38,14 +47,6 @@ public class Trip_Objective : Interactable
         {
             enabledParts[i].SetActive(true);
         }
-    
-    }   
-
-    private IEnumerator MovePlayer(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-
-        //_movement.enabled = true;
 
     }
 
