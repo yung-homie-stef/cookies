@@ -9,6 +9,7 @@ public class MeleeWeapon : Action
     public Vector3 weaponRotation;
     public Vector3 weaponRepositioning;
     public Text weaponEquipText;
+    public string animationName;
 
     private bool _wielding;
     private bool _relaxed;
@@ -81,7 +82,7 @@ public class MeleeWeapon : Action
 
     private void Swing()
     {
-        _animator.Play("melee"); // play melee animation
+        _animator.Play(animationName); // play melee animation
         _relaxed = false;
         StartCoroutine(RelaxArm(1.0f));
     }
