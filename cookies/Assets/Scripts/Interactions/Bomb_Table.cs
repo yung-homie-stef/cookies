@@ -23,30 +23,6 @@ public class Bomb_Table : Interactable
         hasCrafted = false;
     }
 
-    public override void Interact(Player player, string[] tags)
-    {
-        if (hasCrafted == false)
-        {
-            for (int j = 0; j < tags.Length; j++)
-            {
-                if (tags[j] == "Lead_Pipe") 
-                {
-                    hasCrafted = true;
-                    break;
-                }
-            }
-        }
-    }
-
-    public override void Interact(Player player)
-    {
-        base.Interact(player);
-
-        if (!hasCrafted)
-        {
-            _notice.ChangeText("LEAD PIPE REQUIRED");
-        }
-    }
 
     public override void InteractAction()
     {
