@@ -50,6 +50,7 @@ public class Confessional : Interactable
     public override void ConversationEndEvent()
     {
             _huxleyScript.ConfirmTaskCompleted();
+        this.GetComponent<BoxCollider>().enabled = false;
     }
 
 }

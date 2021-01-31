@@ -21,10 +21,11 @@ public class Father_Huxley : Interactable
     private Dialogue _dialogue;
     private Tags _tags;
     private Inventory _inventory;
-    private bool _requiresPayment;
+    private bool _requiresPayment = false;
     private Notice _notice;
     private bool eventHappensWhenTalkingIsDone;
     private bool needsBomb = false;
+    private string failMessage;
 
     // Start is called before the first frame update
     new void Start()
@@ -50,44 +51,22 @@ public class Father_Huxley : Interactable
     }
 
 
-    public override void Interact(Player player, string[] tags)
-    {
-        if (_requiresPayment) // when huxley asks for tithes
-        {
-            if (CheckForItem("Currency", tags) == false) // check for tithes
-            {
-                _notice.ChangeText("TITHES REQUIRED"); // if you don't have money remind the player they need money
-            }
-            else
-            {
-                Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
-                ConfirmTaskCompleted(); // otherwise pay him and progress the story
-                _requiresPayment = false;
-            }
-        }
-
-        if (dialogueValue == 2 && needsBomb)
-        {
-            if (CheckForItem("Pipe_Bomb", tags) == false ) // check for tithes
-            {
-                _notice.ChangeText("PIPE BOMB REQUIRED"); // if you don't have money remind the player they need money
-            }
-            else
-            {
-                Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
-                ConfirmTaskCompleted(); // otherwise pay him and progress the story
-                needsBomb = false;
-            }
-        }
-
-        {
-            HandleDialogue(dialogueValue);
-        }
-    }
-
     public override void InteractAction()
     {
-       
+        if (_requiresPayment)
+        {
+            ConfirmTaskCompleted();
+            HandleDialogue(dialogueValue);
+            _requiresPayment = false;
+        }
+        else if (needsBomb)
+        {
+            ConfirmTaskCompleted();
+            HandleDialogue(dialogueValue);
+            needsBomb = false;
+        }
+        else
+            HandleDialogue(dialogueValue);
     }
 
     public void ConfirmTaskCompleted()
@@ -112,52 +91,43 @@ public class Father_Huxley : Interactable
         return sentences;
     }
 
-    private bool CheckForItem(string tag, string[] tags)
-    {
-
-        for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
-        {
-            if (_inventory.playerInventoryItems[i] != null)
-            {
-                _tags = _inventory.playerInventoryItems[i].GetComponent<Tags>();
-
-                for (int j = 0; j < _tags.tags.Length; j++)
-                {
-                    if (_tags.tags[j] == tag)
-                    {
-                        _inventory.isSlotFull[i] = false;
-                        Destroy(_inventory.playerInventoryItems[i]);
-                        return true;
-                    }
-                }
-            }
-        }
-
-        return false;
-    }
-
     public override void ConversationEndEvent()
     {
         if (dialogueValue == 0)
         {
             _requiresPayment = true;
+            failMessage = "You must first make an offering. Any form of currency will do.";
+            ChangeReqs("Currency");
         }
 
         if (dialogueValue == 1)
         {
             confessionDoor.GetComponent<OpenableInteractable>().isLocked = false;
-            confessionalWindow.SetActive(true);
+            confessionalWindow.GetComponent<BoxCollider>().enabled = true;
         }
 
         if (dialogueValue == 2)
         {
             needsBomb = true;
+            failMessage = "Sorry brother, but this won't do. I am in need of a PIPE BOMB.";
+            ChangeReqs("Pipe Bomb");
         }
-
 
         if (dialogueValue == 3)
         {
             koolAid.SetActive(true);
         }
+    }
+
+    public override void FailMessage()
+    {
+        _notice.ChangeText(failMessage);
+    }
+
+    private void ChangeReqs(string req)
+    {
+        reqType = RequirementType.Single;
+        requiredTags = new string[1];
+        requiredTags[0] = req;
     }
 }

@@ -65,8 +65,7 @@ public class Samet : Interactable
         {
             _huxleyScript.ConfirmTaskCompleted();
         }
-
-        if (_dialogueValue == 1)
+        else if (_dialogueValue == 1)
         {
             huxleyThreadTrigger.SetActive(true);
             _galaxyExitScript.huxleyThreadComplete = true;

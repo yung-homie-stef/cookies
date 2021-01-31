@@ -29,38 +29,35 @@ public class Krool_Aid : Action
 
     public override void Use(int itemIndex)
     {
-        if (GetComponent<AcquirableInteractable>().canNowUse)
+
+        if (!hasTeleported)
         {
-            if (!hasTeleported)
+            StartCoroutine(DrugsKickIn(5.0f));
+            preTeleportPosition = player.transform.position;
+            hasTeleported = true;
+
+            for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
             {
-                for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
+                if (_inventory.playerInventoryItems[i] != null)
                 {
-                    if (_inventory.playerInventoryItems[i] != null)
+                    _tags = _inventory.playerInventoryItems[i].GetComponent<Tags>();
+
+                    for (int j = 0; j < _tags.tags.Length; j++)
                     {
-                        _tags = _inventory.playerInventoryItems[i].GetComponent<Tags>();
-
-                        for (int j = 0; j < _tags.tags.Length; j++)
+                        if (_tags.tags[j] == "Rat Posion")
                         {
-                            if (_tags.tags[j] == "Rat_Posion")
-                            {
-                                Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
-                                _sametScript.hasTranslated = true;
+                            //Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
+                            _sametScript.hasTranslated = true;
 
 
-                                _inventory.isSlotFull[i] = false;
-                                Destroy(_inventory.playerInventoryItems[i]);
-                                break;
-                            }
+                            _inventory.isSlotFull[i] = false;
+                            Destroy(_inventory.playerInventoryItems[i]);
+                            break;
                         }
                     }
                 }
-
-                StartCoroutine(DrugsKickIn(5.0f));
-                _animator.SetBool("faded", true);
             }
         }
-
-        preTeleportPosition = player.transform.position;
     }
 
     private IEnumerator DrugsKickIn(float waitTime)
@@ -71,16 +68,9 @@ public class Krool_Aid : Action
         player.transform.position = galaxyTransform.position;
         player.transform.rotation = Quaternion.Euler(0, -180, 0);
 
-        // stops player from teleporting to space if they are alreasy in space
+        // stops player from teleporting to space if they are already in space
         hasTeleported = true;
         _animator.SetBool("faded", false);
-
-        
-        // make galaxy and all its children visible by placing it on default layer
-        foreach (Transform tf in galaxyGroup.transform)
-        {
-            tf.gameObject.layer = 0;
-        }
 
         teleportParticle.SetActive(true);
         Samet.SetActive(true);
@@ -96,15 +86,6 @@ public class Krool_Aid : Action
         player.transform.position = preTeleportPosition;
         hasTeleported = false;
 
-        // hide galaxy
-        foreach (Transform tf in galaxyGroup.transform)
-        {
-            tf.gameObject.layer = 20;
-        }
-
-        teleportParticle.SetActive(false);
-        Samet.SetActive(false);
-        UFO.SetActive(false);
 
         StartCoroutine(AllowPlayerToDropKroolAid(6.2f));
     }
