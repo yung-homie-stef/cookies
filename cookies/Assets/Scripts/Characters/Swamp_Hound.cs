@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Swamp_Hound : Interactable
 {
@@ -9,12 +10,14 @@ public class Swamp_Hound : Interactable
     public GameObject cript_walka;
     public GameObject hog;
     public bool hasSpoken;
+    public Text noticeText;
 
     [SerializeField]
     private int _dialogueValue;
     private string[] currentSentences;
     private Dialogue _dialogue;
     private bool eventHappensWhenTalkingIsDone;
+    private Notice _notice;
 
     // Start is called before the first frame update
     new void Start()
@@ -23,18 +26,24 @@ public class Swamp_Hound : Interactable
         eventHappensWhenTalkingIsDone = true;
         _dialogueValue = 0;
         hasSpoken = false;
+        _notice = noticeText.GetComponent<Notice>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
     public override void InteractAction()
     {
-        HandleDialogue(0);
+        if (_dialogueValue == 0)
+        {
+            HandleDialogue(0);
+        }
+        else if (_dialogueValue == 1)
+        {
+            _dialogueValue = 2;
+        }
+        else if (_dialogueValue == 2)
+        {
+            HandleDialogue(1);
+        }
+
     }
 
     private void HandleDialogue(int setIndex)
@@ -56,9 +65,24 @@ public class Swamp_Hound : Interactable
 
     public override void ConversationEndEvent()
     {
-        hasSpoken = true;
-        if (cript_walka.GetComponent<Cript_Walka>().hasSpoken)
-            hog.SetActive(true);
+        if (_dialogueValue == 0)
+        {
+            reqType = RequirementType.Single;
+            requiredTags = new string[1];
+            requiredTags[0] = "Cosmic Brownies";
+            _dialogueValue = 1;
+        }
+
+        if (_dialogueValue == 2)
+        {
+            hasSpoken = true;
+            if (cript_walka.GetComponent<Cript_Walka>().hasSpoken)
+                hog.SetActive(true);
+        }
     }
 
+    public override void FailMessage()
+    {
+        _notice.ChangeText("Think you got it twisted mane. These ain't COSMIC BROWNIES.");
+    }
 }

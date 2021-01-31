@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Salvador : Interactable
 {
@@ -13,31 +14,28 @@ public class Salvador : Interactable
     public Set_of_Sentences[] sentenceSets;
     public End_Condition son_of_sal_Thread;
     public AudioClip eatSound;
+    public Text noticeText;
 
     [SerializeField]
     private int _dialogueValue;
+
+    [SerializeField]
+    private int _sequenceNumber;
     private string[] currentSentences;
     private Dialogue _dialogue;
     private Tags _tags;
-    private Fullness _salvadorsBelly = 0;
     private bool eventHappensWhenTalkingIsDone;
+    private Notice _notice;
 
-    private enum Fullness
-    {
-        empty = 0,
-        fed_once = 1,
-        fed_twice = 2,
-        fed_thrice = 3,
-        fed_fourfold = 4,
-        full = 5
-    }
 
     // Start is called before the first frame update
     new void Start()
     {
         _dialogue = dialogueManager.GetComponent<Dialogue>();
         _dialogueValue = 0;
-        eventHappensWhenTalkingIsDone = false;
+        eventHappensWhenTalkingIsDone = true;
+        _sequenceNumber = 0;
+        _notice = noticeText.GetComponent<Notice>();
     }
 
     private void Update()
@@ -48,53 +46,41 @@ public class Salvador : Interactable
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-
-        // everytime you feed salvador delete the food item and increase the dialogue value so he can speak after being fed several times
-        if (other.tag == "Interactable")
-        {
-            _tags = other.GetComponent<Tags>();
-
-            for (int i = 0; i < _tags.tags.Length; i++)
-            {
-                if (_tags.tags[i] == "Edible")
-                {
-                    Destroy(other.gameObject);
-                    _dialogue.dialogueIndex = 0;
-                    _dialogue._canAdvance = true;
-
-                    if ((int)_salvadorsBelly < 5) // so that they cant access the ritual by feeding him MORE food
-                    {
-                        _salvadorsBelly++;
-                        GetComponent<AudioSource>().PlayOneShot(eatSound);
-                        Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
-                        Debug.Log(_salvadorsBelly);
-                    }
-                    _dialogueValue = (int)_salvadorsBelly;
-                    InteractAction();
-
-                    if ((int)_salvadorsBelly == 5)
-                    {
-                        gun.SetActive(true); // give player gun when he is full
-                    }
-
-
-                    break;
-                }
-                else if (_tags.tags[i] == "Poison")
-                {
-                    GetComponent<Victim>().Die(); // kill salvador if he is fed poison
-                    //_dialogueValue = 8;
-                    //Interact();
-                }
-            }    
-        }
-    }
-
+   
     public override void InteractAction()
     {
-        HandleDialogue(_dialogueValue);
+        if (_sequenceNumber == 0)
+        {
+            HandleDialogue(_dialogueValue); // talk to salvador
+        }
+        else if (_sequenceNumber == 1) // give him first meal
+        {
+            HandleDialogue(_dialogueValue);
+        }
+        else if (_sequenceNumber == 2) // give him second meal
+        {
+            StartCoroutine(EmptyStomach(0.5f));
+            _sequenceNumber++;
+           
+        }
+        else if (_sequenceNumber == 3) // give him third meal
+        {
+            HandleDialogue(_dialogueValue);
+        }
+        else if (_sequenceNumber == 4)
+        {
+            HandleDialogue(_dialogueValue);
+        }
+        else if (_sequenceNumber == 5)
+        {
+            HandleDialogue(_dialogueValue);
+        }
+        else if (_sequenceNumber == 6)
+        {
+            HandleDialogue(_dialogueValue);
+        }
+
+
     }
 
     private void HandleDialogue(int setIndex)
@@ -127,8 +113,17 @@ public class Salvador : Interactable
 
     public override void ConversationEndEvent()
     {
-        StartCoroutine(CompleteSalvadorsThread(5.0f));
-        blackOut.GetComponent<Animator>().SetBool("faded", true);
+        if (_sequenceNumber == 0 || _sequenceNumber == 1 || _sequenceNumber == 2 || _sequenceNumber == 3 ||
+            _sequenceNumber == 4 || _sequenceNumber == 5)
+        {
+            CommandPlayerToGetMore();
+        }
+        else if ()
+        
+
+
+        //StartCoroutine(CompleteSalvadorsThread(5.0f));
+        //blackOut.GetComponent<Animator>().SetBool("faded", true);
     }
 
     private IEnumerator CompleteSalvadorsThread(float waitTime)
@@ -137,6 +132,27 @@ public class Salvador : Interactable
         yield return new WaitForSeconds(waitTime);
         Game_Manager.globalGameManager.EndGame(son_of_sal_Thread);
         
+    }
+
+    private IEnumerator EmptyStomach(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        reqType = RequirementType.Single;
+
+    }
+
+    private void CommandPlayerToGetMore()
+    {
+        _dialogueValue++;
+        _sequenceNumber++;
+        reqType = RequirementType.Single;
+        requiredTags = new string[1];
+        requiredTags[0] = "Edible";
+    }
+
+    public override void FailMessage()
+    {
+        _notice.ChangeText("Inconceivable squire... My ilk and I cannot possibly consume this rubbish!");
     }
 
 }
