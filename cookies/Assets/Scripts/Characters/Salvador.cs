@@ -19,8 +19,8 @@ public class Salvador : Interactable
     [SerializeField]
     private int _dialogueValue;
 
-    [SerializeField]
-    private int _sequenceNumber;
+   
+    public int _sequenceNumber;
     private string[] currentSentences;
     private Dialogue _dialogue;
     private Tags _tags;
@@ -79,6 +79,10 @@ public class Salvador : Interactable
         {
             HandleDialogue(_dialogueValue);
         }
+        else if (_sequenceNumber == 7)
+        {
+            HandleDialogue(_dialogueValue);
+        }
 
 
     }
@@ -118,12 +122,19 @@ public class Salvador : Interactable
         {
             CommandPlayerToGetMore();
         }
-        else if ()
-        
+        else if (_sequenceNumber == 6)
+        {
+            gun.SetActive(true);
+        }
+        else if (_sequenceNumber == 7)
+        {
+            StartCoroutine(CompleteSalvadorsThread(5.0f));
+            blackOut.GetComponent<Animator>().SetBool("faded", true);
+        }
 
 
-        //StartCoroutine(CompleteSalvadorsThread(5.0f));
-        //blackOut.GetComponent<Animator>().SetBool("faded", true);
+
+
     }
 
     private IEnumerator CompleteSalvadorsThread(float waitTime)

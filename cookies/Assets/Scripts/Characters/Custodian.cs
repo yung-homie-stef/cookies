@@ -69,6 +69,7 @@ public class Custodian : Interactable // TODO: make update dialogue method virtu
             mop.transform.parent = null;
             mop.GetComponent<Rigidbody>().isKinematic = false;
             _salvadorScript.StartCeremony();
+            _salvadorScript._sequenceNumber++;
             _agent = null;
             StartCoroutine(GivePlayerKeys(1.5f));
         }
