@@ -132,9 +132,6 @@ public class Salvador : Interactable
             blackOut.GetComponent<Animator>().SetBool("faded", true);
         }
 
-
-
-
     }
 
     private IEnumerator CompleteSalvadorsThread(float waitTime)

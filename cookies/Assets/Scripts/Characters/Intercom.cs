@@ -44,7 +44,6 @@ public class Intercom : Interactable
         return sentences;
     }
 
-
     public override void ConversationEndEvent()
     {
         intercomCamera.SetActive(false);

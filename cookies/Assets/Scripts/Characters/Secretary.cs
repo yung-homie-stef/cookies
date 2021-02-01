@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Secretary : Interactable
 {
@@ -10,12 +11,14 @@ public class Secretary : Interactable
     public GameObject shojiDoor;
     public GameObject blackout;
     public GameObject blackoutCanvas;
+    public Text noticeText;
 
     [SerializeField]
     private int _dialogueValue;
     private string[] currentSentences;
     private Dialogue _dialogue;
     private bool eventHappensWhenTalkingIsDone;
+    private Notice _notice;
 
     // Start is called before the first frame update
     new void Start()
@@ -23,11 +26,19 @@ public class Secretary : Interactable
         _dialogue = dialogueManager.GetComponent<Dialogue>();
         eventHappensWhenTalkingIsDone = true;
         _dialogueValue = 0;
+        _notice = noticeText.GetComponent<Notice>();
     }
 
     public override void InteractAction()
     {
-        HandleDialogue(0);
+        if (_dialogueValue == 0 || _dialogueValue == 2)
+        {
+            HandleDialogue(_dialogueValue);
+        }
+        else if (_dialogueValue == 1)
+        {
+            HandleDialogue(_dialogueValue);
+        }
     }
 
     private void HandleDialogue(int setIndex)
@@ -52,11 +63,31 @@ public class Secretary : Interactable
         if (_dialogueValue == 0)
         {
             _dialogueValue++;
+            reqType = RequirementType.Single;
+            requiredTags = new string[1];
+            requiredTags[0] = "Card";
+
+        }
+        else if (_dialogueValue == 1)
+        {
+            
             shojiDoor.GetComponent<OpenableInteractable>().isLocked = false;
             blackoutCanvas.SetActive(true);
             blackout.GetComponent<Animator>().SetBool("faded", true);
-            blackout.GetComponent<Animator>().SetBool("faded", false);
+            StartCoroutine(UnfadeBlack(1.5f));
+            _dialogueValue++;
         }
+    }
+
+    public override void FailMessage()
+    {
+        _notice.ChangeText("I'm sorry, I can't help you with this. Would you like to see a brochure?");
+    }
+
+    private IEnumerator UnfadeBlack(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        blackout.GetComponent<Animator>().SetBool("faded", false);
     }
 
 }

@@ -29,7 +29,7 @@ public class Yakuza_Boss : Interactable
 
     public override void InteractAction()
     {
-        HandleDialogue(0);
+        HandleDialogue(_dialogueValue);
     }
 
     private void HandleDialogue(int setIndex)
@@ -58,7 +58,7 @@ public class Yakuza_Boss : Interactable
             livingSoviets.SetActive(false);
             _sovietOpenable.reqType = RequirementType.None;
             _sovietOpenable.isLocked = false;
-            
+            _dialogueValue++;
         }
     }
 }

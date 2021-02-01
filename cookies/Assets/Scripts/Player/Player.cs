@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
         _inventory = GetComponent<Inventory>();
         _animator = GetComponent<Animator>();
         isRoided = false;
-        DontDestroyOnLoad(gameObject);
+       // DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
