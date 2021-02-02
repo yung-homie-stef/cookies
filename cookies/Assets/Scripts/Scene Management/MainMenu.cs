@@ -14,8 +14,6 @@ public class MainMenu : MonoBehaviour
     public GameObject tapes;
     public GameObject logo;
 
-    public Text[] threadTitleTexts = new Text[12];
-
     public void RemoveTitle()
     {
         gameTitle.SetActive(false);

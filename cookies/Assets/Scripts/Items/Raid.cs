@@ -6,18 +6,14 @@ using UnityEngine.SceneManagement;
 public class Raid : Action
 {
     public int requestedIndex;
+    public GameObject blackout;
 
     private int dex;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     public override void Use(int itemIndex)
     {
-        StartCoroutine(TripOut(5.0f));
+        blackout.GetComponent<Animator>().SetBool("faded", true);
+        StartCoroutine(TripOut(10.0f));
         dex = itemIndex;
     }
 

@@ -98,7 +98,7 @@ public class Game_Manager : MonoBehaviour
         {
             
             {
-                mainMenuScript.threadTitleTexts[i].text = playerProgress.pathNames[i];
+                //mainMenuScript.threadTitleTexts[i].text = playerProgress.pathNames[i];
             }
         }
     }
@@ -115,7 +115,7 @@ public class Game_Manager : MonoBehaviour
         End_Menu.globalEndMenu.SetStatusOfThreadCompletion(condition);
         CompletePath(condition.threadID, condition.threadName);
     
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(6);
              
     }
 

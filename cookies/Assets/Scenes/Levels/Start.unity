@@ -3530,19 +3530,6 @@ MonoBehaviour:
   startButton: {fileID: 1687314655}
   tapes: {fileID: 1138820167}
   logo: {fileID: 1091515905}
-  threadTitleTexts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &857341185
 GameObject:
   m_ObjectHideFlags: 0
@@ -5135,18 +5122,16 @@ MonoBehaviour:
   settingsScreen: {fileID: 1690822800}
   controlsScreen: {fileID: 0}
   _endGameModels:
-  - {fileID: 0}
-  - {fileID: 7593200971930865357, guid: 03b314d08bdfed743958f81af0ecbb4a, type: 3}
-  - {fileID: 0}
   - {fileID: 3614516941617284751, guid: d3b4bd2daba0f764986e1b65cdd6d336, type: 3}
-  - {fileID: 0}
+  - {fileID: 2000608686437102681, guid: 95857658d74101b42987b41343ea4310, type: 3}
   - {fileID: 5915272237349253987, guid: eec1bad147ac6cc4e9917d7ededb01fd, type: 3}
-  - {fileID: 0}
-  - {fileID: 3165275512187975031, guid: 53f1c02f5d78ec34aa713aeae0a7144c, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 369828398701537923, guid: e657e0711562d36498c7a4478919532a, type: 3}
+  - {fileID: 3614516941617284751, guid: d3b4bd2daba0f764986e1b65cdd6d336, type: 3}
+  - {fileID: 3614516941617284751, guid: d3b4bd2daba0f764986e1b65cdd6d336, type: 3}
+  - {fileID: 3614516941617284751, guid: d3b4bd2daba0f764986e1b65cdd6d336, type: 3}
+  - {fileID: 3614516941617284751, guid: d3b4bd2daba0f764986e1b65cdd6d336, type: 3}
+  - {fileID: 9208950395958904263, guid: 9ed90531ef1e96849827df730b23dfe7, type: 3}
+  - {fileID: 3614516941617284751, guid: d3b4bd2daba0f764986e1b65cdd6d336, type: 3}
 --- !u!1 &1109160422
 GameObject:
   m_ObjectHideFlags: 0
@@ -8229,6 +8214,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1101403586}
     m_Modifications:
+    - target: {fileID: 1727335893980154408, guid: 80e042d162b0bd348a21115832efae49,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1727335893980154408, guid: 80e042d162b0bd348a21115832efae49,
+        type: 3}
+      propertyPath: m_PixelPerfect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1727335893980154408, guid: 80e042d162b0bd348a21115832efae49,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1430726151}
     - target: {fileID: 1727335893980154409, guid: 80e042d162b0bd348a21115832efae49,
         type: 3}
       propertyPath: m_UiScaleMode
@@ -9590,7 +9590,6 @@ MonoBehaviour:
   startButton: {fileID: 995162140}
   tapes: {fileID: 0}
   logo: {fileID: 0}
-  threadTitleTexts: []
 --- !u!1 &1753227037
 GameObject:
   m_ObjectHideFlags: 0
