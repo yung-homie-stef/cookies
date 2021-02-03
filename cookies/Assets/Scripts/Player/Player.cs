@@ -141,7 +141,7 @@ public class Player : MonoBehaviour
 
     public void ActivateFistHitbox(int condition)
     {
-        if (_inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<MeleeWeapon>())
+        if (isRoided == true)
         {
             if (condition == 1)
             {
