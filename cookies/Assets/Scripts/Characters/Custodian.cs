@@ -91,6 +91,7 @@ public class Custodian : Interactable // TODO: make update dialogue method virtu
         yield return new WaitForSeconds(waitTime);
         keyring.transform.parent = null;
         keyring.GetComponent<Interactable>().InteractAction(); // give players the key if custodian is killed
+        keyring.tag = "Interactable";
     }
 
     public void Sweep()

@@ -12,7 +12,7 @@ public class Fast_Food_Worker : Interactable
     public bool threadAvailable;
 
     [SerializeField]
-    private int _dialogueValue;
+    public int _dialogueValue;
     private string[] currentSentences;
     private Dialogue _dialogue;
     private bool eventHappensWhenTalkingIsDone;
