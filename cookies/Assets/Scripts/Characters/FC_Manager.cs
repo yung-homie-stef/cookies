@@ -15,6 +15,7 @@ public class FC_Manager : Interactable
     private Dialogue _dialogue;
     private bool eventHappensWhenTalkingIsDone;
     private Notice _notice;
+    private OpenableInteractable _kitchenDoorScript;
 
     public float speed = 0.25f;
     public GameObject keyring;
@@ -23,6 +24,7 @@ public class FC_Manager : Interactable
     public GameObject dialogueManager;
     public Text noticeText;
     public GameObject cashier;
+    public GameObject kitchenDoor;
 
     // Start is called before the first frame update
     new void Start()
@@ -31,6 +33,7 @@ public class FC_Manager : Interactable
         eventHappensWhenTalkingIsDone = true;
         _dialogueValue = 0;
         _notice = noticeText.GetComponent<Notice>();
+        _kitchenDoorScript = kitchenDoor.GetComponent<OpenableInteractable>();
     }
 
     // Update is called once per frame
@@ -73,8 +76,14 @@ public class FC_Manager : Interactable
     private void StareAtMagazine()
     {
         gameObject.tag = "Interactable";
+        _kitchenDoorScript.isLocked = false;
+        _kitchenDoorScript.reqType = RequirementType.Single;
+        _kitchenDoorScript.requiredTags = new string[1];
+        _kitchenDoorScript.requiredTags[0] = "FC Key";
+        this.enabled = false;
+
+
         // change animation
-        // make door require a key, but also unlock it
     }
 
     public override void InteractAction()
@@ -85,6 +94,7 @@ public class FC_Manager : Interactable
             keyring.GetComponent<Interactable>().InteractAction(); // give players the key if custodian is killed
             keyring.tag = "Interactable";
             cashier.GetComponent<Fast_Food_Worker>()._dialogueValue++;
+            gameObject.tag = "Untagged";
         }
         else
         {

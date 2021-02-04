@@ -56,7 +56,7 @@ public class MeleeWeapon : Action
 
                 weaponEquipText.text = "";
                 weaponEquipText.enabled = false;
-                Audio_Manager.globalAudioManager.PlaySound("unequip", Audio_Manager.globalAudioManager.intangibleSoundArray);
+               Audio_Manager.globalAudioManager.PlaySound("unequip", Audio_Manager.globalAudioManager.intangibleSoundArray);
             }
             else if (_wielding == false)
             {
