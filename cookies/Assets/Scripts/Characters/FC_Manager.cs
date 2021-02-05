@@ -8,9 +8,9 @@ public class FC_Manager : Interactable
     private Tags _pornoTag;
     private GameObject _potentialPornoMag;
     private bool _distracted = false;
+    private bool _drunk = false;
     private Vector3 _magPos;
 
-    private int _dialogueValue;
     private string[] currentSentences;
     private Dialogue _dialogue;
     private bool eventHappensWhenTalkingIsDone;
@@ -19,6 +19,7 @@ public class FC_Manager : Interactable
 
     public float speed = 0.25f;
     public GameObject keyring;
+    public GameObject beerBottle;
     public Set_of_Sentences[] sentenceSets;
     public GameObject player;
     public GameObject dialogueManager;
@@ -31,7 +32,6 @@ public class FC_Manager : Interactable
     {
         _dialogue = dialogueManager.GetComponent<Dialogue>();
         eventHappensWhenTalkingIsDone = true;
-        _dialogueValue = 0;
         _notice = noticeText.GetComponent<Notice>();
         _kitchenDoorScript = kitchenDoor.GetComponent<OpenableInteractable>();
     }
@@ -82,23 +82,51 @@ public class FC_Manager : Interactable
         _kitchenDoorScript.requiredTags[0] = "FC Key";
         this.enabled = false;
 
-
         // change animation
     }
 
     public override void InteractAction()
     {
-        if (_distracted)
+        if (_distracted || _drunk)
         {  
             keyring.transform.parent = null;
-            keyring.GetComponent<Interactable>().InteractAction(); // give players the key if custodian is killed
+            keyring.GetComponent<Interactable>().InteractAction(); 
             keyring.tag = "Interactable";
             cashier.GetComponent<Fast_Food_Worker>()._dialogueValue++;
             gameObject.tag = "Untagged";
         }
-        else
+        else 
         {
-
+            HandleDialogue(0);
         }
     }
+
+    public void Drink()
+    {
+        beerBottle.SetActive(true);
+        _drunk = true;
+        _kitchenDoorScript.isLocked = false;
+        _kitchenDoorScript.reqType = RequirementType.Single;
+        _kitchenDoorScript.requiredTags = new string[1];
+        _kitchenDoorScript.requiredTags[0] = "FC Key";
+        // change animation
+    }
+
+    private void HandleDialogue(int setIndex)
+    {
+        currentSentences = sentenceSets[setIndex].sentences;
+        _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject, eventHappensWhenTalkingIsDone);
+    }
+
+    private string[] UpdateDialogue(string[] lines)
+    {
+        string[] sentences = new string[lines.Length];
+
+        for (int i = 0; i < lines.Length; i++)
+        {
+            sentences[i] = lines[i];
+        }
+        return sentences;
+    }
+
 }
