@@ -7,6 +7,7 @@ public class Victim : MonoBehaviour
 {
     public static float multiplier = 10;
     public int hitPoints;
+    public string[] damageTypes;
 
     private Animator _animator;
     private Rigidbody _rigidbody;
@@ -45,12 +46,21 @@ public class Victim : MonoBehaviour
 
     }
 
-    public virtual void TakeDamage(Vector3 point = default(Vector3), Vector3 direction = default(Vector3))
+    public virtual void TakeDamage(string dmgType, Vector3 point = default(Vector3), Vector3 direction = default(Vector3))
     {
-        hitPoints--;
+        for (int i=0; i < damageTypes.Length; i++)
+        {
+            if (damageTypes[i] == dmgType)
+            {
+                hitPoints--;
 
-        if (hitPoints == 0)
-        Die(point, direction);
+                if (hitPoints == 0)
+                    Die(point, direction);
+                break;
+            }
+        }
+
+        
     }
 
     public virtual void Die() // overloaded function for when victim dies without being hit or shot (ex: poison)

@@ -12,7 +12,9 @@ public class Pistol : Action
     public AudioClip[] gunshotSFX;
     public AudioMixerGroup sfxMixer;
     public Text weaponEquipText;
-    
+    public string gunType;
+    public string gunName;
+    public Vector3 cloneRotation;
 
     private bool _cocked;
     private bool _reloaded;
@@ -73,15 +75,16 @@ public class Pistol : Action
                 _duplicate = Instantiate(gameObject, playerPalm.transform.position, player.transform.rotation);
                 _duplicate.AddComponent<AudioSource>();
                 _duplicate.GetComponent<AudioSource>().outputAudioMixerGroup = sfxMixer;
-                    
-                _duplicate.transform.Rotate(0, 90, 90);
+
+                //_duplicate.transform.Rotate(0, 90, 90);
+                _duplicate.transform.Rotate(cloneRotation);
                 _duplicate.transform.localScale = _localScale;
                 _duplicate.layer = 0;
                 _duplicate.transform.parent = playerPalm.transform; // make the gun a child of the palm
                 _cocked = true;
 
                 weaponEquipText.enabled = true;
-                weaponEquipText.text = "THREE PIECE EQUIPPED";
+                weaponEquipText.text = gunName + " EQUIPPED";
                 Audio_Manager.globalAudioManager.PlaySound("equip", Audio_Manager.globalAudioManager.intangibleSoundArray);
             }
         }
@@ -135,6 +138,6 @@ public class Pistol : Action
     {
         yield return new WaitForSeconds(waitTime);
         Victim _victim = _killedPerson.transform.GetComponent<Victim>();
-        _victim.TakeDamage(_bulletPoint, _bulletDirection); // if it bleeds... we can kill it
+        _victim.TakeDamage(gunType, _bulletPoint, _bulletDirection); // if it bleeds... we can kill it
     }
 }

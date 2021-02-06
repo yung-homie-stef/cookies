@@ -57,7 +57,7 @@ public class Randy : Interactable
         if (other.tag == "Hitbox")
         {
             _contactPoint = other.gameObject;
-            GetComponent<Victim>().TakeDamage(_contactPoint.transform.position, _contactPoint.transform.forward);
+            GetComponent<Victim>().TakeDamage("melee", _contactPoint.transform.position, _contactPoint.transform.forward);
 
             if (GetComponent<Victim>().hitPoints == 0)
             {

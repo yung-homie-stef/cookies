@@ -37,7 +37,7 @@ public class Bludgeon : MonoBehaviour
         if (_bludgeons <= 5)
         {
             GetComponent<Animator>().SetBool("bludgeoned", false);
-            GetComponent<Victim>().TakeDamage(_contactPoint.transform.position, _contactPoint.transform.forward * 0.2f);
+            GetComponent<Victim>().TakeDamage("melee", _contactPoint.transform.position, _contactPoint.transform.forward * 0.2f);
         }
         
         if (_bludgeons == 5)
