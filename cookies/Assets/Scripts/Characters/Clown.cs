@@ -64,6 +64,12 @@ public class Clown : MonoBehaviour
             _agent.isStopped = true;
             _animator.SetBool("swinging", true);
         }
+
+        if (_animator.enabled == false)
+        {
+            hammer.transform.parent = null;
+            hammer.GetComponent<Rigidbody>().isKinematic = false;
+        }
     }
 
     public void ResetSwing()

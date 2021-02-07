@@ -53,6 +53,7 @@ public class Victim : MonoBehaviour
             if (damageTypes[i] == dmgType)
             {
                 hitPoints--;
+                Debug.Log("nut in my ear");
 
                 if (hitPoints == 0)
                     Die(point, direction);
