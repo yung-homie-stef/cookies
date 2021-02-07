@@ -10,6 +10,8 @@ public class Clown : MonoBehaviour
     public float maxDistance;
     public GameObject player;
     public GameObject hammer;
+    public GameObject clown_key;
+    public GameObject clown_door;
 
     private Transform _target;
     private NavMeshAgent _agent;
@@ -18,6 +20,7 @@ public class Clown : MonoBehaviour
     private Animator _animator;
     private Vector3 newPos;
     private bool wandering = true;
+    private OpenableInteractable _clown_openable;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +28,7 @@ public class Clown : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _timer = wanderTimer;
         _animator = GetComponent<Animator>();
+        _clown_openable = clown_door.GetComponent<OpenableInteractable>();
     }
 
     void Update()
@@ -69,6 +73,13 @@ public class Clown : MonoBehaviour
         {
             hammer.transform.parent = null;
             hammer.GetComponent<Rigidbody>().isKinematic = false;
+
+            _clown_openable.reqType = Interactable.RequirementType.Single;
+            _clown_openable.requiredTags = new string[1];
+            _clown_openable.requiredTags[0] = "Clown Key";
+            _clown_openable.isLocked = false;
+
+            StartCoroutine(GivePlayerKeys(1.5f));
         }
     }
 
@@ -97,5 +108,13 @@ public class Clown : MonoBehaviour
         NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
 
         return navHit.position;
+    }
+
+    private IEnumerator GivePlayerKeys(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        clown_key.transform.parent = null;
+        clown_key.GetComponent<Interactable>().InteractAction(); // give players the key if custodian is killed
+        clown_key.tag = "Interactable";
     }
 }
