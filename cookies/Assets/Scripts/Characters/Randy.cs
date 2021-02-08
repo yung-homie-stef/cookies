@@ -7,9 +7,8 @@ public class Randy : Interactable
     public Set_of_Sentences[] sentenceSets;
     public GameObject player;
     public GameObject dialogueManager;
-    public GameObject blackOut;
+    public GameObject CD;
     public bool isScared;
-    public End_Condition a_floridian_film_Thread;
 
     [SerializeField]
     private string[] currentSentences;
@@ -64,17 +63,21 @@ public class Randy : Interactable
                 if (isScared)
                 {
                     GetComponent<Animator>().enabled = false;
-                    StartCoroutine(CompleteRandysThread(5.0f));
-                    blackOut.GetComponent<Animator>().SetBool("faded", true);
+                    StartCoroutine(GiveCD(1.5f));
                     
+
                 }
             }
         }
     }
 
-    private IEnumerator CompleteRandysThread(float waitTime)
+    private IEnumerator GiveCD(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        Game_Manager.globalGameManager.EndGame(a_floridian_film_Thread);
+        CD.SetActive(true);
+        CD.GetComponent<Interactable>().InteractAction(); // give players the key if custodian is killed
+        CD.tag = "Interactable";
     }
+
+   
 }

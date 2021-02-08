@@ -9,6 +9,8 @@ public class Uploading : Interactable
     public GameObject loadingBar;
     public GameObject snuffSite;
     public Text noticeText;
+    public End_Condition a_floridian_film_Thread;
+    public GameObject blackOut;
 
     private Inventory _inventory;
     private Tags _tags;
@@ -34,5 +36,18 @@ public class Uploading : Interactable
         yield return new WaitForSeconds(waitTime);
         loadingBar.SetActive(false);
         snuffSite.SetActive(true);
+        StartCoroutine(CompleteRandysThread(5.0f));
+        blackOut.GetComponent<Animator>().SetBool("faded", true);
+    }
+
+    private IEnumerator CompleteRandysThread(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Game_Manager.globalGameManager.EndGame(a_floridian_film_Thread);
+    }
+
+    public override void FailMessage()
+    {
+        _notice.ChangeText("CD REQUIRED");
     }
 }
