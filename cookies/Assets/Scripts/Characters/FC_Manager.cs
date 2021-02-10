@@ -64,6 +64,7 @@ public class FC_Manager : Interactable
                 if (_pornoTag.tags[i] == "Porn")
                 {
                     gameObject.tag = "Untagged";
+                    transform.LookAt(_potentialPornoMag.transform);
                     _distracted = true;
                     _managerAnimator.SetBool("distracted", true);
                     _magPos = new Vector3(_potentialPornoMag.transform.position.x, _potentialPornoMag.transform.position.y - 0.05f, _potentialPornoMag.transform.position.z);
@@ -107,6 +108,7 @@ public class FC_Manager : Interactable
         beerBottle.SetActive(true);
         // change animation
         GetComponent<Animator>().SetBool("drugged", true);
+        Destroy(GetComponent<BoxCollider>());
         StartCoroutine(Intoxicate(10.0f));
     }
 
@@ -131,6 +133,9 @@ public class FC_Manager : Interactable
     {
         yield return new WaitForSeconds(waitTime);
         gameObject.tag = "Interactable";
+        Destroy(GetComponent<Animator>());
+       
+
         SetDoorToInteractable();
         _drunk = true;
         GetComponent<Victim>().Die();
