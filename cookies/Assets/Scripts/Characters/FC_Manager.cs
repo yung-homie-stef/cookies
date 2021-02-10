@@ -9,13 +9,14 @@ public class FC_Manager : Interactable
     private GameObject _potentialPornoMag;
     private bool _distracted = false;
     private bool _drunk = false;
+    private bool _looking;
     private Vector3 _magPos;
 
     private string[] currentSentences;
     private Dialogue _dialogue;
     private bool eventHappensWhenTalkingIsDone;
     private Notice _notice;
-    private OpenableInteractable _kitchenDoorScript;
+    private Animator _managerAnimator;
 
     public float speed = 0.25f;
     public GameObject keyring;
@@ -33,7 +34,7 @@ public class FC_Manager : Interactable
         _dialogue = dialogueManager.GetComponent<Dialogue>();
         eventHappensWhenTalkingIsDone = true;
         _notice = noticeText.GetComponent<Notice>();
-        _kitchenDoorScript = kitchenDoor.GetComponent<OpenableInteractable>();
+        _managerAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -64,7 +65,9 @@ public class FC_Manager : Interactable
                 {
                     gameObject.tag = "Untagged";
                     _distracted = true;
-                    _magPos = new Vector3(_potentialPornoMag.transform.position.x, _potentialPornoMag.transform.position.y + 0.425f, _potentialPornoMag.transform.position.z);
+                    _managerAnimator.SetBool("distracted", true);
+                    _magPos = new Vector3(_potentialPornoMag.transform.position.x, _potentialPornoMag.transform.position.y - 0.05f, _potentialPornoMag.transform.position.z);
+                    this.GetComponent<BoxCollider>().enabled = false;
 
                     break;
                 }
@@ -76,24 +79,21 @@ public class FC_Manager : Interactable
     private void StareAtMagazine()
     {
         gameObject.tag = "Interactable";
-        _kitchenDoorScript.isLocked = false;
-        _kitchenDoorScript.reqType = RequirementType.Single;
-        _kitchenDoorScript.requiredTags = new string[1];
-        _kitchenDoorScript.requiredTags[0] = "FC Key";
-        this.enabled = false;
+        SetDoorToInteractable();
 
         // change animation
+        _looking = true;
+        _managerAnimator.SetBool("looking", true);
     }
 
     public override void InteractAction()
     {
-        if (_distracted || _drunk)
-        {  
+        if (_looking || _drunk)
+        {
+            gameObject.GetComponent<CapsuleCollider>().enabled = false;
             keyring.transform.parent = null;
             keyring.GetComponent<Interactable>().InteractAction(); 
             keyring.tag = "Interactable";
-            cashier.GetComponent<Fast_Food_Worker>()._dialogueValue++;
-            gameObject.tag = "Untagged";
         }
         else 
         {
@@ -103,13 +103,11 @@ public class FC_Manager : Interactable
 
     public void Drink()
     {
+        gameObject.tag = "Untagged";
         beerBottle.SetActive(true);
-        _drunk = true;
-        _kitchenDoorScript.isLocked = false;
-        _kitchenDoorScript.reqType = RequirementType.Single;
-        _kitchenDoorScript.requiredTags = new string[1];
-        _kitchenDoorScript.requiredTags[0] = "FC Key";
         // change animation
+        GetComponent<Animator>().SetBool("drugged", true);
+        StartCoroutine(Intoxicate(10.0f));
     }
 
     private void HandleDialogue(int setIndex)
@@ -127,6 +125,23 @@ public class FC_Manager : Interactable
             sentences[i] = lines[i];
         }
         return sentences;
+    }
+
+    private IEnumerator Intoxicate(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        gameObject.tag = "Interactable";
+        SetDoorToInteractable();
+        _drunk = true;
+        GetComponent<Victim>().Die();
+    }
+
+    private void SetDoorToInteractable()
+    {
+        kitchenDoor.GetComponent<OpenableInteractable>().isLocked = false;
+        kitchenDoor.GetComponent<OpenableInteractable>().reqType = RequirementType.Single;
+        kitchenDoor.GetComponent<OpenableInteractable>().requiredTags = new string[1];
+        kitchenDoor.GetComponent<OpenableInteractable>().requiredTags[0] = "FC Key";
     }
 
 }

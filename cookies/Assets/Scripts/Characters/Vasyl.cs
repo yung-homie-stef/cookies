@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class Vasyl : Interactable
 {
     public Set_of_Sentences[] sentenceSets;
+    public Set_of_Sentences olegSecondSentence;
     public GameObject player;
     public GameObject dialogueManager;
     public GameObject raid;
+    public GameObject oleg;
     public Text noticeText;
 
     [SerializeField]
@@ -38,6 +40,7 @@ public class Vasyl : Interactable
         {
             raid.SetActive(true);
             _dialogueValue++;
+            oleg.GetComponent<Only_Speaks>().sentenceSets[0] = olegSecondSentence;
         }
     }
 

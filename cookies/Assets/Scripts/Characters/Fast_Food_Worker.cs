@@ -36,6 +36,8 @@ public class Fast_Food_Worker : Interactable
                 _dialogueValue++;
                 HandleDialogue(_dialogueValue);
             }
+            else
+                HandleDialogue(_dialogueValue);
         }
         else
             HandleDialogue(_dialogueValue);

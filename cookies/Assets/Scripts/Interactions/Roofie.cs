@@ -19,6 +19,7 @@ public class Roofie : Interactable
     {
         _inventory = player.GetComponent<Inventory>();
         _notice = noticeText.GetComponent<Notice>();
+       
     }
 
     public override void InteractAction()
