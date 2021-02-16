@@ -7,6 +7,12 @@ public class El_Cuco : Interactable
     public Set_of_Sentences[] sentenceSets;
     public GameObject player;
     public GameObject dialogueManager;
+    public bool isStanding;
+    public bool isFighting;
+
+    public GameObject pigRoomDoor;
+    public GameObject criptWalka;
+    public GameObject swampHound;
 
     [SerializeField]
     private int _dialogueValue;
@@ -19,7 +25,9 @@ public class El_Cuco : Interactable
     {
         _dialogue = dialogueManager.GetComponent<Dialogue>();
         eventHappensWhenTalkingIsDone = true;
-        _dialogueValue = 0;
+        _animator = gameObject.GetComponent<Animator>();
+        _animator.SetBool("standing", isStanding);
+        _animator.SetBool("combat", isFighting);
     }
 
     public override void InteractAction()
@@ -49,7 +57,13 @@ public class El_Cuco : Interactable
         if (_dialogueValue == 0)
         {
             // open door to hog killing room
-
+            pigRoomDoor.GetComponent<OpenableInteractable>().isLocked = false;
+        }
+        else if (_dialogueValue == 1)
+        {
+            // change cript walka and swamp hounds dialogues
+            criptWalka.GetComponent<Cript_Walka>()._dialogueValue++;
+            swampHound.GetComponent<Swamp_Hound>()._dialogueValue++;
         }
     }
 }

@@ -9,11 +9,11 @@ public class Cript_Walka : Interactable
     public GameObject dialogueManager;
     public GameObject swamp_hound;
     public GameObject hog;
+    public GameObject skullGangster;
     public bool hasSpoken;
     public Text noticeText;
 
-    [SerializeField]
-    private int _dialogueValue;
+    public int _dialogueValue;
     private string[] currentSentences;
     private Dialogue _dialogue;
     private bool eventHappensWhenTalkingIsDone;
@@ -24,7 +24,6 @@ public class Cript_Walka : Interactable
     {
         _dialogue = dialogueManager.GetComponent<Dialogue>();
         eventHappensWhenTalkingIsDone = true;
-        _dialogueValue = 0;
         hasSpoken = false;
         _notice = noticeText.GetComponent<Notice>();
     }
@@ -42,6 +41,10 @@ public class Cript_Walka : Interactable
         else if (_dialogueValue == 2)
         {
             HandleDialogue(1);
+        }
+        else if (_dialogueValue == 3)
+        {
+            HandleDialogue(2);
         }
 
     }
@@ -78,6 +81,12 @@ public class Cript_Walka : Interactable
             hasSpoken = true;
             if (swamp_hound.GetComponent<Swamp_Hound>().hasSpoken)
                 hog.SetActive(true);
+        }
+
+        if (_dialogueValue == 3)
+        {
+            // spawn skull gangster
+            skullGangster.SetActive(true);
         }
     }
 

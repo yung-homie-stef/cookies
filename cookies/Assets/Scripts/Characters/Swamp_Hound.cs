@@ -12,8 +12,7 @@ public class Swamp_Hound : Interactable
     public bool hasSpoken;
     public Text noticeText;
 
-    [SerializeField]
-    private int _dialogueValue;
+    public int _dialogueValue;
     private string[] currentSentences;
     private Dialogue _dialogue;
     private bool eventHappensWhenTalkingIsDone;
@@ -24,7 +23,6 @@ public class Swamp_Hound : Interactable
     {
         _dialogue = dialogueManager.GetComponent<Dialogue>();
         eventHappensWhenTalkingIsDone = true;
-        _dialogueValue = 0;
         hasSpoken = false;
         _notice = noticeText.GetComponent<Notice>();
     }
