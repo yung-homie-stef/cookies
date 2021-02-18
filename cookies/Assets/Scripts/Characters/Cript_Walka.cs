@@ -46,6 +46,10 @@ public class Cript_Walka : Interactable
         {
             HandleDialogue(2);
         }
+        else if (_dialogueValue == 4)
+        {
+            HandleDialogue(3);
+        }
 
     }
 
@@ -87,6 +91,15 @@ public class Cript_Walka : Interactable
         {
             // spawn skull gangster
             skullGangster.SetActive(true);
+        }
+
+        if (_dialogueValue == 4)
+        {
+            GameObject[] lights = GameObject.FindGameObjectsWithTag("ToggledLight");
+            foreach (GameObject light in lights)
+            {
+                light.SetActive(false);
+            }
         }
     }
 
