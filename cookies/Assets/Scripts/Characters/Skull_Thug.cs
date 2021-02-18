@@ -9,6 +9,7 @@ public class Skull_Thug : Interactable
     public GameObject criptWalka;
     public GameObject swampHound;
     public GameObject criptsGun;
+    public GameObject pigRoomSquad;
 
     [SerializeField]
     private int _dialogueValue;
@@ -78,7 +79,10 @@ public class Skull_Thug : Interactable
 
        criptWalka.GetComponent<Animator>().SetBool("cocked", true);
        criptsGun.SetActive(true);
+
        _criptScript._dialogueValue++;
        _swampScript._dialogueValue++;
+
+        pigRoomSquad.SetActive(false);
     }
 }

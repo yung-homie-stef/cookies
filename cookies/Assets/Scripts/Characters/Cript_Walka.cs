@@ -37,9 +37,6 @@ public class Cript_Walka : Interactable
         else if (_dialogueValue == 1)
         {
             _dialogueValue = 2;
-        }
-        else if (_dialogueValue == 2)
-        {
             HandleDialogue(1);
         }
         else if (_dialogueValue == 3)
