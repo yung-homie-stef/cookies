@@ -10,6 +10,7 @@ public class Cript_Walka : Interactable
     public GameObject swamp_hound;
     public GameObject hog;
     public GameObject skullGangster;
+    public GameObject killingUnit;
     public bool hasSpoken;
     public Text noticeText;
 
@@ -97,6 +98,8 @@ public class Cript_Walka : Interactable
             {
                 light.SetActive(false);
             }
+
+            killingUnit.SetActive(true);
         }
     }
 

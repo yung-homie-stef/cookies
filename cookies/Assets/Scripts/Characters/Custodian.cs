@@ -18,7 +18,6 @@ public class Custodian : Interactable // TODO: make update dialogue method virtu
     private Dialogue _dialogue;
     private int _randomSpot;
     private float _waitTime;
-    private bool _hasSpoken;
     private NavMeshAgent _agent;
     private Salvador _salvadorScript;
     private bool eventHappensWhenTalkingIsDone;
@@ -30,7 +29,6 @@ public class Custodian : Interactable // TODO: make update dialogue method virtu
         _randomSpot = Random.Range(0, moveSpots.Length);
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
-        _hasSpoken = false;
         _salvadorScript = Salvador.GetComponent<Salvador>();
         _dialogue = dialogueManager.GetComponent<Dialogue>();
         eventHappensWhenTalkingIsDone = false;
