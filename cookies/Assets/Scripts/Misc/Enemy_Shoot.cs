@@ -6,6 +6,7 @@ public class Enemy_Shoot : MonoBehaviour
 {
     private RaycastHit _hit;
     public GameObject player;
+    public GameObject gun;
     public float rangeSqr;
 
     private float _shootTimer = 2.0f;
@@ -15,12 +16,18 @@ public class Enemy_Shoot : MonoBehaviour
     private Ray _ray;
     private Vector3 _gunmanRayStart;
 
+    private BoxCollider _boxCollider;
+    private Cartel_Member _cartelScript;
+
     // Start is called before the first frame update
     void Start()
     {
         _animator = GetComponent<Animator>();
         _animator.SetBool("combat", true);
         _gunmanRayStart = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+
+        _boxCollider = gameObject.GetComponent<BoxCollider>();
+        _cartelScript = gameObject.GetComponent<Cartel_Member>();
     }
 
     // Update is called once per frame
@@ -43,6 +50,14 @@ public class Enemy_Shoot : MonoBehaviour
             {  
                 transform.LookAt(player.transform);
             }
+        }
+
+        if (!_animator.enabled)
+        {
+            _boxCollider.enabled = false;
+            this.enabled = false;
+            gun.transform.parent = null;
+            _cartelScript.ReduceMemberNumber();
         }
     }
 
