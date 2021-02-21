@@ -64,8 +64,6 @@ public class Randy : Interactable
                 {
                     GetComponent<Animator>().enabled = false;
                     StartCoroutine(GiveCD(1.5f));
-                    
-
                 }
             }
         }

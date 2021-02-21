@@ -8,6 +8,7 @@ public class Sever : MonoBehaviour
     public GameObject poorGuy;
     public GameObject intercom;
     public GameObject intercomCamera;
+    public GameObject bloodstain;
 
     private static int _limbsCut = 0;
 
@@ -24,6 +25,7 @@ public class Sever : MonoBehaviour
             delegatedBone.GetComponent<Rigidbody>().isKinematic = false; // enable physics
             poorGuy.GetComponent<Animator>().SetBool("severed", true);
             StartCoroutine(GoBackToSquirming(0.5f));
+            bloodstain.SetActive(true);
 
             _limbsCut++;
         }

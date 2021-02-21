@@ -7,6 +7,7 @@ public class Victim : MonoBehaviour
 {
     public static float multiplier = 10;
     public int hitPoints;
+    public int maxHitPoints;
     public string[] damageTypes;
     public bool isBoss = false;
     public HealthBar healthbar;
@@ -17,6 +18,7 @@ public class Victim : MonoBehaviour
 
     protected Collider[] childrenCollider;
     protected Rigidbody[] childrenBody;
+    protected BoxCollider boxCollider;
 
     protected void Start()
     {
@@ -26,6 +28,9 @@ public class Victim : MonoBehaviour
 
         childrenCollider = GetComponentsInChildren<Collider>();
         childrenBody = GetComponentsInChildren<Rigidbody>();
+        boxCollider = GetComponent<BoxCollider>();
+
+        maxHitPoints = hitPoints;
 
         if (healthbar != null)
         {
@@ -45,6 +50,7 @@ public class Victim : MonoBehaviour
         }
 
         _animator.enabled = false;
+        boxCollider.enabled = false;
 
         // if victim has a navmesh disable it so it doesn't get wacky
         if (GetComponent<NavMeshAgent>())
