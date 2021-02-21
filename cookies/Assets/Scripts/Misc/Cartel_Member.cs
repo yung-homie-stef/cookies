@@ -6,7 +6,8 @@ public class Cartel_Member : MonoBehaviour
 {
     public static int membersAlive = 3;
     private bool _dead = false;
-    
+    public End_Condition pig_knuckles_Thread;
+
     public void ReduceMemberNumber()
     {
         if (!_dead)
@@ -19,7 +20,16 @@ public class Cartel_Member : MonoBehaviour
         if (membersAlive == 0)
         {
             // complete thread
+            StartCoroutine(CompleteCartelThread(5.0f));
         }
     }
-    
+
+    private IEnumerator CompleteCartelThread(float waitTime)
+    {
+
+        yield return new WaitForSeconds(waitTime);
+        Game_Manager.globalGameManager.EndGame(pig_knuckles_Thread);
+
+    }
+
 }

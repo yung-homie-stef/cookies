@@ -12,15 +12,19 @@ public class GrenadeThrow : MonoBehaviour
 
     private bool _throwing;
     private float grenadeTimer = 0.0f;
+    private Animator _animator;
+    private BoxCollider _boxCollider;
+    private Cartel_Member _cartelScript;
+
+    private void Start()
+    {
+        _animator = gameObject.GetComponent<Animator>();
+        _boxCollider = gameObject.GetComponent<BoxCollider>();
+        _cartelScript = gameObject.GetComponent<Cartel_Member>();
+    }
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.G))
-        //{
-        //    StartCoroutine(ThrowGrenade(0.5f));
-        //    gameObject.GetComponent<Animator>().SetTrigger("revert");
-        //}
-
         float distanceSqr = (gameObject.transform.position - player.transform.position).sqrMagnitude;
         if (distanceSqr < rangeSqr)
         {
@@ -31,6 +35,13 @@ public class GrenadeThrow : MonoBehaviour
                 GrenadeInvoking();
                 grenadeTimer = 0.0f;
             }
+        }
+
+        if (!_animator.enabled)
+        {
+            _boxCollider.enabled = false;
+            this.enabled = false;
+            _cartelScript.ReduceMemberNumber();
         }
 
     }

@@ -8,14 +8,17 @@ public class Victim : MonoBehaviour
     public static float multiplier = 10;
     public int hitPoints;
     public string[] damageTypes;
+    public bool isBoss = false;
+    public HealthBar healthbar;
 
-    private Animator _animator;
-    private Rigidbody _rigidbody;
-    private CapsuleCollider _capsuleCollider;
+    protected Animator _animator;
+    protected Rigidbody _rigidbody;
+    protected CapsuleCollider _capsuleCollider;
 
     protected Collider[] childrenCollider;
     protected Rigidbody[] childrenBody;
-    private void Start()
+
+    protected void Start()
     {
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
@@ -23,6 +26,11 @@ public class Victim : MonoBehaviour
 
         childrenCollider = GetComponentsInChildren<Collider>();
         childrenBody = GetComponentsInChildren<Rigidbody>();
+
+        if (healthbar != null)
+        {
+            healthbar.SetMaxHealth(hitPoints);
+        }
     }
 
     public virtual void Die(Vector3 point = default(Vector3), Vector3 direction = default(Vector3))
@@ -53,15 +61,18 @@ public class Victim : MonoBehaviour
             if (damageTypes[i] == dmgType)
             {
                 hitPoints--;
-                Debug.Log("nut in my ear");
+
+                if (isBoss)
+                {
+                    healthbar.SetHealth(hitPoints);
+                }
 
                 if (hitPoints == 0)
                     Die(point, direction);
                 break;
             }
-        }
 
-        
+        }  
     }
 
     public virtual void Die() // overloaded function for when victim dies without being hit or shot (ex: poison)
