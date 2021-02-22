@@ -11,6 +11,9 @@ public class Explosive : MonoBehaviour
     public float explosiveForce = 20f;
     public float explosiveRadius = 15f;
 
+    public ParticleSystem explosionPrefab;
+    private bool _hasBlownUp = false;
+
     // Update is called once per frame
     void Update()
     {
@@ -23,6 +26,12 @@ public class Explosive : MonoBehaviour
 
     void Explode()
     {
+        if (!_hasBlownUp)
+        {
+            Instantiate(explosionPrefab, transform.position, transform.rotation);
+            _hasBlownUp = true;
+        }
+
         Collider[] coll = Physics.OverlapSphere(transform.position, explosiveRadius);
 
         for (int i = 0; i < coll.Length; i++)

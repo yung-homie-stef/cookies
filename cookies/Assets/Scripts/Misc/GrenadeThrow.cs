@@ -43,7 +43,6 @@ public class GrenadeThrow : MonoBehaviour
             this.enabled = false;
             _cartelScript.ReduceMemberNumber();
         }
-
     }
 
     private IEnumerator ThrowGrenade(float waitTime)

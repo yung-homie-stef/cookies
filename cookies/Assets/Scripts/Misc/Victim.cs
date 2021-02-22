@@ -74,7 +74,14 @@ public class Victim : MonoBehaviour
                 }
 
                 if (hitPoints == 0)
+                {
                     Die(point, direction);
+
+                    if (isBoss)
+                    {
+                        healthbar.gameObject.SetActive(false);
+                    }
+                }
                 break;
             }
 
