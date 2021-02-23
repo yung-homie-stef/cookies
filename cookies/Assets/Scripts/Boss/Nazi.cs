@@ -36,7 +36,7 @@ public class Nazi : Victim
     [SerializeField]
     private float _bossDistance;
     private bool _hasSlashed = false;
-    private bool _hasStabbed = false;
+    //private bool _hasStabbed = false;
     private bool _hasDied = false;
 
     private GameObject _contactPoint;
@@ -234,7 +234,6 @@ public class Nazi : Victim
         {
             _contactPoint = other.gameObject;
             GetComponent<Victim>().TakeDamage("melee", _contactPoint.transform.position, _contactPoint.transform.forward);
-
         }
     }
 
