@@ -23,28 +23,6 @@ public class GrenadeThrow : MonoBehaviour
         _cartelScript = gameObject.GetComponent<Cartel_Member>();
     }
 
-    private void Update()
-    {
-        float distanceSqr = (gameObject.transform.position - player.transform.position).sqrMagnitude;
-        if (distanceSqr < rangeSqr)
-        {
-            transform.LookAt(player.transform);
-            grenadeTimer += Time.deltaTime;
-            if (grenadeTimer >= 2f)
-            {
-                GrenadeInvoking();
-                grenadeTimer = 0.0f;
-            }
-        }
-
-        if (!_animator.enabled)
-        {
-            _boxCollider.enabled = false;
-            this.enabled = false;
-            _cartelScript.ReduceMemberNumber();
-        }
-    }
-
     private IEnumerator ThrowGrenade(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
@@ -55,6 +33,5 @@ public class GrenadeThrow : MonoBehaviour
     private void GrenadeInvoking()
     {
         StartCoroutine(ThrowGrenade(0.5f));
-        gameObject.GetComponent<Animator>().SetTrigger("revert");
     }
 }

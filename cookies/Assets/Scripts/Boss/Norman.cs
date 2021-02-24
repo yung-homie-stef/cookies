@@ -22,6 +22,8 @@ public class Norman : Victim
     public float wanderRadius;
     public float wanderTimer;
     public float meleeRange = 1.0f;
+    public GameObject rifle;
+    public End_Condition gladBoysThread;
 
     [SerializeField]
     private float _bossDistance;
@@ -37,6 +39,9 @@ public class Norman : Victim
     private bool _hasShot;
     private bool _hasBegunWalking;
     private bool _hasDied;
+    private bool _hasSmoked;
+
+    private Smoke_Grenade _smokeScript;
 
     new void Start()
     {
@@ -44,6 +49,7 @@ public class Norman : Victim
         currentState = NormanStates.NormanState_Walk;
         _agent = GetComponent<NavMeshAgent>();
         timer = wanderTimer;
+        _smokeScript = gameObject.GetComponent<Smoke_Grenade>();
     }
 
     public void BeginBattle()
@@ -56,6 +62,12 @@ public class Norman : Victim
         if (hitPoints == 0)
         {
             currentState = NormanStates.NormanState_Dead;
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            _smokeScript.SmokeInvoking();
         }
 
 
@@ -182,6 +194,12 @@ public class Norman : Victim
         _animator.SetTrigger("smoking");
         _agent.isStopped = true;
         transform.LookAt(target);
+
+        if (!_hasSmoked)
+        {
+            _smokeScript.SmokeInvoking();
+            _hasSmoked = true;
+        }
     }
 
     void CrawlState(float time)
@@ -190,7 +208,8 @@ public class Norman : Victim
         {
             _animator.SetBool("prone", true);
             _hasCrouched = true;
-            _actionChangeTimer = ChangeActionTimer(6.0f, 10.0f);
+            _actionChangeTimer = ChangeActionTimer(3.0f, 6.0f);
+            _agent.isStopped = false;
         }
 
         _actionChangeTimer -= Time.deltaTime;
@@ -218,6 +237,8 @@ public class Norman : Victim
         if (!_hasDied)
         {
             _agent.isStopped = true;
+            rifle.transform.parent = null;
+            StartCoroutine(EndNormansThread(7.0f));
         }
     }
 
@@ -247,74 +268,60 @@ public class Norman : Victim
         #region
         if (currentState == NormanStates.NormanState_Shoot)
         {
-            int _newState = Random.Range(1, 3);
-            switch (_newState)
+            float _newState = Random.Range(0.0f, 1f);
+            if (_newState <= .15f)
             {
-                case 1:
-                    {
-                        currentState = NormanStates.NormanState_Crawl;
-                        break;
-                    }
-                case 2:
-                    {
-                        currentState = NormanStates.NormanState_Walk;
-                        break;
-                    }
-                case 3:
-                    {
-                        currentState = NormanStates.NormanState_Smoke;
-                        break;
-                    }
+               currentState = NormanStates.NormanState_Crawl;
             }
-            
+            else if (_newState > .15f && _newState < .6f)
+            {
+               currentState = NormanStates.NormanState_Smoke;
+            }
+            else 
+            {
+            currentState = NormanStates.NormanState_Walk;         
+            }
         }
+            
+     
         #endregion
         #region
         else if (currentState == NormanStates.NormanState_Walk)
         {
-            int _newState = Random.Range(1, 3);
-            switch (_newState)
+            float _newState = Random.Range(0.0f, 1f);
+            if (_newState <= .15f)
             {
-                case 1:
-                    {
-                        currentState = NormanStates.NormanState_Crawl;
-                        break;
-                    }
-                case 2:
-                    {
-                        currentState = NormanStates.NormanState_Smoke;
-                        break;
-                    }
-                case 3:
-                    {
-                        currentState = NormanStates.NormanState_Shoot;
-                        break;
-                    }
+                currentState = NormanStates.NormanState_Crawl;
             }
-
+            else if (_newState > .15f && _newState < .6f)
+            {
+                currentState = NormanStates.NormanState_Smoke;
+            }
+            else
+            {
+                currentState = NormanStates.NormanState_Shoot;
+            }
         }
         #endregion
         #region
         else if (currentState == NormanStates.NormanState_Smoke)
         {
-            int _newState = Random.Range(1, 3);
-            switch (_newState)
+
+            float _newState = Random.Range(0.0f, 1f);
+            if (_newState <= .33f)
             {
-                case 1:
-                    {
-                        currentState = NormanStates.NormanState_Crawl;
-                        break;
-                    }
-                case 2:
-                    {
-                        currentState = NormanStates.NormanState_Shoot;
-                        break;
-                    }
-                case 3:
-                    {
-                        currentState = NormanStates.NormanState_Walk;
-                        break;
-                    }
+                currentState = NormanStates.NormanState_Crawl;
+                _hasSmoked = false;
+            }
+            else if (_newState > .33f && _newState < .7f)
+            {
+                currentState = NormanStates.NormanState_Shoot;
+                _hasSmoked = false;
+            }
+            else
+            {
+                currentState = NormanStates.NormanState_Walk;
+                _hasSmoked = false;
             }
 
         }
@@ -324,36 +331,29 @@ public class Norman : Victim
         {
             _hasMeleed = false;
             _agent.isStopped = false;
-            int _newState = Random.Range(1, 4);
-            switch (_newState)
+            float _newState = Random.Range(0.0f, 1f);
+            if (_newState <= .15f)
             {
-                case 1:
-                    {
-                        currentState = NormanStates.NormanState_Crawl;
-                        break;
-                    }
-                case 2:
-                    {
-                        currentState = NormanStates.NormanState_Shoot;
-                        break;
-                    }
-                case 3:
-                    {
-                        currentState = NormanStates.NormanState_Walk;
-                        break;
-                    }
-                case 4:
-                    {
-                        currentState = NormanStates.NormanState_Smoke;
-                        break;
-                    }
+                currentState = NormanStates.NormanState_Crawl;
+            }
+            else if (_newState > .15f && _newState <= .4f)
+            {
+                currentState = NormanStates.NormanState_Smoke;
+            }
+            else if(_newState > .4f && _newState <= .75f)
+            {
+                currentState = NormanStates.NormanState_Walk;
+            }
+            else
+            {
+                currentState = NormanStates.NormanState_Shoot;
             }
 
         }
         #endregion
         #endregion
 
-    }
+    }   
 
     public void CountTheShots()
     {
@@ -369,6 +369,12 @@ public class Norman : Victim
             TransitionToNewState();
             _agent.isStopped = false;
         }
+    }
+
+    private IEnumerator EndNormansThread(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Game_Manager.globalGameManager.EndGame(gladBoysThread);
     }
 
 }
