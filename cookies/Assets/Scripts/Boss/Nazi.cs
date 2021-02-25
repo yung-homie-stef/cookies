@@ -158,38 +158,15 @@ public class Nazi : Victim
         _animator.SetBool("walking", false);
         _animator.SetTrigger("stabbing");
 
-        // plays stabbing animation
-        // enable dagger hitbox
-        // dmg player if successful hit
-        // starts timer for kick
-        // can transition to slash when below 50%
-        // switch to kick or slash when animation is done playing
-        // transition to chase if player exits range during attack
     }
     void KickState(float deltaTime)
     {
         _animator.SetBool("walking", false);
         _animator.SetTrigger("kicking");
 
-
-        // plays kicking animation
-        // enable foot hitbox
-        // pushes player away upon contact with foot
-        // dmg player if successful hit
-        // resume chasing when players exits radius
-        // loop kicking if player doesnt exit radius
-        // transition to stab when below 50%
-        // resets kick timer
     }
     void SlashState(float deltaTime)
     {
-        // plays stabbing animation
-        // enable dagger hitbox
-        // dmg player if successful hit
-        // starts timer for kick
-        // can transition to stab when below 50%
-        // switch to kick or slash when animation is done playing
-        // transition to chase if player exits range during attack
 
         _animator.SetBool("walking", false);
 
