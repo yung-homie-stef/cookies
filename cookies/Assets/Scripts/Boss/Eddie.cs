@@ -17,12 +17,18 @@ public class Eddie : Victim
     public Transform target;
     public float wanderTimer;
     public float wanderRadius;
+    public GameObject LouisRay;
+    public GameObject antlers;
+    public GameObject worker;
+    public bool isDead = false;
+    public GameObject kitchenDoor;
 
     private bool _startedCharging;
     [SerializeField]
     private Vector3 chargeTarget;
     private float _idleTimer;
     private NavMeshAgent _agent;
+    private Louis_Ray _louisRayScript;
 
 
     // Start is called before the first frame update
@@ -32,11 +38,17 @@ public class Eddie : Victim
         currentState = EddieStates.EddieState_Charge;
         _agent = GetComponent<NavMeshAgent>();
         chargeTarget = target.transform.position;
+        _louisRayScript = LouisRay.GetComponent<Louis_Ray>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (hitPoints <= 0)
+        {
+            currentState = EddieStates.EddieState_Dead;
+        }
+
         switch (currentState)
         {
             case EddieStates.EddieState_Idle:
@@ -85,7 +97,7 @@ public class Eddie : Victim
         if (chargeTimer < 0)
         {
             _animator.SetTrigger("running");
-            transform.position += (chargeTarget - transform.position).normalized * 2 * Time.deltaTime;
+            transform.position += (chargeTarget - transform.position).normalized * 3 * Time.deltaTime;
             chargeTimer = 0;  
         }
 
@@ -98,7 +110,15 @@ public class Eddie : Victim
     }
     void DeadState(float deltatime)
     {
-
+        isDead = true;
+        if (_louisRayScript.isDead)
+        {
+            // end thread
+            kitchenDoor.GetComponent<OpenableInteractable>().isLocked = false;
+            worker.GetComponent<Fast_Food_Worker>()._dialogueValue++;
+            this.enabled = false;
+            _louisRayScript.enabled = false;
+        }
     }
 
     public static Vector3 RandomNavSphere(Vector3 origin, float distance, int layermask)
@@ -112,6 +132,17 @@ public class Eddie : Victim
         NavMesh.SamplePosition(randomDirection, out navHit, distance, -1);
 
         return navHit.position;
+    }
+
+    public void EnableAntlers(int param)
+    {
+        if (param == 1)
+        {
+            antlers.GetComponent<BoxCollider>().enabled = true;
+        }
+        else
+            antlers.GetComponent<BoxCollider>().enabled = false;
+
     }
 
 

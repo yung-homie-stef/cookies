@@ -23,6 +23,9 @@ public class Louis_Ray : Victim
     public float spinRadius = 1.0f;
     private float timer;
     public float wanderTimer;
+    public GameObject Eddie;
+    public GameObject worker;
+    public GameObject kitchenDoor;
 
     public GameObject chainsawL;
     public GameObject chainsawR;
@@ -38,6 +41,7 @@ public class Louis_Ray : Victim
     private float _spinTimer;
     private float _walkTimer;
     private NavMeshAgent _agent;
+    private Eddie _eddieScript;
     
 
     new void Start()
@@ -48,6 +52,7 @@ public class Louis_Ray : Victim
         _spinTimer = Random.Range(3.0f, 9.0f);
         _walkTimer = Random.Range(3.0f, 9.0f);
         timer = wanderTimer;
+        _eddieScript = Eddie.GetComponent<Eddie>();
     }
 
     private void Update()
@@ -165,8 +170,16 @@ public class Louis_Ray : Victim
     }
     void DeadState(float deltaTime)
     {
-        // check to see if eddie is dead as well
         isDead = true;
+        if (_eddieScript.isDead)
+        {
+            worker.GetComponent<Fast_Food_Worker>()._dialogueValue++;
+            kitchenDoor.GetComponent<OpenableInteractable>().isLocked = false;
+            // end thread 
+            this.enabled = false;
+            _eddieScript.enabled = false;
+            
+        }
     }
 
     public void TransitionToNewState()

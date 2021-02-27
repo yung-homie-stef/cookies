@@ -147,6 +147,7 @@ public class FC_Manager : Interactable
         kitchenDoor.GetComponent<OpenableInteractable>().reqType = RequirementType.Single;
         kitchenDoor.GetComponent<OpenableInteractable>().requiredTags = new string[1];
         kitchenDoor.GetComponent<OpenableInteractable>().requiredTags[0] = "FC Key";
+        cashier.GetComponent<Fast_Food_Worker>()._dialogueValue++;
     }
 
 }

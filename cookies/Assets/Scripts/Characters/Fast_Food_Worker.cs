@@ -10,6 +10,8 @@ public class Fast_Food_Worker : Interactable
     public GameObject dialogueManager;
     public Text noticeText;
     public bool threadAvailable;
+    public End_Condition crown_fried_Thread;
+    public GameObject blackOut;
 
     [SerializeField]
     public int _dialogueValue;
@@ -23,7 +25,6 @@ public class Fast_Food_Worker : Interactable
     {
         _dialogue = dialogueManager.GetComponent<Dialogue>();
         eventHappensWhenTalkingIsDone = true;
-        _dialogueValue = 0;
         _notice = noticeText.GetComponent<Notice>();
     }
 
@@ -49,6 +50,15 @@ public class Fast_Food_Worker : Interactable
         _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject, eventHappensWhenTalkingIsDone);
     }
 
+    public override void ConversationEndEvent()
+    {
+        if (_dialogueValue == 3)
+        {
+            StartCoroutine(CompleteChickenThread(5.0f));
+            blackOut.GetComponent<Animator>().SetBool("faded", true);
+        }
+    }
+
     private string[] UpdateDialogue(string[] lines)
     {
         string[] sentences = new string[lines.Length];
@@ -58,6 +68,15 @@ public class Fast_Food_Worker : Interactable
             sentences[i] = lines[i];
         }
         return sentences;
+    }
+
+
+    private IEnumerator CompleteChickenThread(float waitTime)
+    {
+
+        yield return new WaitForSeconds(waitTime);
+        Game_Manager.globalGameManager.EndGame(crown_fried_Thread);
+
     }
 
 }
