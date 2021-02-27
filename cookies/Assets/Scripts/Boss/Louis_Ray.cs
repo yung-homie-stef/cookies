@@ -19,6 +19,13 @@ public class Louis_Ray : Victim
     public Transform target = null;
     public float attackRange = 1.0f;
     public float movementSpeed;
+    public bool isDead = false;
+    public float spinRadius = 1.0f;
+    private float timer;
+    public float wanderTimer;
+
+    public GameObject chainsawL;
+    public GameObject chainsawR;
 
     [SerializeField]
     private float _bossDistance;
@@ -40,6 +47,7 @@ public class Louis_Ray : Victim
         _agent = GetComponent<NavMeshAgent>();
         _spinTimer = Random.Range(3.0f, 9.0f);
         _walkTimer = Random.Range(3.0f, 9.0f);
+        timer = wanderTimer;
     }
 
     private void Update()
@@ -54,6 +62,11 @@ public class Louis_Ray : Victim
             _belowHalf = true;
             _animator.SetBool("below50", true);
             _animator.SetBool("above50", false);
+        }
+
+        if (hitPoints <= 0)
+        {
+            currentState = LouisRayStates.LouisRay_Dead;
         }
 
         switch (currentState)
@@ -125,6 +138,7 @@ public class Louis_Ray : Victim
         if (!_startedSpinning)
         {
             _animator.SetTrigger("spinning");
+            
             _startedSpinning = true;
         }
 
@@ -132,6 +146,15 @@ public class Louis_Ray : Victim
         {
             _spinTimer -=deltaTime;
             transform.Rotate(0, 500 * Time.deltaTime, 0); //rotates 50 degrees per second around z axis
+            if (timer >= wanderTimer)
+            {
+                if (timer >= wanderTimer)
+                {
+                    Vector3 newPos = RandomNavSphere(transform.position, spinRadius, -1);
+                    _agent.SetDestination(newPos);
+                    timer = 0;
+                }
+            }
         }
 
         if (_spinTimer <= 0)
@@ -142,7 +165,8 @@ public class Louis_Ray : Victim
     }
     void DeadState(float deltaTime)
     {
-         
+        // check to see if eddie is dead as well
+        isDead = true;
     }
 
     public void TransitionToNewState()
@@ -195,6 +219,19 @@ public class Louis_Ray : Victim
         }
     }
 
+    public static Vector3 RandomNavSphere(Vector3 origin, float distance, int layermask)
+    {
+        Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * distance;
+
+        randomDirection += origin;
+
+        NavMeshHit navHit;
+
+        NavMesh.SamplePosition(randomDirection, out navHit, distance, -1);
+
+        return navHit.position;
+    }
+
     void ResetAllVariables()
     {
         _spinning = false;
@@ -207,5 +244,19 @@ public class Louis_Ray : Victim
         _animator.ResetTrigger("walking");
         _animator.ResetTrigger("slashing"); 
         _animator.SetBool("doneSpinning", false);
+    }
+
+    void EnableChainsawHitbox(int enabled)
+    {
+        if (enabled == 1)
+        {
+            chainsawL.GetComponent<BoxCollider>().enabled = true;
+            chainsawR.GetComponent<BoxCollider>().enabled = true;
+        }
+        else
+        {
+            chainsawL.GetComponent<BoxCollider>().enabled = false;
+            chainsawR.GetComponent<BoxCollider>().enabled = false;
+        }
     }
 }
