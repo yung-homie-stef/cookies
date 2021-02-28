@@ -34,11 +34,12 @@ public class Door_Locker : MonoBehaviour
             _openable.SetOpenToggle(0);
             _openable.SetCloseToggle(1);
             _openable.EnactOpening();
+            Destroy(gameObject);
 
-            
+
         }
 
-        Destroy(gameObject);
+        
     }
 
 }

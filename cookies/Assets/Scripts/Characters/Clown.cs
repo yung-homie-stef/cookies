@@ -12,6 +12,7 @@ public class Clown : MonoBehaviour
     public GameObject hammer;
     public GameObject clown_key;
     public GameObject clown_door;
+    public GameObject final_circus_thread_trigger;
 
     private Transform _target;
     private NavMeshAgent _agent;
@@ -20,6 +21,7 @@ public class Clown : MonoBehaviour
     private Animator _animator;
     private Vector3 newPos;
     private bool wandering = true;
+    private bool _hasGivenKey;
     private OpenableInteractable _clown_openable;
 
     // Start is called before the first frame update
@@ -71,15 +73,22 @@ public class Clown : MonoBehaviour
 
         if (_animator.enabled == false)
         {
-            hammer.transform.parent = null;
-            hammer.GetComponent<Rigidbody>().isKinematic = false;
+            if (!_hasGivenKey)
+            {
+                hammer.transform.parent = null;
+                hammer.GetComponent<Rigidbody>().isKinematic = false;
 
-            _clown_openable.reqType = Interactable.RequirementType.Single;
-            _clown_openable.requiredTags = new string[1];
-            _clown_openable.requiredTags[0] = "Clown Key";
-            _clown_openable.isLocked = false;
+                _clown_openable.reqType = Interactable.RequirementType.Single;
+                _clown_openable.requiredTags = new string[1];
+                _clown_openable.requiredTags[0] = "Clown Key";
+                _clown_openable.isLocked = false;
+                _clown_openable.isOpened = false;
 
-            StartCoroutine(GivePlayerKeys(1.5f));
+                final_circus_thread_trigger.SetActive(true);
+
+                StartCoroutine(GivePlayerKeys(1.5f));
+            }
+            _hasGivenKey = true;
         }
     }
 

@@ -12,6 +12,8 @@ public class Carrol_Trigger : MonoBehaviour
         {
             // play carrol cutscene
             kitchenDoor.GetComponent<OpenableInteractable>().isLocked = true;
+            kitchenDoor.GetComponent<OpenableInteractable>().newText = "THEY LOCKED THE DOOR ON ME";
+            kitchenDoor.GetComponent<OpenableInteractable>().closeToggle = true;
         }
     }
 }
