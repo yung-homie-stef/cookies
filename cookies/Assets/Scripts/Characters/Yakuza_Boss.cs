@@ -10,6 +10,8 @@ public class Yakuza_Boss : Interactable
     public GameObject deadSoviets;
     public GameObject livingSoviets;
     public GameObject sovietDoor;
+    public End_Condition yakuza_Thread;
+    public GameObject blackOut;
 
     [SerializeField]
     private int _dialogueValue;
@@ -60,5 +62,19 @@ public class Yakuza_Boss : Interactable
             _sovietOpenable.isLocked = false;
             _dialogueValue++;
         }
+
+        if (_dialogueValue == 2)
+        {
+            blackOut.GetComponent<Animator>().SetBool("faded", true);
+            StartCoroutine(CompleteYakuzaThread(5.0f));
+        }
+    }
+
+    private IEnumerator CompleteYakuzaThread(float waitTime)
+    {
+
+        yield return new WaitForSeconds(waitTime);
+        Game_Manager.globalGameManager.EndGame(yakuza_Thread);
+
     }
 }
