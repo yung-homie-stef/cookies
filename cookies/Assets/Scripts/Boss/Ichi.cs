@@ -24,6 +24,12 @@ public class Ichi : Victim
     public GameObject headItem;
     public GameObject mask;
     public GameObject head;
+    public GameObject yakuzaBoss;
+
+    public BoxCollider dickBlade;
+    public BoxCollider rightHand;
+    public BoxCollider leftFoot;
+    public BoxCollider rightFoot;
 
     [SerializeField]
     private float _bossDistance;
@@ -39,6 +45,7 @@ public class Ichi : Victim
     private bool _crawling;
     private bool _isDead;
     private NavMeshAgent _agent;
+    private Yakuza_Boss _yakuzaScript;
 
 
 
@@ -48,6 +55,7 @@ public class Ichi : Victim
         base.Start();
         currentState = IchiStates.Ichi_Walk;
         _agent = GetComponent<NavMeshAgent>();
+        _yakuzaScript = yakuzaBoss.GetComponent<Yakuza_Boss>();
     }
 
     // Update is called once per frame
@@ -62,9 +70,13 @@ public class Ichi : Victim
         if (hitPoints <= (maxHitPoints/2))
         {
             if (!_crawling)
-            _animator.SetBool("below50", true);
-            currentState = IchiStates.Ichi_Crawl;
-            _crawling = true;
+            {
+                _agent.isStopped = true;
+                _animator.SetBool("below50", true);
+                _agent.speed += .25f;
+                StartCoroutine(SetIchiToCrawl(2.0f));
+                _crawling = true;
+            }
         }
 
         if (hitPoints == 0)
@@ -208,17 +220,30 @@ public class Ichi : Victim
     }
     void CrawlState(float deltatime)
     {
-        _agent.enabled = false;
+        _agent.isStopped = false;
+        
 
+        if (_bossDistance >= attackRange)
+        {
+            _agent.destination = target.transform.position;
+        }
+        else if (_bossDistance <= attackRange )
+        {
+            // hump
+            _animator.SetTrigger("humping");
+            currentState = IchiStates.Ichi_Hump;
+        }
     }
     void HumpState(float deltatime)
     {
-
+        _agent.isStopped = true;
     }
     void DeadState(float deltatime)
     {
         if (!_isDead)
         {
+            head.SetActive(false);
+            mask.SetActive(false);
             StartCoroutine(GiveIchisHead(1.5f));
             _isDead = true;
         }
@@ -240,10 +265,52 @@ public class Ichi : Victim
     private IEnumerator GiveIchisHead(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+
+        _yakuzaScript.reqType = Interactable.RequirementType.Single;
+        _yakuzaScript.requiredTags = new string[1];
+        _yakuzaScript.requiredTags[0] = "Head";
         headItem.GetComponent<Interactable>().InteractAction(); // give players the key if custodian is killed
         headItem.tag = "Interactable";
     }
 
+    private IEnumerator SetIchiToCrawl(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        currentState = IchiStates.Ichi_Crawl;
+    }
 
+    public void ReturnToCrawl()
+    {
+        currentState = IchiStates.Ichi_Crawl;
+    }
+
+    public void EnableDickBladeHitbox(int param)
+    {
+        if (param == 1)
+            dickBlade.enabled = true;
+        else
+            dickBlade.enabled = false;
+    }
+    public void EnableRightFistHitbox(int param)
+    {
+        if (param == 1)
+            rightHand.enabled = true;
+        else
+            rightHand.enabled = false;
+    }
+    public void EnableRightFootHitbox(int param)
+    {
+        if (param == 1)
+            rightFoot.enabled = true;
+        else
+            rightFoot.enabled = false;
+    }
+    public void EnableLeftFootHitbox(int param)
+    {
+        if (param == 1)
+           leftFoot.enabled = true;
+        else
+            leftFoot.enabled = false;
+    }
 
 }

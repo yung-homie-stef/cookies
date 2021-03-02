@@ -16,6 +16,7 @@ public class TV_Remote : Interactable
     public override void InteractAction()
     {
         holdingCellTV.tag = "Interactable";
+        holdingCellTV.GetComponent<Interactable>().InteractAction();
         report.SetActive(true);
     }
 }

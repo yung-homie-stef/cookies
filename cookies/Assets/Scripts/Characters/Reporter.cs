@@ -8,6 +8,7 @@ public class Reporter : Interactable
     public GameObject player;
     public GameObject dialogueManager;
     public End_Condition black_october_Thread;
+    public GameObject blackOut;
 
     [SerializeField]
     private string[] currentSentences;
@@ -43,8 +44,8 @@ public class Reporter : Interactable
 
     public override void ConversationEndEvent()
     {
-        base.ConversationEndEvent();
-        CompleteBlackOctoberThread(5.0f);
+        blackOut.GetComponent<Animator>().SetBool("faded", true);
+        StartCoroutine(CompleteBlackOctoberThread(5.0f));
     }
 
     private IEnumerator CompleteBlackOctoberThread(float waitTime)

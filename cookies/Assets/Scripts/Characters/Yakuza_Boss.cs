@@ -25,7 +25,6 @@ public class Yakuza_Boss : Interactable
     {
         _dialogue = dialogueManager.GetComponent<Dialogue>();
         eventHappensWhenTalkingIsDone = true;
-        _dialogueValue = 0;
         _sovietOpenable = sovietDoor.GetComponent<OpenableInteractable>();
     }
 
