@@ -30,7 +30,7 @@ public class Victim : MonoBehaviour
         childrenBody = GetComponentsInChildren<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
 
-        maxHitPoints = hitPoints;
+        hitPoints = maxHitPoints;
 
         if (healthbar != null)
         {

@@ -24,6 +24,7 @@ public class Norman : Victim
     public float meleeRange = 1.0f;
     public GameObject rifle;
     public End_Condition gladBoysThread;
+    public BoxCollider ar15;
 
     [SerializeField]
     private float _bossDistance;
@@ -375,6 +376,14 @@ public class Norman : Victim
     {
         yield return new WaitForSeconds(waitTime);
         Game_Manager.globalGameManager.EndGame(gladBoysThread);
+    }
+
+    public void EnableGunHitbox(int param)
+    {
+        if (param == 1)
+            ar15.enabled = true;
+        else
+            ar15.enabled = false;
     }
 
 }

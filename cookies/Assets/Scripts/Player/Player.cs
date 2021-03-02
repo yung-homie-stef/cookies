@@ -17,6 +17,11 @@ public class Player : MonoBehaviour
     public Item lastUsedItem;
     public Inventory _inventory;
 
+    public int playerHealth;
+    public Image deathScreen;
+    public Transform respawnPoint;
+    public Respawn_Point respawnScript;
+
     private Movement playerMovement;
     private Inventory_UI _inventoryUIScript;
     
@@ -133,7 +138,6 @@ public class Player : MonoBehaviour
     }
 
 
-
     void Punch()
     {
         _animator.Play("punch");
@@ -168,5 +172,28 @@ public class Player : MonoBehaviour
         {
             _inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<MeleeWeapon>().EnableMeleeHitbox(condition);
         }
+    }
+
+    public void TakeDamage()
+    {
+        playerHealth--;
+        Debug.Log(playerHealth);
+
+        if (playerHealth <= 0)
+        {
+            deathScreen.enabled = true;
+            playerMovement.enabled = false;
+            StartCoroutine(KillPlayer(2.0f));
+        }
+    }
+
+    private IEnumerator KillPlayer(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        respawnScript.ResetBossFight();
+        transform.position = respawnPoint.position;
+        playerMovement.enabled = true;
+        deathScreen.enabled = false;
+        respawnScript.ResetBossFight();
     }
 }

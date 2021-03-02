@@ -22,8 +22,8 @@ public class Nazi : Victim
     public bool isBelowHalfHealth = false;
     public GameObject keyring;
     public GameObject finalDoor;
-    public GameObject naziBoot;
-    public GameObject naziDagger;
+    public BoxCollider naziBoot;
+    public BoxCollider naziDagger;
     
 
     public int slashDmg = 1;
@@ -41,14 +41,11 @@ public class Nazi : Victim
 
     private GameObject _contactPoint;
     private BoxCollider _boxCollider;
-    private Boot _boot;
-    private BossWeapon _dagger;
+
 
     new void Start()
     {
         base.Start();
-        _boot = naziBoot.GetComponent<Boot>();
-        _dagger = naziDagger.GetComponent<BossWeapon>();
     }
 
     public void BeginBattle()
@@ -216,16 +213,19 @@ public class Nazi : Victim
 
     public void EnableBootHitbox(int flag)
     {
-        // call boot method
-        _boot.EnableBootCollider(flag);
+        if (flag == 1)
+            naziBoot.enabled = true;
+        else
+            naziBoot.enabled = false;
     }
 
     public void EnableDaggerHitbox(int flag)
     {
-        // call dagger method
-        _dagger.EnableWeaponCollider(flag);
+        if (flag == 1)
+            naziDagger.enabled = true;
+        else
+            naziDagger.enabled = false;
     }
-
     public void RandomizeNextTransition()
     {
         if (currentState == NaziStates.NaziState_Stab)
@@ -250,6 +250,5 @@ public class Nazi : Victim
                 currentState = NaziStates.NaziState_Stab;
         }
     }
-
 
 }

@@ -68,7 +68,6 @@ public class Eddie : Victim
             }
         }
     }
-
     void IdleState(float deltatime)
     {
         transform.LookAt(target);
@@ -91,7 +90,6 @@ public class Eddie : Victim
             _startedCharging = true;
         }
 
-
             chargeTimer -= Time.deltaTime;
 
         if (chargeTimer < 0)
@@ -106,7 +104,6 @@ public class Eddie : Victim
             _animator.SetBool("done_charging", true);
             
         }
-
     }
     void DeadState(float deltatime)
     {
@@ -142,9 +139,7 @@ public class Eddie : Victim
         }
         else
             antlers.GetComponent<BoxCollider>().enabled = false;
-
     }
-
 
     public void ResetCharge()
     {
@@ -156,5 +151,10 @@ public class Eddie : Victim
         _idleTimer = 2.0f;
         
         _startedCharging = false;
+    }
+
+    public void EnableGunHitbox(int param)
+    {
+
     }
 }
