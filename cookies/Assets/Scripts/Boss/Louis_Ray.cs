@@ -26,6 +26,7 @@ public class Louis_Ray : Victim
     public GameObject Eddie;
     public GameObject worker;
     public GameObject kitchenDoor;
+    public GameObject doorLocker;
 
     public GameObject chainsawL;
     public GameObject chainsawR;
@@ -173,6 +174,7 @@ public class Louis_Ray : Victim
         isDead = true;
         if (_eddieScript.isDead)
         {
+            doorLocker.SetActive(false);
             worker.GetComponent<Fast_Food_Worker>()._dialogueValue++;
             kitchenDoor.GetComponent<OpenableInteractable>().isLocked = false;
             // end thread 

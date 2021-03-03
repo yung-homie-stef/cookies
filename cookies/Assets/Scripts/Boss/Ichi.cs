@@ -25,6 +25,8 @@ public class Ichi : Victim
     public GameObject mask;
     public GameObject head;
     public GameObject yakuzaBoss;
+    public GameObject doorLocker;
+    public OpenableInteractable sadomasoDoor;
 
     public BoxCollider dickBlade;
     public BoxCollider rightHand;
@@ -244,6 +246,8 @@ public class Ichi : Victim
         {
             head.SetActive(false);
             mask.SetActive(false);
+            doorLocker.SetActive(false);
+            sadomasoDoor.isLocked = false;
             StartCoroutine(GiveIchisHead(1.5f));
             _isDead = true;
         }

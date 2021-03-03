@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
 
     public int playerHealth;
     public Image deathScreen;
+    public Image rewindIcon;
     public Transform respawnPoint;
     public Respawn_Point respawnScript;
 
@@ -182,6 +183,7 @@ public class Player : MonoBehaviour
         if (playerHealth <= 0)
         {
             deathScreen.enabled = true;
+            rewindIcon.enabled = true;
             playerMovement.enabled = false;
             StartCoroutine(KillPlayer(2.0f));
         }
@@ -194,6 +196,7 @@ public class Player : MonoBehaviour
         transform.position = respawnPoint.position;
         playerMovement.enabled = true;
         deathScreen.enabled = false;
+        rewindIcon.enabled = false;
         respawnScript.ResetBossFight();
     }
 }

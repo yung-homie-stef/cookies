@@ -22,6 +22,7 @@ public class Eddie : Victim
     public GameObject worker;
     public bool isDead = false;
     public GameObject kitchenDoor;
+    public GameObject doorLocker;
 
     private bool _startedCharging;
     [SerializeField]
@@ -111,6 +112,7 @@ public class Eddie : Victim
         if (_louisRayScript.isDead)
         {
             // end thread
+            doorLocker.SetActive(false);
             kitchenDoor.GetComponent<OpenableInteractable>().isLocked = false;
             worker.GetComponent<Fast_Food_Worker>()._dialogueValue++;
             this.enabled = false;
