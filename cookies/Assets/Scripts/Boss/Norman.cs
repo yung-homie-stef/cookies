@@ -53,11 +53,6 @@ public class Norman : Victim
         _smokeScript = gameObject.GetComponent<Smoke_Grenade>();
     }
 
-    public void BeginBattle()
-    {
-        
-    }
-
     private void Update()
     {
         if (hitPoints == 0)
