@@ -48,7 +48,11 @@ public class Ichi : Victim
     private bool _isDead;
     private NavMeshAgent _agent;
     private Yakuza_Boss _yakuzaScript;
+    private AudioSource _source;
 
+    public AudioClip[] kickSounds;
+    public AudioClip[] humpSounds;
+    public AudioClip[] throwSounds;
 
 
     // Start is called before the first frame update
@@ -58,6 +62,7 @@ public class Ichi : Victim
         currentState = IchiStates.Ichi_Walk;
         _agent = GetComponent<NavMeshAgent>();
         _yakuzaScript = yakuzaBoss.GetComponent<Yakuza_Boss>();
+        _source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -217,6 +222,7 @@ public class Ichi : Victim
         if (!_thrown)
         {
             _animator.SetTrigger("throwing");
+            AttackSounds(throwSounds);
             _thrown = true;
         }
     }
@@ -291,30 +297,48 @@ public class Ichi : Victim
     public void EnableDickBladeHitbox(int param)
     {
         if (param == 1)
+        {
             dickBlade.enabled = true;
+            AttackSounds(humpSounds);
+        }
         else
             dickBlade.enabled = false;
     }
     public void EnableRightFistHitbox(int param)
     {
         if (param == 1)
+        {
             rightHand.enabled = true;
+            AttackSounds(kickSounds);
+        }
         else
             rightHand.enabled = false;
     }
     public void EnableRightFootHitbox(int param)
     {
         if (param == 1)
+        {
             rightFoot.enabled = true;
+            AttackSounds(kickSounds);
+        }
         else
             rightFoot.enabled = false;
     }
     public void EnableLeftFootHitbox(int param)
     {
         if (param == 1)
-           leftFoot.enabled = true;
+        {
+            leftFoot.enabled = true;
+            AttackSounds(kickSounds);
+        }
         else
             leftFoot.enabled = false;
+    }
+
+    public void AttackSounds(AudioClip[] array)
+    {
+        int randomAttackSound = Random.Range(0, array.Length);
+        _source.PlayOneShot(array[randomAttackSound]);
     }
 
 }
