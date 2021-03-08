@@ -7,7 +7,6 @@ public class Shrooms : Action
     public GameObject salvador;
     public GameObject inventoryUI;
     public ParticleSystem shroomSmoke;
-    public AudioClip smokeSFX;
 
     // Update is called once per frame
     void Update()
@@ -19,7 +18,6 @@ public class Shrooms : Action
     {
         if (GetComponent<AcquirableInteractable>().canNowUse)
         {
-            GetComponent<AudioSource>().PlayOneShot(smokeSFX);
             shroomSmoke.Play(); // create a puff of smoke for salvador to appear in
           
             salvador.SetActive(true);

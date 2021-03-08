@@ -30,6 +30,12 @@ public class Louis_Ray : Victim
 
     public GameObject chainsawL;
     public GameObject chainsawR;
+    private AudioSource chainsawSpeaker;
+    private AudioSource louisRaySpeaker;
+
+    public AudioClip[] chainsawSounds;
+    public AudioClip[] louisRaySounds;
+    public AudioClip spinSound;
 
     [SerializeField]
     private float _bossDistance;
@@ -54,6 +60,9 @@ public class Louis_Ray : Victim
         _walkTimer = Random.Range(3.0f, 9.0f);
         timer = wanderTimer;
         _eddieScript = Eddie.GetComponent<Eddie>();
+
+        chainsawSpeaker = chainsawL.GetComponent<AudioSource>();
+        louisRaySpeaker = gameObject.GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -198,11 +207,13 @@ public class Louis_Ray : Victim
             if (randAttack < 0.5f)
             {
                 ResetAllVariables();
+                chainsawSpeaker.Stop();
                 currentState = LouisRayStates.LouisRay_Walk;
             }
             else
             {
                 ResetAllVariables();
+                chainsawSpeaker.Stop();
                 currentState = LouisRayStates.LouisRay_Slash;
             }
         }
@@ -216,7 +227,9 @@ public class Louis_Ray : Victim
             else
             {
                 ResetAllVariables();
-                currentState = LouisRayStates.LouisRay_Spin;
+                louisRaySpeaker.PlayOneShot(louisRaySounds[0]);
+                chainsawSpeaker.PlayOneShot(spinSound);
+               currentState = LouisRayStates.LouisRay_Spin;
             }
         }
         else if (currentState == LouisRayStates.LouisRay_Walk)
@@ -224,6 +237,8 @@ public class Louis_Ray : Victim
             if (randAttack < 0.5f)
             {
                 ResetAllVariables();
+                louisRaySpeaker.PlayOneShot(louisRaySounds[0]);
+                chainsawSpeaker.PlayOneShot(spinSound);
                 currentState = LouisRayStates.LouisRay_Spin;
             }
             else
@@ -267,6 +282,12 @@ public class Louis_Ray : Victim
         {
             chainsawL.GetComponent<BoxCollider>().enabled = true;
             chainsawR.GetComponent<BoxCollider>().enabled = true;
+
+            if (currentState == LouisRayStates.LouisRay_Slash)
+            {
+                int randomAttackSound = Random.Range(0, chainsawSounds.Length);
+                chainsawSpeaker.PlayOneShot(chainsawSounds[randomAttackSound]);
+            }
         }
         else
         {

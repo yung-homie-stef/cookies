@@ -43,6 +43,8 @@ public class Norman : Victim
     private bool _hasSmoked;
 
     private Smoke_Grenade _smokeScript;
+    public AudioClip shootSnd;
+    public AudioClip meleeSnd;
 
     new void Start()
     {
@@ -169,7 +171,8 @@ public class Norman : Victim
         if (!_hasShot)
         {
             _animator.SetTrigger("shooting");
-            _hasShot = true;
+            StartCoroutine(GunNoise(1.0f));
+            _hasShot = true;   
         }
     }
 
@@ -235,6 +238,7 @@ public class Norman : Victim
             _agent.isStopped = true;
             rifle.transform.parent = null;
             StartCoroutine(EndNormansThread(7.0f));
+            _hasDied = true;
         }
     }
 
@@ -367,6 +371,12 @@ public class Norman : Victim
         }
     }
 
+    private IEnumerator GunNoise(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        GetComponent<AudioSource>().PlayOneShot(shootSnd);
+    }
+
     private IEnumerator EndNormansThread(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
@@ -376,7 +386,10 @@ public class Norman : Victim
     public void EnableGunHitbox(int param)
     {
         if (param == 1)
+        {
             ar15.enabled = true;
+            GetComponent<AudioSource>().PlayOneShot(meleeSnd);
+        }
         else
             ar15.enabled = false;
     }

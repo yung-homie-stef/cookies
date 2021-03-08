@@ -42,6 +42,8 @@ public class Nazi : Victim
     private GameObject _contactPoint;
     private BoxCollider _boxCollider;
 
+    public AudioClip[] naziSFX;
+
 
     new void Start()
     {
@@ -212,10 +214,19 @@ public class Nazi : Victim
         }
     }
 
+    void PlayAttackNoise()
+    {
+        int randomAttackSound = Random.Range(0, naziSFX.Length);
+        GetComponent<AudioSource>().PlayOneShot(naziSFX[randomAttackSound]);
+    }
+
     public void EnableBootHitbox(int flag)
     {
         if (flag == 1)
+        {
+            PlayAttackNoise();
             naziBoot.enabled = true;
+        }
         else
             naziBoot.enabled = false;
     }
@@ -223,7 +234,10 @@ public class Nazi : Victim
     public void EnableDaggerHitbox(int flag)
     {
         if (flag == 1)
+        {
+            PlayAttackNoise();
             naziDagger.enabled = true;
+        }
         else
             naziDagger.enabled = false;
     }

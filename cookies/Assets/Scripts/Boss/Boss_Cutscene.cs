@@ -38,6 +38,7 @@ public class Boss_Cutscene : MonoBehaviour
             if (!_isPaused)
             {
                 cutscenePlayer.Pause();
+
                 _isPaused = true;
             }
             else

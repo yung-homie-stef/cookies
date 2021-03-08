@@ -57,20 +57,25 @@ public class FC_Manager : Interactable
         if (other.gameObject.CompareTag("Interactable"))
         {
             _potentialPornoMag = other.gameObject;
-            _pornoTag = _potentialPornoMag.GetComponent<Tags>();
 
-            for (int i =0; i < _pornoTag.tags.Length; i++)
+            if (_potentialPornoMag.GetComponent<Tags>() != null)
             {
-                if (_pornoTag.tags[i] == "Porn")
-                {
-                    gameObject.tag = "Untagged";
-                    transform.LookAt(_potentialPornoMag.transform);
-                    _distracted = true;
-                    _managerAnimator.SetBool("distracted", true);
-                    _magPos = new Vector3(_potentialPornoMag.transform.position.x, _potentialPornoMag.transform.position.y - 0.05f, _potentialPornoMag.transform.position.z);
-                    this.GetComponent<BoxCollider>().enabled = false;
+                _pornoTag = _potentialPornoMag.GetComponent<Tags>();
 
-                    break;
+
+                for (int i = 0; i < _pornoTag.tags.Length; i++)
+                {
+                    if (_pornoTag.tags[i] == "Porn")
+                    {
+                        gameObject.tag = "Untagged";
+                        transform.LookAt(_potentialPornoMag.transform);
+                        _distracted = true;
+                        _managerAnimator.SetBool("distracted", true);
+                        _magPos = new Vector3(_potentialPornoMag.transform.position.x, _potentialPornoMag.transform.position.y - 0.05f, _potentialPornoMag.transform.position.z);
+                        this.GetComponent<BoxCollider>().enabled = false;
+
+                        break;
+                    }
                 }
             }
 

@@ -31,6 +31,8 @@ public class Eddie : Victim
     private NavMeshAgent _agent;
     private Louis_Ray _louisRayScript;
 
+    public AudioClip[] eddieSounds;
+
 
     // Start is called before the first frame update
     new void Start()
@@ -88,6 +90,7 @@ public class Eddie : Victim
         {
             chargeTarget = target.transform.position;
             _animator.SetTrigger("charging");
+            RandomChargeSound();
             _startedCharging = true;
         }
 
@@ -155,8 +158,9 @@ public class Eddie : Victim
         _startedCharging = false;
     }
 
-    public void EnableGunHitbox(int param)
+    void RandomChargeSound()
     {
-
+        int randomAttackSound = Random.Range(0, eddieSounds.Length);
+        GetComponent<AudioSource>().PlayOneShot(eddieSounds[randomAttackSound]);
     }
 }
