@@ -20,6 +20,7 @@ public class Boss_Cutscene : MonoBehaviour
     private Player _playerScript;
     private Movement _movementScript;
     private Inventory _inventoryScript;
+    private bool _isPaused;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,23 @@ public class Boss_Cutscene : MonoBehaviour
         _movementScript = player.GetComponent<Movement>();
         _inventoryScript = player.GetComponent<Inventory>();
         cutscenePlayer.loopPointReached += EndReached;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!_isPaused)
+            {
+                cutscenePlayer.Pause();
+                _isPaused = true;
+            }
+            else
+            {
+                cutscenePlayer.Play();
+                _isPaused = false;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
