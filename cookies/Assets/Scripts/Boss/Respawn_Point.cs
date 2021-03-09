@@ -11,7 +11,7 @@ public class Respawn_Point : MonoBehaviour
     public OpenableInteractable door;
     public HealthBar[] healthBar;
     public Animator[] animator;
-    //public GameObject bossRestarter;
+    public Restarter bossRestarter;
 
     public int[] bossHP;
 
@@ -45,6 +45,7 @@ public class Respawn_Point : MonoBehaviour
 
                 healthBar[i].SetHealth(bossScript[i].maxHitPoints);
                 healthBar[i].gameObject.SetActive(false);
+                bossRestarter.gameObject.SetActive(true);
                 bossScript[i].enabled = false;
             }
         }

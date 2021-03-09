@@ -9,6 +9,7 @@ public class Bludgeon : MonoBehaviour
    
 
     private AudioSource _muffledMans;
+    [SerializeField]
     private int _bludgeons = 0;
     private Rigidbody[] _childBodies;
     private GameObject _contactPoint;
@@ -31,14 +32,15 @@ public class Bludgeon : MonoBehaviour
                 GetComponent<Animator>().SetBool("bludgeoned", true);
                 PlayCrunchNoise();
 
-                if (_bludgeons <= 5)
+                if (_bludgeons < 5)
                 {
                     StartCoroutine(GoBackToIdle(0.5f));
                 }
-                else
+                else 
                 {
                     PlayCrunchNoise();
-                    gameObject.GetComponent<AudioSource>().enabled = false;
+                    GetComponent<Victim>().TakeDamage("melee", _contactPoint.transform.position, _contactPoint.transform.forward * 0.2f);
+                    StartCoroutine(KillSound(1.0f));
                     KillMans();
                 }
 
@@ -66,5 +68,11 @@ public class Bludgeon : MonoBehaviour
     {
         int randomAttackSound = Random.Range(0, crunchHitSounds.Length);
         GetComponent<AudioSource>().PlayOneShot(crunchHitSounds[randomAttackSound]);
+    }
+
+    IEnumerator KillSound(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        gameObject.GetComponent<AudioSource>().enabled = false;
     }
 }

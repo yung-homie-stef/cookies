@@ -65,6 +65,11 @@ public class Ichi : Victim
         _source = GetComponent<AudioSource>();
     }
 
+    public void BeginBattle()
+    {
+        currentState = IchiStates.Ichi_Walk;
+    }
+
     // Update is called once per frame
     void Update()
     {

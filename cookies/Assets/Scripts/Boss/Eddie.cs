@@ -44,6 +44,11 @@ public class Eddie : Victim
         _louisRayScript = LouisRay.GetComponent<Louis_Ray>();
     }
 
+    public void BeginBattle()
+    {
+        currentState = EddieStates.EddieState_Idle;
+    }
+
     // Update is called once per frame
     void Update()
     {

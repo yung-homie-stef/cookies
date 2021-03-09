@@ -65,6 +65,11 @@ public class Louis_Ray : Victim
         louisRaySpeaker = gameObject.GetComponent<AudioSource>();
     }
 
+    public void BeginBattle()
+    {
+        currentState = LouisRayStates.LouisRay_Walk;
+    }
+
     private void Update()
     {
         if (target != null)

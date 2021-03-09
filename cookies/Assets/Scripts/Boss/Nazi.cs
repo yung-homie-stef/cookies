@@ -189,7 +189,6 @@ public class Nazi : Victim
     {
         if (!_hasDied)
         {
-
             StartCoroutine(GivePlayerNaziKey(1.5f));
             _hasDied = true;
         }

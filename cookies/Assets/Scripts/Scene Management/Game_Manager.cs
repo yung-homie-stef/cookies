@@ -13,8 +13,8 @@ public class ProgressInformation
     
     public ProgressInformation()
     {
-        completedPaths = new bool[12];
-        pathNames = new string[12];
+        completedPaths = new bool[10];
+        pathNames = new string[10];
 
         for (int i = 0; i < pathNames.Length; i++)
         {

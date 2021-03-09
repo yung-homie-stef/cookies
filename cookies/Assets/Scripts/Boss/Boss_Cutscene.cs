@@ -12,6 +12,7 @@ public class Boss_Cutscene : MonoBehaviour
     public RenderTexture renderTex;
     public GameObject cutsceneCam;
     public GameObject player;
+    public GameObject bossRestarter;
     public Animator pitchBlack;
 
     public Victim[] bosses;
@@ -88,6 +89,7 @@ public class Boss_Cutscene : MonoBehaviour
         _playerScript.enabled = true;
         _movementScript.enabled = true;
         _inventoryScript.enabled = true;
+        bossRestarter.SetActive(true);
         Destroy(gameObject);
     }
 }

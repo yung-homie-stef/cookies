@@ -55,6 +55,11 @@ public class Norman : Victim
         _smokeScript = gameObject.GetComponent<Smoke_Grenade>();
     }
 
+    public void BeginBattle()
+    {
+        currentState = NormanStates.NormanState_Walk;
+    }
+
     private void Update()
     {
         if (hitPoints == 0)
