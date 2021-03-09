@@ -6,10 +6,14 @@ public class Bludgeon : MonoBehaviour
 {
     public GameObject intercomCamera;
     public GameObject intercom;
+   
 
+    private AudioSource _muffledMans;
     private int _bludgeons = 0;
     private Rigidbody[] _childBodies;
     private GameObject _contactPoint;
+
+    public AudioClip[] crunchHitSounds;
 
     private void Start()
     {
@@ -25,7 +29,19 @@ public class Bludgeon : MonoBehaviour
                 _contactPoint = other.gameObject;
                 _bludgeons++;
                 GetComponent<Animator>().SetBool("bludgeoned", true);
-                StartCoroutine(GoBackToIdle(0.5f));
+                PlayCrunchNoise();
+
+                if (_bludgeons <= 5)
+                {
+                    StartCoroutine(GoBackToIdle(0.5f));
+                }
+                else
+                {
+                    PlayCrunchNoise();
+                    gameObject.GetComponent<AudioSource>().enabled = false;
+                    KillMans();
+                }
+
             }
         }     
     }
@@ -34,17 +50,21 @@ public class Bludgeon : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
 
-        if (_bludgeons <= 5)
-        {
             GetComponent<Animator>().SetBool("bludgeoned", false);
             GetComponent<Victim>().TakeDamage("melee", _contactPoint.transform.position, _contactPoint.transform.forward * 0.2f);
-        }
+    }
+
+    void KillMans()
+    {
+        intercom.GetComponent<BoxCollider>().enabled = true;
+        intercomCamera.SetActive(true);
+        GetComponent<Animator>().enabled = false;
         
-        if (_bludgeons == 5)
-        {       
-            intercom.GetComponent<BoxCollider>().enabled = true;
-            intercomCamera.SetActive(true);
-            GetComponent<Animator>().enabled = false;
-        }
+    }
+
+    void PlayCrunchNoise()
+    {
+        int randomAttackSound = Random.Range(0, crunchHitSounds.Length);
+        GetComponent<AudioSource>().PlayOneShot(crunchHitSounds[randomAttackSound]);
     }
 }

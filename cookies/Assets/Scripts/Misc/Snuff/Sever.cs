@@ -11,6 +11,9 @@ public class Sever : MonoBehaviour
     public GameObject bloodstain;
 
     private static int _limbsCut = 0;
+    public AudioSource axeSource;
+
+    public AudioClip[] fleshHitSounds;
 
 
     private void OnTriggerEnter(Collider other)
@@ -27,6 +30,7 @@ public class Sever : MonoBehaviour
             StartCoroutine(GoBackToSquirming(0.5f));
             bloodstain.SetActive(true);
 
+            PlaySeverNoise();
             _limbsCut++;
         }
     }
@@ -44,8 +48,16 @@ public class Sever : MonoBehaviour
         {
             intercom.GetComponent<BoxCollider>().enabled = true;
             intercomCamera.SetActive(true);
+            axeSource.Stop();
         }
 
     }
+
+    void PlaySeverNoise()
+    {
+        int randomAttackSound = Random.Range(0, fleshHitSounds.Length);
+        GetComponent<AudioSource>().PlayOneShot(fleshHitSounds[randomAttackSound]);
+    }
+
 
 }

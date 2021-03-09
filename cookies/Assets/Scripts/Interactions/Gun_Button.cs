@@ -11,6 +11,7 @@ public class Gun_Button : Interactable
     public GameObject intercomCamera;
     public ParticleSystem muzzleFlash;
 
+    public AudioSource victimAudio;
     private Rigidbody[] _childBodies;
     private bool _hasFired;
 
@@ -34,6 +35,8 @@ public class Gun_Button : Interactable
             blood.SetActive(true);
 
             victim.GetComponent<Victim>().TakeDamage("shotgun", victim.transform.position, shotgun.transform.forward);
+            victimAudio.Stop();
+            gameObject.GetComponent<AudioSource>().Play();
             _hasFired = true;
         }
 
