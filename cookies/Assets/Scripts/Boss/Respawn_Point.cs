@@ -47,6 +47,9 @@ public class Respawn_Point : MonoBehaviour
                 healthBar[i].gameObject.SetActive(false);
                 bossRestarter.gameObject.SetActive(true);
                 bossScript[i].enabled = false;
+
+                //TODO: activate healthbars
+                // play boss theme
             }
         }
     }

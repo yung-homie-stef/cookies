@@ -16,12 +16,7 @@ public class Item : ScriptableObject
     {
         if (usable)
         {
-            //int i = Inventory.instance.items.IndexOf[GameObject];
-
-            //if (Inventory.instance.playerInventoryItems[i].GetComponent<Action>())
-            //{
-            //    Inventory.instance.playerInventoryItems[i].GetComponent<Action>().Use();
-            //}
+            
         }
         
     }

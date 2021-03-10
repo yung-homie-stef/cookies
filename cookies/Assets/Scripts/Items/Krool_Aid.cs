@@ -10,6 +10,8 @@ public class Krool_Aid : Action
     public GameObject teleportParticle;
     public GameObject Samet;
     public GameObject UFO;
+    public AudioClip sipSFX;
+
     [HideInInspector]
     public Vector3 preTeleportPosition;
 
@@ -17,6 +19,7 @@ public class Krool_Aid : Action
     private Tags _tags;
     private bool hasTeleported;
     private Samet _sametScript;
+    private AudioSource _audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +28,7 @@ public class Krool_Aid : Action
         _animator = blackout.GetComponent<Animator>();
         _sametScript = Samet.GetComponent<Samet>();
         _inventory = player.GetComponent<Inventory>();
+        _audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     public override void Use(int itemIndex)
@@ -35,6 +39,7 @@ public class Krool_Aid : Action
             StartCoroutine(DrugsKickIn(5.0f));
             preTeleportPosition = player.transform.position;
             hasTeleported = true;
+            _audioSource.PlayOneShot(sipSFX);
 
             for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
             {
@@ -46,7 +51,7 @@ public class Krool_Aid : Action
                     {
                         if (_tags.tags[j] == "Rat Posion")
                         {
-                            //Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
+                            Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
                             _sametScript.hasTranslated = true;
 
 

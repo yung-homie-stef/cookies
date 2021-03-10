@@ -52,6 +52,7 @@ public class Nazi : Victim
 
     public void BeginBattle()
     {
+        _animator.enabled = true;
         currentState = NaziStates.NaziState_Chase;
     }
 

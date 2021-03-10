@@ -13,16 +13,16 @@ public class Inventory : MonoBehaviour
     public GameObject inventory_UI = null;
     public Inventory_UI inventoryUIScript;
 
+    public GameObject[] inventoryUISlots;
 
+    public bool[] isSlotFull;
     public int space = 10;
     public static Inventory instance;
     public List<Item> items = new List<Item>();
     public List<GameObject> playerInventoryItems = new List<GameObject>();
 
     public GameObject playerInventoryIndicator;
-    public GameObject[] inventoryUISlots;
     
-    public bool[] isSlotFull;
     public bool isWeaponEquipped; // variable that dictates whether player can cycle through inventory items
 
     //[SerializeField]

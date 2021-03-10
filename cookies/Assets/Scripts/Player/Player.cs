@@ -180,7 +180,7 @@ public class Player : MonoBehaviour
         playerHealth--;
         Debug.Log(playerHealth);
 
-        if (playerHealth <= 0)
+        if (playerHealth == 0)
         {
             deathScreen.enabled = true;
             rewindIcon.enabled = true;
@@ -192,8 +192,8 @@ public class Player : MonoBehaviour
     private IEnumerator KillPlayer(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        respawnScript.ResetBossFight();
         transform.position = respawnPoint.position;
+        playerHealth = 6;
         playerMovement.enabled = true;
         deathScreen.enabled = false;
         rewindIcon.enabled = false;

@@ -27,6 +27,7 @@ public class Ichi : Victim
     public GameObject yakuzaBoss;
     public GameObject doorLocker;
     public OpenableInteractable sadomasoDoor;
+    private GameObject _contactPoint;
 
     public BoxCollider dickBlade;
     public BoxCollider rightHand;
@@ -67,6 +68,8 @@ public class Ichi : Victim
 
     public void BeginBattle()
     {
+        _animator.enabled = true;
+        _startedWalking = false;
         currentState = IchiStates.Ichi_Walk;
     }
 
@@ -344,6 +347,20 @@ public class Ichi : Victim
     {
         int randomAttackSound = Random.Range(0, array.Length);
         _source.PlayOneShot(array[randomAttackSound]);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Hitbox")
+        {
+            _contactPoint = other.gameObject;
+            TakeDamage("melee", _contactPoint.transform.position, _contactPoint.transform.forward);
+        }
+        else if (other.tag == "ChainsawHBox")
+        {
+            _contactPoint = other.gameObject;
+            TakeDamage("chainsaw", _contactPoint.transform.position, _contactPoint.transform.forward);
+        }
     }
 
 }

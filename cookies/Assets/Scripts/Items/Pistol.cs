@@ -63,6 +63,7 @@ public class Pistol : Action
 
                 weaponEquipText.text = "";
                 weaponEquipText.enabled = false;
+                _inventory.inventoryUIScript.slots[_inventory.GetCurrentSlot()].removeButton.interactable = true;
                 Audio_Manager.globalAudioManager.PlaySound("unequip", Audio_Manager.globalAudioManager.intangibleSoundArray);
                
 
@@ -85,6 +86,7 @@ public class Pistol : Action
 
                 weaponEquipText.enabled = true;
                 weaponEquipText.text = gunName + " EQUIPPED";
+                _inventory.inventoryUIScript.slots[_inventory.GetCurrentSlot()].removeButton.interactable = false;
                 Audio_Manager.globalAudioManager.PlaySound("equip", Audio_Manager.globalAudioManager.intangibleSoundArray);
             }
         }

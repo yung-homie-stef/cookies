@@ -78,6 +78,15 @@ public class Progress_Manager : MonoBehaviour
             cashier.threadAvailable = true; // unlock Crown Fried after completing 5 threads
         }
 
+        if (_playersTotalProgress.totalCompletedPaths >= 7)
+        {
+            UnlockDoors(normansDoor);
+            UnlockDoors(manifestoDoor);
+            OpenUnlockedDoors(normansDoor);
+            OpenUnlockedDoors(manifestoDoor);
+                  
+        }
+
         if (_playersTotalProgress.totalCompletedPaths >= 9)
         {
             // unlock The Green Hell after completing every other thread
@@ -89,6 +98,13 @@ public class Progress_Manager : MonoBehaviour
     void UnlockDoors(OpenableInteractable door)
     {
             door.isLocked = false;
+    }
+
+    void OpenUnlockedDoors(OpenableInteractable door)
+    {
+        door.SetOpenToggle(0);
+        door.SetCloseToggle(1);
+        door.EnactOpening();
     }
 
     void EnableOrDisable(GameObject obj, bool act)

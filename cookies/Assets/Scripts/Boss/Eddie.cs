@@ -23,6 +23,7 @@ public class Eddie : Victim
     public bool isDead = false;
     public GameObject kitchenDoor;
     public GameObject doorLocker;
+    private GameObject _contactPoint;
 
     private bool _startedCharging;
     [SerializeField]
@@ -46,6 +47,7 @@ public class Eddie : Victim
 
     public void BeginBattle()
     {
+        _animator.enabled = true;
         currentState = EddieStates.EddieState_Idle;
     }
 
@@ -167,5 +169,19 @@ public class Eddie : Victim
     {
         int randomAttackSound = Random.Range(0, eddieSounds.Length);
         GetComponent<AudioSource>().PlayOneShot(eddieSounds[randomAttackSound]);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Hitbox")
+        {
+            _contactPoint = other.gameObject;
+            TakeDamage("melee", _contactPoint.transform.position, _contactPoint.transform.forward);
+        }
+        else if (other.tag == "ChainsawHBox")
+        {
+            _contactPoint = other.gameObject;
+            TakeDamage("chainsaw", _contactPoint.transform.position, _contactPoint.transform.forward);
+        }
     }
 }

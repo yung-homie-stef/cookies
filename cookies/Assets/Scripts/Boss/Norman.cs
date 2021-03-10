@@ -57,6 +57,7 @@ public class Norman : Victim
 
     public void BeginBattle()
     {
+        _animator.enabled = true;
         currentState = NormanStates.NormanState_Walk;
     }
 
@@ -119,16 +120,6 @@ public class Norman : Victim
         }
 
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Hitbox")
-        {
-            _contactPoint = other.gameObject;
-            GetComponent<Victim>().TakeDamage("melee", _contactPoint.transform.position, _contactPoint.transform.forward);
-        }
-    }
-
     void IdleState(float time)
     {
 
@@ -397,6 +388,20 @@ public class Norman : Victim
         }
         else
             ar15.enabled = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Hitbox")
+        {
+            _contactPoint = other.gameObject;
+            TakeDamage("melee", _contactPoint.transform.position, _contactPoint.transform.forward);
+        }
+        else if (other.tag == "ChainsawHBox")
+        {
+            _contactPoint = other.gameObject;
+            TakeDamage("chainsaw", _contactPoint.transform.position, _contactPoint.transform.forward);
+        }
     }
 
 }

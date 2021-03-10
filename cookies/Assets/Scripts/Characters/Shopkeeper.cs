@@ -79,8 +79,6 @@ public class Shopkeeper : Interactable
         {
             HandleDialogue(0);
         }
-        else
-            CheckForCreditCard();
 
     }
 
@@ -103,25 +101,6 @@ public class Shopkeeper : Interactable
         }
     }
 
-    private void CheckForCreditCard()
-    {
-        for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
-        {
-            if (_inventory.playerInventoryItems[i] != null)
-            {
-                _tags = _inventory.playerInventoryItems[i].GetComponent<Tags>();
-
-                for (int j = 0; j < _tags.tags.Length; j++)
-                {
-                    if (_tags.tags[j] == "Credit_Card")
-                    {
-                        _inventory.playerInventoryItems[i].GetComponent<Credit_Card>().Transaction();
-                        SetBuyable(true);
-                    }
-                }
-            }
-        }
-    }
 
     private void HandleDialogue(int setIndex)
     {

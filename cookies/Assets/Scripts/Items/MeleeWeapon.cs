@@ -56,7 +56,10 @@ public class MeleeWeapon : Action
 
                 weaponEquipText.text = "";
                 weaponEquipText.enabled = false;
-               Audio_Manager.globalAudioManager.PlaySound("unequip", Audio_Manager.globalAudioManager.intangibleSoundArray);
+                _inventory.inventoryUIScript.slots[_inventory.GetCurrentSlot()].removeButton.interactable = true;
+                Audio_Manager.globalAudioManager.PlaySound("unequip", Audio_Manager.globalAudioManager.intangibleSoundArray);
+
+                
             }
             else if (_wielding == false)
             {
@@ -75,6 +78,7 @@ public class MeleeWeapon : Action
 
                 weaponEquipText.text = GetComponent<AcquirableInteractable>().itemScriptableObj.itemName + " EQUIPPED";
                 weaponEquipText.enabled = true;
+                _inventory.inventoryUIScript.slots[_inventory.GetCurrentSlot()].removeButton.interactable = false;
                 Audio_Manager.globalAudioManager.PlaySound("equip", Audio_Manager.globalAudioManager.intangibleSoundArray);
             }
         }
@@ -95,11 +99,11 @@ public class MeleeWeapon : Action
 
     public void EnableMeleeHitbox(int condition)
     {
-       if (condition == 1)
-           _duplicate.GetComponent<BoxCollider>().enabled = true;
+        if (condition == 1)
+            _duplicate.transform.GetChild(0).gameObject.SetActive(true);
 
         else if (condition == 0)
-            _duplicate.GetComponent<BoxCollider>().enabled = false;
+            _duplicate.transform.GetChild(0).gameObject.SetActive(false);
     }
 
 }

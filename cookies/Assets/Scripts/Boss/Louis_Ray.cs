@@ -27,6 +27,7 @@ public class Louis_Ray : Victim
     public GameObject worker;
     public GameObject kitchenDoor;
     public GameObject doorLocker;
+    private GameObject _contactPoint;
 
     public GameObject chainsawL;
     public GameObject chainsawR;
@@ -67,6 +68,7 @@ public class Louis_Ray : Victim
 
     public void BeginBattle()
     {
+        _animator.enabled = true;
         currentState = LouisRayStates.LouisRay_Walk;
     }
 
@@ -298,6 +300,15 @@ public class Louis_Ray : Victim
         {
             chainsawL.GetComponent<BoxCollider>().enabled = false;
             chainsawR.GetComponent<BoxCollider>().enabled = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "ChainsawHBox")
+        {
+            _contactPoint = other.gameObject;
+            TakeDamage("chainsaw", _contactPoint.transform.position, _contactPoint.transform.forward);
         }
     }
 }

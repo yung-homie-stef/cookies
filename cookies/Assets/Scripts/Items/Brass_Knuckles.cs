@@ -57,6 +57,7 @@ public class Brass_Knuckles : Action
 
                 weaponEquipText.text = "";
                 weaponEquipText.enabled = false;
+                _inventory.inventoryUIScript.slots[_inventory.GetCurrentSlot()].removeButton.interactable = true;
                 Audio_Manager.globalAudioManager.PlaySound("unequip", Audio_Manager.globalAudioManager.intangibleSoundArray);
             }
             else if (_wielding == false)
@@ -76,6 +77,7 @@ public class Brass_Knuckles : Action
 
                 weaponEquipText.text = GetComponent<AcquirableInteractable>().itemScriptableObj.itemName + " EQUIPPED";
                 weaponEquipText.enabled = true;
+                _inventory.inventoryUIScript.slots[_inventory.GetCurrentSlot()].removeButton.interactable = false;
                 Audio_Manager.globalAudioManager.PlaySound("equip", Audio_Manager.globalAudioManager.intangibleSoundArray);
             }
         }
