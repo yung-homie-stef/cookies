@@ -2,24 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopItem : AcquirableInteractable
+public class ShopItem : Interactable
 {
-    public GameObject shopkeeperCharacter;
-
-    public int _shelfNumber;
-    private Shopkeeper _shopKeeper;
-
-    // Start is called before the first frame update
-    override protected void Start()
-    {
-        base.Start();
-        _shopKeeper = shopkeeperCharacter.GetComponent<Shopkeeper>();
-    }
+    public Shopkeeper _shopKeeper;
 
     public override void InteractAction()
     {
-        base.InteractAction();
-        _shopKeeper.Purchase(_shelfNumber);
+        _shopKeeper.Purchase(gameObject);
+        Destroy(this);
     }
 
 }

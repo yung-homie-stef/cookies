@@ -124,6 +124,7 @@ public class Eddie : Victim
             // end thread
             doorLocker.SetActive(false);
             kitchenDoor.GetComponent<OpenableInteractable>().isLocked = false;
+            worker.SetActive(true);
             worker.GetComponent<Fast_Food_Worker>()._dialogueValue++;
             this.enabled = false;
             _louisRayScript.enabled = false;

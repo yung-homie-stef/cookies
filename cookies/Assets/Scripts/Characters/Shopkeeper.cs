@@ -5,13 +5,10 @@ using UnityEngine;
 public class Shopkeeper : Interactable
 {
     public GameObject player;
-    public GameObject[] catalogue = new GameObject[4];
-    public GameObject[] storage;
-    public Transform[] storeSlots;
-    List<GameObject> stock = new List<GameObject>(); // for objects not yet on display
     public string[] sentences;
     public GameObject dialogueManager;
     public Set_of_Sentences[] sentenceSets;
+    public List <GameObject> stock = new List<GameObject>();
 
     private Tags _tags;
     private Inventory _inventory;
@@ -31,46 +28,6 @@ public class Shopkeeper : Interactable
 
         _storeCredit = 0;
 
-        for (int i=0; i < storage.Length; i++)
-        {
-            stock.Add(storage[i]); // fill the list up with items that are not yet for sale
-        }
-    }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
-            if (other.tag == "Interactable") // when the player drops an object to the shopkeeper, have him check if its currency, if so
-            {
-            bool droppedMoney = false;
-                if (_tags = other.GetComponent<Tags>())
-                {
-                    for (int i = 0; i < _tags.tags.Length; i++)
-                    {
-                    if (_tags.tags[i] == "Currency")
-                    {
-                        _storeCredit++; // when store credit is above 0 players can buy items 
-                        Destroy(other.gameObject);
-                        SetBuyable(true);
-                        Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
-                        droppedMoney = true;
-                    }
-
-                }
-                if (!droppedMoney)
-                    other.GetComponent<AcquirableInteractable>().InteractAction();
-            }
-        }
-        
-    }
-
-    private void SetBuyable(bool condition)
-    {
-        for (int i = 0; i < catalogue.Length; i++)
-        {
-            catalogue[i].GetComponent<BoxCollider>().enabled = condition; // do this by disabling the boxes that block players from picking up objects
-        }
     }
 
     public override void InteractAction()
@@ -79,28 +36,16 @@ public class Shopkeeper : Interactable
         {
             HandleDialogue(0);
         }
-
-    }
-
-
-    public void Purchase(int shelfNumber)
-    {
-        _storeCredit--;
-
-        catalogue[shelfNumber] = null; // take this item off the store shelves
-        catalogue[shelfNumber] = stock[0]; // replace it with next item in stock list
-        catalogue[shelfNumber].SetActive(true); // make the item visible
-        catalogue[shelfNumber].transform.position = storeSlots[shelfNumber].transform.position;
-
-        stock.RemoveAt(0); // remove the new item fom storage
-
-        Debug.Log(_storeCredit);
-        if (_storeCredit == 0)
+        else
         {
-            SetBuyable(false);
+            _storeCredit++;
+            if (_storeCredit == 1)
+            {
+                UnlockShelves();
+            }
         }
-    }
 
+    }
 
     private void HandleDialogue(int setIndex)
     {
@@ -123,6 +68,31 @@ public class Shopkeeper : Interactable
     {
         eventHappensWhenTalkingIsDone = false;
         _hasSpoken = true;
+        reqType = RequirementType.Single;
+        requiredTags = new string[1];
+        requiredTags[0] = "Currency";
+    }
+
+    void UnlockShelves()
+    {
+        foreach (GameObject items in stock)
+        {
+            items.GetComponent<BoxCollider>().enabled = true;
+        }
+    }
+
+    public void Purchase(GameObject transaction)
+    {
+        _storeCredit--;
+        stock.Remove(transaction);
+
+        if (_storeCredit == 0)
+        {
+            foreach (GameObject items in stock)
+            {
+                items.GetComponent<BoxCollider>().enabled = false;
+            }
+        }
     }
 }
 
