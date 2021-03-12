@@ -92,8 +92,11 @@ public class Inventory : MonoBehaviour
             playerInventoryItems[index].layer--;
         }
 
+        GameObject soon2BeDeleted = playerInventoryItems[i].gameObject;
+
         playerInventoryItems.RemoveAt(i);
         items.Remove(item);
+        Destroy(soon2BeDeleted);
 
         if (onItemChangeCallback != null)
         {
