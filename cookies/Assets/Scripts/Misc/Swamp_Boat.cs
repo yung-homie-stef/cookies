@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class Swamp_Boat : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject actualBoatModel;
+    public MeshCollider boatCollider;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private GameObject player;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            other.transform.parent = gameObject.transform;
+            player = other.gameObject;
+            player.transform.parent = actualBoatModel.transform;
         }
+    }
+
+    public void UntetherPlayer()
+    {
+        player.transform.parent = null;
+        boatCollider.enabled = false;
     }
 }

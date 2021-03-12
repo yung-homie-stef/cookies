@@ -17,6 +17,7 @@ public class End_Menu : MonoBehaviour
     private TextMeshProUGUI threadEffectTMPro;
     private TextMeshProUGUI threadHintTMPro;
     private GameObject rotatingModelOnScreen;
+    private int threadNum;
 
     public void Init()
     {
@@ -54,11 +55,12 @@ public class End_Menu : MonoBehaviour
         threadTitleTMPro.text = cond.threadName;
         threadEffectTMPro.text = cond.threadEffect;
         threadHintTMPro.text = cond.nextThreadHint;
+        threadNum = cond.threadID;
     }
 
     public void ReturnToMainMenu()
     {
-        Game_Manager.globalGameManager.UpdateThreadTitles();
+        Game_Manager.globalGameManager.UpdateThreadTitles(threadNum);
         Audio_Manager.globalAudioManager.musicSoundArray[0].source.Stop();
         Audio_Manager.globalAudioManager.PlaySound("tape", Audio_Manager.globalAudioManager.intangibleSoundArray);
         Audio_Manager.globalAudioManager.PlaySound("intro", Audio_Manager.globalAudioManager.musicSoundArray);

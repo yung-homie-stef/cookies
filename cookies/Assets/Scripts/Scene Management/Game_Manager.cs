@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [Serializable]
 public class ProgressInformation
@@ -34,10 +35,14 @@ public class Game_Manager : MonoBehaviour
     private ProgressInformation playerProgress = null;
     private MainMenu mainMenuScript;
     public bool VHSEffectOn = true;
+
     public GameObject mainMenu;
     public GameObject endScreen;
     public GameObject settingsScreen;
     public GameObject controlsScreen;
+
+    public Button[] vhsTapeTitles = new Button[10];
+
     public GameObject[] _endGameModels;
     private int _lastCompletedPath = -1;
 
@@ -66,7 +71,6 @@ public class Game_Manager : MonoBehaviour
         mainMenuScript = mainMenu.GetComponent<MainMenu>();
         endScreen.SetActive(false);
         settingsScreen.SetActive(false);
-        UpdateThreadTitles();
         Debug.Log(Application.persistentDataPath);
     }
 
@@ -92,15 +96,9 @@ public class Game_Manager : MonoBehaviour
         }
     }
 
-    public void UpdateThreadTitles()
+    public void UpdateThreadTitles(int pathNum)
     {
-        for (int i = 0; i < playerProgress.completedPaths.Length; i++)
-        {
-            
-            {
-                //mainMenuScript.threadTitleTexts[i].text = playerProgress.pathNames[i];
-            }
-        }
+        vhsTapeTitles[pathNum].enabled = true;
     }
 
     public ProgressInformation GetProgressInformation()
@@ -133,6 +131,7 @@ public class Game_Manager : MonoBehaviour
             playerProgress.totalCompletedPaths++;
             playerProgress.completedPaths[pathID] = true; // this path is now complete
             playerProgress.pathNames[pathID] = pathName;
+            UpdateThreadTitles(pathID);
             Save_Load_Test.SaveProgress(playerProgress);
             
         }
