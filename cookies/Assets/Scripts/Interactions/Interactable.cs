@@ -140,7 +140,7 @@ public abstract class Interactable : MonoBehaviour
 
     public virtual void ItemUseSucceeded(Player player)
     {
-        player.RemoveUsedItem();
+        player.DestroyUsedItem();
         player.CloseInteractInventory();
         Inventory.instance.inventoryUIScript.SetHeaderToBlank();
         Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);

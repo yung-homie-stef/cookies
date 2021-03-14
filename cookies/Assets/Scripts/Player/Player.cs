@@ -138,6 +138,11 @@ public class Player : MonoBehaviour
         _inventory.RemoveItem(lastUsedItem);
     }
 
+    public void DestroyUsedItem()
+    {
+        _inventory.DestroyItem(lastUsedItem);
+    }
+
 
     void Punch()
     {

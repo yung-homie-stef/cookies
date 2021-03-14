@@ -82,7 +82,7 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
-    public void RemoveItem(Item item)
+    public void DestroyItem(Item item)
     {
         int i = items.IndexOf(item);
         gameObject.GetComponent<Player>().Drop(i);
@@ -102,7 +102,27 @@ public class Inventory : MonoBehaviour
         {
             onItemChangeCallback.Invoke();
         }
-       
+
+    }
+
+    public void RemoveItem(Item item)
+    {
+        int i = items.IndexOf(item);
+        gameObject.GetComponent<Player>().Drop(i);
+
+        for (int index = i; index < items.Count; index++)
+        {
+            playerInventoryItems[index].layer--;
+        }
+
+        playerInventoryItems.RemoveAt(i);
+        items.Remove(item);
+
+        if (onItemChangeCallback != null)
+        {
+            onItemChangeCallback.Invoke();
+        }
+
     }
 
     public void UseItem(int index)
