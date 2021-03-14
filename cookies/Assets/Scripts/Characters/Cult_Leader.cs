@@ -7,6 +7,9 @@ public class Cult_Leader : Interactable
     public Set_of_Sentences[] sentenceSets;
     public GameObject player;
     public GameObject dialogueManager;
+    public Swamp_Boat boat;
+    public GameObject boatCollision;
+    public GameObject dancers;
 
     [SerializeField]
     private string[] currentSentences;
@@ -22,7 +25,15 @@ public class Cult_Leader : Interactable
     // Start is called before the first frame update
     public override void InteractAction()
     {
-        HandleDialogue(_dialogueValue);
+        if (_dialogueValue == 0)
+        {
+            HandleDialogue(0);
+        }
+        else if (_dialogueValue == 1)
+        {
+            _dialogueValue = 2;
+            HandleDialogue(1);
+        }
     }
 
     private void HandleDialogue(int setIndex)
@@ -50,6 +61,16 @@ public class Cult_Leader : Interactable
             reqType = RequirementType.Single;
             requiredTags = new string[1];
             requiredTags[0] = "DMT";
+            _dialogueValue = 1;
+        }
+        else if (_dialogueValue == 2)
+        {
+           dancers.SetActive(true);
+           boatCollision.SetActive(true);
+           boat.reqType = RequirementType.Single;
+           boat.requiredTags = new string[1];
+           boat.requiredTags[0] = "Gas";
+           boat.tag = "Interactable";
         }
     }
 }

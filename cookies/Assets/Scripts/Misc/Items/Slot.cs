@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
+    [SerializeField]
     Item item;
     //public Image icon;
     public Button removeButton;
