@@ -14,6 +14,8 @@ public class Boss_Cutscene : MonoBehaviour
     public GameObject player;
     public GameObject bossRestarter;
     public Animator pitchBlack;
+    public string themeName;
+    public int themeIndex;
 
     public Victim[] bosses;
     public HealthBar[] healthbars;
@@ -54,6 +56,7 @@ public class Boss_Cutscene : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            Audio_Manager.globalAudioManager.musicSoundArray[themeIndex].source.Stop();
             _playerScript.enabled = false;
             _movementScript.enabled = false;
             _inventoryScript.enabled = false;
@@ -80,6 +83,8 @@ public class Boss_Cutscene : MonoBehaviour
         {
             healthbars[i].gameObject.SetActive(true);
         }
+
+        Audio_Manager.globalAudioManager.PlaySound(themeName, Audio_Manager.globalAudioManager.musicSoundArray);
     }
 
     private IEnumerator UnfadeBlack(float waitTime)
@@ -89,7 +94,6 @@ public class Boss_Cutscene : MonoBehaviour
         _playerScript.enabled = true;
         _movementScript.enabled = true;
         _inventoryScript.enabled = true;
-        bossRestarter.SetActive(true);
         Destroy(gameObject);
     }
 }

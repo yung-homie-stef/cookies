@@ -17,5 +17,6 @@ public class Sarcophagus : MonoBehaviour
     {
         sarcophagus.tag = "Interactable";
         _sarcophagusDoor.GetComponent<Animator>().SetBool("is_opened", true);
+        Audio_Manager.globalAudioManager.PlaySound("tape", Audio_Manager.globalAudioManager.intangibleSoundArray);
     }
 }

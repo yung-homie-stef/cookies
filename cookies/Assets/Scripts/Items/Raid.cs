@@ -21,6 +21,8 @@ public class Raid : Action
     {
         yield return new WaitForSeconds(waitTime);
 
+        Audio_Manager.globalAudioManager.musicSoundArray[0].source.Stop();
+        Audio_Manager.globalAudioManager.PlaySound("tape", Audio_Manager.globalAudioManager.intangibleSoundArray);
         SceneManager.LoadScene(requestedIndex);
         Destroy(_inventory.playerInventoryItems[dex]);
         Inventory.instance.RemoveItem(Inventory.instance.items[dex]);

@@ -12,8 +12,11 @@ public class Respawn_Point : MonoBehaviour
     public HealthBar[] healthBar;
     public Animator[] animator;
     public Restarter bossRestarter;
+    public GameObject locker;
 
     public int[] bossHP;
+    public int themeIndex;
+    public string themeName;
 
     private void Start()
     {
@@ -25,8 +28,7 @@ public class Respawn_Point : MonoBehaviour
         // set this transform as player's respawn point
         playerScript.respawnPoint = transform;
         playerScript.respawnScript = this;
-
-        
+ 
     }
 
     public void ResetBossFight()
@@ -47,9 +49,11 @@ public class Respawn_Point : MonoBehaviour
                 healthBar[i].gameObject.SetActive(false);
                 bossRestarter.gameObject.SetActive(true);
                 bossScript[i].enabled = false;
+                locker.SetActive(true);
 
-                //TODO: activate healthbars
                 // play boss theme
+                Audio_Manager.globalAudioManager.musicSoundArray[themeIndex].source.Stop();
+                Audio_Manager.globalAudioManager.PlaySound(themeName, Audio_Manager.globalAudioManager.musicSoundArray);
             }
         }
     }

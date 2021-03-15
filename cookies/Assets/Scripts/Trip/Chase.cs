@@ -44,6 +44,7 @@ public class Chase : MonoBehaviour
             deathScreenImage.enabled = true;
             rewindIcon.enabled = true;
 
+            Audio_Manager.globalAudioManager.PlaySound("rewind", Audio_Manager.globalAudioManager.intangibleSoundArray);
             player.transform.position = highwayRestart.transform.position;
 
         }

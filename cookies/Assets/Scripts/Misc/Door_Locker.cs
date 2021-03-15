@@ -34,7 +34,7 @@ public class Door_Locker : MonoBehaviour
             _openable.SetOpenToggle(0);
             _openable.SetCloseToggle(1);
             _openable.EnactOpening();
-            this.enabled = false;
+            this.gameObject.SetActive(false);
 
 
         }

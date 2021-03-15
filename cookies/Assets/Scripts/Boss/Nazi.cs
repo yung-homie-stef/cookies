@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Nazi : Victim
 {
@@ -191,6 +192,9 @@ public class Nazi : Victim
         if (!_hasDied)
         {
             StartCoroutine(GivePlayerNaziKey(1.5f));
+
+            StartCoroutine(FadeBossMusic.StartFade(Audio_Manager.globalAudioManager.musicSoundArray[2].source, 5.0f, 0.0f));
+
             _hasDied = true;
         }
     }

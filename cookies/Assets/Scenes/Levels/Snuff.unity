@@ -3501,7 +3501,10 @@ MonoBehaviour:
   animator:
   - {fileID: 1364301261}
   bossRestarter: {fileID: 1383651480}
+  locker: {fileID: 2107171902}
   bossHP: 0f000000
+  themeIndex: 2
+  themeName: ambiance
 --- !u!65 &231515029
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5400,7 +5403,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 5b3f1cea35a922544bb6f6ca72d9ca87,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.67
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 5b3f1cea35a922544bb6f6ca72d9ca87,
         type: 3}
@@ -5410,7 +5413,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 5b3f1cea35a922544bb6f6ca72d9ca87,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.89
+      value: 10.81
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 5b3f1cea35a922544bb6f6ca72d9ca87,
         type: 3}
@@ -13242,6 +13245,8 @@ MonoBehaviour:
   player: {fileID: 381539631}
   bossRestarter: {fileID: 1383651479}
   pitchBlack: {fileID: 1345185435}
+  themeName: davis_theme
+  themeIndex: 0
   bosses:
   - {fileID: 1364301262}
   healthbars:
@@ -16361,8 +16366,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8bc2f260f4fbe3438dcb9d81e09ff60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 15
-  maxHitPoints: 15
+  hitPoints: 2
+  maxHitPoints: 2
   damageTypes:
   - pistol
   - melee
@@ -16647,6 +16652,7 @@ MonoBehaviour:
   - {fileID: 1079623572}
   boss:
   - {fileID: 1364301262}
+  themeName: davis_theme
 --- !u!65 &1383651481
 BoxCollider:
   m_ObjectHideFlags: 0
