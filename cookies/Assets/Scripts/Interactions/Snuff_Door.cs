@@ -10,7 +10,6 @@ public class Snuff_Door : Interactable
     public Text noticeText;
     public int sceneIndex;
     public GameObject blackout;
-    public GameObject playerLight;
 
     private Inventory _inventory;
     private Tags _tags;
