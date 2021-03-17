@@ -16,6 +16,7 @@ public class Victim : MonoBehaviour
     protected Rigidbody _rigidbody;
     protected CapsuleCollider _capsuleCollider;
 
+    private GameObject _contactPoint;
     protected Collider[] childrenCollider;
     protected Rigidbody[] childrenBody;
     protected BoxCollider boxCollider;
@@ -99,6 +100,15 @@ public class Victim : MonoBehaviour
         if (GetComponent<NavMeshAgent>())
         {
             GetComponent<NavMeshAgent>().enabled = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Hitbox")
+        {
+            _contactPoint = other.gameObject;
+            TakeDamage("melee", _contactPoint.transform.position, _contactPoint.transform.forward);
         }
     }
 }

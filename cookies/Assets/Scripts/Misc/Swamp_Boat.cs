@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Swamp_Boat : Interactable
 {
     public GameObject actualBoatModel;
     public GameObject boatCollider;
     public Notice _notice;
+    public End_Condition greenHellThread;
+    public GameObject blackOut;
 
     private GameObject player;
     private bool hasGas;
@@ -25,7 +28,8 @@ public class Swamp_Boat : Interactable
                 // drive away
                 player = other.gameObject;
                 player.transform.parent = actualBoatModel.transform;
-                _animator.SetBool("leaving", true);
+                blackOut.GetComponent<Animator>().SetBool("faded", true);
+                gameObject.GetComponent<Animator>().SetBool("leaving", true);
             }
 
         }
@@ -33,14 +37,15 @@ public class Swamp_Boat : Interactable
 
     public void UntetherPlayer()
     {
-        player.transform.parent = null;
         boatCollider.SetActive(false);
+        player.transform.parent = null; 
     }
 
     public override void InteractAction()
     {
         if (!hasGas)
         {
+            boatCollider.SetActive(false);
             hasGas = true;
         }
     }
@@ -48,5 +53,12 @@ public class Swamp_Boat : Interactable
     public override void FailMessage()
     {
         _notice.ChangeText("GASOLINE REQUIRED");
+    }
+
+    private IEnumerator CompleteSwampThread(float waitTime)
+    {
+
+        yield return new WaitForSeconds(waitTime);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

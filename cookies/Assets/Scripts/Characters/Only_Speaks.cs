@@ -16,6 +16,11 @@ public class Only_Speaks : Interactable
     public override void InteractAction()
     {
         _dialogue = dialogueManager.GetComponent<Dialogue>();
+
+        if (gameObject.transform.GetChild(0))
+        {
+            Destroy(gameObject.transform.GetChild(0).gameObject);
+        }
         HandleDialogue(0);
     }
 
