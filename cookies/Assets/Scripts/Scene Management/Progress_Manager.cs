@@ -30,6 +30,7 @@ public class Progress_Manager : MonoBehaviour
 
     [Header("The Green Hell")]
     public GameObject lobbyDoors;
+    public GameObject burnerPhone;
     [Space(10)]
 
     [Header("Crown Fried")]
@@ -83,14 +84,14 @@ public class Progress_Manager : MonoBehaviour
             UnlockDoors(normansDoor);
             UnlockDoors(manifestoDoor);
             OpenUnlockedDoors(normansDoor);
-            OpenUnlockedDoors(manifestoDoor);
-                  
+            OpenUnlockedDoors(manifestoDoor);       
         }
 
         if (_playersTotalProgress.totalCompletedPaths >= 9)
         {
             // unlock The Green Hell after completing every other thread
             lobbyDoors.tag = "Interactable";
+            burnerPhone.SetActive(true);
         }
 
     }
