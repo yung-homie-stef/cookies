@@ -5,6 +5,7 @@ using UnityEngine;
 public class Controls_Screen : MonoBehaviour
 {
     private GameObject _lastMenu;
+    public GameObject logo;
 
     public void OpenControls(GameObject lastMenu)
     {
@@ -15,5 +16,6 @@ public class Controls_Screen : MonoBehaviour
     {
         Game_Manager.globalGameManager.controlsScreen.SetActive(false);
         _lastMenu.SetActive(true);
+        logo.SetActive(true);
     }
 }

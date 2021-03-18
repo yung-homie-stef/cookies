@@ -53,7 +53,6 @@ public class Bludgeon : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
             GetComponent<Animator>().SetBool("bludgeoned", false);
-            GetComponent<Victim>().TakeDamage("melee", _contactPoint.transform.position, _contactPoint.transform.forward * 0.2f);
     }
 
     void KillMans()

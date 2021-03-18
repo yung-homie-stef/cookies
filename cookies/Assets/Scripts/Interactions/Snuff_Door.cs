@@ -43,6 +43,7 @@ public class Snuff_Door : Interactable
     private IEnumerator GoToSnuffChamber(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+        Audio_Manager.globalAudioManager.PlaySound("snuff_theme", Audio_Manager.globalAudioManager.musicSoundArray);
         SceneManager.LoadScene(sceneIndex);
     }
 

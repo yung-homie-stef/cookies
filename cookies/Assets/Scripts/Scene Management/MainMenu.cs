@@ -69,5 +69,6 @@ public class MainMenu : MonoBehaviour
         Game_Manager.globalGameManager.controlsScreen.GetComponent<Controls_Screen>().OpenControls(startMenu);
         Game_Manager.globalGameManager.controlsScreen.SetActive(true);
         startMenu.SetActive(false);
+        logo.SetActive(false);
     }
 }

@@ -14,15 +14,17 @@ public class Settings : MonoBehaviour
     public Text trackingEnabled;
     public GameObject logo;
 
-    public float grain;
-    public float bleed; // settings for video
-    public float gamma;
-    public float phosphor;
+    public postVHSPro _postVHSScript;
+    public float pGrain;
+    public float pBleed; // settings for video
+    public float pGamma;
+    public float pPhosphor;
 
     private VHSPostProcessEffect _vhsCameraEffect;
     private GameObject _lastMenu;
-    private postVHSPro _postVHSScript;
+
     private bool tracking = true;
+    private bool isOn = true;
 
     public void OpenSettings(GameObject lastMenu)
     {
@@ -31,14 +33,19 @@ public class Settings : MonoBehaviour
 
     public void DisableOrEnableVHSEffect()
     {
-        Game_Manager.globalGameManager.VHSEffectOn = !Game_Manager.globalGameManager.VHSEffectOn;
+        isOn = !isOn;
 
-        if (Game_Manager.globalGameManager.VHSEffectOn)
+        if (isOn)
         {
+            _postVHSScript.enabled = true;
             vhsEnabled.text = "ENABLED";
         }
         else
+        {
+            _postVHSScript.enabled = false;
             vhsEnabled.text = "DISABLED";
+        }
+
     }
 
     public void DisableOrEnableFullscreen(bool isFull)
@@ -64,33 +71,39 @@ public class Settings : MonoBehaviour
 
     public void SetGrain(float grain)
     {
-       postVHSPro.globalVHSFX.filmGrainAmount = grain;
+       postVHSPro.filmGrainAmount = grain;
+        pGrain = grain;
     }
 
     public void SetBleed(float bleed)
     {
-        postVHSPro.globalVHSFX.bleedAmount = bleed;
+        postVHSPro.bleedAmount = bleed;
+        pBleed = bleed;
     }
 
     public void SetGamma(float gamma)
     {
-       postVHSPro.globalVHSFX.gammaCorection = gamma;
+        postVHSPro.gammaCorection = gamma;
+        pGamma = gamma;
     }
 
-    public void SetVerticalResolution()
+    public void SetNoise(float noise)
     {
-        tracking = !tracking;
+        postVHSPro.tapeNoiseTH = noise;
+    }
 
-        if (tracking)
+
+    public void EnableTapeNoise()
+    {
+        if (postVHSPro.tapeNoiseOn == false)
         {
-            postVHSPro.globalVHSFX.noiseLinesMode = 1;
-            postVHSPro.globalVHSFX.noiseLinesNum = 1024;
+            postVHSPro.tapeNoiseOn = true;
             trackingEnabled.text = "ENABLED";
         }
-        else
+        else if (postVHSPro.tapeNoiseOn == true)
         {
-           postVHSPro.globalVHSFX.noiseLinesMode = 0;
-           trackingEnabled.text = "DISABLED";
+            postVHSPro.tapeNoiseOn = false;
+            trackingEnabled.text = "DISABLED";
         }
     }
 
