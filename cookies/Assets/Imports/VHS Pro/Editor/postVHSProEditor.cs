@@ -324,10 +324,10 @@ public class postVHSProEditor : Editor {
 				EditorGUILayout.HelpBox("Note: \n1. Bigger 'Bleed Length' values cause slow performance. Try to use as small value as possible. Default is 21.\n2. Turn the 'Edit Mode' off for the final build for faster performance. ", MessageType.Info );
 
 				// indM();
-			}			
-				
-			   bleedAmount.floatValue = 	EditorGUILayout.Slider("Bleed Stretch", 			bleedAmount.floatValue, 0.0f, 15.0f); //def 1.-2.
-			   indM();
+			}
+
+            bleedAmount.floatValue = EditorGUILayout.Slider("Bleed Stretch", bleedAmount.floatValue, 0.0f, 15.0f); //def 1.-2.
+            indM();
 
 		   fisheyeOn.boolValue = 		EditorGUILayout.Toggle("Fisheye", 				fisheyeOn.boolValue);
 		   	indP();
@@ -445,7 +445,7 @@ public class postVHSProEditor : Editor {
 			   signalShiftI.floatValue = 	EditorGUILayout.Slider("Adjust I", 			signalShiftI.floatValue, -2.0f, 2.0f);
 			   signalShiftQ.floatValue = 	EditorGUILayout.Slider("Adjust Q", 			signalShiftQ.floatValue, -2.0f, 2.0f);
 
-			   gammaCorection.floatValue =EditorGUILayout.Slider("Gamma Corection", gammaCorection.floatValue, 0.0f, 2.0f);
+            gammaCorection.floatValue = EditorGUILayout.Slider("Gamma Corection", gammaCorection.floatValue, 0.0f, 2.0f);
 			   indM();
 	    	EditorGUILayout.EndToggleGroup();
 	   }

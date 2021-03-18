@@ -15,10 +15,6 @@ public class Settings : MonoBehaviour
     public GameObject logo;
 
     public postVHSPro _postVHSScript;
-    public float pGrain;
-    public float pBleed; // settings for video
-    public float pGamma;
-    public float pPhosphor;
 
     private VHSPostProcessEffect _vhsCameraEffect;
     private GameObject _lastMenu;
@@ -72,19 +68,16 @@ public class Settings : MonoBehaviour
     public void SetGrain(float grain)
     {
        postVHSPro.filmGrainAmount = grain;
-        pGrain = grain;
     }
 
     public void SetBleed(float bleed)
     {
         postVHSPro.bleedAmount = bleed;
-        pBleed = bleed;
     }
 
     public void SetGamma(float gamma)
     {
         postVHSPro.gammaCorection = gamma;
-        pGamma = gamma;
     }
 
     public void SetNoise(float noise)
