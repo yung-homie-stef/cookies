@@ -53,7 +53,7 @@ public class postVHSPro : MonoBehaviour {
 	public int crtMode = 0; 
 	public int crtLinesMode = 0;
 	public float screenLinesNum = 240f;
-	public static float bleedAmount = 1f; //default 1.-2.
+	public float bleedAmount = 1f; //default 1.-2.
 	public bool bleedDebugOn = false;
 
 	public AnimationCurve bleedCurveY = AnimationCurve.Linear(0,1,1,0);
@@ -91,7 +91,7 @@ public class postVHSPro : MonoBehaviour {
 	public float noiseQuantizeX = 0.0f; 
 
 	public bool filmgrainOn = false;
-	public static float filmGrainAmount = 0.018f; 
+	public float filmGrainAmount = 0.018f; 
 	// public float filmGrainPower = 1.0f; //not using atm
 
 	public bool signalNoiseOn = true; 
@@ -99,8 +99,8 @@ public class postVHSPro : MonoBehaviour {
 	public float signalNoisePower = 0.83f; 
 
 
-	public static bool tapeNoiseOn = true;
-	public static float tapeNoiseTH = 0.63f; 
+	public bool tapeNoiseOn = true;
+	public float tapeNoiseTH = 0.63f; 
 	public float tapeNoiseAmount = 1.0f; 
 	public float tapeNoiseSpeed = 1.0f; 
 	public bool lineNoiseOn = true;
@@ -139,7 +139,7 @@ public class postVHSPro : MonoBehaviour {
 	public float signalShiftQ = 1f; //Chrominance
 
 
-	public static float gammaCorection = 1f; 
+	public float gammaCorection = 1f; 
 
 	//FEEDBACK
 	public bool feedbackOn = false; 
@@ -221,8 +221,7 @@ public class postVHSPro : MonoBehaviour {
 
 	void Awake()
 	{
-        if (crtMode==3) buildCurves(); 
-
+        if (crtMode==3) buildCurves();
 	}
 
 

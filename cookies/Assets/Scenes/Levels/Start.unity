@@ -9123,12 +9123,13 @@ MonoBehaviour:
   g_showJitter: 0
   g_showSignal: 0
   g_showFeedback: 0
-  g_showExtra: 0
+  g_showExtra: 1
   g_showBypass: 0
   bleedOn: 1
   crtMode: 0
   crtLinesMode: 0
   screenLinesNum: 0
+  bleedAmount: 3.5
   bleedDebugOn: 0
   bleedCurveY:
     serializedVersion: 2
@@ -9220,9 +9221,12 @@ MonoBehaviour:
   noiseLinesNum: 1024
   noiseQuantizeX: 1
   filmgrainOn: 1
+  filmGrainAmount: 0.018
   signalNoiseOn: 1
   signalNoiseAmount: 0.104
   signalNoisePower: 0.83
+  tapeNoiseOn: 1
+  tapeNoiseTH: 0.63
   tapeNoiseAmount: 1
   tapeNoiseSpeed: 1
   lineNoiseOn: 0
@@ -9249,6 +9253,7 @@ MonoBehaviour:
   signalShiftY: 1
   signalShiftI: 1
   signalShiftQ: 1
+  gammaCorection: 1
   feedbackOn: 0
   feedbackMode: 0
   feedbackThresh: 0.52

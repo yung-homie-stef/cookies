@@ -367,9 +367,14 @@ public class postVHSProEditor : Editor {
 		   
 		   filmgrainOn.boolValue = 		EditorGUILayout.Toggle("Film Grain", 			filmgrainOn.boolValue);        
 			   indP();
-			   filmGrainAmount.floatValue = 	EditorGUILayout.Slider("Alpha", 		filmGrainAmount.floatValue, 0.0f, 0.1f); 
-			   // filmGrainPower.floatValue = 	EditorGUILayout.Slider("Power", 		filmGrainPower.floatValue, 0.0f, 1.0f); 
-			   indM();
+
+			if (filmGrainAmount == null)
+            {
+				Debug.Log("film grain is kill");
+            }
+            filmGrainAmount.floatValue = EditorGUILayout.Slider("Alpha", filmGrainAmount.floatValue, 0.0f, 0.1f);
+            // filmGrainPower.floatValue = 	EditorGUILayout.Slider("Power", 		filmGrainPower.floatValue, 0.0f, 1.0f); 
+            indM();
 
 		   signalNoiseOn.boolValue = 		EditorGUILayout.Toggle("Signal Noise", 			signalNoiseOn.boolValue);        
 			   indP();

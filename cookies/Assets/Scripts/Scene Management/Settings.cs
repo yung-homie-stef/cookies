@@ -7,13 +7,14 @@ using UnityEngine.SceneManagement;
 
 public class Settings : MonoBehaviour
 {
+
     public AudioMixer sfxMixer;
     public AudioMixer musicMixer;
     public Text vhsEnabled;
     public Text fullscreenEnabled;
     public Text trackingEnabled;
     public GameObject logo;
-
+    
     public postVHSPro _postVHSScript;
 
     private VHSPostProcessEffect _vhsCameraEffect;
@@ -67,35 +68,35 @@ public class Settings : MonoBehaviour
 
     public void SetGrain(float grain)
     {
-       postVHSPro.filmGrainAmount = grain;
+       _postVHSScript.filmGrainAmount = grain;
     }
 
     public void SetBleed(float bleed)
     {
-        postVHSPro.bleedAmount = bleed;
+        _postVHSScript.bleedAmount = bleed;
     }
 
     public void SetGamma(float gamma)
     {
-        postVHSPro.gammaCorection = gamma;
+        _postVHSScript.gammaCorection = gamma;
     }
 
     public void SetNoise(float noise)
     {
-        postVHSPro.tapeNoiseTH = noise;
+        _postVHSScript.tapeNoiseTH = noise;
     }
 
 
     public void EnableTapeNoise()
     {
-        if (postVHSPro.tapeNoiseOn == false)
+        if (_postVHSScript.tapeNoiseOn == false)
         {
-            postVHSPro.tapeNoiseOn = true;
+            _postVHSScript.tapeNoiseOn = true;
             trackingEnabled.text = "ENABLED";
         }
-        else if (postVHSPro.tapeNoiseOn == true)
+        else if (_postVHSScript.tapeNoiseOn == true)
         {
-            postVHSPro.tapeNoiseOn = false;
+            _postVHSScript.tapeNoiseOn = false;
             trackingEnabled.text = "DISABLED";
         }
     }
