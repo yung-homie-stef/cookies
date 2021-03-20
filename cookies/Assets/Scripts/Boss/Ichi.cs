@@ -17,6 +17,10 @@ public class Ichi : Victim
 
     }
 
+
+    public GameObject kunaiPrefab;
+    public Transform ichiHand;
+
     public Transform target = null;
     public IchiStates currentState;
     public float attackRange = 1.0f;
@@ -27,6 +31,8 @@ public class Ichi : Victim
     public GameObject yakuzaBoss;
     public GameObject doorLocker;
     public OpenableInteractable sadomasoDoor;
+    public float throwForce = 50f;
+
     private GameObject _contactPoint;
 
     public BoxCollider dickBlade;
@@ -361,6 +367,12 @@ public class Ichi : Victim
             _contactPoint = other.gameObject;
             TakeDamage("chainsaw", _contactPoint.transform.position, _contactPoint.transform.forward);
         }
+    }
+
+    public void ThrowKunai()
+    {
+        GameObject kunai = Instantiate(kunaiPrefab, ichiHand.position, ichiHand.rotation) as GameObject;
+        kunai.GetComponent<Rigidbody>().AddForce(-ichiHand.forward * throwForce, ForceMode.Impulse);
     }
 
 }
