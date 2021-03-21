@@ -163,6 +163,10 @@ public class postVHSPro : MonoBehaviour {
 	// public MovieTexture movieTex;
 	// public Sprite spriteTex;
 	// public bool rebuildTextures = true;
+
+
+	Settings settingsCanvas = null;
+
 	
 	//was at start()
 	void CreateMaterials(){
@@ -224,9 +228,19 @@ public class postVHSPro : MonoBehaviour {
         if (crtMode==3) buildCurves();
 	}
 
+    private void Start()
+    {
+		settingsCanvas = Settings.GetSettingsCanvas();
 
-	// Update is called once per frame
-	void Update () {
+		settingsCanvas._postVHSScript = this;
+
+		settingsCanvas.InitPostVHSScript();
+
+	}
+
+
+    // Update is called once per frame
+    void Update () {
 
      	// if(Input.GetKeyDown(KeyCode.M)){
       //   	vignetteOn = !vignetteOn;
