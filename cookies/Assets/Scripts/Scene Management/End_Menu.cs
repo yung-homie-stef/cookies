@@ -65,6 +65,7 @@ public class End_Menu : MonoBehaviour
         Audio_Manager.globalAudioManager.PlaySound("tape", Audio_Manager.globalAudioManager.intangibleSoundArray);
         Audio_Manager.globalAudioManager.PlaySound("intro", Audio_Manager.globalAudioManager.musicSoundArray);
         Game_Manager.globalGameManager.endScreen.SetActive(false);
+        MainMenu.globalMainMenuManager.ResetFirstScreen();
         SceneManager.LoadScene(0); // go back to start
     }
 }

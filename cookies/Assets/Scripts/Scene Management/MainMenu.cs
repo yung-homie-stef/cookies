@@ -12,6 +12,8 @@ public class MainMenu : MonoBehaviour
     public GameObject startButton;
     public GameObject logo;
 
+    public static MainMenu globalMainMenuManager = null;
+
     public void RemoveTitle()
     {
         gameTitle.SetActive(false);
@@ -26,6 +28,18 @@ public class MainMenu : MonoBehaviour
         Audio_Manager.globalAudioManager.musicSoundArray[1].source.Stop();
         Audio_Manager.globalAudioManager.PlaySound("tape", Audio_Manager.globalAudioManager.intangibleSoundArray);
         Cursor.visible = false;
+
+        logo.SetActive(false);
+        startMenu.SetActive(false);
+
+
+        if (globalMainMenuManager)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        globalMainMenuManager = this;
     }
 
 
@@ -68,5 +82,12 @@ public class MainMenu : MonoBehaviour
         Game_Manager.globalGameManager.controlsScreen.SetActive(true);
         startMenu.SetActive(false);
         logo.SetActive(false);
+    }
+
+    public void ResetFirstScreen()
+    {
+        logo.SetActive(true);
+        gameTitle.SetActive(true);
+        startButton.SetActive(true);
     }
 }

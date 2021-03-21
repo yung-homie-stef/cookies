@@ -2234,7 +2234,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 850677928}
+      - m_Target: {fileID: 1101403588}
         m_MethodName: OpenControls
         m_Mode: 1
         m_Arguments:
@@ -2374,7 +2374,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &357365957
 GameObject:
@@ -2502,7 +2502,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 850677928}
+      - m_Target: {fileID: 0}
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
@@ -4617,7 +4617,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 850677928}
+      - m_Target: {fileID: 1101403588}
         m_MethodName: GoBack
         m_Mode: 1
         m_Arguments:
@@ -5037,7 +5037,6 @@ GameObject:
   - component: {fileID: 850677926}
   - component: {fileID: 850677925}
   - component: {fileID: 850677924}
-  - component: {fileID: 850677928}
   m_Layer: 5
   m_Name: menu_canvas
   m_TagString: Untagged
@@ -5119,30 +5118,14 @@ RectTransform:
   - {fileID: 1646952331}
   - {fileID: 1514032125}
   - {fileID: 1687314656}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_Father: {fileID: 1101403586}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &850677928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 850677923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8c20f35413d1214baf201f1a9d252dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameTitle: {fileID: 1646952330}
-  startMenu: {fileID: 1514032124}
-  startButton: {fileID: 1687314655}
-  logo: {fileID: 1091515905}
 --- !u!1 &857341185
 GameObject:
   m_ObjectHideFlags: 0
@@ -5829,7 +5812,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 850677928}
+      - m_Target: {fileID: 1101403588}
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -6935,12 +6918,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091515905}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04, y: 2.06, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.1435082, y: 1.2891498, z: 5.4345083}
   m_LocalScale: {x: 1.7801322, y: 1.7801322, z: 1.7801322}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1101403586}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1100608572
 GameObject:
@@ -7046,8 +7029,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1101403586}
   - component: {fileID: 1101403587}
+  - component: {fileID: 1101403588}
   m_Layer: 0
-  m_Name: game_manager
+  m_Name: MANAGER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7070,8 +7054,10 @@ Transform:
   - {fileID: 415354572}
   - {fileID: 51787203}
   - {fileID: 1138820168}
+  - {fileID: 850677927}
+  - {fileID: 1091515907}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1101403587
 MonoBehaviour:
@@ -7125,6 +7111,22 @@ MonoBehaviour:
   - {fileID: 5619686742527395201, guid: f04026dc76305894c822798c81711221, type: 3}
   - {fileID: 9208950395958904263, guid: 9ed90531ef1e96849827df730b23dfe7, type: 3}
   - {fileID: 7670602303771708757, guid: d89c8513a92c27844926a785ed4caea8, type: 3}
+--- !u!114 &1101403588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101403585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c20f35413d1214baf201f1a9d252dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameTitle: {fileID: 1646952330}
+  startMenu: {fileID: 1514032124}
+  startButton: {fileID: 1687314655}
+  logo: {fileID: 1091515905}
 --- !u!1 &1105469886
 GameObject:
   m_ObjectHideFlags: 0
@@ -8508,7 +8510,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1317506376
 GameObject:
@@ -10156,7 +10158,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1594389231
 GameObject:
@@ -10275,7 +10277,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 850677928}
+      - m_Target: {fileID: 1101403588}
         m_MethodName: OpenSettings
         m_Mode: 1
         m_Arguments:
@@ -11091,7 +11093,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 850677928}
+      - m_Target: {fileID: 1101403588}
         m_MethodName: RemoveTitle
         m_Mode: 1
         m_Arguments:
@@ -11424,7 +11426,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 850677928}
+      - m_Target: {fileID: 1101403588}
         m_MethodName: CheckThreads
         m_Mode: 1
         m_Arguments:
@@ -13607,7 +13609,7 @@ PrefabInstance:
     - target: {fileID: 4383226579170909967, guid: 1974e4ce497c63e49901733e7b8761c0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4383226579170909967, guid: 1974e4ce497c63e49901733e7b8761c0,
         type: 3}

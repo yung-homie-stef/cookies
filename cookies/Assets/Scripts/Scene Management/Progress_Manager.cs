@@ -5,10 +5,14 @@ using UnityEngine;
 public class Progress_Manager : MonoBehaviour
 {
 
+    public Player playerMans;
+
     [Header("Heaven's Front Porch")]
     public GameObject glock;
     public GameObject pamphlet; 
     public OpenableInteractable altarDoor;
+    public GameObject boxCoupon;
+    public Transform newSpawn;
     [Space(10)]
 
     [Header("A Floridian Film")]
@@ -54,6 +58,8 @@ public class Progress_Manager : MonoBehaviour
         {
             glock.SetActive(true);
             pamphlet.SetActive(true); // unlocks Heaven's Front Porch
+            boxCoupon.SetActive(false);
+            playerMans.gameObject.transform.position = newSpawn.position;
             UnlockDoors(altarDoor);
         }
 
