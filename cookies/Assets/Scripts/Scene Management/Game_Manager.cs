@@ -39,9 +39,12 @@ public class Game_Manager : MonoBehaviour
     public GameObject mainMenu;
     public GameObject endScreen;
     public GameObject settingsScreen;
+    public GameObject threadScreen;
     public GameObject controlsScreen;
+    public GameObject tapes;
 
-    public Button[] vhsTapeTitles = new Button[10];
+    public Button[] vhsTapeButtons = new Button[10];
+    public string[] vhsTapeTitles = new string[10];
 
     public GameObject[] _endGameModels;
     private int _lastCompletedPath = -1;
@@ -99,7 +102,7 @@ public class Game_Manager : MonoBehaviour
 
     public void UpdateThreadTitles(int pathNum)
     {
-        vhsTapeTitles[pathNum].enabled = true;
+        vhsTapeButtons[pathNum].transform.GetChild(0).GetComponent<Text>().text = vhsTapeTitles[pathNum];
     }
 
     public ProgressInformation GetProgressInformation()
@@ -114,7 +117,7 @@ public class Game_Manager : MonoBehaviour
         End_Menu.globalEndMenu.SetStatusOfThreadCompletion(condition);
         CompletePath(condition.threadID, condition.threadName);
     
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(7);
              
     }
 

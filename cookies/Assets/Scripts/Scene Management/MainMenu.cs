@@ -9,9 +9,7 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject gameTitle;
     public GameObject startMenu;
-    public GameObject threadMenu;
     public GameObject startButton;
-    public GameObject tapes;
     public GameObject logo;
 
     public void RemoveTitle()
@@ -40,10 +38,10 @@ public class MainMenu : MonoBehaviour
     public void GoBack()
     {
         // go back to start menu
-        threadMenu.SetActive(false);
+        Game_Manager.globalGameManager.threadScreen.SetActive(false);
         Game_Manager.globalGameManager.settingsScreen.SetActive(false);
         startMenu.SetActive(true);
-        tapes.SetActive(false);
+        Game_Manager.globalGameManager.tapes.SetActive(false);
         logo.SetActive(true);
     }
 
@@ -51,8 +49,8 @@ public class MainMenu : MonoBehaviour
     {
         // go to threads menu
         startMenu.SetActive(false);
-        threadMenu.SetActive(true);
-        tapes.SetActive(true);
+        Game_Manager.globalGameManager.threadScreen.SetActive(true);
+        Game_Manager.globalGameManager.tapes.SetActive(true);
         logo.SetActive(false);
     }
 
