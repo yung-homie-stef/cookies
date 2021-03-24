@@ -10,6 +10,7 @@ public class Slot : MonoBehaviour
     //public Image icon;
     public Button removeButton;
     public Text itemNameHeader;
+    public Image usableOutline;
 
 
     public void AddItem(Item newItem)
@@ -17,12 +18,22 @@ public class Slot : MonoBehaviour
         item = newItem;
         removeButton.interactable = true;
 
+        if (item.usable == true)
+        {
+            usableOutline.enabled = true;
+        }
+        else
+        {
+            usableOutline.enabled = false;
+        }
+
     }
 
     public void ClearSlot()
     {
             item = null;
             removeButton.interactable = false;
+            usableOutline.enabled = false;
     }
 
     public void OnRemoveButton()

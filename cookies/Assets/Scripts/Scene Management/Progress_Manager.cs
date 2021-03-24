@@ -13,6 +13,7 @@ public class Progress_Manager : MonoBehaviour
     public OpenableInteractable altarDoor;
     public GameObject boxCoupon;
     public Transform newSpawn;
+    public GameObject introTriggers;
     [Space(10)]
 
     [Header("A Floridian Film")]
@@ -62,6 +63,7 @@ public class Progress_Manager : MonoBehaviour
             boxCoupon.SetActive(false);
             playerMans.gameObject.transform.position = newSpawn.position;
             UnlockDoors(altarDoor);
+            introTriggers.SetActive(false);
         }
 
         if (_playersTotalProgress.completedPaths[1]) // completed The Final Circus thread

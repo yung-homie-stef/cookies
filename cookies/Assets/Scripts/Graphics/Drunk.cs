@@ -12,7 +12,7 @@ public class Drunk : MonoBehaviour
 
     public void BeginSoberCountdown()
     {
-        StartCoroutine(SoberUp(20.0f));
+        StartCoroutine(SoberUp(10.0f));
     }
 
     private IEnumerator SoberUp(float waitTime)

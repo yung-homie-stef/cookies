@@ -17,14 +17,14 @@ public class Loading : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         // create an async operation
 
-        if (Game_Manager.globalGameManager.GetProgressInformation().totalCompletedPaths > 0)
+        if (Game_Manager.globalGameManager.GetProgressInformation().totalCompletedPaths == 0)
         {
-            AsyncOperation gameLevel = SceneManager.LoadSceneAsync(3);
+            AsyncOperation gameLevel = SceneManager.LoadSceneAsync(2);
             Audio_Manager.globalAudioManager.PlaySound("ambiance", Audio_Manager.globalAudioManager.musicSoundArray);
         }
         else
         {
-            AsyncOperation gameLevel = SceneManager.LoadSceneAsync(2);
+            AsyncOperation gameLevel = SceneManager.LoadSceneAsync(3);
             Audio_Manager.globalAudioManager.PlaySound("ambiance", Audio_Manager.globalAudioManager.musicSoundArray);
         }
         

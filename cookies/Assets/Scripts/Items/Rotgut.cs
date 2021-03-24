@@ -23,14 +23,16 @@ public class Rotgut : Action
         {
             if (!_isDrunk)
             {
-                GetComponent<AudioSource>().PlayOneShot(drinkSound);
                 _drunkScript.enabled = true;
                 _drunkScript.BeginSoberCountdown();
 
                 _isDrunk = true;
 
+                Inventory.instance.inventoryUIScript.slots[itemIndex].SetHeaderToBlank();
                 Destroy(_inventory.playerInventoryItems[itemIndex]);
                 Inventory.instance.RemoveItem(Inventory.instance.items[itemIndex]);
+
+                Inventory.instance.inventoryUIScript.slots[itemIndex].SetHeaderToBlank();
 
                 inventoryUI.GetComponent<Inventory_UI>().DisableUI();
 
