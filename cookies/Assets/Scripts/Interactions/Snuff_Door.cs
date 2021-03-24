@@ -36,7 +36,7 @@ public class Snuff_Door : Interactable
                 opened = true;
             }
             else
-                _notice.ChangeText("Quit fuckin' around, empty your pockets!");
+                _notice.ChangeText("Quit fuckin' around, empty your pockets!", 6.0f);
         }
     }
 

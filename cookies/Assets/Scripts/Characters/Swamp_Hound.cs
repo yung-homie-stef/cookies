@@ -78,6 +78,6 @@ public class Swamp_Hound : Interactable
 
     public override void FailMessage()
     {
-        _notice.ChangeText("Think you got it twisted mane. These ain't COSMIC BROWNIES.");
+        _notice.ChangeText("Think you got it twisted mane. These ain't COSMIC BROWNIES.", 6.0f);
     }
 }

@@ -23,12 +23,12 @@ public class Computer : Interactable
     public override void InteractAction()
     {
         exitMask.SetActive(true);
-        _notice.ChangeText("NEAT");
+        _notice.ChangeText("NEAT", 6.0f);
     }
 
     public override void FailMessage()
     {
-        _notice.ChangeText("CAN'T PUT THAT INTO THE DISC DRIVE...");
+        _notice.ChangeText("CAN'T PUT THAT INTO THE DISC DRIVE...", 6.0f);
     }
 
 }

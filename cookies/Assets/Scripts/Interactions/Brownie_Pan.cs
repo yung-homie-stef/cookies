@@ -87,7 +87,7 @@ public class Brownie_Pan : Interactable
 
     public override void FailMessage()
     {
-        _notice.ChangeText(_brownieMessage);
+        _notice.ChangeText(_brownieMessage, 6.0f);
     }
 
     private IEnumerator PlayOvenDing(float waitTime)

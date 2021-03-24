@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Text_Trigger : MonoBehaviour
 {
     public Text noticeText;
+    public float timeAlloted;
+
     public string newText;
     private Notice _notice;
 
@@ -16,7 +18,7 @@ public class Text_Trigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _notice.ChangeText(newText);
+        _notice.ChangeText(newText, timeAlloted);
         StartCoroutine(SelfDestruct(0.5f));
     }
 

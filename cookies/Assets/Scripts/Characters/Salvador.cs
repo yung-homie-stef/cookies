@@ -161,7 +161,7 @@ public class Salvador : Interactable
 
     public override void FailMessage()
     {
-        _notice.ChangeText("Inconceivable squire... My ilk and I cannot possibly consume this rubbish!");
+        _notice.ChangeText("Inconceivable squire... My ilk and I cannot possibly consume this rubbish!", 6.0f);
     }
 
 }

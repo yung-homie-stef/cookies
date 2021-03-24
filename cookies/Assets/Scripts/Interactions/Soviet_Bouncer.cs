@@ -32,7 +32,7 @@ public class Soviet_Bouncer : Interactable
 
     public override void FailMessage()
     {
-        _notice.ChangeText("If you don't know, you don't know амеры.");
+        _notice.ChangeText("If you don't know, you don't know амеры.", 6.0f);
     }
 
     private IEnumerator UnfadeBlack(float waitTime)

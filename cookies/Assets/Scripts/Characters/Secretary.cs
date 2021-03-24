@@ -81,7 +81,7 @@ public class Secretary : Interactable
 
     public override void FailMessage()
     {
-        _notice.ChangeText("I'm sorry, I can't help you with this. Would you like to see a brochure?");
+        _notice.ChangeText("I'm sorry, I can't help you with this. Would you like to see a brochure?", 6.0f);
     }
 
     private IEnumerator UnfadeBlack(float waitTime)

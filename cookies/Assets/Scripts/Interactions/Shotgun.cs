@@ -35,7 +35,7 @@ public class Shotgun : Interactable
 
     public override void FailMessage()
     {
-        _notice.ChangeText("AMMO REQUIRED");
+        _notice.ChangeText("AMMO REQUIRED", 6.0f);
     }
 
 }

@@ -25,7 +25,7 @@ public class Steroids : Action
         if (GetComponent<AcquirableInteractable>().canNowUse)
         {
             _playerScript.isRoided = true; // allow player to punch with this bool
-            _notice.ChangeText(newText);
+            _notice.ChangeText(newText, 6.0f);
 
             Destroy(_inventory.playerInventoryItems[itemIndex]);
             Inventory.instance.RemoveItem(Inventory.instance.items[itemIndex]);

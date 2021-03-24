@@ -31,6 +31,6 @@ public class Ichis_Cage : Interactable
 
     public override void FailMessage()
     {
-        _notice.ChangeText("LOCKPICK REQUIRED");
+        _notice.ChangeText("LOCKPICK REQUIRED", 6.0f);
     }
 }

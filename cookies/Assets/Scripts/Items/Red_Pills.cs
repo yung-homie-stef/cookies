@@ -22,7 +22,7 @@ public class Red_Pills : Action
     public override void Use(int itemIndex)
     {
 
-        _notice.ChangeText(newText);
+        _notice.ChangeText(newText, 6.0f);
 
         Destroy(_inventory.playerInventoryItems[itemIndex]);
         Inventory.instance.RemoveItem(Inventory.instance.items[itemIndex]);

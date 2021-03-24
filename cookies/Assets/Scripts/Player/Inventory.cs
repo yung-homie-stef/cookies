@@ -70,7 +70,7 @@ public class Inventory : MonoBehaviour
     {
         if (items.Count >= space)
         {
-            _notice.ChangeText("INVENTORY FULL");
+            _notice.ChangeText("INVENTORY FULL", 6.0f);
             return false;
         }
 

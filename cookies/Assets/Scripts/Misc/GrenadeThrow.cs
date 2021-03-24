@@ -11,7 +11,6 @@ public class GrenadeThrow : MonoBehaviour
     public float rangeSqr;
 
     private bool _throwing;
-    private float grenadeTimer = 0.0f;
     private Animator _animator;
     private BoxCollider _boxCollider;
     private Cartel_Member _cartelScript;

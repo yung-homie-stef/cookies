@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class First_Intercom : Interactable
 {
     [SerializeField]
-    private int _dialogueValue;
     private string[] currentSentences;
     private Dialogue _dialogue;
     private bool eventHappensWhenTalkingIsDone;
@@ -24,7 +23,6 @@ public class First_Intercom : Interactable
     {
         _dialogue = dialogueManager.GetComponent<Dialogue>();
         eventHappensWhenTalkingIsDone = true;
-        _dialogueValue = 0;
         _notice = noticeText.GetComponent<Notice>();
     }
 

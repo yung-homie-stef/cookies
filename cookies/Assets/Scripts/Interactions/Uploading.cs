@@ -48,6 +48,6 @@ public class Uploading : Interactable
 
     public override void FailMessage()
     {
-        _notice.ChangeText("CD REQUIRED");
+        _notice.ChangeText("CD REQUIRED", 6.0f);
     }
 }

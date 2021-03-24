@@ -52,7 +52,7 @@ public class Swamp_Boat : Interactable
 
     public override void FailMessage()
     {
-        _notice.ChangeText("GASOLINE REQUIRED");
+        _notice.ChangeText("GASOLINE REQUIRED", 6.0f);
     }
 
     private IEnumerator CompleteSwampThread(float waitTime)

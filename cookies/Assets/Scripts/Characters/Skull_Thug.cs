@@ -12,7 +12,6 @@ public class Skull_Thug : Interactable
     public GameObject pigRoomSquad;
 
     [SerializeField]
-    private int _dialogueValue;
     private string[] currentSentences;
     private Dialogue _dialogue;
     private bool eventHappensWhenTalkingIsDone;
@@ -27,7 +26,6 @@ public class Skull_Thug : Interactable
     {
         _dialogue = dialogueManager.GetComponent<Dialogue>();
         eventHappensWhenTalkingIsDone = true;
-        _dialogueValue = 0;
         _animator = gameObject.GetComponent<Animator>();
 
         _rigidbody = GetComponent<Rigidbody>();

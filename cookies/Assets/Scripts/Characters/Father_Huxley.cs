@@ -121,7 +121,7 @@ public class Father_Huxley : Interactable
 
     public override void FailMessage()
     {
-        _notice.ChangeText(failMessage);
+        _notice.ChangeText(failMessage, 6.0f);
     }
 
     private void ChangeReqs(string req)

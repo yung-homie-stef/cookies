@@ -32,7 +32,7 @@ public class Chains : Interactable
 
     public override void FailMessage()
     {
-        _notice.ChangeText("BOLT CUTTERS REQUIRED");
+        _notice.ChangeText("BOLT CUTTERS REQUIRED", 6.0f);
     }
 
 }

@@ -12,7 +12,6 @@ public class Bomb_Table : Interactable
     private Inventory _inventory;
     private Tags _tags;
     private Notice _notice;
-    private bool hasCrafted;
 
     // Start is called before the first frame update
     new void Start()
@@ -20,7 +19,6 @@ public class Bomb_Table : Interactable
         _animator = gameObject.GetComponent<Animator>();
         _inventory = player.GetComponent<Inventory>();
         _notice = noticeText.GetComponent<Notice>();
-        hasCrafted = false;
     }
 
 
@@ -32,7 +30,7 @@ public class Bomb_Table : Interactable
 
     public override void FailMessage()
     {
-        _notice.ChangeText("LEAD PIPE REQUIRED");
+        _notice.ChangeText("LEAD PIPE REQUIRED", 6.0f);
     }
 
 

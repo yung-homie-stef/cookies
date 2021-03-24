@@ -46,7 +46,7 @@ public class Vending_Machine : Interactable
 
     public override void FailMessage()
     {
-        _notice.ChangeText("CURRENCY REQUIRED");
+        _notice.ChangeText("CURRENCY REQUIRED", 6.0f);
     }
 }
 

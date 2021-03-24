@@ -39,6 +39,7 @@ public class Progress_Manager : MonoBehaviour
 
     [Header("Crown Fried")]
     public Fast_Food_Worker cashier;
+    public GameObject commercial;
     [Space(10)]
 
     [Header("Glad Boys")]
@@ -83,9 +84,10 @@ public class Progress_Manager : MonoBehaviour
         if (_playersTotalProgress.totalCompletedPaths >= 5)
         {
             cashier.threadAvailable = true; // unlock Crown Fried after completing 5 threads
+            commercial.SetActive(true);
         }
 
-        if (_playersTotalProgress.totalCompletedPaths >= 7)
+        if (_playersTotalProgress.totalCompletedPaths >= 7) // unlock Glad Boys after completing 7 threads
         {
             UnlockDoors(normansDoor);
             UnlockDoors(manifestoDoor);

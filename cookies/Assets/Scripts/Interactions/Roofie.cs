@@ -30,7 +30,7 @@ public class Roofie : Interactable
 
     public override void FailMessage()
     {
-        _notice.ChangeText("THAT WON'T KNOCK HIM OUT");
+        _notice.ChangeText("THAT WON'T KNOCK HIM OUT", 6.0f);
     }
 
     private IEnumerator UnfadeBlack(float waitTime)

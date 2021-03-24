@@ -62,7 +62,7 @@ public class OpenableInteractable : Interactable
         }
         else
         {
-            _notice.ChangeText(newText);
+            _notice.ChangeText(newText, 6.0f);
             PlayDoorSound(3);
         }
     }
@@ -93,7 +93,7 @@ public class OpenableInteractable : Interactable
 
     public override void FailMessage()
     {
-        _notice.ChangeText(newText);
+        _notice.ChangeText(newText, 6.0f);
     }
 
 }

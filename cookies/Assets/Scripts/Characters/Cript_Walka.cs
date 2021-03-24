@@ -105,6 +105,6 @@ public class Cript_Walka : Interactable
 
     public override void FailMessage()
     {
-        _notice.ChangeText("Looks like you got my order mixed up. I wanted a bag of them COOKIES.");
+        _notice.ChangeText("Looks like you got my order mixed up. I wanted a bag of them COOKIES.", 6.0f);
     }
 }
