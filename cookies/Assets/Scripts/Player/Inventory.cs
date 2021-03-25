@@ -127,7 +127,15 @@ public class Inventory : MonoBehaviour
 
     public void UseItem(int index)
     {
-        player.lastUsedItem = playerInventoryItems[index].GetComponent<AcquirableInteractable>().itemScriptableObj;
+
+        if (playerInventoryItems[index].GetComponent<AcquirableInteractable>())
+        {
+            player.lastUsedItem = playerInventoryItems[index].GetComponent<AcquirableInteractable>().itemScriptableObj;
+        }
+        else if (playerInventoryItems[index].GetComponent<Purchasable>())
+        {
+            player.lastUsedItem = playerInventoryItems[index].GetComponent<Purchasable>().itemScriptableObj;
+        }
 
         if (interactionTarget == null)
         {

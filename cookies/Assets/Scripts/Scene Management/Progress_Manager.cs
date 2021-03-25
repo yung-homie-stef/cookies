@@ -31,6 +31,7 @@ public class Progress_Manager : MonoBehaviour
 
     [Header("Black October")]
     public OpenableInteractable roachDoor;
+    public GameObject newNests;
     [Space(10)]
 
     [Header("The Green Hell")]

@@ -8,6 +8,7 @@ public class ShopItem : Interactable
 
     public override void InteractAction()
     {
+        _shopKeeper._storeCredit--;
         _shopKeeper.Purchase(gameObject);
         Destroy(this);
     }

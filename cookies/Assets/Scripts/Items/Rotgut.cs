@@ -32,7 +32,6 @@ public class Rotgut : Action
                 Destroy(_inventory.playerInventoryItems[itemIndex]);
                 Inventory.instance.RemoveItem(Inventory.instance.items[itemIndex]);
 
-                Inventory.instance.inventoryUIScript.slots[itemIndex].SetHeaderToBlank();
 
                 inventoryUI.GetComponent<Inventory_UI>().DisableUI();
 

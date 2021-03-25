@@ -29,6 +29,7 @@ public class Energy_Drink : Action
             _movement.playerSpeed *= 2; // become faster
             _notice.ChangeText(newText, 6.0f);
 
+            Inventory.instance.inventoryUIScript.slots[itemIndex].SetHeaderToBlank();
             Destroy(_inventory.playerInventoryItems[itemIndex]);
             Inventory.instance.RemoveItem(Inventory.instance.items[itemIndex]);
 

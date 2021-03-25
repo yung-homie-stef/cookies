@@ -52,12 +52,12 @@ public class Game_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (globalGameManager)
-        {
-            Debug.Log("beans");
-            Destroy(gameObject);
-            return;
-        }
+       if (globalGameManager)
+       {
+           Debug.Log("beans");
+           Destroy(gameObject);
+           return;
+       }
 
         DontDestroyOnLoad(gameObject); // when it spawns, once get deleted upon changing scenes
         globalGameManager = this;

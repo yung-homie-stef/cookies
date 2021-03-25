@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SingleAnimationInteractable : Interactable
 {
+    public GameObject toast;
 
     // Start is called before the first frame update
     new void Start()
@@ -13,5 +14,6 @@ public class SingleAnimationInteractable : Interactable
     public override void InteractAction()
     {
         _animator.SetBool("interacted", true);
+        toast.GetComponent<BoxCollider>().enabled = true;
     }
 }

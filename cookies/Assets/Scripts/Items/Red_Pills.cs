@@ -24,6 +24,7 @@ public class Red_Pills : Action
 
         _notice.ChangeText(newText, 6.0f);
 
+        Inventory.instance.inventoryUIScript.slots[itemIndex].SetHeaderToBlank();
         Destroy(_inventory.playerInventoryItems[itemIndex]);
         Inventory.instance.RemoveItem(Inventory.instance.items[itemIndex]);
 

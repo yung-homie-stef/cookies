@@ -27,6 +27,7 @@ public class Steroids : Action
             _playerScript.isRoided = true; // allow player to punch with this bool
             _notice.ChangeText(newText, 6.0f);
 
+            Inventory.instance.inventoryUIScript.slots[itemIndex].SetHeaderToBlank();
             Destroy(_inventory.playerInventoryItems[itemIndex]);
             Inventory.instance.RemoveItem(Inventory.instance.items[itemIndex]);
 

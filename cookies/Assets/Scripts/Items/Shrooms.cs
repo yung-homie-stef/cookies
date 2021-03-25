@@ -22,6 +22,7 @@ public class Shrooms : Action
           
             salvador.SetActive(true);
 
+            Inventory.instance.inventoryUIScript.slots[itemIndex].SetHeaderToBlank();
             Destroy(_inventory.playerInventoryItems[itemIndex]);
             Inventory.instance.RemoveItem(Inventory.instance.items[itemIndex]);
 

@@ -128,8 +128,12 @@ public class Player : MonoBehaviour
     {
         if (_inventory.isWeaponEquipped == false)
         {
+            if (_inventory.playerInventoryItems[i].GetComponent<AcquirableInteractable>())
                 _inventory.playerInventoryItems[i].GetComponent<AcquirableInteractable>().Drop();
-            
+
+            else if (_inventory.playerInventoryItems[i].GetComponent<Purchasable>())
+                _inventory.playerInventoryItems[i].GetComponent<Purchasable>().Drop();
+
         }
     }
 

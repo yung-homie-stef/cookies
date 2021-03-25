@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Butch : MonoBehaviour
+public class Butch : Interactable
 {
-    // Start is called before the first frame update
-    void Start()
+    private AudioSource aSource;
+
+    new void Start()
     {
-        
+        aSource = gameObject.GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void InteractAction()
     {
-        
+        if (aSource.enabled)
+        aSource.enabled = false;
     }
+
 }

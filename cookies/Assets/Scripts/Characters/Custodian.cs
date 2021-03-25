@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Custodian : Interactable // TODO: make update dialogue method virtual, just dont override for items/doors etc.
+public class Custodian : Interactable 
 {
     public GameObject dialogueManager;
     public float startWaitTime;
@@ -45,27 +45,8 @@ public class Custodian : Interactable // TODO: make update dialogue method virtu
 
         // if distance between custodian and current point is less than 0.2
 
-        if (!_agent.pathPending && _agent.remainingDistance < 0.5f)
-        { 
-            if (_waitTime <= 0)
-            {
-                mop.SetActive(false);
-                _animator.SetBool("isSweeping", false);
-                _randomSpot = Random.Range(0, moveSpots.Length);
-                _waitTime = startWaitTime;
-            }
-            else
-            {
-                mop.SetActive(true);
-                _animator.SetBool("isSweeping", true);
-                _waitTime -= Time.deltaTime;
-            }
-         }
-
         if (_animator.enabled == false)
         {
-            mop.transform.parent = null;
-            mop.GetComponent<Rigidbody>().isKinematic = false;
             _salvadorScript.StartCeremony();
             _salvadorScript._sequenceNumber++;
             _agent = null;

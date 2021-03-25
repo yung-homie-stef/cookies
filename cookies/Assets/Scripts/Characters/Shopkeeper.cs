@@ -12,7 +12,8 @@ public class Shopkeeper : Interactable
 
     private Tags _tags;
     private Inventory _inventory;
-    private static int _storeCredit;
+    [SerializeField]
+    public int _storeCredit;
     private string[] currentSentences;
     private Dialogue _dialogue;
     private bool eventHappensWhenTalkingIsDone;
@@ -83,7 +84,6 @@ public class Shopkeeper : Interactable
 
     public void Purchase(GameObject transaction)
     {
-        _storeCredit--;
         stock.Remove(transaction);
 
         if (_storeCredit == 0)
@@ -92,8 +92,20 @@ public class Shopkeeper : Interactable
             {
                 items.GetComponent<BoxCollider>().enabled = false;
             }
+
+            StartCoroutine(AskForMoreMoney(1.0f));
         }
+        
     }
+
+    private IEnumerator AskForMoreMoney(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        reqType = RequirementType.Single;
+        requiredTags = new string[1];
+        requiredTags[0] = "Currency";
+    }
+    
 }
 
 

@@ -15,6 +15,7 @@ public class Raid : Action
         blackout.GetComponent<Animator>().SetBool("faded", true);
         StartCoroutine(TripOut(10.0f));
         dex = itemIndex;
+        Inventory.instance.inventoryUIScript.slots[itemIndex].SetHeaderToBlank();
     }
 
     private IEnumerator TripOut(float waitTime)
@@ -24,6 +25,7 @@ public class Raid : Action
         Audio_Manager.globalAudioManager.musicSoundArray[0].source.Stop();
         Audio_Manager.globalAudioManager.PlaySound("tape", Audio_Manager.globalAudioManager.intangibleSoundArray);
         SceneManager.LoadScene(requestedIndex);
+
         Destroy(_inventory.playerInventoryItems[dex]);
         Inventory.instance.RemoveItem(Inventory.instance.items[dex]);
     }
