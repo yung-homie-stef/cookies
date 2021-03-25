@@ -126,6 +126,7 @@ public class Eddie : Victim
             kitchenDoor.GetComponent<OpenableInteractable>().isLocked = false;
             worker.SetActive(true);
             worker.GetComponent<Fast_Food_Worker>()._dialogueValue++;
+            StartCoroutine(FadeBossMusic.StartFade(Audio_Manager.globalAudioManager.musicSoundArray[2].source, 5.0f, 0.0f));
             this.enabled = false;
             _louisRayScript.enabled = false;
         }

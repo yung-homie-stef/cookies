@@ -195,6 +195,7 @@ public class Louis_Ray : Victim
             kitchenDoor.GetComponent<OpenableInteractable>().isLocked = false;
             worker.SetActive(true);
             this.enabled = false;
+            StartCoroutine(FadeBossMusic.StartFade(Audio_Manager.globalAudioManager.musicSoundArray[2].source, 5.0f, 0.0f));
             _eddieScript.enabled = false;
             
         }

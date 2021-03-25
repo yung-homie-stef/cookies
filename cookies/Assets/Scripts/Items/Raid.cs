@@ -7,6 +7,7 @@ public class Raid : Action
 {
     public int requestedIndex;
     public GameObject blackout;
+    public GameObject inventoryUI;
 
     private int dex;
 
@@ -28,5 +29,7 @@ public class Raid : Action
 
         Destroy(_inventory.playerInventoryItems[dex]);
         Inventory.instance.RemoveItem(Inventory.instance.items[dex]);
+
+        inventoryUI.GetComponent<Inventory_UI>().DisableUI();
     }
 }

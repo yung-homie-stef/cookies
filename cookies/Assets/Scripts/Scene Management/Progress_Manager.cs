@@ -27,6 +27,7 @@ public class Progress_Manager : MonoBehaviour
 
     [Header("Shinogi")]
     public GameObject blockade;
+    public GameObject ichisDoor;
     [Space(10)]
 
     [Header("Black October")]
@@ -76,12 +77,14 @@ public class Progress_Manager : MonoBehaviour
 
         if (_playersTotalProgress.completedPaths[3])  // completed Heaven's Front Porch thread
         {
+            ichisDoor.tag = "Interactable";
             EnableOrDisable(blockade, false); // Unlocks Shinogi
         }
 
         if (_playersTotalProgress.totalCompletedPaths >= 3)
         {
             UnlockDoors(roachDoor); // unlock Black October after completing 3 threads
+            newNests.SetActive(true);
         }
 
         if (_playersTotalProgress.totalCompletedPaths >= 5)

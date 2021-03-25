@@ -57,8 +57,6 @@ public class Yakuza_Boss : Interactable
         {
             deadSoviets.SetActive(true);
             livingSoviets.SetActive(false);
-            _sovietOpenable.reqType = RequirementType.None;
-            _sovietOpenable.isLocked = false;
             _dialogueValue++;
         }
 

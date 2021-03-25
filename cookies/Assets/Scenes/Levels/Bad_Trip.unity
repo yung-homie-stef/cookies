@@ -6515,6 +6515,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8869340049029261232, guid: b5a2b56dfaef3734c9cd1088177ff670,
+        type: 3}
+      propertyPath: gunType
+      value: pistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869340049029261232, guid: b5a2b56dfaef3734c9cd1088177ff670,
+        type: 3}
+      propertyPath: gunName
+      value: THREE PIECE
+      objectReference: {fileID: 0}
     - target: {fileID: 8869340049029261238, guid: b5a2b56dfaef3734c9cd1088177ff670,
         type: 3}
       propertyPath: player
@@ -24777,6 +24787,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1016257523 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: bce3b265ce5be084a89bd532040831a2,
+    type: 3}
+  m_PrefabInstance: {fileID: 798808540}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1016257524
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016257523}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.189427, y: 0.8966472, z: 1.3505286}
+  m_Center: {x: -0.037895977, y: 0.4483236, z: 0.008713543}
 --- !u!1 &1018425481
 GameObject:
   m_ObjectHideFlags: 0
@@ -32025,7 +32054,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1267954538
 Transform:
   m_ObjectHideFlags: 0
@@ -42382,17 +42411,17 @@ PrefabInstance:
     - target: {fileID: 1754186174830052509, guid: 2cddf8fe94e312b409df25385bb32ac9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -107.31
+      value: -0.404
       objectReference: {fileID: 0}
     - target: {fileID: 1754186174830052509, guid: 2cddf8fe94e312b409df25385bb32ac9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.026
+      value: 0.099
       objectReference: {fileID: 0}
     - target: {fileID: 1754186174830052509, guid: 2cddf8fe94e312b409df25385bb32ac9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.47
+      value: 4.374
       objectReference: {fileID: 0}
     - target: {fileID: 1754186174830052509, guid: 2cddf8fe94e312b409df25385bb32ac9,
         type: 3}
@@ -43658,7 +43687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reqType: 0
   requiredTags: []
-  requestedIndex: 5
+  requestedIndex: 6
   transitionScreen: {fileID: 1842685936}
 --- !u!1 &1797690243
 GameObject:

@@ -233,6 +233,7 @@ public class Norman : Victim
         {
             _agent.isStopped = true;
             rifle.transform.parent = null;
+            StartCoroutine(FadeBossMusic.StartFade(Audio_Manager.globalAudioManager.musicSoundArray[3].source, 5.0f, 0.0f));
             StartCoroutine(EndNormansThread(7.0f));
             _hasDied = true;
         }

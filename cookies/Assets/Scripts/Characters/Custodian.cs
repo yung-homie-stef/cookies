@@ -6,13 +6,12 @@ using UnityEngine.AI;
 public class Custodian : Interactable 
 {
     public GameObject dialogueManager;
-    public float startWaitTime;
-    public Transform[] moveSpots;
     public GameObject mop;
     public GameObject Salvador;
     public GameObject keyring;
     public string[] sentences;
     public AudioClip sweepSFX;
+    public BoxCollider _custodianBoxCollider;
 
     private string[] currentSentences;
     private Dialogue _dialogue;
@@ -22,35 +21,50 @@ public class Custodian : Interactable
     private Salvador _salvadorScript;
     private bool eventHappensWhenTalkingIsDone;
 
+    private float timer = 0.0f;
+    private float wanderRadius = 3.0f;
+    public float wanderTimer = 3.0f;
+    private bool _dead = false;
+
+
     // Start is called before the first frame update
     new void Start()
     {
-        _waitTime = startWaitTime;
-        _randomSpot = Random.Range(0, moveSpots.Length);
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _salvadorScript = Salvador.GetComponent<Salvador>();
         _dialogue = dialogueManager.GetComponent<Dialogue>();
         eventHappensWhenTalkingIsDone = false;
+        _custodianBoxCollider = gameObject.GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!_agent)
-            return;
+        timer += Time.deltaTime;
 
-        // move to a random spot
-        _agent.destination = moveSpots[_randomSpot].position;
+        if (_animator.enabled == true)
+        {
+            if (timer >= wanderTimer)
+            {
+                Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
+                _agent.SetDestination(newPos);
 
-        // if distance between custodian and current point is less than 0.2
+                timer = 0;
+            }
+        }
 
         if (_animator.enabled == false)
         {
-            _salvadorScript.StartCeremony();
-            _salvadorScript._sequenceNumber++;
-            _agent = null;
-            StartCoroutine(GivePlayerKeys(1.5f));
+            if (!_dead)
+            {
+                _salvadorScript.StartCeremony();
+                _salvadorScript._sequenceNumber++;
+                _agent = null;
+                _custodianBoxCollider.enabled = false;
+                StartCoroutine(GivePlayerKeys(1.5f));
+                _dead = true;
+            }
         }
     }
 
@@ -87,5 +101,18 @@ public class Custodian : Interactable
             sentences[i] = lines[i];
         }
         return sentences;
+    }
+
+    public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
+    {
+        Vector3 randDirection = Random.insideUnitSphere * dist;
+
+        randDirection += origin;
+
+        NavMeshHit navHit;
+
+        NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
+
+        return navHit.position;
     }
 }
