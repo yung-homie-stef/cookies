@@ -12,6 +12,7 @@ public class Fast_Food_Worker : Interactable
     public bool threadAvailable;
     public End_Condition crown_fried_Thread;
     public GameObject blackOut;
+    public GameObject bottle;
 
     [SerializeField]
     public int _dialogueValue;
@@ -56,6 +57,11 @@ public class Fast_Food_Worker : Interactable
         {
             StartCoroutine(CompleteChickenThread(5.0f));
             blackOut.GetComponent<Animator>().SetBool("faded", true);
+        }
+
+        if (_dialogueValue == 1)
+        {
+            bottle.tag = "Interactable";
         }
     }
 

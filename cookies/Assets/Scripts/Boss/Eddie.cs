@@ -31,6 +31,7 @@ public class Eddie : Victim
     private float _idleTimer;
     private NavMeshAgent _agent;
     private Louis_Ray _louisRayScript;
+    private Fast_Food_Worker _workerScript;
 
     public AudioClip[] eddieSounds;
 
@@ -43,6 +44,7 @@ public class Eddie : Victim
         _agent = GetComponent<NavMeshAgent>();
         chargeTarget = target.transform.position;
         _louisRayScript = LouisRay.GetComponent<Louis_Ray>();
+        _workerScript = worker.GetComponent<Fast_Food_Worker>();
     }
 
     public void BeginBattle()
@@ -125,7 +127,7 @@ public class Eddie : Victim
             doorLocker.SetActive(false);
             kitchenDoor.GetComponent<OpenableInteractable>().isLocked = false;
             worker.SetActive(true);
-            worker.GetComponent<Fast_Food_Worker>()._dialogueValue++;
+            _workerScript._dialogueValue++;
             StartCoroutine(FadeBossMusic.StartFade(Audio_Manager.globalAudioManager.musicSoundArray[2].source, 5.0f, 0.0f));
             this.enabled = false;
             _louisRayScript.enabled = false;

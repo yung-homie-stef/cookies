@@ -50,6 +50,7 @@ public class Louis_Ray : Victim
     private float _walkTimer;
     private NavMeshAgent _agent;
     private Eddie _eddieScript;
+    private Fast_Food_Worker _workerScript;
     
 
     new void Start()
@@ -64,6 +65,7 @@ public class Louis_Ray : Victim
 
         chainsawSpeaker = chainsawL.GetComponent<AudioSource>();
         louisRaySpeaker = gameObject.GetComponent<AudioSource>();
+        _workerScript = worker.GetComponent<Fast_Food_Worker>();
     }
 
     public void BeginBattle()
@@ -191,7 +193,7 @@ public class Louis_Ray : Victim
         if (_eddieScript.isDead)
         {
             doorLocker.SetActive(false);
-            worker.GetComponent<Fast_Food_Worker>()._dialogueValue++;
+            _workerScript._dialogueValue++;
             kitchenDoor.GetComponent<OpenableInteractable>().isLocked = false;
             worker.SetActive(true);
             this.enabled = false;

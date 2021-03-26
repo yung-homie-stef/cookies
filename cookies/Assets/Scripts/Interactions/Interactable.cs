@@ -131,8 +131,6 @@ public abstract class Interactable : MonoBehaviour
 
     public virtual void ItemUseFailed(Player player)
     {
-        // TODO: display failed to use item message
-        Debug.Log("whats wario doing on a bike?");
         player._inventory.DisplayFailedItemUsageText();
         player.CloseInteractInventory();
         Inventory.instance.inventoryUIScript.SetHeaderToBlank();
