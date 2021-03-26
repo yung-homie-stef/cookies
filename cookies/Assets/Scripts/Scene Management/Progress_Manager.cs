@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Progress_Manager : MonoBehaviour
 {
-
     public Player playerMans;
 
     [Header("Heaven's Front Porch")]
@@ -28,6 +27,7 @@ public class Progress_Manager : MonoBehaviour
     [Header("Shinogi")]
     public GameObject blockade;
     public GameObject ichisDoor;
+    public GameObject killGraffiti;
     [Space(10)]
 
     [Header("Black October")]
@@ -68,7 +68,7 @@ public class Progress_Manager : MonoBehaviour
             introTriggers.SetActive(false);
         }
 
-        if (_playersTotalProgress.completedPaths[1]) // completed The Final Circus thread
+        if (_playersTotalProgress.completedPaths[1]) // completed The Final Circus thread 
         {
             UnlockDoors(studioDoor);
             UnlockDoors(rapperDoor); // unlocks Pig Knuckles and A Floridian Film
@@ -78,6 +78,7 @@ public class Progress_Manager : MonoBehaviour
         if (_playersTotalProgress.completedPaths[3])  // completed Heaven's Front Porch thread
         {
             ichisDoor.tag = "Interactable";
+            killGraffiti.SetActive(true);
             EnableOrDisable(blockade, false); // Unlocks Shinogi
         }
 

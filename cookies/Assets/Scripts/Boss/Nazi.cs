@@ -68,7 +68,6 @@ public class Nazi : Victim
         if (hitPoints <= (maxHitPoints/2))
         {
             isBelowHalfHealth = true;
-            movementSpeed = 1.25f;
         }
 
         if (_bossDistance >= attackRange)

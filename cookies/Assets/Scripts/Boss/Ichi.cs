@@ -270,6 +270,7 @@ public class Ichi : Victim
             sadomasoDoor.isLocked = false;
             StartCoroutine(GiveIchisHead(1.5f));
             StartCoroutine(FadeBossMusic.StartFade(Audio_Manager.globalAudioManager.musicSoundArray[2].source, 5.0f, 0.0f));
+            healthbar.enabled = false;
             _isDead = true;
         }
     }
@@ -294,6 +295,7 @@ public class Ichi : Victim
         _yakuzaScript.reqType = Interactable.RequirementType.Single;
         _yakuzaScript.requiredTags = new string[1];
         _yakuzaScript.requiredTags[0] = "Head";
+        _yakuzaScript.IchiDead();
         headItem.GetComponent<Interactable>().InteractAction(); // give players the key if custodian is killed
         headItem.tag = "Interactable";
     }

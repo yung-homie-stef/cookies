@@ -2852,7 +2852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 2
-  maxHitPoints: 0
+  maxHitPoints: 2
   damageTypes:
   - melee
   - pistol
@@ -2869,8 +2869,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6969779, y: 0.96761465, z: 0.4288009}
-  m_Center: {x: 0.030293446, y: 0.5086109, z: 0.0033694755}
+  m_Size: {x: 0.496719, y: 0.96761465, z: 0.4288009}
+  m_Center: {x: 0.010274335, y: 0.5086109, z: 0.0033694752}
 --- !u!114 &187861107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16450,8 +16450,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8bc2f260f4fbe3438dcb9d81e09ff60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 2
-  maxHitPoints: 2
+  hitPoints: 13
+  maxHitPoints: 13
   damageTypes:
   - pistol
   - melee
@@ -22299,7 +22299,7 @@ MonoBehaviour:
   crtMode: 0
   crtLinesMode: 0
   screenLinesNum: 0
-  bleedAmount: 2.9
+  bleedAmount: 3.5
   bleedDebugOn: 0
   bleedCurveY:
     serializedVersion: 2
@@ -22391,12 +22391,12 @@ MonoBehaviour:
   noiseLinesNum: 240
   noiseQuantizeX: 1
   filmgrainOn: 1
-  filmGrainAmount: 0.029
+  filmGrainAmount: 0.018
   signalNoiseOn: 1
   signalNoiseAmount: 0.15
   signalNoisePower: 0.83
   tapeNoiseOn: 1
-  tapeNoiseTH: 0.63
+  tapeNoiseTH: 0.64
   tapeNoiseAmount: 1
   tapeNoiseSpeed: 1
   lineNoiseOn: 1

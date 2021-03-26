@@ -74,4 +74,10 @@ public class Yakuza_Boss : Interactable
         Game_Manager.globalGameManager.EndGame(yakuza_Thread);
 
     }
+
+    public void IchiDead()
+    {
+        _dialogueValue = 2;
+    }
+
 }
