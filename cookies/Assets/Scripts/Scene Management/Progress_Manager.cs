@@ -48,6 +48,9 @@ public class Progress_Manager : MonoBehaviour
     [Header("Glad Boys")]
     public OpenableInteractable normansDoor;
     public OpenableInteractable manifestoDoor;
+    public OpenableInteractable sacrificeDoor;
+    public GameObject bustedNormDoor;
+    public GameObject bustedManifestoDoor;
     [Space(10)]
 
 
@@ -96,10 +99,11 @@ public class Progress_Manager : MonoBehaviour
 
         if (_playersTotalProgress.totalCompletedPaths >= 7) // unlock Glad Boys after completing 7 threads
         {
-            UnlockDoors(normansDoor);
-            UnlockDoors(manifestoDoor);
-            OpenUnlockedDoors(normansDoor);
-            OpenUnlockedDoors(manifestoDoor);       
+            UnlockDoors(sacrificeDoor);
+            normansDoor.gameObject.SetActive(false);
+            manifestoDoor.gameObject.SetActive(false);
+            bustedManifestoDoor.SetActive(true);
+            bustedNormDoor.SetActive(true);
         }
 
         if (_playersTotalProgress.totalCompletedPaths >= 9)
@@ -118,9 +122,9 @@ public class Progress_Manager : MonoBehaviour
 
     void OpenUnlockedDoors(OpenableInteractable door)
     {
-        door.SetOpenToggle(0);
-        door.SetCloseToggle(1);
-        door.EnactOpening();
+        door.SetOpenToggle(1);
+        door.SetCloseToggle(0);
+        door.isOpened = true;
     }
 
     void EnableOrDisable(GameObject obj, bool act)

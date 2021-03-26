@@ -49,11 +49,9 @@ public class Crooked_Cop : Interactable
 
     public override void ConversationEndEvent()
     {
-        if (_dialogueValue == 0)
-        {
-            GetComponent<BoxCollider>().enabled = false;
-            _sinnerOpenable.isLocked = false;
-        }
+       GetComponent<BoxCollider>().enabled = false;
+       _sinnerOpenable.isLocked = false;
+
     }
 
 }

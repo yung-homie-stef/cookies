@@ -11,6 +11,8 @@ public class Skull_Thug : Interactable
     public GameObject criptsGun;
     public GameObject pigRoomSquad;
 
+    public AudioClip shotgun;
+
     [SerializeField]
     private string[] currentSentences;
     private Dialogue _dialogue;
@@ -68,6 +70,7 @@ public class Skull_Thug : Interactable
 
         _animator.enabled = false;
         GetComponent<BoxCollider>().enabled = false;
+        GetComponent<AudioSource>().PlayOneShot(shotgun);
 
         foreach (var body in childrenBody)
         {

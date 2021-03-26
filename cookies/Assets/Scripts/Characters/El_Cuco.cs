@@ -13,6 +13,7 @@ public class El_Cuco : Interactable
     public GameObject pigRoomDoor;
     public GameObject criptWalka;
     public GameObject swampHound;
+    public GameObject cop;
 
     [SerializeField]
     private int _dialogueValue;
@@ -58,6 +59,7 @@ public class El_Cuco : Interactable
         {
             // open door to hog killing room
             pigRoomDoor.GetComponent<OpenableInteractable>().isLocked = false;
+            cop.SetActive(false);
         }
         else if (_dialogueValue == 1)
         {

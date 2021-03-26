@@ -65,6 +65,7 @@ public class Enemy_Shoot : MonoBehaviour
     {
         gameObject.GetComponent<Animator>().SetTrigger("shooting");
         _notShooting = true;
+        GetComponent<AudioSource>().Play();
         
         if (Physics.Raycast(_gunmanRayStart, transform.forward, out _hit, _rayDistance))
         {    
