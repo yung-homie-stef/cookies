@@ -14,14 +14,16 @@ public class Cartel_Member : MonoBehaviour
         {
             membersAlive--;
             _dead = true;
+
+            if (membersAlive == 0)
+            {
+                // complete thread
+                StartCoroutine(CompleteCartelThread(5.0f));
+            }
             Debug.Log(membersAlive);
         }
 
-        if (membersAlive == 0)
-        {
-            // complete thread
-            StartCoroutine(CompleteCartelThread(5.0f));
-        }
+       
     }
 
     private IEnumerator CompleteCartelThread(float waitTime)
