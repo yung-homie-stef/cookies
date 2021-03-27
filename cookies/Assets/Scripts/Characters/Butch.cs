@@ -4,17 +4,42 @@ using UnityEngine;
 
 public class Butch : Interactable
 {
-    private AudioSource aSource;
+    public Set_of_Sentences[] sentenceSets;
+    public GameObject player;
+    public GameObject dialogueManager;
 
-    new void Start()
-    {
-        aSource = gameObject.GetComponent<AudioSource>();
-    }
+    [SerializeField]
+    private string[] currentSentences;
+    private Dialogue _dialogue;
+    public GameObject ringing;
+
 
     public override void InteractAction()
     {
-        if (aSource.enabled)
-        aSource.enabled = false;
+        _dialogue = dialogueManager.GetComponent<Dialogue>();
+        HandleDialogue(0);
+
+        if (ringing != null)
+        {
+            Destroy(ringing);
+        }
+    }
+
+    private void HandleDialogue(int setIndex)
+    {
+        currentSentences = sentenceSets[setIndex].sentences;
+        _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject, false);
+    }
+
+    private string[] UpdateDialogue(string[] lines)
+    {
+        string[] sentences = new string[lines.Length];
+
+        for (int i = 0; i < lines.Length; i++)
+        {
+            sentences[i] = lines[i];
+        }
+        return sentences;
     }
 
 }

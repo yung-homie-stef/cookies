@@ -25,6 +25,7 @@ public class Norman : Victim
     public GameObject rifle;
     public End_Condition gladBoysThread;
     public BoxCollider ar15;
+    public Animator blackOut;
 
     [SerializeField]
     private float _bossDistance;
@@ -235,6 +236,7 @@ public class Norman : Victim
             rifle.transform.parent = null;
             StartCoroutine(FadeBossMusic.StartFade(Audio_Manager.globalAudioManager.musicSoundArray[3].source, 5.0f, 0.0f));
             StartCoroutine(EndNormansThread(7.0f));
+            blackOut.SetBool("faded", true);
             _hasDied = true;
         }
     }

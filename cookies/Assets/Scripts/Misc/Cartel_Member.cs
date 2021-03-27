@@ -8,6 +8,8 @@ public class Cartel_Member : MonoBehaviour
     private bool _dead = false;
     public End_Condition pig_knuckles_Thread;
 
+    public Animator blackOut;
+
     public void ReduceMemberNumber()
     {
         if (!_dead)
@@ -19,6 +21,7 @@ public class Cartel_Member : MonoBehaviour
             {
                 // complete thread
                 StartCoroutine(CompleteCartelThread(5.0f));
+                blackOut.SetBool("faded", true);
             }
             Debug.Log(membersAlive);
         }

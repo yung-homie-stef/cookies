@@ -7,6 +7,7 @@ using UnityEngine;
 public class FootstepsSoundControl : MonoBehaviour
 {
     public AudioClip[] footStepSounds;
+    public AudioSource playerAudioSource;
 
     public void Step()
     {
@@ -16,6 +17,6 @@ public class FootstepsSoundControl : MonoBehaviour
 
     private void PlayFootstep(int stepNum)
     {
-        GetComponent<AudioSource>().PlayOneShot(footStepSounds[stepNum]);
+        playerAudioSource.PlayOneShot(footStepSounds[stepNum]);
     }
 }

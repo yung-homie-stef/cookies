@@ -97,6 +97,9 @@ public class Pause : MonoBehaviour
     public void GoToMainMenu()
     {
         Time.timeScale = 1.0f;
+        MainMenu.globalMainMenuManager.ResetFirstScreen();
+        Audio_Manager.globalAudioManager.PlaySound("intro", Audio_Manager.globalAudioManager.musicSoundArray);
+        Audio_Manager.globalAudioManager.musicSoundArray[0].source.Stop();
         SceneManager.LoadScene("Start");
     }
 
