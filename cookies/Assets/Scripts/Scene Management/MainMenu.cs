@@ -21,6 +21,11 @@ public class MainMenu : MonoBehaviour
         startButton.SetActive(false);
     }
 
+    private void Awake()
+    {
+        
+    }
+
     public void StartGame()
     {
         // load the next scene

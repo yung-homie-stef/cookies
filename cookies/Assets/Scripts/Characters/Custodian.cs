@@ -22,7 +22,7 @@ public class Custodian : Interactable
     private bool eventHappensWhenTalkingIsDone;
 
     private float timer = 0.0f;
-    private float wanderRadius = 3.0f;
+    private float wanderRadius = 10.0f;
     public float wanderTimer = 3.0f;
     private bool _dead = false;
 
@@ -45,10 +45,16 @@ public class Custodian : Interactable
 
         if (_animator.enabled == true)
         {
-            if (timer >= wanderTimer)
+            if (_agent.gameObject.transform.position == _agent.destination)
+            {
+                _animator.SetBool("isSweeping", true);
+            }
+
+            if (timer >= wanderTimer) // change position
             {
                 Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
                 _agent.SetDestination(newPos);
+                _animator.SetBool("isSweeping", false);
 
                 timer = 0;
             }
