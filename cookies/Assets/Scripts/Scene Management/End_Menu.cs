@@ -60,7 +60,6 @@ public class End_Menu : MonoBehaviour
 
     public void ReturnToMainMenu()
     {     
-        Game_Manager.globalGameManager.UpdateThreadTitles(threadNum);
         Audio_Manager.globalAudioManager.musicSoundArray[0].source.Stop();
         Audio_Manager.globalAudioManager.PlaySound("tape", Audio_Manager.globalAudioManager.intangibleSoundArray);
         Audio_Manager.globalAudioManager.PlaySound("intro", Audio_Manager.globalAudioManager.musicSoundArray);

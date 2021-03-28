@@ -45,6 +45,7 @@ public class Game_Manager : MonoBehaviour
 
     public Button[] vhsTapeButtons = new Button[10];
     public string[] vhsTapeTitles = new string[10];
+    public Text[] emptyTitles = new Text[10];
 
     public GameObject[] _endGameModels;
     private int _lastCompletedPath = -1;
@@ -76,6 +77,9 @@ public class Game_Manager : MonoBehaviour
         settingsScreen.SetActive(false);
         controlsScreen.SetActive(false);
         Debug.Log(Application.persistentDataPath);
+
+
+        CheckAndUpdateThreadTitles();
     }
 
     private void Update()
@@ -98,11 +102,6 @@ public class Game_Manager : MonoBehaviour
         {
             playerProgress = Save_Load_Test.LoadProgress();
         }
-    }
-
-    public void UpdateThreadTitles(int pathNum)
-    {
-        vhsTapeButtons[pathNum].transform.GetChild(0).GetComponent<Text>().text = vhsTapeTitles[pathNum];
     }
 
     public ProgressInformation GetProgressInformation()
@@ -135,12 +134,26 @@ public class Game_Manager : MonoBehaviour
             playerProgress.totalCompletedPaths++;
             playerProgress.completedPaths[pathID] = true; // this path is now complete
             playerProgress.pathNames[pathID] = pathName;
-            UpdateThreadTitles(pathID);
             Save_Load_Test.SaveProgress(playerProgress);
             
         }
 
         _lastCompletedPath = pathID;
+    }
+
+
+    void CheckAndUpdateThreadTitles()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            if (playerProgress.completedPaths[i])
+            {
+                vhsTapeButtons[i].gameObject.SetActive(true);
+                vhsTapeButtons[i].gameObject.transform.GetChild(0).GetComponent<Text>().text = vhsTapeTitles[i];
+                emptyTitles[i].gameObject.SetActive(false);
+            }
+        }
+
     }
 
 }
