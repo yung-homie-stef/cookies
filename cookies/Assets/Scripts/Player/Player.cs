@@ -191,11 +191,11 @@ public class Player : MonoBehaviour
 
         if (playerHealth == 0)
         {
-            Audio_Manager.globalAudioManager.PlaySound("rewind", Audio_Manager.globalAudioManager.intangibleSoundArray);
             deathScreen.enabled = true;
             rewindIcon.enabled = true;
             playerMovement.enabled = false;
             StartCoroutine(KillPlayer(2.0f));
+            Audio_Manager.globalAudioManager.PlaySound("rewind", Audio_Manager.globalAudioManager.intangibleSoundArray);
         }
     }
 
