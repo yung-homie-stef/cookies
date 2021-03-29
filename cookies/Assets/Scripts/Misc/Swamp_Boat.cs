@@ -30,6 +30,7 @@ public class Swamp_Boat : Interactable
                 player.transform.parent = actualBoatModel.transform;
                 blackOut.GetComponent<Animator>().SetBool("faded", true);
                 gameObject.GetComponent<Animator>().SetBool("leaving", true);
+                StartCoroutine(StartCredits(5.0f)) ;
             }
 
         }
@@ -60,5 +61,12 @@ public class Swamp_Boat : Interactable
 
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    private IEnumerator StartCredits(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
     }
 }

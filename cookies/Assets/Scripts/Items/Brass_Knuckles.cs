@@ -78,6 +78,7 @@ public class Brass_Knuckles : Action
                 weaponEquipText.text = GetComponent<AcquirableInteractable>().itemScriptableObj.itemName + " EQUIPPED";
                 weaponEquipText.enabled = true;
                 _inventory.inventoryUIScript.slots[_inventory.GetCurrentSlot()].removeButton.interactable = false;
+                Debug.Log(_inventory.GetCurrentSlot());
                 Audio_Manager.globalAudioManager.PlaySound("equip", Audio_Manager.globalAudioManager.intangibleSoundArray);
             }
         }
