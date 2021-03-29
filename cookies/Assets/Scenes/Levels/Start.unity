@@ -5577,6 +5577,7 @@ MonoBehaviour:
   gameTitle: {fileID: 1646952330}
   startMenu: {fileID: 1514032124}
   startButton: {fileID: 1687314655}
+  threadButton: {fileID: 1732179173}
   logo: {fileID: 1091515905}
 --- !u!1 &857341185
 GameObject:
@@ -11958,7 +11959,6 @@ GameObject:
   - component: {fileID: 1732179174}
   - component: {fileID: 1732179176}
   - component: {fileID: 1732179175}
-  - component: {fileID: 1732179177}
   m_Layer: 5
   m_Name: thread_button
   m_TagString: Untagged
@@ -12048,22 +12048,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1732179173}
   m_CullTransparentMesh: 0
---- !u!114 &1732179177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1732179173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8c20f35413d1214baf201f1a9d252dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameTitle: {fileID: 1646952330}
-  startMenu: {fileID: 1514032124}
-  startButton: {fileID: 995162140}
-  logo: {fileID: 0}
 --- !u!1 &1743930239
 GameObject:
   m_ObjectHideFlags: 0

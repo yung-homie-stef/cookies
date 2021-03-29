@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     public GameObject gameTitle;
     public GameObject startMenu;
     public GameObject startButton;
+    public GameObject threadButton;
     public GameObject logo;
 
     public static MainMenu globalMainMenuManager = null;
@@ -19,11 +20,23 @@ public class MainMenu : MonoBehaviour
         gameTitle.SetActive(false);
         startMenu.SetActive(true);
         startButton.SetActive(false);
+        threadButton.SetActive(true);
     }
 
     private void Awake()
     {
-        
+        if (globalMainMenuManager)
+        {
+            if (globalMainMenuManager != null)
+            {
+                Debug.Log("global main menu manager");
+                Debug.Log(globalMainMenuManager);
+                Destroy(gameObject);
+                return;
+            }
+        }
+
+        globalMainMenuManager = this;
     }
 
     public void StartGame()
@@ -36,15 +49,7 @@ public class MainMenu : MonoBehaviour
 
         logo.SetActive(false);
         startMenu.SetActive(false);
-
-
-        if (globalMainMenuManager)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        globalMainMenuManager = this;
+  
     }
 
 
@@ -61,7 +66,12 @@ public class MainMenu : MonoBehaviour
         Game_Manager.globalGameManager.settingsScreen.SetActive(false);
         startMenu.SetActive(true);
         Game_Manager.globalGameManager.tapes.SetActive(false);
-        logo.SetActive(true);
+      
+
+        if (SceneManager.GetActiveScene().name == "Start")
+        {
+            logo.SetActive(true);
+        }
     }
 
     public void CheckThreads()

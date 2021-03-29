@@ -19,6 +19,7 @@ public class Settings_Manager : MonoBehaviour
         if (globalSettingsManager != null)
         {
             Destroy(this.gameObject);
+            return;
         }
 
         globalSettingsManager = this;

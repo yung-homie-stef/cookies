@@ -30,7 +30,10 @@ public class Settings : MonoBehaviour
         if (globalSettingsCanvas != null)
         {
             Destroy(this.gameObject);
+            return;
         }
+
+        Debug.Log("something");
 
         globalSettingsCanvas = this;
         DontDestroyOnLoad(this.gameObject);
@@ -109,8 +112,11 @@ public class Settings : MonoBehaviour
 
     public void SetNoise(float noise)
     {
+        Debug.Log("bunger");
         _postVHSScript.tapeNoiseTH = noise;
+        Debug.Log(_postVHSScript);
         settingsManager.tapeNoiseTH = noise;
+        Debug.Log(settingsManager);
     }
 
 
