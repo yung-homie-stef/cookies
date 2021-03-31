@@ -19,6 +19,9 @@ public class Boss_Cutscene : MonoBehaviour
 
     public Victim[] bosses;
     public HealthBar[] healthbars;
+    public bool hasThingsToDelete;
+
+    public GameObject[] deleteThese;
 
     private Player _playerScript;
     private Movement _movementScript;
@@ -61,11 +64,20 @@ public class Boss_Cutscene : MonoBehaviour
             _movementScript.enabled = false;
             _inventoryScript.enabled = false;
 
+            if (hasThingsToDelete)
+            {
+                for (int i =0; i < deleteThese.Length; i++)
+                {
+                    deleteThese[i].SetActive(false);
+                }
+            }
+
             rawImg.texture = renderTex;
             cutscenePlayer.clip = cutscene;
             cutscenePlayer.targetTexture = renderTex;
             cutsceneCam.SetActive(true);
             cutscenePlayer.Play();
+
         }
     }
 
