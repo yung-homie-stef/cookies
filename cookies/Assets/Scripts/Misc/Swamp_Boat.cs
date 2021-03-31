@@ -66,6 +66,7 @@ public class Swamp_Boat : Interactable
     private IEnumerator StartCredits(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+        Audio_Manager.globalAudioManager.PlaySound("tape", Audio_Manager.globalAudioManager.intangibleSoundArray);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
     }

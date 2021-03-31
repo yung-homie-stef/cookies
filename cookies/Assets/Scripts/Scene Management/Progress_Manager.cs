@@ -18,6 +18,7 @@ public class Progress_Manager : MonoBehaviour
     [Header("A Floridian Film")]
     public OpenableInteractable studioDoor;
     public OpenableInteractable drugDoor;
+    public MeleeWeapon chainsaw;
     [Space(10)]
 
     [Header("Pig Knuckles")]
@@ -95,6 +96,11 @@ public class Progress_Manager : MonoBehaviour
         {
             cashier.threadAvailable = true; // unlock Crown Fried after completing 5 threads
             commercial.SetActive(true);
+        }
+
+        if (_playersTotalProgress.completedPaths[8])
+        {
+            chainsaw.gameObject.SetActive(true);
         }
 
         if (_playersTotalProgress.totalCompletedPaths >= 7) // unlock Glad Boys after completing 7 threads
