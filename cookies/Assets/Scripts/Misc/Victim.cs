@@ -109,6 +109,9 @@ public class Victim : MonoBehaviour
         {
             _contactPoint = other.gameObject;
             TakeDamage("melee", _contactPoint.transform.position, _contactPoint.transform.forward);
+
+            int meleeSound = Random.Range(1, 4);
+            Audio_Manager.globalAudioManager.PlaySound("flesh_" + meleeSound, Audio_Manager.globalAudioManager.meleeSoundArray);
         }
     }
 }

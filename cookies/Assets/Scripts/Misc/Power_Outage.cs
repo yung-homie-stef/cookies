@@ -16,7 +16,7 @@ public class Power_Outage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        wayne.gameObject.SetActive(false);
+        mel.gameObject.SetActive(false);
         wayne.gameObject.SetActive(false);
 
         if (other.tag == "Player")

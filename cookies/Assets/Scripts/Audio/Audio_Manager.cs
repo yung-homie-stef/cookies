@@ -12,6 +12,7 @@ public class Audio_Manager : MonoBehaviour
 
     public Sound[] intangibleSoundArray;
     public Sound[] musicSoundArray;
+    public Sound[] meleeSoundArray;
 
     void Awake()
     {
@@ -45,6 +46,17 @@ public class Audio_Manager : MonoBehaviour
         }
 
         foreach (Sound s in musicSoundArray)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.outputAudioMixerGroup = musicMixer;
+
+            s.source.clip = s.intangibleAudioSources;
+
+            s.source.volume = s.volume;
+            s.source.loop = s.loop;
+        }
+
+        foreach (Sound s in meleeSoundArray)
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.outputAudioMixerGroup = musicMixer;
