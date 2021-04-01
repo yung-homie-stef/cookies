@@ -10,12 +10,16 @@ public class Player : MonoBehaviour
     public RaycastHit playerRaycastHit;
     public bool isRoided;
     public GameObject fistHitbox;
+
     public Image cursorImage;
     public Sprite interactSprite;
     public Sprite originalHUDDot;
     public GameObject inventoryUI;
     public Item lastUsedItem;
     public Inventory _inventory;
+
+    public GameObject damageFlash;
+    public AudioClip damage;
 
     public int playerHealth;
     public Image deathScreen;
@@ -188,6 +192,10 @@ public class Player : MonoBehaviour
     {
         playerHealth--;
         Debug.Log(playerHealth);
+        damageFlash.SetActive(true);
+        damageFlash.GetComponent<AudioSource>().PlayOneShot(damage);
+        StartCoroutine(RemoveDamage(0.5f));
+
 
         if (playerHealth == 0)
         {
@@ -208,5 +216,11 @@ public class Player : MonoBehaviour
         deathScreen.enabled = false;
         rewindIcon.enabled = false;
         respawnScript.ResetBossFight();
+    }
+
+    private IEnumerator RemoveDamage(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        damageFlash.SetActive(false);
     }
 }
