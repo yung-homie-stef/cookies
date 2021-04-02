@@ -34,7 +34,7 @@ public class Gun_Button : Interactable
 
             blood.SetActive(true);
 
-            victim.GetComponent<Victim>().TakeDamage("shotgun", victim.transform.position, shotgun.transform.forward);
+            victim.GetComponent<Victim>().TakeDamage("shotgun", 1, victim.transform.position, shotgun.transform.forward);
             victimAudio.Stop();
             gameObject.GetComponent<AudioSource>().Play();
             _hasFired = true;

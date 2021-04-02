@@ -61,13 +61,13 @@ public class Victim : MonoBehaviour
 
     }
 
-    public virtual void TakeDamage(string dmgType, Vector3 point = default(Vector3), Vector3 direction = default(Vector3))
+    public virtual void TakeDamage(string dmgType, int dmgNum, Vector3 point = default(Vector3), Vector3 direction = default(Vector3))
     {
         for (int i=0; i < damageTypes.Length; i++)
         {
             if (damageTypes[i] == dmgType)
             {
-                hitPoints--;
+                hitPoints -= dmgNum;
 
                 if (isBoss)
                 {
@@ -96,6 +96,11 @@ public class Victim : MonoBehaviour
             body.isKinematic = false;
         }
 
+        if (GetComponent<Interactable>())
+        {
+            GetComponent<Interactable>().enabled = false;
+        }
+
         // if victim has a navmesh disable it so it doesn't get wacky
         if (GetComponent<NavMeshAgent>())
         {
@@ -108,7 +113,7 @@ public class Victim : MonoBehaviour
         if (other.tag == "Hitbox")
         {
             _contactPoint = other.gameObject;
-            TakeDamage("melee", _contactPoint.transform.position, _contactPoint.transform.forward);
+            TakeDamage("melee", _contactPoint.GetComponent<PlayerDamageRef>().GetPlayerDamage(), _contactPoint.transform.position, _contactPoint.transform.forward);
 
             int meleeSound = Random.Range(1, 4);
             Audio_Manager.globalAudioManager.PlaySound("flesh_" + meleeSound, Audio_Manager.globalAudioManager.meleeSoundArray);

@@ -98,7 +98,12 @@ public class Progress_Manager : MonoBehaviour
             commercial.SetActive(true);
         }
 
-        if (_playersTotalProgress.completedPaths[8])
+        if (_playersTotalProgress.completedPaths[8]) // unlock chainsaw after completing Crown Fried
+        {
+            chainsaw.gameObject.SetActive(true);
+        }
+
+        if (_playersTotalProgress.completedPaths[2]) // unlock items after completing A Flordian Film
         {
             chainsaw.gameObject.SetActive(true);
         }

@@ -38,7 +38,7 @@ public class Explosive : MonoBehaviour
         {
             if (coll[i].gameObject.GetComponent<Victim>())
             {
-                coll[i].gameObject.GetComponent<Victim>().TakeDamage("explosive");
+                coll[i].gameObject.GetComponent<Victim>().TakeDamage("explosive", 1);
                 coll[i].gameObject.GetComponent<Rigidbody>().AddExplosionForce(explosiveForce, transform.position, explosiveRadius); 
             }
         }

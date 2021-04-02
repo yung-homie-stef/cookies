@@ -311,7 +311,7 @@ public class Louis_Ray : Victim
         if (other.tag == "ChainsawHBox")
         {
             _contactPoint = other.gameObject;
-            TakeDamage("chainsaw", _contactPoint.transform.position, _contactPoint.transform.forward);
+            TakeDamage("chainsaw", _contactPoint.GetComponent<PlayerDamageRef>().GetPlayerDamage(), _contactPoint.transform.position, _contactPoint.transform.forward);
         }
     }
 }

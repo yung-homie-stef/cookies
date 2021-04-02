@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public Camera playerCamera;
     public RaycastHit playerRaycastHit;
     public bool isRoided;
+    public static int meleeDamage;
+    public static bool voodoo = false;
     public GameObject fistHitbox;
 
     public Image cursorImage;
@@ -41,7 +43,9 @@ public class Player : MonoBehaviour
         Debug.Log(_inventoryUIScript);
         _inventory = GetComponent<Inventory>();
         _animator = GetComponent<Animator>();
+
         isRoided = false;
+        meleeDamage = 1;
        // DontDestroyOnLoad(gameObject);
     }
 

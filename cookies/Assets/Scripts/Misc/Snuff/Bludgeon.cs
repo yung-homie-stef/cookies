@@ -39,7 +39,7 @@ public class Bludgeon : MonoBehaviour
                 else 
                 {
                     PlayCrunchNoise();
-                    GetComponent<Victim>().TakeDamage("melee", _contactPoint.transform.position, _contactPoint.transform.forward * 0.2f);
+                    GetComponent<Victim>().TakeDamage("melee", 1, _contactPoint.transform.position, _contactPoint.transform.forward * 0.2f);
                     StartCoroutine(KillSound(1.0f));
                     KillMans();
                 }
