@@ -16,6 +16,8 @@ public class Brass_Knuckles : Action
     private Animator _animator;
     private Vector3 _localScale;
 
+    private Player _playerScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,7 @@ public class Brass_Knuckles : Action
         _inventory = player.GetComponent<Inventory>();
         _animator = player.GetComponent<Animator>();
         _localScale = gameObject.transform.localScale;
+        _playerScript = player.GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -57,29 +60,34 @@ public class Brass_Knuckles : Action
 
                 weaponEquipText.text = "";
                 weaponEquipText.enabled = false;
-                _inventory.inventoryUIScript.slots[_inventory.GetCurrentSlot()].removeButton.interactable = true;
+                _inventory.inventoryUIScript.slots[itemIndex].removeButton.interactable = true;
+                _playerScript.equipped = false;
                 Audio_Manager.globalAudioManager.PlaySound("unequip", Audio_Manager.globalAudioManager.intangibleSoundArray);
             }
             else if (_wielding == false)
             {
-                _inventory.isWeaponEquipped = true;
-                // create a duplicate of the weapon that rests in the player's hand
+                if (!_playerScript.equipped)
+                {
+                    _inventory.isWeaponEquipped = true;
+                    // create a duplicate of the weapon that rests in the player's hand
 
-                _duplicate = Instantiate(gameObject, playerPalm.transform.position, player.transform.rotation);
-                _duplicate.GetComponent<BoxCollider>().enabled = false;
-                _duplicate.gameObject.tag = "Hitbox";
-                _duplicate.transform.Rotate(weaponRotation);
-                _duplicate.transform.localScale = _localScale;
-                _duplicate.layer = 0;
-                _duplicate.transform.parent = playerPalm.transform; // make the weapon a child of the palm
-                _duplicate.transform.localPosition = new Vector3(weaponRepositioning.x, weaponRepositioning.y, weaponRepositioning.z);
-                _wielding = true;
+                    _duplicate = Instantiate(gameObject, playerPalm.transform.position, player.transform.rotation);
+                    _duplicate.GetComponent<BoxCollider>().enabled = false;
+                    _duplicate.gameObject.tag = "Hitbox";
+                    _duplicate.transform.Rotate(weaponRotation);
+                    _duplicate.transform.localScale = _localScale;
+                    _duplicate.layer = 0;
+                    _duplicate.transform.parent = playerPalm.transform; // make the weapon a child of the palm
+                    _duplicate.transform.localPosition = new Vector3(weaponRepositioning.x, weaponRepositioning.y, weaponRepositioning.z);
+                    _wielding = true;
+                    _playerScript.equipped = true;
 
-                weaponEquipText.text = GetComponent<AcquirableInteractable>().itemScriptableObj.itemName + " EQUIPPED";
-                weaponEquipText.enabled = true;
-                _inventory.inventoryUIScript.slots[_inventory.GetCurrentSlot()].removeButton.interactable = false;
-                Debug.Log(_inventory.GetCurrentSlot());
-                Audio_Manager.globalAudioManager.PlaySound("equip", Audio_Manager.globalAudioManager.intangibleSoundArray);
+                    weaponEquipText.text = GetComponent<AcquirableInteractable>().itemScriptableObj.itemName + " EQUIPPED";
+                    weaponEquipText.enabled = true;
+                    _inventory.inventoryUIScript.slots[itemIndex].removeButton.interactable = false;
+                    Debug.Log(_inventory.GetCurrentSlot());
+                    Audio_Manager.globalAudioManager.PlaySound("equip", Audio_Manager.globalAudioManager.intangibleSoundArray);
+                }
             }
         }
     }

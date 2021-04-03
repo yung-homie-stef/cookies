@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public bool isRoided;
     public static int meleeDamage;
     public static bool voodoo = false;
+    public bool equipped = false;
+
     public GameObject fistHitbox;
 
     public Image cursorImage;
