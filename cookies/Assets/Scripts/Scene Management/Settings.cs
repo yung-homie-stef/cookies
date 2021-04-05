@@ -141,7 +141,11 @@ public class Settings : MonoBehaviour
     {
         Game_Manager.globalGameManager.settingsScreen.SetActive(false);
         _lastMenu.SetActive(true);
-        logo.SetActive(true);
+
+        if (SceneManager.GetActiveScene().name == "Start")
+        {
+            logo.SetActive(true);
+        }
     }
 
     public static Settings GetSettingsCanvas()
