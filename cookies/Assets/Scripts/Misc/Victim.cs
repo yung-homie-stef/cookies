@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Victim : MonoBehaviour
 {
-    public static float multiplier = 10;
+    public static float multiplier = 5;
     public int hitPoints;
     public int maxHitPoints;
     public string[] damageTypes;

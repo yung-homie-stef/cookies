@@ -19,6 +19,7 @@ public class Progress_Manager : MonoBehaviour
     public OpenableInteractable studioDoor;
     public OpenableInteractable drugDoor;
     public MeleeWeapon chainsaw;
+    public GameObject unlockedItems;
     [Space(10)]
 
     [Header("Pig Knuckles")]
@@ -105,7 +106,7 @@ public class Progress_Manager : MonoBehaviour
 
         if (_playersTotalProgress.completedPaths[2]) // unlock items after completing A Flordian Film
         {
-            chainsaw.gameObject.SetActive(true);
+            unlockedItems.gameObject.SetActive(true);
         }
 
         if (_playersTotalProgress.totalCompletedPaths >= 7) // unlock Glad Boys after completing 7 threads

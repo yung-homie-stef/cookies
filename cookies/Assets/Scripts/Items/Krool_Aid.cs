@@ -12,6 +12,8 @@ public class Krool_Aid : Action
     public GameObject UFO;
     public AudioClip sipSFX;
 
+    public bool poisoned = false;
+
     [HideInInspector]
     public Vector3 preTeleportPosition;
 
@@ -40,28 +42,14 @@ public class Krool_Aid : Action
             preTeleportPosition = player.transform.position;
             hasTeleported = true;
             _audioSource.PlayOneShot(sipSFX);
+            _animator.SetBool("faded", true);
 
-            for (int i = 0; i < _inventory.inventoryUISlots.Length; i++)
+            if (poisoned)
             {
-                if (_inventory.playerInventoryItems[i] != null)
-                {
-                    _tags = _inventory.playerInventoryItems[i].GetComponent<Tags>();
-
-                    for (int j = 0; j < _tags.tags.Length; j++)
-                    {
-                        if (_tags.tags[j] == "Rat Posion")
-                        {
-                            Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
-                            _sametScript.hasTranslated = true;
-
-
-                            _inventory.isSlotFull[i] = false;
-                            Destroy(_inventory.playerInventoryItems[i]);
-                            break;
-                        }
-                    }
-                }
+                Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
+                _sametScript.hasTranslated = true;
             }
+                   
         }
     }
 

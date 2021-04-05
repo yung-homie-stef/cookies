@@ -11,6 +11,7 @@ public class Brownie_Pan : Interactable
     public GameObject ovenDoor;
     public Text noticeText;
     public AudioClip oven_ding;
+    public bool swamped = false;
 
     private Inventory _inventory;
     private Notice _notice;
@@ -65,12 +66,12 @@ public class Brownie_Pan : Interactable
         if (_browniePanInteractable.requiredTags[0] == "Batter")
         {
             _hasBatter = true;
-           StartCoroutine(ChangeBrownieRequirements(0.5f));
-            
+              
         }
-        else if (_browniePanInteractable.requiredTags[0] == "CBD")
+        else if (_browniePanInteractable.requiredTags[0] == "CBD" && swamped)
         {
             _hasCBD = true;
+            ChangeBrownieRequirements(0.5f);
         }
 
     }
@@ -79,10 +80,10 @@ public class Brownie_Pan : Interactable
     {
         yield return new WaitForSeconds(waitTime);
 
-        _brownieMessage = "HE SAID HE WANTED BROWNIES BAKED WITH CBD";
+        _brownieMessage = "JUST NEED THE BATTER NOW";
         reqType = RequirementType.Single;
         requiredTags = new string[1];
-        requiredTags[0] = "CBD";
+        requiredTags[0] = "Batter";
     }
 
     public override void FailMessage()

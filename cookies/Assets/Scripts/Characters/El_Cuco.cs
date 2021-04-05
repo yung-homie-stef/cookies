@@ -16,7 +16,7 @@ public class El_Cuco : Interactable
     public GameObject cop;
 
     [SerializeField]
-    private int _dialogueValue;
+    private int _dialogueValue = 0;
     private string[] currentSentences;
     private Dialogue _dialogue;
     private bool eventHappensWhenTalkingIsDone;

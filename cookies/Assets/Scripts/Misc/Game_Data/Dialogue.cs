@@ -111,6 +111,7 @@ public class Dialogue : MonoBehaviour
     private void CutSpeakerOff()
     {
         textDisplay.text = "";
+        textDisplay.enabled = false;
         _canAdvance = false;
         dialogueIndex = 0;
 
@@ -124,5 +125,6 @@ public class Dialogue : MonoBehaviour
 
         _speaker.tag = "Interactable";
     }
+
 
 }

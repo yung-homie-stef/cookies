@@ -269,7 +269,7 @@ public class Ichi : Victim
             doorLocker.SetActive(false);
             sadomasoDoor.isLocked = false;
             StartCoroutine(GiveIchisHead(1.5f));
-            StartCoroutine(FadeBossMusic.StartFade(Audio_Manager.globalAudioManager.musicSoundArray[2].source, 5.0f, 0.0f));
+            StartCoroutine(FadeBossMusic.StartFade(Audio_Manager.globalAudioManager.musicSoundArray[3].source, 5.0f, 0.0f));
             healthbar.enabled = false;
             _isDead = true;
         }

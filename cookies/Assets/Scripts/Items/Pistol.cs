@@ -25,6 +25,8 @@ public class Pistol : Action
     private Animator _animator;
     private RaycastHit _killedPerson;
 
+    private Player _playerScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,8 @@ public class Pistol : Action
         _inventory = player.GetComponent<Inventory>();
         _animator = player.GetComponent<Animator>();
         _localScale = gameObject.transform.localScale;
+
+        _playerScript = player.GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -64,6 +68,7 @@ public class Pistol : Action
                 weaponEquipText.text = "";
                 weaponEquipText.enabled = false;
                 _inventory.inventoryUIScript.slots[_inventory.GetCurrentSlot()].removeButton.interactable = true;
+                _playerScript.equipped = false;
                 Audio_Manager.globalAudioManager.PlaySound("unequip", Audio_Manager.globalAudioManager.intangibleSoundArray);
                
 
@@ -87,6 +92,7 @@ public class Pistol : Action
                 weaponEquipText.enabled = true;
                 weaponEquipText.text = gunName + " EQUIPPED";
                 _inventory.inventoryUIScript.slots[_inventory.GetCurrentSlot()].removeButton.interactable = false;
+                _playerScript.equipped = true;
                 Audio_Manager.globalAudioManager.PlaySound("equip", Audio_Manager.globalAudioManager.intangibleSoundArray);
             }
         }

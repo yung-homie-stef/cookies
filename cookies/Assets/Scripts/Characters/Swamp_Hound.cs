@@ -12,6 +12,8 @@ public class Swamp_Hound : Interactable
     public bool hasSpoken;
     public Text noticeText;
 
+    public Brownie_Pan brownieScript;
+
     public int _dialogueValue;
     private string[] currentSentences;
     private Dialogue _dialogue;
@@ -66,6 +68,10 @@ public class Swamp_Hound : Interactable
             requiredTags = new string[1];
             requiredTags[0] = "Cosmic Brownies";
             _dialogueValue = 1;
+
+            brownieScript.reqType = RequirementType.Single;
+            brownieScript.requiredTags = new string[1];
+            requiredTags[0] = "CBD";
         }
 
         if (_dialogueValue == 2)
