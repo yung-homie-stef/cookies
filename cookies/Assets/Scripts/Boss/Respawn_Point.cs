@@ -25,9 +25,13 @@ public class Respawn_Point : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // set this transform as player's respawn point
-        playerScript.respawnPoint = transform;
-        playerScript.respawnScript = this;
+
+        if (other.tag == "Player")
+        {
+            // set this transform as player's respawn point
+            playerScript.respawnPoint = transform;
+            playerScript.respawnScript = this;
+        }
  
     }
 

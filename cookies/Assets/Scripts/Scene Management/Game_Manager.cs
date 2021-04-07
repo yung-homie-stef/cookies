@@ -142,7 +142,7 @@ public class Game_Manager : MonoBehaviour
     }
 
 
-    void CheckAndUpdateThreadTitles()
+    public void CheckAndUpdateThreadTitles()
     {
         for (int i = 0; i < 10; i++)
         {

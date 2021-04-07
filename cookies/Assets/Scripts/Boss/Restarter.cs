@@ -7,6 +7,7 @@ public class Restarter : MonoBehaviour
     public HealthBar[] bars;
     public Victim[] boss;
     public string themeName;
+    public int themeIndex;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -44,6 +45,7 @@ public class Restarter : MonoBehaviour
                 }
             }
 
+            Audio_Manager.globalAudioManager.musicSoundArray[themeIndex].source.Stop();
             Audio_Manager.globalAudioManager.PlaySound(themeName, Audio_Manager.globalAudioManager.musicSoundArray);
             gameObject.SetActive(false);
         }

@@ -111,7 +111,6 @@ public class Dialogue : MonoBehaviour
     private void CutSpeakerOff()
     {
         textDisplay.text = "";
-        textDisplay.enabled = false;
         _canAdvance = false;
         dialogueIndex = 0;
 
