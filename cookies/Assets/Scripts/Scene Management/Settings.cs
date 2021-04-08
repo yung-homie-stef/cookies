@@ -112,10 +112,9 @@ public class Settings : MonoBehaviour
 
     public void SetNoise(float noise)
     {
-        Debug.Log("bunger");
-        _postVHSScript.tapeNoiseTH = noise;
+        _postVHSScript.tapeNoiseTH = noise * -1;
         Debug.Log(_postVHSScript);
-        settingsManager.tapeNoiseTH = noise;
+        settingsManager.tapeNoiseTH = noise * -1;
         Debug.Log(settingsManager);
     }
 

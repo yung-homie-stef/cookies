@@ -14,6 +14,10 @@ public class Pause : MonoBehaviour
     public GameObject quitOptions;
     public GameObject mainMenuOptions;
 
+    public GameObject COCKBLOCKER;
+
+    public GameObject inventory_UI;
+
     private VideoPlayer _videoPlayer;
 
     private void Start()
@@ -29,11 +33,13 @@ public class Pause : MonoBehaviour
             if (isPaused)
             {
                 ResumeGame();
+                
                 Game_Manager.globalGameManager.settingsScreen.SetActive(false);
                 Game_Manager.globalGameManager.controlsScreen.SetActive(false);
             }
             else
             {
+
                 PauseGame();
             }
         }
@@ -49,6 +55,7 @@ public class Pause : MonoBehaviour
         _videoPlayer.Play();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        COCKBLOCKER.SetActive(false);
     }
 
     void PauseGame()
@@ -57,9 +64,11 @@ public class Pause : MonoBehaviour
         isPaused = true;
         HUDDot.SetActive(false);
         pauseCanvas.SetActive(true);
+        inventory_UI.SetActive(false);
         _videoPlayer.Pause();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        COCKBLOCKER.SetActive(true);
     }
 
     public void OpenSettings()
@@ -112,5 +121,10 @@ public class Pause : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void LiterallyFuckingNothing()
+    {
+        Debug.Log("veiny chungus");
     }
 }

@@ -67,7 +67,7 @@ public class Pistol : Action
 
                 weaponEquipText.text = "";
                 weaponEquipText.enabled = false;
-                _inventory.inventoryUIScript.slots[_inventory.GetCurrentSlot()].removeButton.interactable = true;
+                _inventory.inventoryUIScript.slots[itemIndex].removeButton.interactable = true;
                 _playerScript.equipped = false;
                 Audio_Manager.globalAudioManager.PlaySound("unequip", Audio_Manager.globalAudioManager.intangibleSoundArray);
                
@@ -91,7 +91,7 @@ public class Pistol : Action
 
                 weaponEquipText.enabled = true;
                 weaponEquipText.text = gunName + " EQUIPPED";
-                _inventory.inventoryUIScript.slots[_inventory.GetCurrentSlot()].removeButton.interactable = false;
+                _inventory.inventoryUIScript.slots[itemIndex].removeButton.interactable = false;
                 _playerScript.equipped = true;
                 Audio_Manager.globalAudioManager.PlaySound("equip", Audio_Manager.globalAudioManager.intangibleSoundArray);
             }

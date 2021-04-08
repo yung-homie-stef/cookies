@@ -11,6 +11,7 @@ public class Krool_Aid : Action
     public GameObject Samet;
     public GameObject UFO;
     public AudioClip sipSFX;
+    public GameObject inventoryUI;
 
     public bool poisoned = false;
 
@@ -49,7 +50,9 @@ public class Krool_Aid : Action
                 Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
                 _sametScript.hasTranslated = true;
             }
-                   
+
+            inventoryUI.GetComponent<Inventory_UI>().DisableUI();
+
         }
     }
 
