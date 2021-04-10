@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Yakuza_Boss : Interactable
 {
@@ -13,12 +14,16 @@ public class Yakuza_Boss : Interactable
     public End_Condition yakuza_Thread;
     public GameObject blackOut;
 
+    public Text hintText;
+
     [SerializeField]
     private int _dialogueValue;
     private string[] currentSentences;
     private Dialogue _dialogue;
     private bool eventHappensWhenTalkingIsDone;
     private OpenableInteractable _sovietOpenable;
+
+    private bool _hasHinted = false;
 
     // Start is called before the first frame update
     new void Start()
@@ -58,6 +63,12 @@ public class Yakuza_Boss : Interactable
             deadSoviets.SetActive(true);
             livingSoviets.SetActive(false);
             _dialogueValue++;
+
+            if (!_hasHinted)
+            {
+                hintText.text += "\n- Soviets may know something";
+                _hasHinted = true;
+            }
         }
 
         if (_dialogueValue == 2)

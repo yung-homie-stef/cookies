@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Progress_Manager : MonoBehaviour
 {
     public Player playerMans;
+    public Text hintText;
 
     [Header("Heaven's Front Porch")]
     public GameObject glock;
@@ -78,6 +80,7 @@ public class Progress_Manager : MonoBehaviour
             UnlockDoors(studioDoor);
             UnlockDoors(rapperDoor); // unlocks Pig Knuckles and A Floridian Film
             UnlockDoors(drugDoor);
+            hintText.text += "\n- Bathroom door fixed";
         }
 
         if (_playersTotalProgress.completedPaths[3])  // completed Heaven's Front Porch thread
@@ -85,6 +88,8 @@ public class Progress_Manager : MonoBehaviour
             ichisDoor.tag = "Interactable";
             killGraffiti.SetActive(true);
             EnableOrDisable(blockade, false); // Unlocks Shinogi
+            hintText.text += "\n- Room 303 garbage collection";
+
         }
 
         if (_playersTotalProgress.totalCompletedPaths >= 3)

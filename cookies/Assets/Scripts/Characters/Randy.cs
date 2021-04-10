@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Randy : Interactable
 {
@@ -9,6 +10,8 @@ public class Randy : Interactable
     public GameObject dialogueManager;
     public GameObject CD;
     public bool isScared;
+
+    public Text hintText;
 
     [SerializeField]
     private string[] currentSentences;

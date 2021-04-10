@@ -16,10 +16,13 @@ public class Salvador : Interactable
     public AudioClip eatSound;
     public Text noticeText;
 
+    public Text hintText;
+
     [SerializeField]
     private int _dialogueValue;
 
-   
+    private bool _hasHinted = false;
+
     public int _sequenceNumber;
     private string[] currentSentences;
     private Dialogue _dialogue;
@@ -120,6 +123,11 @@ public class Salvador : Interactable
         if (_sequenceNumber == 0 || _sequenceNumber == 1 || _sequenceNumber == 2 || _sequenceNumber == 3 ||
             _sequenceNumber == 4 || _sequenceNumber == 5)
         {
+            if (!_hasHinted)
+            {
+                hintText.text += "\n- The rats are hungry";
+                _hasHinted = true;
+            }
             CommandPlayerToGetMore();
         }
         else if (_sequenceNumber == 6)
