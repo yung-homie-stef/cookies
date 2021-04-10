@@ -5,6 +5,9 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public float playerSpeed;
+    private float baseSpeed;
+    private float sprintSpeed = 0.4f;
+
     public bool playerMovementEnabled = true;
   
     private float _translation;
@@ -17,6 +20,8 @@ public class Movement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         _animator = this.GetComponent<Animator>();
+
+        baseSpeed = playerSpeed;
 
         if (_playerRB = GetComponent<Rigidbody>())
         {
@@ -62,6 +67,13 @@ public class Movement : MonoBehaviour
 
             _playerRB.AddForce(movementDirection, ForceMode.VelocityChange);
         }
+
+        if (Input.GetButton("Sprint"))
+        {
+            playerSpeed = baseSpeed + sprintSpeed;
+        }
+        else
+            playerSpeed = baseSpeed;
     }
 
     private void Update()

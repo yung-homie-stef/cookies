@@ -71,7 +71,6 @@ public class Player : MonoBehaviour
             Use();
         }
 
-
     }
 
     private void FixedUpdate()

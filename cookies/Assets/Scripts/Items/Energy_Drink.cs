@@ -26,7 +26,7 @@ public class Energy_Drink : Action
         if (GetComponent<AcquirableInteractable>().canNowUse)
         {
             GetComponent<AudioSource>().PlayOneShot(drinkSound);
-            _movement.playerSpeed *= 2; // become faster
+            _movement.playerSpeed += .4f; // become faster
             _notice.ChangeText(newText, 6.0f);
 
             Inventory.instance.inventoryUIScript.slots[itemIndex].SetHeaderToBlank();
