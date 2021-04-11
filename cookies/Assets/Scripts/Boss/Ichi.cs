@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Ichi : Victim
 {
@@ -32,6 +33,8 @@ public class Ichi : Victim
     public GameObject doorLocker;
     public OpenableInteractable sadomasoDoor;
     public float throwForce = 50f;
+
+    public Text hintText;
 
     private GameObject _contactPoint;
 
@@ -298,6 +301,7 @@ public class Ichi : Victim
         _yakuzaScript.IchiDead();
         headItem.GetComponent<Interactable>().InteractAction(); // give players the key if custodian is killed
         headItem.tag = "Interactable";
+        hintText.text += "\n- Return to sender";
     }
 
     private IEnumerator SetIchiToCrawl(float waitTime)

@@ -13,6 +13,8 @@ public class Randy : Interactable
 
     public Text hintText;
 
+    private bool _hasHinted = false;
+
     [SerializeField]
     private string[] currentSentences;
     private Dialogue _dialogue;
@@ -80,5 +82,18 @@ public class Randy : Interactable
         CD.tag = "Interactable";
     }
 
-   
+    public override void ConversationEndEvent()
+    {
+        if (!isScared)
+        {
+            if (!_hasHinted)
+            {
+                hintText.text += "\n- 212";
+                hintText.text += "\n- Crack ROCKS";
+                _hasHinted = true;
+            }
+        }
+    }
+
+
 }

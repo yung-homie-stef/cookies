@@ -14,6 +14,10 @@ public class Swamp_Hound : Interactable
 
     public Brownie_Pan brownieScript;
 
+    public Text hintText;
+
+    private bool _hasHinted = false;
+
     public int _dialogueValue;
     private string[] currentSentences;
     private Dialogue _dialogue;
@@ -72,6 +76,12 @@ public class Swamp_Hound : Interactable
             brownieScript.reqType = RequirementType.Single;
             brownieScript.requiredTags = new string[1];
             requiredTags[0] = "CBD";
+
+            if (!_hasHinted)
+            {
+                hintText.text += "\n- I've got an oven";
+                _hasHinted = true;
+            }
         }
 
         if (_dialogueValue == 2)

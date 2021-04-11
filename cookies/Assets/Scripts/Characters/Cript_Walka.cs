@@ -14,6 +14,10 @@ public class Cript_Walka : Interactable
     public bool hasSpoken;
     public Text noticeText;
 
+    public Text hintText;
+
+    private bool _hasHinted = false;
+
     public int _dialogueValue;
     private string[] currentSentences;
     private Dialogue _dialogue;
@@ -76,6 +80,11 @@ public class Cript_Walka : Interactable
             requiredTags = new string[1];
             requiredTags[0] = "Cookies";
             _dialogueValue = 1;
+
+            if (!_hasHinted)
+            {
+                hintText.text += "\n- COOKIES Kush Strain";
+            }
         }
 
         if (_dialogueValue == 2)
@@ -89,6 +98,7 @@ public class Cript_Walka : Interactable
         {
             // spawn skull gangster
             skullGangster.SetActive(true);
+            _hasHinted = false;
         }
 
         if (_dialogueValue == 4)
@@ -100,6 +110,11 @@ public class Cript_Walka : Interactable
             }
 
             killingUnit.SetActive(true);
+
+            if (!_hasHinted)
+            {
+                hintText.text += "\n- Make the Sinnerz repent";
+            }
         }
     }
 

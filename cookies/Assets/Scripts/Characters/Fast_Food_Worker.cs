@@ -14,6 +14,10 @@ public class Fast_Food_Worker : Interactable
     public GameObject blackOut;
     public GameObject bottle;
 
+    public Text hintText;
+
+    private bool _hasHinted = false;
+
     [SerializeField]
     public int _dialogueValue;
     private string[] currentSentences;
@@ -62,6 +66,12 @@ public class Fast_Food_Worker : Interactable
         if (_dialogueValue == 1)
         {
             bottle.tag = "Interactable";
+
+            if (!_hasHinted)
+            {
+                hintText.text += "\n- Sleepy narcotics";
+                hintText.text += "\n- Manager's porn addiction";
+            }
         }
     }
 

@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Dealer : Interactable
 {
     public GameObject dialogueManager;
     public Set_of_Sentences[] sentenceSets;
+
+    public Text hintText;
 
     private Dialogue _dialogue;
     private bool eventHappensWhenTalkingIsDone;
@@ -52,6 +55,7 @@ public class Dealer : Interactable
     {
         GetComponent<Animator>().SetBool("dead", true);
         GetComponent<BoxCollider>().enabled = false;
+        hintText.text += "\n- GET OUT GET OUT GET OUT";
     }
 
 }

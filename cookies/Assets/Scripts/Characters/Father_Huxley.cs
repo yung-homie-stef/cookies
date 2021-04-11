@@ -15,6 +15,8 @@ public class Father_Huxley : Interactable
     public GameObject heartKey;
     public Text noticeText;
 
+    public Text hintText;
+
     [SerializeField]
     public int dialogueValue;
     private string[] currentSentences;
@@ -26,6 +28,8 @@ public class Father_Huxley : Interactable
     private bool eventHappensWhenTalkingIsDone;
     private bool needsBomb = false;
     private string failMessage;
+
+    private bool _hasHinted = false;
 
     // Start is called before the first frame update
     new void Start()
@@ -98,12 +102,18 @@ public class Father_Huxley : Interactable
             _requiresPayment = true;
             failMessage = "You must first make an offering. Any form of currency will do.";
             ChangeReqs("Currency");
+
+            if (!_hasHinted)
+            {
+                hintText.text += "\n- $$$$$$";
+            }
         }
 
         if (dialogueValue == 1)
         {
             confessionDoor.GetComponent<OpenableInteractable>().isLocked = false;
             confessionalWindow.GetComponent<BoxCollider>().enabled = true;
+            _hasHinted = false;
         }
 
         if (dialogueValue == 2)
@@ -111,11 +121,18 @@ public class Father_Huxley : Interactable
             needsBomb = true;
             failMessage = "Sorry brother, but this won't do. I am in need of a PIPE BOMB.";
             ChangeReqs("Pipe Bomb");
+            hintText.text += "\n- Look for LEAD PIPE";
+            hintText.text += "\n- Overzealous fourth floor tenant";
         }
 
         if (dialogueValue == 3)
         {
             koolAid.SetActive(true);
+        }
+
+        if (dialogueValue == 4)
+        {
+            hintText.text += "\n- Lace the drink";
         }
     }
 

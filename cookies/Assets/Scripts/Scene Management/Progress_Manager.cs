@@ -73,6 +73,7 @@ public class Progress_Manager : MonoBehaviour
             playerMans.gameObject.transform.position = newSpawn.position;
             UnlockDoors(altarDoor);
             introTriggers.SetActive(false);
+            hintText.text += "\n- Letter under door";
         }
 
         if (_playersTotalProgress.completedPaths[1]) // completed The Final Circus thread 
@@ -96,12 +97,14 @@ public class Progress_Manager : MonoBehaviour
         {
             UnlockDoors(roachDoor); // unlock Black October after completing 3 threads
             newNests.SetActive(true);
+            hintText.text += "\n- Infestation";
         }
 
         if (_playersTotalProgress.totalCompletedPaths >= 5)
         {
             cashier.threadAvailable = true; // unlock Crown Fried after completing 5 threads
             commercial.SetActive(true);
+            hintText.text += "\n- $19.99 Family Cluck Bucket";
         }
 
         if (_playersTotalProgress.completedPaths[8]) // unlock chainsaw after completing Crown Fried
@@ -121,6 +124,7 @@ public class Progress_Manager : MonoBehaviour
             manifestoDoor.gameObject.SetActive(false);
             bustedManifestoDoor.SetActive(true);
             bustedNormDoor.SetActive(true);
+            hintText.text += "\n- Mediocre male anger";
         }
 
         if (_playersTotalProgress.totalCompletedPaths >= 9)

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class El_Cuco : Interactable
 {
@@ -9,6 +10,10 @@ public class El_Cuco : Interactable
     public GameObject dialogueManager;
     public bool isStanding;
     public bool isFighting;
+
+    public Text hintText;
+
+    private bool _hasHinted = false;
 
     public GameObject pigRoomDoor;
     public GameObject criptWalka;
@@ -60,12 +65,22 @@ public class El_Cuco : Interactable
             // open door to hog killing room
             pigRoomDoor.GetComponent<OpenableInteractable>().isLocked = false;
             cop.SetActive(false);
+
+            if (!_hasHinted)
+            {
+                hintText.text += "\n- 211";
+            }
         }
         else if (_dialogueValue == 1)
         {
             // change cript walka and swamp hounds dialogues
             criptWalka.GetComponent<Cript_Walka>()._dialogueValue++;
             swampHound.GetComponent<Swamp_Hound>()._dialogueValue++;
+
+            if (!_hasHinted)
+            {
+                hintText.text += "\n- Look out for your dawgs";
+            }
         }
     }
 }

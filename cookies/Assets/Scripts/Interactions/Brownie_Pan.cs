@@ -25,7 +25,7 @@ public class Brownie_Pan : Interactable
     // Start is called before the first frame update
     new void Start()
     {
-        _brownieMessage = "I NEED BATTER FIRST";
+        _brownieMessage = "I NEED BROWNIE MIX FIRST";
         _inventory = player.GetComponent<Inventory>();
         _notice = noticeText.GetComponent<Notice>();
         _ovenAnimator = ovenDoor.GetComponent<Animator>();
@@ -80,7 +80,7 @@ public class Brownie_Pan : Interactable
     {
         yield return new WaitForSeconds(waitTime);
 
-        _brownieMessage = "JUST NEED THE BATTER NOW";
+        _brownieMessage = "JUST NEED THE BROWNIE MIX NOW";
         reqType = RequirementType.Single;
         requiredTags = new string[1];
         requiredTags[0] = "Batter";

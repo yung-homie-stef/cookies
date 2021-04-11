@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Crooked_Cop : Interactable
 {
@@ -8,6 +9,10 @@ public class Crooked_Cop : Interactable
     public GameObject player;
     public GameObject dialogueManager;
     public GameObject sinnerDoor;
+
+    public Text hintText;
+
+    private bool _hasHinted = false;
 
     [SerializeField]
     private int _dialogueValue;
@@ -51,6 +56,11 @@ public class Crooked_Cop : Interactable
     {
        GetComponent<BoxCollider>().enabled = false;
        _sinnerOpenable.isLocked = false;
+
+        if (!_hasHinted)
+        {
+            hintText.text += "\n- 312";
+        }
 
     }
 

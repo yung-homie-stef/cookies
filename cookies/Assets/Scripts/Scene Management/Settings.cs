@@ -13,6 +13,7 @@ public class Settings : MonoBehaviour
     public Text fullscreenEnabled;
     public Text trackingEnabled;
     public GameObject logo;
+    public GameObject FBI;
     
     public postVHSPro _postVHSScript;
 
@@ -144,6 +145,7 @@ public class Settings : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Start")
         {
             logo.SetActive(true);
+            FBI.SetActive(false);
         }
     }
 

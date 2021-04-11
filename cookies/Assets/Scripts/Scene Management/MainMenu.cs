@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
     public GameObject startButton;
     public GameObject threadButton;
     public GameObject logo;
+    public GameObject FBI;
 
     public static MainMenu globalMainMenuManager = null;
 
@@ -71,6 +72,7 @@ public class MainMenu : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Start")
         {
             logo.SetActive(true);
+            FBI.SetActive(false);
         }
     }
 
@@ -89,6 +91,7 @@ public class MainMenu : MonoBehaviour
         Game_Manager.globalGameManager.settingsScreen.SetActive(true);
         startMenu.SetActive(false);
         logo.SetActive(false);
+        FBI.SetActive(true);
     }
 
     public void OpenControls()
