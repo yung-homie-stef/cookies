@@ -12,6 +12,9 @@ public class Victim : MonoBehaviour
     public bool isBoss = false;
     public HealthBar healthbar;
 
+    public ParticleSystem bloodPrefab;
+    ParticleSystem tempBlood = null;
+
     protected Animator _animator;
     protected Rigidbody _rigidbody;
     protected CapsuleCollider _capsuleCollider;
@@ -69,6 +72,9 @@ public class Victim : MonoBehaviour
             {
                 hitPoints -= dmgNum;
 
+                tempBlood = Instantiate(bloodPrefab, point, transform.rotation);
+                Destroy(tempBlood.gameObject, 0.5f);
+
                 if (isBoss)
                 {
                     healthbar.SetHealth(hitPoints);
@@ -84,6 +90,7 @@ public class Victim : MonoBehaviour
                     }
                 }
                 break;
+ 
             }
 
         }  
@@ -119,4 +126,5 @@ public class Victim : MonoBehaviour
             Audio_Manager.globalAudioManager.PlaySound("flesh_" + meleeSound, Audio_Manager.globalAudioManager.meleeSoundArray);
         }
     }
+
 }

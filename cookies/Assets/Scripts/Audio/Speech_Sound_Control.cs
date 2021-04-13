@@ -14,7 +14,7 @@ public class Speech_Sound_Control : MonoBehaviour
         PlaySpeechSound(randomSpeechSound);
     }
 
-    private void PlaySpeechSound(int speechNum)
+    public void PlaySpeechSound(int speechNum)
     {
         GetComponent<AudioSource>().PlayOneShot(speechSounds[speechNum]);
     }

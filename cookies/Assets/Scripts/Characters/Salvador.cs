@@ -39,6 +39,8 @@ public class Salvador : Interactable
         eventHappensWhenTalkingIsDone = true;
         _sequenceNumber = 0;
         _notice = noticeText.GetComponent<Notice>();
+
+        GetComponent<Speech_Sound_Control>().PlaySpeechSound(0);
     }
 
     private void Update()

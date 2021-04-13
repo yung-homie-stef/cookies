@@ -12,7 +12,7 @@ public class DMT_Table : Interactable
     public override void InteractAction()
     {
         pitchBlackAnimator.SetBool("faded", true);
-        StartCoroutine(UnfadeBlack(2.0f));
+        StartCoroutine(UnfadeBlack(4.0f));
         gameObject.tag = "Untagged";
     }
 

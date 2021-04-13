@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Swamp_Boat : Interactable
 {
@@ -10,6 +11,8 @@ public class Swamp_Boat : Interactable
     public Notice _notice;
     public End_Condition greenHellThread;
     public GameObject blackOut;
+
+    public Text hintText;
 
     private GameObject player;
     private bool hasGas;
@@ -39,7 +42,8 @@ public class Swamp_Boat : Interactable
     public void UntetherPlayer()
     {
         boatCollider.SetActive(false);
-        player.transform.parent = null; 
+        player.transform.parent = null;
+        hintText.text += "\n- DMT cookin'";
     }
 
     public override void InteractAction()

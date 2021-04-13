@@ -534,6 +534,7 @@ MonoBehaviour:
   - shotgun
   isBoss: 0
   healthbar: {fileID: 0}
+  bloodPrefab: {fileID: 0}
 --- !u!95 &18618507
 Animator:
   serializedVersion: 3
@@ -3071,6 +3072,8 @@ MonoBehaviour:
   - pistol
   isBoss: 0
   healthbar: {fileID: 0}
+  bloodPrefab: {fileID: 8533986671993614045, guid: 4328cd395fe7714439097a51e68fc055,
+    type: 3}
 --- !u!65 &187861106
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3216,6 +3219,7 @@ MonoBehaviour:
   dialogueManager: {fileID: 525233105}
   CD: {fileID: 996703414}
   isScared: 1
+  hintText: {fileID: 0}
   currentSentences: []
 --- !u!1 &199962780
 GameObject:
@@ -16997,6 +17001,8 @@ MonoBehaviour:
   - voodoo
   isBoss: 1
   healthbar: {fileID: 1079623572}
+  bloodPrefab: {fileID: 8533986671993614045, guid: 4328cd395fe7714439097a51e68fc055,
+    type: 3}
   currentState: 1
   target: {fileID: 381539633}
   attackRange: 0.75
@@ -22246,6 +22252,7 @@ MonoBehaviour:
   - melee
   isBoss: 0
   healthbar: {fileID: 0}
+  bloodPrefab: {fileID: 0}
 --- !u!82 &1809320259
 AudioSource:
   m_ObjectHideFlags: 0

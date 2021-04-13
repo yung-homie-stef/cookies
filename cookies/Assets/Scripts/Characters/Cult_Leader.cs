@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cult_Leader : Interactable
 {
@@ -10,6 +11,10 @@ public class Cult_Leader : Interactable
     public Swamp_Boat boat;
     public GameObject boatCollision;
     public GameObject dancers;
+
+    public Text hintText;
+
+    private bool _hasHinted = false;
 
     [SerializeField]
     private string[] currentSentences;
@@ -71,6 +76,12 @@ public class Cult_Leader : Interactable
            boat.requiredTags = new string[1];
            boat.requiredTags[0] = "Gas";
            boat.tag = "Interactable";
+
+           if (!_hasHinted)
+           {
+                hintText.text += "\n- Escape";
+                _hasHinted = true;
+           }
         }
     }
 }
