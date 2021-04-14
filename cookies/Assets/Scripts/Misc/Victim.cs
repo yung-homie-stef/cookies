@@ -80,7 +80,7 @@ public class Victim : MonoBehaviour
                     healthbar.SetHealth(hitPoints);
                 }
 
-                if (hitPoints == 0)
+                if (hitPoints <= 0)
                 {
                     Die(point, direction);
 

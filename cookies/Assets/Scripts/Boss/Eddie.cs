@@ -14,6 +14,9 @@ public class Eddie : Victim
 
     public EddieStates currentState;
     public float chargeTimer = 1.5f;
+
+    public float chargINGTimer = 1.5f;
+
     public Transform target;
     public float wanderTimer;
     public float wanderRadius;
@@ -103,19 +106,24 @@ public class Eddie : Victim
             _startedCharging = true;
         }
 
+        if (_startedCharging)
+        {
+            chargINGTimer -= Time.deltaTime;
+        }
+
             chargeTimer -= Time.deltaTime;
 
         if (chargeTimer < 0)
         {
             _animator.SetTrigger("running");
             transform.position += (chargeTarget - transform.position).normalized * 3 * Time.deltaTime;
-            chargeTimer = 0;  
+            chargeTimer = 0;
+ 
         }
 
-        if (Vector3.Distance(transform.position, chargeTarget) < 0.1f)
+        if (Vector3.Distance(transform.position, chargeTarget) < 0.1f || chargINGTimer <= 0)
         {
-            _animator.SetBool("done_charging", true);
-            
+            _animator.SetBool("done_charging", true);   
         }
     }
     void DeadState(float deltatime)
@@ -164,6 +172,7 @@ public class Eddie : Victim
         _animator.SetBool("done_charging", false);
         currentState = EddieStates.EddieState_Idle;
         chargeTimer = 1.5f;
+        chargINGTimer = 1.5f;
         _idleTimer = 2.0f;
         
         _startedCharging = false;

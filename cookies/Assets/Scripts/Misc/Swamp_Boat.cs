@@ -71,7 +71,7 @@ public class Swamp_Boat : Interactable
     {
         yield return new WaitForSeconds(waitTime);
         Audio_Manager.globalAudioManager.PlaySound("tape", Audio_Manager.globalAudioManager.intangibleSoundArray);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(9);
 
     }
 }
