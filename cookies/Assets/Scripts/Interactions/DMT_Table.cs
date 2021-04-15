@@ -9,6 +9,8 @@ public class DMT_Table : Interactable
     public GameObject circlet;
     public GameObject DMT;
 
+    public Cult_Leader leader;
+
     public override void InteractAction()
     {
         pitchBlackAnimator.SetBool("faded", true);
@@ -23,5 +25,7 @@ public class DMT_Table : Interactable
         technician.SetActive(false);
         circlet.SetActive(true);
         pitchBlackAnimator.SetBool("faded", false);
+
+        leader._dialogueValue++;
     }
 }

@@ -47,6 +47,7 @@ public class Progress_Manager : MonoBehaviour
     [Header("Crown Fried")]
     public Fast_Food_Worker cashier;
     public GameObject commercial;
+    public GameObject apartmentTV;
     [Space(10)]
 
     [Header("Glad Boys")]
@@ -103,6 +104,7 @@ public class Progress_Manager : MonoBehaviour
         if (_playersTotalProgress.totalCompletedPaths >= 5)
         {
             cashier.threadAvailable = true; // unlock Crown Fried after completing 5 threads
+            apartmentTV.tag = "Interactable";
             commercial.SetActive(true);
             hintText.text += "\n- $19.99 Family Cluck Bucket";
         }

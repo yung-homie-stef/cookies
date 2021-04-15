@@ -12,6 +12,9 @@ public class Cult_Leader : Interactable
     public GameObject boatCollision;
     public GameObject dancers;
 
+    public AudioSource spookyMusic;
+
+    public GameObject bloodMoon;
     public Text hintText;
 
     private bool _hasHinted = false;
@@ -19,7 +22,7 @@ public class Cult_Leader : Interactable
     [SerializeField]
     private string[] currentSentences;
     [SerializeField]
-    private int _dialogueValue;
+    public int _dialogueValue;
     private Dialogue _dialogue;
 
     new void Start()
@@ -82,6 +85,11 @@ public class Cult_Leader : Interactable
                 hintText.text += "\n- Escape";
                 _hasHinted = true;
            }
+
+            bloodMoon.SetActive(true);
+            spookyMusic.gameObject.SetActive(true);
+            StartCoroutine(FadeBossMusic.StartFade(spookyMusic, 5.0f, 1.0f));
+            _dialogueValue++;
         }
     }
 }

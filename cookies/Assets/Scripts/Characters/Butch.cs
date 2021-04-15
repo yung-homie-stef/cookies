@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Butch : Interactable
 {
     public Set_of_Sentences[] sentenceSets;
     public GameObject player;
     public GameObject dialogueManager;
+
+    public Text hintsText;
+
+    private bool _hasHinted = false;
 
     [SerializeField]
     private string[] currentSentences;
@@ -28,7 +33,7 @@ public class Butch : Interactable
     private void HandleDialogue(int setIndex)
     {
         currentSentences = sentenceSets[setIndex].sentences;
-        _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject, false);
+        _dialogue.BeginDialogue(UpdateDialogue(currentSentences), gameObject, true);
     }
 
     private string[] UpdateDialogue(string[] lines)
@@ -40,6 +45,15 @@ public class Butch : Interactable
             sentences[i] = lines[i];
         }
         return sentences;
+    }
+
+    public override void ConversationEndEvent()
+    {
+        if (!_hasHinted)
+        {
+            hintsText.text += "\n- Lobby";
+            _hasHinted = true;
+        }
     }
 
 }
