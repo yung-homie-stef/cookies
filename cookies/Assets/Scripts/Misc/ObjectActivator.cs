@@ -1,23 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObjectActivator : MonoBehaviour
 {
     public GameObject[] objects;
+
     public bool[] activeOrNot;
     public bool isDestroyed;
 
+
     private void OnTriggerEnter(Collider other)
     {
-        for (int i = 0; i < objects.Length; i++)
+        if (other.tag == "Player")
         {
-            objects[i].SetActive(activeOrNot[i]);
-        }
+            for (int i = 0; i < objects.Length; i++)
+            {
+                objects[i].SetActive(activeOrNot[i]);
+            }
 
-        if (isDestroyed)
-            Destroy(gameObject);
-        else
-            gameObject.SetActive(false);
+
+            if (isDestroyed)
+                Destroy(gameObject);
+            else
+                gameObject.SetActive(false);
+        }
     }
 }

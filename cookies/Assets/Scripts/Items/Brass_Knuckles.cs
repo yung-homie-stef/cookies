@@ -71,6 +71,8 @@ public class Brass_Knuckles : Action
                     _inventory.isWeaponEquipped = true;
                     // create a duplicate of the weapon that rests in the player's hand
 
+                    _playerScript.SetNumberOfEquippedMeleeItem(itemIndex);
+
                     _duplicate = Instantiate(gameObject, playerPalm.transform.position, player.transform.rotation);
                     _duplicate.GetComponent<BoxCollider>().enabled = false;
                     _duplicate.gameObject.tag = "Hitbox";

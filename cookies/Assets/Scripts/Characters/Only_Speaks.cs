@@ -49,7 +49,7 @@ public class Only_Speaks : Interactable
         {
             if (!_hasHinted)
             {
-                hintText.text += "\n" + hint;
+                hintText.text += "\n- " + hint;
                 _hasHinted = true;
             }
         }

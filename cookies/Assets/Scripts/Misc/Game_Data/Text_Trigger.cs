@@ -10,6 +10,11 @@ public class Text_Trigger : MonoBehaviour
 
     public string newText;
     private Notice _notice;
+    public bool isHinting;
+
+    public Text hintText;
+
+    public string hintPhrase;
 
     private void Start()
     {
@@ -19,6 +24,12 @@ public class Text_Trigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         _notice.ChangeText(newText, timeAlloted);
+
+        if (isHinting)
+        {
+            hintText.text += "\n- " + hintPhrase;
+        }
+
         StartCoroutine(SelfDestruct(0.5f));
     }
 

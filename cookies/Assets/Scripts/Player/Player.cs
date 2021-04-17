@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
 
     public GameObject fistHitbox;
 
+    public int equippedMeleeIndex;
+
     public Image cursorImage;
     public Sprite interactSprite;
     public Sprite originalHUDDot;
@@ -177,19 +179,19 @@ public class Player : MonoBehaviour
             }
         }
 
-        else if (_inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<Brass_Knuckles>())
+        else if (_inventory.playerInventoryItems[equippedMeleeIndex].GetComponent<Brass_Knuckles>())
         {
 
-            _inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<Brass_Knuckles>().EnableMeleeHitbox(condition);
+            _inventory.playerInventoryItems[equippedMeleeIndex].GetComponent<Brass_Knuckles>().EnableMeleeHitbox(condition);
         }
 
     }
 
     public void ActivateMeleeHitbox(int condition)
     {
-        if (_inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<MeleeWeapon>())
+        if (_inventory.playerInventoryItems[equippedMeleeIndex].GetComponent<MeleeWeapon>())
         {
-            _inventory.playerInventoryItems[Inventory.currentSelectedSlot].GetComponent<MeleeWeapon>().EnableMeleeHitbox(condition);
+            _inventory.playerInventoryItems[equippedMeleeIndex].GetComponent<MeleeWeapon>().EnableMeleeHitbox(condition);
         }
     }
 
@@ -227,5 +229,10 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         damageFlash.SetActive(false);
+    }
+
+    public void SetNumberOfEquippedMeleeItem(int N)
+    {
+        equippedMeleeIndex = N;
     }
 }

@@ -6,7 +6,8 @@ public class Arsenic : Action
 {
     public GameObject inventoryUI;
     public Player playerScript;
-    public Krool_Aid kroolAidScript;
+
+    public Samet _sametScript;
 
     private Movement _movement;
     private Notice _notice;
@@ -21,7 +22,8 @@ public class Arsenic : Action
     {
         if (GetComponent<AcquirableInteractable>().canNowUse)
         {
-            kroolAidScript.poisoned = true;
+            Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
+            _sametScript.hasTranslated = true;
 
             Inventory.instance.inventoryUIScript.slots[itemIndex].SetHeaderToBlank();
             Destroy(_inventory.playerInventoryItems[itemIndex]);

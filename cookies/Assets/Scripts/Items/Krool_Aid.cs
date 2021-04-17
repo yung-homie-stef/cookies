@@ -13,8 +13,6 @@ public class Krool_Aid : Action
     public AudioClip sipSFX;
     public GameObject inventoryUI;
 
-    public bool poisoned = false;
-
     [HideInInspector]
     public Vector3 preTeleportPosition;
 
@@ -45,11 +43,6 @@ public class Krool_Aid : Action
             _audioSource.PlayOneShot(sipSFX);
             _animator.SetBool("faded", true);
 
-            if (poisoned)
-            {
-                Audio_Manager.globalAudioManager.PlaySound("ping", Audio_Manager.globalAudioManager.intangibleSoundArray);
-                _sametScript.hasTranslated = true;
-            }
 
             inventoryUI.GetComponent<Inventory_UI>().DisableUI();
 
