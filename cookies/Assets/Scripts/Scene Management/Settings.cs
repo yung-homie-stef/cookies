@@ -107,8 +107,8 @@ public class Settings : MonoBehaviour
 
     public void SetGamma(float gamma)
     {
-        _postVHSScript.gammaCorection = gamma;
-        settingsManager.gammaCorection = gamma;
+        _postVHSScript.gammaCorection = gamma * -1;
+        settingsManager.gammaCorection = gamma * -1;
     }
 
     public void SetNoise(float noise)

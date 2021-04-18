@@ -83,6 +83,7 @@ public class Clown : MonoBehaviour
                 _clown_openable.requiredTags[0] = "Clown Key";
                 _clown_openable.isLocked = false;
                 _clown_openable.isOpened = false;
+                _clown_openable.closeToggle = false;
 
                 final_circus_thread_trigger.SetActive(true);
 

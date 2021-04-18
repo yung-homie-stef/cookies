@@ -8,6 +8,9 @@ public class Pie_Trap_Trigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        pieMechanism.GetComponent<Animator>().SetBool("triggered", true);
+        if (other.tag == "Player")
+        {
+            pieMechanism.GetComponent<Animator>().SetBool("triggered", true);
+        }
     }
 }
