@@ -14,6 +14,8 @@ public class Clown : MonoBehaviour
     public GameObject clown_door;
     public GameObject final_circus_thread_trigger;
 
+    public AudioClip[] clownAttackSounds;
+
     private Transform _target;
     private NavMeshAgent _agent;
     private float _timer;
@@ -105,6 +107,9 @@ public class Clown : MonoBehaviour
     public void EnableHammerHitbox()
     {
         hammer.GetComponent<BoxCollider>().enabled = true;
+
+        int randomAttackSound = Random.Range(0, clownAttackSounds.Length);
+        PlayAttackSound(randomAttackSound);
     }
 
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
@@ -126,5 +131,10 @@ public class Clown : MonoBehaviour
         clown_key.transform.parent = null;
         clown_key.GetComponent<Interactable>().InteractAction(); // give players the key if custodian is killed
         clown_key.tag = "Interactable";
+    }
+
+    public void PlayAttackSound(int speechNum)
+    {
+        GetComponent<AudioSource>().PlayOneShot(clownAttackSounds[speechNum]);
     }
 }

@@ -75,7 +75,7 @@ public class Swamp_Hound : Interactable
 
             brownieScript.reqType = RequirementType.Single;
             brownieScript.requiredTags = new string[1];
-            requiredTags[0] = "CBD";
+            brownieScript.requiredTags[0] = "CBD";
 
             if (!_hasHinted)
             {

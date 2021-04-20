@@ -164,4 +164,6 @@ public class Settings : MonoBehaviour
         _postVHSScript.tapeNoiseOn = settingsManager.tapeNoiseOn;
         _postVHSScript.enabled = settingsManager.VHSEffectOn;
     }
+
+
 }

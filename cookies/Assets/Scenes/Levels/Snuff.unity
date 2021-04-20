@@ -534,7 +534,8 @@ MonoBehaviour:
   - shotgun
   isBoss: 0
   healthbar: {fileID: 0}
-  bloodPrefab: {fileID: 0}
+  bloodPrefab: {fileID: 8533986671993614045, guid: 4328cd395fe7714439097a51e68fc055,
+    type: 3}
 --- !u!95 &18618507
 Animator:
   serializedVersion: 3
@@ -6633,6 +6634,7 @@ MonoBehaviour:
   isRoided: 0
   equipped: 0
   fistHitbox: {fileID: 960970466}
+  equippedMeleeIndex: 0
   cursorImage: {fileID: 1202938186}
   interactSprite: {fileID: 21300000, guid: b7b01efa36a639044ab41dc415fd1766, type: 3}
   originalHUDDot: {fileID: 21300000, guid: 73be87375aeb21d49b9a6f1d1e690b01, type: 3}
@@ -6641,7 +6643,7 @@ MonoBehaviour:
   _inventory: {fileID: 381539634}
   damageFlash: {fileID: 279393231}
   damage: {fileID: 8300000, guid: a640a12c70bf3ec4f9426508cfe9c224, type: 3}
-  playerHealth: 2
+  playerHealth: 6
   deathScreen: {fileID: 1755465134}
   rewindIcon: {fileID: 1984105262}
   respawnPoint: {fileID: 0}
@@ -22252,7 +22254,8 @@ MonoBehaviour:
   - melee
   isBoss: 0
   healthbar: {fileID: 0}
-  bloodPrefab: {fileID: 0}
+  bloodPrefab: {fileID: 8533986671993614045, guid: 4328cd395fe7714439097a51e68fc055,
+    type: 3}
 --- !u!82 &1809320259
 AudioSource:
   m_ObjectHideFlags: 0

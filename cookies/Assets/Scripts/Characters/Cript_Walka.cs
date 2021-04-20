@@ -13,6 +13,10 @@ public class Cript_Walka : Interactable
     public GameObject killingUnit;
     public bool hasSpoken;
     public Text noticeText;
+    public GameObject guidingLight;
+
+    public GameObject LakersGame;
+    public GameObject FusterCluckCommercial;
 
     public Text hintText;
 
@@ -109,7 +113,11 @@ public class Cript_Walka : Interactable
                 light.SetActive(false);
             }
 
+            LakersGame.SetActive(false);
+            FusterCluckCommercial.SetActive(false);
+
             killingUnit.SetActive(true);
+            guidingLight.SetActive(true);
 
             if (!_hasHinted)
             {
