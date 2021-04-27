@@ -19,6 +19,8 @@ public class Cult_Leader : Interactable
 
     private bool _hasHinted = false;
 
+    private bool spookyTriggered = false;
+
     [SerializeField]
     private string[] currentSentences;
     [SerializeField]
@@ -41,6 +43,15 @@ public class Cult_Leader : Interactable
         {
             _dialogueValue = 2;
             HandleDialogue(1);
+
+            if (!spookyTriggered)
+            {
+                StartCoroutine(FadeBossMusic.StartFade(spookyMusic, 5.0f, 1.0f));
+                bloodMoon.SetActive(true);
+                spookyMusic.gameObject.SetActive(true);
+
+                spookyTriggered = true;
+            }
         }
     }
 
@@ -85,10 +96,6 @@ public class Cult_Leader : Interactable
                 hintText.text += "\n- Escape";
                 _hasHinted = true;
            }
-
-            bloodMoon.SetActive(true);
-            spookyMusic.gameObject.SetActive(true);
-            StartCoroutine(FadeBossMusic.StartFade(spookyMusic, 5.0f, 1.0f));
             _dialogueValue++;
         }
     }

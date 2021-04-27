@@ -19,7 +19,7 @@ public class Brownie_Pan : Interactable
     private bool _hasBatter;
     private bool _hasCBD;
     private bool _hasBaked;
-    private string _brownieMessage;
+    public string _brownieMessage;
     private Interactable _browniePanInteractable;
 
     // Start is called before the first frame update
@@ -36,7 +36,7 @@ public class Brownie_Pan : Interactable
     {
         if (_ovenAnimator.GetBool("is_opened") == false)
         {
-            if (_hasBatter && !_hasCBD)
+            if (_hasBatter)
             {
                 brownie.SetActive(true);
 
@@ -46,7 +46,7 @@ public class Brownie_Pan : Interactable
                     _hasBaked = true;
                 }
             }
-            else if (_hasBatter && _hasCBD)
+            else if (_hasCBD)
             {
                 weedBrownie.SetActive(true);
 
@@ -68,23 +68,13 @@ public class Brownie_Pan : Interactable
             _hasBatter = true;
               
         }
-        else if (_browniePanInteractable.requiredTags[0] == "CBD" && swamped)
+        else if (_browniePanInteractable.requiredTags[0] == "CBD")
         {
             _hasCBD = true;
-            ChangeBrownieRequirements(0.5f);
         }
 
     }
 
-    private IEnumerator ChangeBrownieRequirements(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-
-        _brownieMessage = "JUST NEED THE BROWNIE MIX NOW";
-        reqType = RequirementType.Single;
-        requiredTags = new string[1];
-        requiredTags[0] = "Batter";
-    }
 
     public override void FailMessage()
     {

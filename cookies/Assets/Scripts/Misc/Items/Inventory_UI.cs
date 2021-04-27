@@ -48,6 +48,13 @@ public class Inventory_UI : MonoBehaviour
                 DisableUI();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            DisableUI();
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     private void UpdateUI()

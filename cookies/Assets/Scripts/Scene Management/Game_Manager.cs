@@ -115,6 +115,7 @@ public class Game_Manager : MonoBehaviour
 
         End_Menu.globalEndMenu.SetStatusOfThreadCompletion(condition);
         CompletePath(condition.threadID, condition.threadName);
+        Audio_Manager.globalAudioManager.musicSoundArray[0].source.Stop();
         Audio_Manager.globalAudioManager.PlaySound("end", Audio_Manager.globalAudioManager.musicSoundArray);
         SceneManager.LoadScene(8);
              

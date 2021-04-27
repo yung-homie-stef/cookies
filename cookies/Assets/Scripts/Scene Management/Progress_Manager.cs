@@ -75,13 +75,15 @@ public class Progress_Manager : MonoBehaviour
             UnlockDoors(altarDoor);
             introTriggers.SetActive(false);
             hintText.text += "\n- Letter under door";
+            hintText.text += "\n- The circus is in town";
         }
 
-        if (_playersTotalProgress.completedPaths[1]) // completed The Final Circus thread 
+        if (_playersTotalProgress.completedPaths[1] || _playersTotalProgress.totalCompletedPaths >= 4) // completed The Final Circus thread 
         {
             UnlockDoors(studioDoor);
             UnlockDoors(rapperDoor); // unlocks Pig Knuckles and A Floridian Film
             UnlockDoors(drugDoor);
+            drugDoor.tag = "Interactable";
             hintText.text += "\n- Bathroom door fixed";
         }
 

@@ -68,7 +68,7 @@ public class Inventory : MonoBehaviour
 
     public bool AddItem(Item item)
     {
-        if (items.Count >= space)
+        if (items.Count >= 10)
         {
             _notice.ChangeText("INVENTORY FULL", 6.0f);
             return false;

@@ -8,6 +8,8 @@ public class Power_Outage : MonoBehaviour
     public Custodian mel;
     public Clown wayne;
 
+    public GameObject guidingLight;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -26,6 +28,8 @@ public class Power_Outage : MonoBehaviour
                 light.SetActive(false);
             }
         }
+
+        guidingLight.SetActive(true);
 
 
     }

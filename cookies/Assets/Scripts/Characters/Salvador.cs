@@ -43,14 +43,6 @@ public class Salvador : Interactable
         GetComponent<Speech_Sound_Control>().PlaySpeechSound(0);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            StartCoroutine(CompleteSalvadorsThread(1.0f));
-        }
-    }
-
    
     public override void InteractAction()
     {

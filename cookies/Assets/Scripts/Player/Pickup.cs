@@ -29,7 +29,7 @@ public class Pickup : MonoBehaviour
             gameObject.transform.localScale = renderScale;
             gameObject.transform.eulerAngles = renderRotation;
 
-            if (Inventory.instance.items.Count < 10)
+            if (Inventory.instance.items.Count <= 10)
             {
                 _inventory.playerInventoryItems.Add(gameObject);
             }

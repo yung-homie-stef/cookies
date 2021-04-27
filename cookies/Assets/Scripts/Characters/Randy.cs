@@ -11,6 +11,8 @@ public class Randy : Interactable
     public GameObject CD;
     public bool isScared;
 
+    public GameObject tvroomDoor;
+
     public Text hintText;
 
     private bool _hasHinted = false;
@@ -86,6 +88,7 @@ public class Randy : Interactable
     {
         if (!isScared)
         {
+            tvroomDoor.tag = "Interactable";
             if (!_hasHinted)
             {
                 hintText.text += "\n- 212";

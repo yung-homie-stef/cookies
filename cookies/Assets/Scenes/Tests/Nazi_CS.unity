@@ -1903,6 +1903,7 @@ MonoBehaviour:
   - melee
   isBoss: 1
   healthbar: {fileID: 0}
+  bloodPrefab: {fileID: 0}
   currentState: 1
   target: {fileID: 0}
   attackRange: 0.75
@@ -1918,6 +1919,7 @@ MonoBehaviour:
   inRadiusTimer: 1
   radiusTimerReset: 1
   _bossDistance: 0
+  naziSFX: []
 --- !u!114 &735426156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1931,6 +1933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerScript: {fileID: 0}
+  selectedBoss: {fileID: 0}
 --- !u!144 &735426157
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -3530,6 +3533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerScript: {fileID: 0}
+  selectedBoss: {fileID: 0}
 --- !u!1 &944676018
 GameObject:
   m_ObjectHideFlags: 0
@@ -4256,7 +4260,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1174342143}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ba5113e7208c4316acb1028a08587a2, type: 3}
   m_Name: 

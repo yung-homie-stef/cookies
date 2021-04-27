@@ -75,25 +75,28 @@ public class Pistol : Action
             }
             else if (_cocked == false)
             {
-                _inventory.isWeaponEquipped = true;
-                // create a duplicate of the gun that rests in the player's hand
+                if (!_playerScript.equipped)
+                {
+                    _inventory.isWeaponEquipped = true;
+                    // create a duplicate of the gun that rests in the player's hand
 
-                _duplicate = Instantiate(gameObject, playerPalm.transform.position, player.transform.rotation);
-                _duplicate.AddComponent<AudioSource>();
-                _duplicate.GetComponent<AudioSource>().outputAudioMixerGroup = sfxMixer;
+                    _duplicate = Instantiate(gameObject, playerPalm.transform.position, player.transform.rotation);
+                    _duplicate.AddComponent<AudioSource>();
+                    _duplicate.GetComponent<AudioSource>().outputAudioMixerGroup = sfxMixer;
 
-                //_duplicate.transform.Rotate(0, 90, 90);
-                _duplicate.transform.Rotate(cloneRotation);
-                _duplicate.transform.localScale = _localScale;
-                _duplicate.layer = 0;
-                _duplicate.transform.parent = playerPalm.transform; // make the gun a child of the palm
-                _cocked = true;
+                    //_duplicate.transform.Rotate(0, 90, 90);
+                    _duplicate.transform.Rotate(cloneRotation);
+                    _duplicate.transform.localScale = _localScale;
+                    _duplicate.layer = 0;
+                    _duplicate.transform.parent = playerPalm.transform; // make the gun a child of the palm
+                    _cocked = true;
 
-                weaponEquipText.enabled = true;
-                weaponEquipText.text = gunName + " EQUIPPED";
-                _inventory.inventoryUIScript.slots[itemIndex].removeButton.interactable = false;
-                _playerScript.equipped = true;
-                Audio_Manager.globalAudioManager.PlaySound("equip", Audio_Manager.globalAudioManager.intangibleSoundArray);
+                    weaponEquipText.enabled = true;
+                    weaponEquipText.text = gunName + " EQUIPPED";
+                    _inventory.inventoryUIScript.slots[itemIndex].removeButton.interactable = false;
+                    _playerScript.equipped = true;
+                    Audio_Manager.globalAudioManager.PlaySound("equip", Audio_Manager.globalAudioManager.intangibleSoundArray);
+                }
             }
         }
     }

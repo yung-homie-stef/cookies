@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     public GameObject damageFlash;
     public AudioClip damage;
 
+    public AudioClip[] chainsawSounds;
+
     public int playerHealth;
     public Image deathScreen;
     public Image rewindIcon;
@@ -229,6 +231,12 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         damageFlash.SetActive(false);
+    }
+
+    public void PlayChainsawSound()
+    {
+        int randomChainsawSound = Random.Range(0, chainsawSounds.Length);
+       GetComponent<AudioSource>().PlayOneShot(chainsawSounds[randomChainsawSound]);
     }
 
     public void SetNumberOfEquippedMeleeItem(int N)

@@ -6,6 +6,7 @@ public class Teleport : MonoBehaviour
 {
     public GameObject player;
     public Transform teleportPoint;
+    public Animator blackOut;
 
     // Start is called before the first frame update
     void Start()
@@ -24,8 +25,16 @@ public class Teleport : MonoBehaviour
 
         if (other.tag == "Player")
         {
-            player.transform.position = teleportPoint.transform.position;
+            blackOut.SetBool("faded", true);
+            StartCoroutine(TeleportPlayer(3.0f));
         }
 
+    }
+
+    private IEnumerator TeleportPlayer(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        player.transform.position = teleportPoint.transform.position;
+        blackOut.SetBool("faded", false);
     }
 }
