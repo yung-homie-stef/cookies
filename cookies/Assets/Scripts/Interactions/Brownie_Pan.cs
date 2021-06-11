@@ -38,13 +38,28 @@ public class Brownie_Pan : Interactable
         {
             if (_hasBatter)
             {
-                brownie.SetActive(true);
-
-                if (!_hasBaked)
+                if (_hasCBD)
                 {
-                    StartCoroutine(PlayOvenDing(1.0f));
-                    _hasBaked = true;
+                    weedBrownie.SetActive(true);
+
+                    if (!_hasBaked)
+                    {
+                        StartCoroutine(PlayOvenDing(1.0f));
+                        _hasBaked = true;
+                    }
                 }
+                else
+                {
+                    brownie.SetActive(true);
+
+                    if (!_hasBaked)
+                    {
+                        StartCoroutine(PlayOvenDing(1.0f));
+                        _hasBaked = true;
+                    }
+                }
+
+               
             }
             else if (_hasCBD)
             {
@@ -66,11 +81,13 @@ public class Brownie_Pan : Interactable
         if (_browniePanInteractable.requiredTags[0] == "Batter")
         {
             _hasBatter = true;
+            _hasBaked = false;
               
         }
         else if (_browniePanInteractable.requiredTags[0] == "CBD")
         {
             _hasCBD = true;
+            _hasBaked = false;
         }
 
     }

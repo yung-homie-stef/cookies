@@ -3220,6 +3220,7 @@ MonoBehaviour:
   dialogueManager: {fileID: 525233105}
   CD: {fileID: 996703414}
   isScared: 1
+  tvroomDoor: {fileID: 0}
   hintText: {fileID: 0}
   currentSentences: []
 --- !u!1 &199962780
@@ -6154,7 +6155,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 5b3f1cea35a922544bb6f6ca72d9ca87,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.24
+      value: 8.29
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 5b3f1cea35a922544bb6f6ca72d9ca87,
         type: 3}
@@ -6643,6 +6644,7 @@ MonoBehaviour:
   _inventory: {fileID: 381539634}
   damageFlash: {fileID: 279393231}
   damage: {fileID: 8300000, guid: a640a12c70bf3ec4f9426508cfe9c224, type: 3}
+  chainsawSounds: []
   playerHealth: 6
   deathScreen: {fileID: 1755465134}
   rewindIcon: {fileID: 1984105262}
